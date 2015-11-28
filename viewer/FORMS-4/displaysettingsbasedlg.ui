@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CDisplaySettingsBaseDialog</class>
+ <widget class="QDialog" name="CDisplaySettingsBaseDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>628</width>
+    <height>392</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Display Settings</string>
+  </property>
+  <layout class="QGridLayout">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout">
+     <item>
+      <widget class="QLabel" name="m_textdisplaymodecount">
+       <property name="text">
+        <string>Number of Display Modes</string>
+       </property>
+       <property name="wordWrap">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="m_editdisplaymodecount">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="spacer2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>71</width>
+         <height>31</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="m_textsortby">
+       <property name="text">
+        <string>Sort by</string>
+       </property>
+       <property name="wordWrap">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="m_combodisplaysettings">
+       <item>
+        <property name="text">
+         <string>Index</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Depth</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Width</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Height</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Vertical Refresh</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Horizontal Refresh</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Bandwidth</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="m_radioreversed">
+       <property name="text">
+        <string>Reversed</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0">
+    <layout class="QHBoxLayout">
+     <item>
+      <widget class="QPushButton" name="m_pushbuttonprint">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>80</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Print</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_pushbuttonsave">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>80</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Save</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="spacer1">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>365</width>
+         <height>31</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_pushbuttonok">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>80</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>OK</string>
+       </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="CDisplaySettingsListView" name="m_displaysettingslist"/>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>CDisplaySettingsListView</class>
+   <extends>QWidget</extends>
+   <header>displaysettingswidget/displaysettingswidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <includes>
+  <include location="local">displaysettingswidget/displaysettingswidget.h</include>
+ </includes>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>m_radioreversed</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>CDisplaySettingsBaseDialog</receiver>
+   <slot>radioreversed_toggled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>536</x>
+     <y>33</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_combodisplaysettings</sender>
+   <signal>highlighted(int)</signal>
+   <receiver>CDisplaySettingsBaseDialog</receiver>
+   <slot>combodisplaysettings_highlighted(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>350</x>
+     <y>31</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_combodisplaysettings</sender>
+   <signal>activated(int)</signal>
+   <receiver>CDisplaySettingsBaseDialog</receiver>
+   <slot>combodisplaysettings_activated(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>350</x>
+     <y>31</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_displaysettingslist</sender>
+   <signal>sortingChanged(int,bool)</signal>
+   <receiver>CDisplaySettingsBaseDialog</receiver>
+   <slot>listviewdisplaysettings_sortingChanged(int,bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>29</x>
+     <y>68</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonok</sender>
+   <signal>clicked()</signal>
+   <receiver>CDisplaySettingsBaseDialog</receiver>
+   <slot>pushbuttonok_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>557</x>
+     <y>368</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>521</x>
+     <y>355</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonsave</sender>
+   <signal>clicked()</signal>
+   <receiver>CDisplaySettingsBaseDialog</receiver>
+   <slot>pushbuttonsave_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>153</x>
+     <y>368</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>188</x>
+     <y>355</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonprint</sender>
+   <signal>clicked()</signal>
+   <receiver>CDisplaySettingsBaseDialog</receiver>
+   <slot>pushbuttonprint_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>58</x>
+     <y>370</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>360</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>pushbuttonprint_clicked()</slot>
+  <slot>pushbuttonok_clicked()</slot>
+  <slot>pushbuttonsave_clicked()</slot>
+ </slots>
+</ui>

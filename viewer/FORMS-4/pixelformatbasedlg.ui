@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CPixelFormatBaseDialog</class>
+ <widget class="QDialog" name="CPixelFormatBaseDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1345</width>
+    <height>515</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>List of available Pixel Formats</string>
+  </property>
+  <layout class="QVBoxLayout">
+   <item>
+    <layout class="QHBoxLayout">
+     <item>
+      <widget class="QLabel" name="m_textpixelformatcount">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Number of Pixel Formats:</string>
+       </property>
+       <property name="wordWrap">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="m_pixelformatcount">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>60</width>
+         <height>32767</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string>Number of pixel formats available</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight</set>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="spacer2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::MinimumExpanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>180</width>
+         <height>21</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="m_textsort">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Sort by:</string>
+       </property>
+       <property name="wordWrap">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="m_combopixelformat">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Click to select sorting order of data</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Index</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Pixel type</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Color bits</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Red bits/shift</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Green bits/shift</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Blue bits/shift</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Alpha bits/shift</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Accumulation bits</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Depth Bits</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Stencil bits</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Flags</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Plane level</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="m_radiopixelformat">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Click to reverse sorting order</string>
+       </property>
+       <property name="text">
+        <string>&amp;Reversed</string>
+       </property>
+       <property name="shortcut">
+        <string>Alt+R</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="CPixelFormatListView" name="m_listviewpixelformat" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>100</width>
+       <height>60</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout">
+     <item>
+      <widget class="QPushButton" name="m_pushbuttonprint">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Print out this list</string>
+       </property>
+       <property name="text">
+        <string>&amp;Print</string>
+       </property>
+       <property name="shortcut">
+        <string>Alt+P</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_pushbuttonsave">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Save this list to a file</string>
+       </property>
+       <property name="text">
+        <string>&amp;Save</string>
+       </property>
+       <property name="shortcut">
+        <string>Alt+S</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="spacer1">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::MinimumExpanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>416</width>
+         <height>30</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_pushbuttonok">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Click here to close window</string>
+       </property>
+       <property name="text">
+        <string>&amp;OK</string>
+       </property>
+       <property name="shortcut">
+        <string>Alt+O</string>
+       </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>CPixelFormatListView</class>
+   <extends>QWidget</extends>
+   <header>pixelformatwidget/pixelformatwidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>m_pushbuttonok</sender>
+   <signal>clicked()</signal>
+   <receiver>CPixelFormatBaseDialog</receiver>
+   <slot>pushbuttonok_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1334</x>
+     <y>504</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1180</x>
+     <y>508</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonprint</sender>
+   <signal>clicked()</signal>
+   <receiver>CPixelFormatBaseDialog</receiver>
+   <slot>pushbuttonprint_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>51</x>
+     <y>504</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>312</x>
+     <y>514</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonsave</sender>
+   <signal>clicked()</signal>
+   <receiver>CPixelFormatBaseDialog</receiver>
+   <slot>pushbuttonsave_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>185</x>
+     <y>504</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>588</x>
+     <y>510</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_combopixelformat</sender>
+   <signal>activated(int)</signal>
+   <receiver>CPixelFormatBaseDialog</receiver>
+   <slot>combopixelformat_activated(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1195</x>
+     <y>29</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1341</x>
+     <y>58</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_radiopixelformat</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>CPixelFormatBaseDialog</receiver>
+   <slot>radiopixelformat_toggled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1258</x>
+     <y>23</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1341</x>
+     <y>128</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>pushbuttonok_clicked()</slot>
+  <slot>pushbuttonprint_clicked()</slot>
+  <slot>pushbuttonsave_clicked()</slot>
+  <slot>combopixelformat_activated(int)</slot>
+  <slot>radiopixelformat_toggled(bool)</slot>
+ </slots>
+</ui>

@@ -1,0 +1,70 @@
+OpenGL Extension Viewer
+by Dr. Michael Robb
+Version 1.1
+28th November 2015
+Contact msar@vfxresearch.com
+=====================================================================
+
+Introduction
+------------
+
+This application is intended to be an aid for OpenGL developers wanting
+to keep up with the latest changes to the OpenGL API and hardware. It
+provides the following features:
+
+	o Display of available video modes of the hardware
+	o Display of available drawable surfaces
+	o Automatic downloading of registry header files
+	o Automatic downloading of registry extension specifications
+	o Analysis of available OpenGL extensions
+	o Reading of registry header files to generate source code used
+	  to find the location of OpenGL extension functions
+
+Build instructions
+------------------
+
+In the directory where this README file is located, type the command:
+
+	make 
+
+This will compile all code in the subdirectories followed by the application
+itself.
+
+
+Running instructions
+--------------------
+
+Enter the directory "viewer" and there will be an executable called "viewer".
+
+Running this executable will start up the Qt application.
+
+Required directories
+--------------------
+
+The application will create the directory "registry" and will place a copy
+of the OpenGL registry in here as well as the four current GL header files:
+
+        glext.h 
+	glxext.h 
+	wglext.h
+	glcorearb.h
+
+Layout
+------
+
+The application source code is organised into the following units:
+
+	viewer	- The Qt application source code
+	libextviewer - Low level source code used
+	filesysascii - ASCII file reading routines
+	LICENSE - GNU public license
+	README - This file
+
+Contact
+-------
+
+Author: Dr. Michael S. A. Robb
+	msar@vfxresearch.com
+
+============================================================================
+  ========================================================================

@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CFindExtensionSpecBaseDialog</class>
+ <widget class="QDialog" name="CFindExtensionSpecBaseDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>796</width>
+    <height>652</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Find String in OpenGL Specifications</string>
+  </property>
+  <layout class="QVBoxLayout">
+   <item>
+    <widget class="Q3GroupBox" name="m_groupboxstring">
+     <property name="title">
+      <string>Find String</string>
+     </property>
+     <layout class="QVBoxLayout">
+      <item>
+       <layout class="QHBoxLayout">
+        <item>
+         <widget class="QLineEdit" name="m_lineeditstring"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="m_pushbuttonfindstring">
+          <property name="text">
+           <string>Find</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout">
+        <item>
+         <widget class="QCheckBox" name="m_checkboxmatchcase">
+          <property name="text">
+           <string>Match case</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="m_checkboxfirstmatch">
+          <property name="text">
+           <string>Find first match only</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="m_checkboxfullpaths">
+          <property name="text">
+           <string>Display full paths only</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="m_checkboxonematchperfile">
+          <property name="text">
+           <string>Find one match per file</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="spacer2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>300</width>
+            <height>31</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="Q3ListView" name="m_listviewresults">
+     <property name="allColumnsShowFocus">
+      <bool>true</bool>
+     </property>
+     <property name="resizeMode">
+      <enum>Q3ListView::NoColumn</enum>
+     </property>
+     <column>
+      <property name="text">
+       <string>File</string>
+      </property>
+      <property name="clickable">
+       <bool>true</bool>
+      </property>
+      <property name="resizable">
+       <bool>true</bool>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Line number</string>
+      </property>
+      <property name="clickable">
+       <bool>true</bool>
+      </property>
+      <property name="resizable">
+       <bool>true</bool>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Text</string>
+      </property>
+      <property name="clickable">
+       <bool>true</bool>
+      </property>
+      <property name="resizable">
+       <bool>true</bool>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout">
+     <item>
+      <widget class="QLabel" name="textLabel1_2">
+       <property name="text">
+        <string>Site</string>
+       </property>
+       <property name="wordWrap">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="m_lineeditsite">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="textLabel1">
+       <property name="text">
+        <string>Progress</string>
+       </property>
+       <property name="wordWrap">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QProgressBar" name="m_progressbarsearch"/>
+     </item>
+     <item>
+      <spacer name="spacer1">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>90</width>
+         <height>30</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Search Status</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="m_lineeditsearchstatus">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_pushbuttoncancel">
+       <property name="text">
+        <string>Cancel Search</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="spacer3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>90</width>
+         <height>30</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Clear</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_pushbuttonok">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>&amp;OK</string>
+       </property>
+       <property name="shortcut">
+        <string>Alt+O</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3GroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>Qt3Support/Q3GroupBox</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Q3Frame</class>
+   <extends>QFrame</extends>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Q3ListView</class>
+   <extends>Q3Frame</extends>
+   <header>q3listview.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>m_pushbuttoncancel</sender>
+   <signal>clicked()</signal>
+   <receiver>CFindExtensionSpecBaseDialog</receiver>
+   <slot>pushbuttoncancelsearch_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>564</x>
+     <y>634</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>660</x>
+     <y>621</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_lineeditstring</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>CFindExtensionSpecBaseDialog</receiver>
+   <slot>lineeditsearchstring_textChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>58</x>
+     <y>51</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>2</x>
+     <y>67</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_checkboxmatchcase</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>CFindExtensionSpecBaseDialog</receiver>
+   <slot>radiobuttonmatchcase_toggled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>41</x>
+     <y>80</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1</x>
+     <y>114</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_checkboxfirstmatch</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>CFindExtensionSpecBaseDialog</receiver>
+   <slot>radiobuttonfindfirst_toggled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>145</x>
+     <y>86</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>169</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_checkboxfullpaths</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>CFindExtensionSpecBaseDialog</receiver>
+   <slot>radiobuttondisplayfullpaths_toggled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>312</x>
+     <y>87</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>230</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonok</sender>
+   <signal>clicked()</signal>
+   <receiver>CFindExtensionSpecBaseDialog</receiver>
+   <slot>pushbuttonok_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>756</x>
+     <y>634</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>794</x>
+     <y>631</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonfindstring</sender>
+   <signal>clicked()</signal>
+   <receiver>CFindExtensionSpecBaseDialog</receiver>
+   <slot>pushbuttonfind_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>725</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>793</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listviewresults</sender>
+   <signal>clicked(Q3ListViewItem*)</signal>
+   <receiver>CFindExtensionSpecBaseDialog</receiver>
+   <slot>listview_clicked(Q3ListViewItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>231</x>
+     <y>385</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>2</x>
+     <y>505</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_checkboxonematchperfile</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>CFindExtensionSpecBaseDialog</receiver>
+   <slot>radiobuttononematchperfile_toggled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>574</x>
+     <y>89</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>792</x>
+     <y>51</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>CFindExtensionSpecBaseDialog</receiver>
+   <slot>pushbuttonclear_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>632</x>
+     <y>627</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>599</x>
+     <y>648</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>pushbuttoncancelsearch_clicked()</slot>
+  <slot>pushbuttonok_clicked()</slot>
+  <slot>pushbuttonfind_clicked()</slot>
+  <slot>radiobuttonmatchcase_toggled(bool)</slot>
+  <slot>radiobuttonfindfirst_toggled(bool)</slot>
+  <slot>radiobuttondisplayfullpaths_toggled(bool)</slot>
+  <slot>listview_clicked(Q3ListViewItem*)</slot>
+  <slot>lineeditsearchstring_textChanged(QString)</slot>
+  <slot>radiobuttononematchperfile_toggled(bool)</slot>
+  <slot>pushbuttonclear_clicked()</slot>
+ </slots>
+</ui>

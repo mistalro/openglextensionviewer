@@ -1,0 +1,2330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CMainWindowBaseDialog</class>
+ <widget class="QMainWindow" name="CMainWindowBaseDialog">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>826</width>
+    <height>581</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>564</width>
+    <height>291</height>
+   </size>
+  </property>
+  <property name="sizeIncrement">
+   <size>
+    <width>1</width>
+    <height>1</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>OpenGL Extension Class Viewer</string>
+  </property>
+  <widget class="QWidget" name="widget">
+   <layout class="QVBoxLayout">
+    <item>
+     <widget class="QTabWidget" name="m_tabcontrol">
+      <property name="acceptDrops">
+       <bool>true</bool>
+      </property>
+      <property name="tabShape">
+       <enum>QTabWidget::Rounded</enum>
+      </property>
+      <widget class="QWidget" name="m_pagegl">
+       <attribute name="title">
+        <string>GL Extensions</string>
+       </attribute>
+       <layout class="QVBoxLayout">
+        <item>
+         <layout class="QGridLayout">
+          <item row="0" column="1">
+           <widget class="QLabel" name="m_textlabelglselected">
+            <property name="text">
+             <string>GL extensions selected</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="CExtensionListBox" name="m_listglselected">
+            <property name="font">
+             <font>
+              <family>Monospace</family>
+             </font>
+            </property>
+            <property name="acceptDrops">
+             <bool>true</bool>
+            </property>
+            <property name="selectionMode">
+             <enum>Q3ListBox::Extended</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="CExtensionListBox" name="m_listglavailable">
+            <property name="font">
+             <font>
+              <family>Monospace</family>
+             </font>
+            </property>
+            <property name="acceptDrops">
+             <bool>true</bool>
+            </property>
+            <property name="toolTip">
+             <string/>
+            </property>
+            <property name="selectionMode">
+             <enum>Q3ListBox::Extended</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="m_textlabelglavailable">
+            <property name="text">
+             <string>GL extensions defined in header files</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="m_pagewgl">
+       <attribute name="title">
+        <string>WGL Extensions</string>
+       </attribute>
+       <layout class="QGridLayout">
+        <item row="0" column="0">
+         <layout class="QGridLayout">
+          <item row="1" column="1">
+           <widget class="CExtensionListBox" name="m_listwglselected">
+            <property name="font">
+             <font>
+              <family>Monospace</family>
+             </font>
+            </property>
+            <property name="acceptDrops">
+             <bool>true</bool>
+            </property>
+            <property name="selectionMode">
+             <enum>Q3ListBox::Extended</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="CExtensionListBox" name="m_listwglavailable">
+            <property name="font">
+             <font>
+              <family>Monospace</family>
+             </font>
+            </property>
+            <property name="acceptDrops">
+             <bool>true</bool>
+            </property>
+            <property name="selectionMode">
+             <enum>Q3ListBox::Extended</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="m_textlabelwglavailable">
+            <property name="text">
+             <string>WGL extensions defined in header files</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="m_textlabelwglselected">
+            <property name="text">
+             <string>WGL extensions selected</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="m_pageglx">
+       <attribute name="title">
+        <string>GLX Extensions</string>
+       </attribute>
+       <layout class="QGridLayout">
+        <item row="0" column="0">
+         <layout class="QGridLayout">
+          <item row="1" column="1">
+           <widget class="CExtensionListBox" name="m_listglxselected">
+            <property name="font">
+             <font>
+              <family>Monospace</family>
+             </font>
+            </property>
+            <property name="acceptDrops">
+             <bool>true</bool>
+            </property>
+            <property name="selectionMode">
+             <enum>Q3ListBox::Extended</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="CExtensionListBox" name="m_listglxavailable">
+            <property name="font">
+             <font>
+              <family>Monospace</family>
+             </font>
+            </property>
+            <property name="acceptDrops">
+             <bool>true</bool>
+            </property>
+            <property name="selectionMode">
+             <enum>Q3ListBox::Extended</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="m_textlabelavailableglx">
+            <property name="acceptDrops">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>GLX extensions defined in header files</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="m_textlabelselectedglx">
+            <property name="text">
+             <string>GLX extensions selected</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="m_pagevendor">
+       <attribute name="title">
+        <string>Vendor Prefixes</string>
+       </attribute>
+       <layout class="QGridLayout">
+        <item row="0" column="0">
+         <layout class="QGridLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="m_textlabelvendoravailable">
+            <property name="text">
+             <string>Vendor Extension Prefixes defined in header files</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="CExtensionListBox" name="m_listvendoravailable">
+            <property name="font">
+             <font>
+              <family>Monospace</family>
+             </font>
+            </property>
+            <property name="acceptDrops">
+             <bool>true</bool>
+            </property>
+            <property name="selectionMode">
+             <enum>Q3ListBox::Extended</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="CExtensionListBox" name="m_listvendorselected">
+            <property name="font">
+             <font>
+              <family>Monospace</family>
+             </font>
+            </property>
+            <property name="acceptDrops">
+             <bool>true</bool>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="selectionMode">
+             <enum>Q3ListBox::Extended</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="m_textlabelvendorselected">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="acceptDrops">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Vendor Extension Prefixes selected</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="m_pagenew">
+       <attribute name="title">
+        <string>New/Ignored Extensions</string>
+       </attribute>
+       <layout class="QGridLayout">
+        <item row="0" column="1">
+         <layout class="QVBoxLayout">
+          <item>
+           <widget class="QLabel" name="m_textlabelavailablenew_2">
+            <property name="acceptDrops">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>&lt;p align=&quot;center&quot;&gt;&lt;/p&gt;Ignored extensions</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="CExtensionListBox" name="m_listignore">
+            <property name="font">
+             <font>
+              <family>Monospace</family>
+             </font>
+            </property>
+            <property name="acceptDrops">
+             <bool>true</bool>
+            </property>
+            <property name="selectionMode">
+             <enum>Q3ListBox::Extended</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="0">
+         <layout class="QVBoxLayout">
+          <item>
+           <widget class="QLabel" name="m_textlabelavailablenew">
+            <property name="acceptDrops">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>&lt;p align=&quot;center&quot;&gt;&lt;/p&gt;New extensions</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="CExtensionListBox" name="m_listnew">
+            <property name="font">
+             <font>
+              <family>Monospace</family>
+             </font>
+            </property>
+            <property name="acceptDrops">
+             <bool>true</bool>
+            </property>
+            <property name="selectionMode">
+             <enum>Q3ListBox::Extended</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="TabPage">
+       <attribute name="title">
+        <string>System Extension List</string>
+       </attribute>
+       <layout class="QGridLayout">
+        <item row="1" column="0">
+         <widget class="CExtensionListBox" name="m_listsystem">
+          <property name="font">
+           <font>
+            <family>Monospace</family>
+           </font>
+          </property>
+          <property name="selectionMode">
+           <enum>Q3ListBox::Extended</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <layout class="QHBoxLayout">
+          <item>
+           <widget class="QLabel" name="textLabel1">
+            <property name="text">
+             <string>Extensions found on system</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="spacer1">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Expanding</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>541</width>
+              <height>21</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout">
+      <item>
+       <widget class="QPushButton" name="m_pushbuttonclearall">
+        <property name="toolTip">
+         <string>Remove all selected items</string>
+        </property>
+        <property name="text">
+         <string>Clear All</string>
+        </property>
+        <property name="shortcut">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="m_pushbuttonremove">
+        <property name="toolTip">
+         <string>Remove selected items</string>
+        </property>
+        <property name="text">
+         <string>Remove</string>
+        </property>
+        <property name="shortcut">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="m_pushbuttonadd">
+        <property name="toolTip">
+         <string>Add selected items</string>
+        </property>
+        <property name="text">
+         <string>Add</string>
+        </property>
+        <property name="shortcut">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="m_pushbuttonselectall">
+        <property name="toolTip">
+         <string>Select all items</string>
+        </property>
+        <property name="text">
+         <string>Select All</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="m_pushbuttonundo">
+        <property name="toolTip">
+         <string>Undo operations</string>
+        </property>
+        <property name="text">
+         <string>Undo</string>
+        </property>
+        <property name="shortcut">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="m_pushbuttonredo">
+        <property name="toolTip">
+         <string>Reapply operations</string>
+        </property>
+        <property name="text">
+         <string>Redo</string>
+        </property>
+        <property name="shortcut">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout">
+      <item>
+       <widget class="QPushButton" name="m_pushbuttonchecksystem">
+        <property name="toolTip">
+         <string>Check available OpenGL extensions</string>
+        </property>
+        <property name="text">
+         <string>Check System</string>
+        </property>
+        <property name="shortcut">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="m_pushbuttongenerate">
+        <property name="toolTip">
+         <string>Generate source and header files</string>
+        </property>
+        <property name="text">
+         <string>Generate Output Files</string>
+        </property>
+        <property name="shortcut">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="m_pushbuttonexit">
+        <property name="toolTip">
+         <string>Exit application</string>
+        </property>
+        <property name="text">
+         <string>Exit</string>
+        </property>
+        <property name="shortcut">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="MenuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>826</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="File">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="fileNewAction"/>
+    <addaction name="fileOpenAction"/>
+    <addaction name="fileOpenAndMergeAction"/>
+    <addaction name="separator"/>
+    <addaction name="fileSaveAction"/>
+    <addaction name="fileSaveAsAction"/>
+    <addaction name="separator"/>
+    <addaction name="fileExitAction"/>
+   </widget>
+   <widget class="QMenu" name="Edit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="editUndoAction"/>
+    <addaction name="editRedoAction"/>
+    <addaction name="separator"/>
+    <addaction name="editClear_AllAction"/>
+    <addaction name="editRemoveAction"/>
+    <addaction name="editAddAction"/>
+    <addaction name="editSelect_AllAction"/>
+    <addaction name="separator"/>
+    <addaction name="editnew_itemAction"/>
+    <addaction name="editGenerate_Output_FilesAction"/>
+    <addaction name="separator"/>
+    <addaction name="editAction"/>
+   </widget>
+   <widget class="QMenu" name="Options">
+    <property name="title">
+     <string>Options</string>
+    </property>
+    <addaction name="optionsFiles_and_Directory_settingsAction"/>
+    <addaction name="optionsScript_FilesAction"/>
+    <addaction name="optionsOutput_FilesAction"/>
+    <addaction name="optionsConfiguration_FilesAction"/>
+   </widget>
+   <widget class="QMenu" name="Header_Files">
+    <property name="title">
+     <string>Header Files</string>
+    </property>
+    <addaction name="header_filesDownload_OpenGL_Header_FilesAction"/>
+    <addaction name="separator"/>
+    <addaction name="header_filesRead_OpenGL_Header_FilesAction"/>
+   </widget>
+   <widget class="QMenu" name="Registry">
+    <property name="title">
+     <string>Registry</string>
+    </property>
+    <addaction name="registryDownload_all_registry_pagesAction"/>
+    <addaction name="registryDownload_all_extension_specificationsAction"/>
+    <addaction name="registryDownload_selected_extension_specificationsAction"/>
+    <addaction name="registryDownload_new_extension_specificationsAction"/>
+    <addaction name="separator"/>
+    <addaction name="registryRead_OpenGL_registryAction"/>
+    <addaction name="registryRead_selected_extensionsAction"/>
+    <addaction name="registryRead_New_ExtensionsAction"/>
+   </widget>
+   <widget class="QMenu" name="View">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <addaction name="viewExamine_pixel_formatsAction"/>
+    <addaction name="viewExamine_video_card_resolutionsAction"/>
+   </widget>
+   <widget class="QMenu" name="Search">
+    <property name="title">
+     <string>Search</string>
+    </property>
+    <addaction name="searchFindFuncConstAction"/>
+    <addaction name="searchExtension_SpecificationsAction"/>
+   </widget>
+   <widget class="QMenu" name="Help">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="helpContentsAction"/>
+    <addaction name="helpIndexAction"/>
+    <addaction name="separator"/>
+    <addaction name="helpAboutAction"/>
+   </widget>
+   <addaction name="File"/>
+   <addaction name="Edit"/>
+   <addaction name="Options"/>
+   <addaction name="Header_Files"/>
+   <addaction name="Registry"/>
+   <addaction name="View"/>
+   <addaction name="Search"/>
+   <addaction name="Help"/>
+  </widget>
+  <action name="fileNewAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>../FORMS-3</normaloff>../FORMS-3</iconset>
+   </property>
+   <property name="text">
+    <string>New Configuration</string>
+   </property>
+   <property name="iconText">
+    <string>New Configuration</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>fileNewAction</cstring>
+   </property>
+  </action>
+  <action name="fileOpenAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>../FORMS-3</normaloff>../FORMS-3</iconset>
+   </property>
+   <property name="text">
+    <string>Load Configuration</string>
+   </property>
+   <property name="iconText">
+    <string>Load Configuration</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>fileOpenAction</cstring>
+   </property>
+  </action>
+  <action name="fileOpenAndMergeAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>../FORMS-3</normaloff>../FORMS-3</iconset>
+   </property>
+   <property name="text">
+    <string>Load and Merge Configuration</string>
+   </property>
+   <property name="iconText">
+    <string>Load and Merge Configuration</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>fileOpenAndMergeAction</cstring>
+   </property>
+  </action>
+  <action name="fileSaveAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>../FORMS-3</normaloff>../FORMS-3</iconset>
+   </property>
+   <property name="text">
+    <string>Save Configuration</string>
+   </property>
+   <property name="iconText">
+    <string>Save</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>fileSaveAction</cstring>
+   </property>
+  </action>
+  <action name="fileSaveAsAction">
+   <property name="text">
+    <string>Save Configuration As...</string>
+   </property>
+   <property name="iconText">
+    <string>Save As</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>fileSaveAsAction</cstring>
+   </property>
+  </action>
+  <action name="unnamed">
+   <property name="icon">
+    <iconset>
+     <normaloff>../FORMS-3</normaloff>../FORMS-3</iconset>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="iconText">
+    <string/>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>unnamed</cstring>
+   </property>
+  </action>
+  <action name="fileExitAction">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+   <property name="iconText">
+    <string>Exit</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>fileExitAction</cstring>
+   </property>
+  </action>
+  <action name="editUndoAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>../FORMS-3</normaloff>../FORMS-3</iconset>
+   </property>
+   <property name="text">
+    <string>Undo</string>
+   </property>
+   <property name="iconText">
+    <string>Undo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>editUndoAction</cstring>
+   </property>
+  </action>
+  <action name="editRedoAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>../FORMS-3</normaloff>../FORMS-3</iconset>
+   </property>
+   <property name="text">
+    <string>Redo</string>
+   </property>
+   <property name="iconText">
+    <string>Redo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Y</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>editRedoAction</cstring>
+   </property>
+  </action>
+  <action name="editCutAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>../FORMS-3</normaloff>../FORMS-3</iconset>
+   </property>
+   <property name="text">
+    <string>Cut</string>
+   </property>
+   <property name="iconText">
+    <string>Cut</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>editCutAction</cstring>
+   </property>
+  </action>
+  <action name="editCopyAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>../FORMS-3</normaloff>../FORMS-3</iconset>
+   </property>
+   <property name="text">
+    <string>Copy</string>
+   </property>
+   <property name="iconText">
+    <string>Copy</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>editCopyAction</cstring>
+   </property>
+  </action>
+  <action name="editPasteAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>../FORMS-3</normaloff>../FORMS-3</iconset>
+   </property>
+   <property name="text">
+    <string>Paste</string>
+   </property>
+   <property name="iconText">
+    <string>Paste</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>editPasteAction</cstring>
+   </property>
+  </action>
+  <action name="editFindAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>../FORMS-3</normaloff>../FORMS-3</iconset>
+   </property>
+   <property name="text">
+    <string>Find...</string>
+   </property>
+   <property name="iconText">
+    <string>Find</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>editFindAction</cstring>
+   </property>
+  </action>
+  <action name="helpContentsAction">
+   <property name="text">
+    <string>Contents...</string>
+   </property>
+   <property name="iconText">
+    <string>Contents</string>
+   </property>
+   <property name="shortcut">
+    <string/>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>helpContentsAction</cstring>
+   </property>
+  </action>
+  <action name="helpIndexAction">
+   <property name="text">
+    <string>Index...</string>
+   </property>
+   <property name="iconText">
+    <string>Index</string>
+   </property>
+   <property name="shortcut">
+    <string/>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>helpIndexAction</cstring>
+   </property>
+  </action>
+  <action name="helpAboutAction">
+   <property name="text">
+    <string>About</string>
+   </property>
+   <property name="iconText">
+    <string>About</string>
+   </property>
+   <property name="shortcut">
+    <string/>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>helpAboutAction</cstring>
+   </property>
+  </action>
+  <action name="optionsOptionsAction">
+   <property name="text">
+    <string/>
+   </property>
+   <property name="iconText">
+    <string/>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>optionsOptionsAction</cstring>
+   </property>
+  </action>
+  <action name="optionsScript_FilesAction">
+   <property name="text">
+    <string>Script Files</string>
+   </property>
+   <property name="iconText">
+    <string>Script Files</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>optionsScript_FilesAction</cstring>
+   </property>
+  </action>
+  <action name="header_filesDownload_OpenGL_Header_FilesAction">
+   <property name="text">
+    <string>Download OpenGL Header Files</string>
+   </property>
+   <property name="iconText">
+    <string>Download OpenGL Header Files</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>header_filesDownload_OpenGL_Header_FilesAction</cstring>
+   </property>
+  </action>
+  <action name="header_filesRead_OpenGL_Header_FilesAction">
+   <property name="text">
+    <string>Read OpenGL Header Files</string>
+   </property>
+   <property name="iconText">
+    <string>Read OpenGL Header Files</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>header_filesRead_OpenGL_Header_FilesAction</cstring>
+   </property>
+  </action>
+  <action name="Action">
+   <property name="iconText">
+    <string>Unnamed</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+F, Alt+S</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>Action</cstring>
+   </property>
+  </action>
+  <action name="registryDownload_all_extension_specificationsAction">
+   <property name="text">
+    <string>Download All Extension Specifications</string>
+   </property>
+   <property name="iconText">
+    <string>Download all</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>registryDownload_all_extension_specificationsAction</cstring>
+   </property>
+  </action>
+  <action name="registryDownload_selected_extension_specificationsAction">
+   <property name="text">
+    <string>Download Selected Extension specifications</string>
+   </property>
+   <property name="iconText">
+    <string>download selected</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>registryDownload_selected_extension_specificationsAction</cstring>
+   </property>
+  </action>
+  <action name="registryDownload_new_extension_specificationsAction">
+   <property name="text">
+    <string>Download New Extension Specifications</string>
+   </property>
+   <property name="iconText">
+    <string>Download New Extension Specifications</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>registryDownload_new_extension_specificationsAction</cstring>
+   </property>
+  </action>
+  <action name="registryRead_OpenGL_registryAction">
+   <property name="text">
+    <string>Read All Extension Specifications</string>
+   </property>
+   <property name="iconText">
+    <string>Read All Extension Specifications</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>registryRead_OpenGL_registryAction</cstring>
+   </property>
+  </action>
+  <action name="registryRead_selected_extensionsAction">
+   <property name="text">
+    <string>Read Selected Extension Specifications</string>
+   </property>
+   <property name="iconText">
+    <string>Read Selected Extension Specifications</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>registryRead_selected_extensionsAction</cstring>
+   </property>
+  </action>
+  <action name="viewAction">
+   <property name="text">
+    <string>OneTwoThree</string>
+   </property>
+   <property name="iconText">
+    <string>OneTwoThree</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>viewAction</cstring>
+   </property>
+  </action>
+  <action name="viewExamine_pixel_formatsAction">
+   <property name="text">
+    <string>Examine Pixel Formats</string>
+   </property>
+   <property name="iconText">
+    <string>Examine Pixel Formats</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>viewExamine_pixel_formatsAction</cstring>
+   </property>
+  </action>
+  <action name="viewExamine_video_card_resolutionsAction">
+   <property name="text">
+    <string>Examine Video Card Resolutions</string>
+   </property>
+   <property name="iconText">
+    <string>Examine Video Card Resolutions</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>viewExamine_video_card_resolutionsAction</cstring>
+   </property>
+  </action>
+  <action name="menunew_itemAction">
+   <property name="text">
+    <string>new item</string>
+   </property>
+   <property name="iconText">
+    <string>new item</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>menunew_itemAction</cstring>
+   </property>
+  </action>
+  <action name="Action_2">
+   <property name="iconText">
+    <string>Unnamed</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>Action_2</cstring>
+   </property>
+  </action>
+  <action name="optionsFiles_and_Directory_settingsAction">
+   <property name="text">
+    <string>Internet Files and Local Directory settings</string>
+   </property>
+   <property name="iconText">
+    <string>Internet Files and Local Directory settings</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>optionsFiles_and_Directory_settingsAction</cstring>
+   </property>
+  </action>
+  <action name="Action_3">
+   <property name="iconText">
+    <string>Examine Pixel Formats</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>Action_3</cstring>
+   </property>
+  </action>
+  <action name="registryRead_New_ExtensionsAction">
+   <property name="text">
+    <string>Read New Extension Specifications</string>
+   </property>
+   <property name="iconText">
+    <string>Read New Extension Specifications</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>registryRead_New_ExtensionsAction</cstring>
+   </property>
+  </action>
+  <action name="editClear_AllAction">
+   <property name="text">
+    <string>Clear All</string>
+   </property>
+   <property name="iconText">
+    <string>Clear All</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>editClear_AllAction</cstring>
+   </property>
+  </action>
+  <action name="editRemoveAction">
+   <property name="text">
+    <string>Remove</string>
+   </property>
+   <property name="iconText">
+    <string>Remove</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>editRemoveAction</cstring>
+   </property>
+  </action>
+  <action name="editAddAction">
+   <property name="text">
+    <string>Add</string>
+   </property>
+   <property name="iconText">
+    <string>Add</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>editAddAction</cstring>
+   </property>
+  </action>
+  <action name="editSelect_AllAction">
+   <property name="text">
+    <string>Select All</string>
+   </property>
+   <property name="iconText">
+    <string>Select All</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>editSelect_AllAction</cstring>
+   </property>
+  </action>
+  <action name="editUndoAction_2">
+   <property name="text">
+    <string>Undo</string>
+   </property>
+   <property name="iconText">
+    <string>Undo</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>editUndoAction_2</cstring>
+   </property>
+  </action>
+  <action name="editnew_itemAction">
+   <property name="text">
+    <string>Check System</string>
+   </property>
+   <property name="iconText">
+    <string>Check System</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>editnew_itemAction</cstring>
+   </property>
+  </action>
+  <action name="editGenerate_Output_FilesAction">
+   <property name="text">
+    <string>Generate Output Files</string>
+   </property>
+   <property name="iconText">
+    <string>Generate Output Files</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>editGenerate_Output_FilesAction</cstring>
+   </property>
+  </action>
+  <action name="editAction">
+   <property name="text">
+    <string/>
+   </property>
+   <property name="iconText">
+    <string/>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>editAction</cstring>
+   </property>
+  </action>
+  <action name="optionsOutput_FilesAction">
+   <property name="text">
+    <string>Output Files</string>
+   </property>
+   <property name="iconText">
+    <string>Output Files</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>optionsOutput_FilesAction</cstring>
+   </property>
+  </action>
+  <action name="optionsConfiguration_FilesAction">
+   <property name="text">
+    <string>Configuration Files</string>
+   </property>
+   <property name="iconText">
+    <string>Configuration Files</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>optionsConfiguration_FilesAction</cstring>
+   </property>
+  </action>
+  <action name="searchFindFuncConstAction">
+   <property name="text">
+    <string>Constants and Functions</string>
+   </property>
+   <property name="iconText">
+    <string>Constants and Functions</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>searchFindFuncConstAction</cstring>
+   </property>
+  </action>
+  <action name="searchExtension_SpecificationsAction">
+   <property name="text">
+    <string>Extension Specifications</string>
+   </property>
+   <property name="iconText">
+    <string>Extension Specifications</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>searchExtension_SpecificationsAction</cstring>
+   </property>
+  </action>
+  <action name="registryDownload_all_registry_pagesAction">
+   <property name="text">
+    <string>Download Registry Index Pages</string>
+   </property>
+   <property name="iconText">
+    <string>Download Registry Index Pages</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>XXXX</cstring>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3Frame</class>
+   <extends>QFrame</extends>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Q3ListBox</class>
+   <extends>Q3Frame</extends>
+   <header>q3listbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>CExtensionListBox</class>
+   <extends>Q3ListBox</extends>
+   <header>extensionlistwidget/extensionlistwidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <includes>
+  <include location="global">q3listbox.h</include>
+  <include location="local">extensionlistwidget/extensionlistwidget.h</include>
+  <include location="local">extensionlistwidget/extensionlistwidget.h</include>
+  <include location="local">extensionlistwidget/extensionlistwidget.h</include>
+  <include location="local">extensionlistwidget/extensionlistwidget.h</include>
+  <include location="local">extensionlistwidget/extensionlistwidget.h</include>
+  <include location="local">extensionlistwidget/extensionlistwidget.h</include>
+  <include location="local">extensionlistwidget/extensionlistwidget.h</include>
+  <include location="local">extensionlistwidget/extensionlistwidget.h</include>
+  <include location="local">extensionlistwidget/extensionlistwidget.h</include>
+  <include location="local">extensionlistwidget/extensionlistwidget.h</include>
+  <include location="local">extensionlistwidget/extensionlistwidget.h</include>
+ </includes>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>searchFindFuncConstAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_searchfindfuncconst_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>viewExamine_video_card_resolutionsAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_viewvideoresolutions_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>viewExamine_pixel_formatsAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_viewpixelformats_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>registryRead_selected_extensionsAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_registryreadselected_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>registryRead_OpenGL_registryAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_registryreadall_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>registryDownload_selected_extension_specificationsAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_registrydownloadselected_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>registryDownload_new_extension_specificationsAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_registrydownloadnew_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>registryDownload_all_extension_specificationsAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_registrydownloadall_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>optionsFiles_and_Directory_settingsAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_optionsfilesdirectorysettings_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>optionsScript_FilesAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_optionsscriptsettings_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonundo</sender>
+   <signal>clicked()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>pushbuttonundo_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>571</x>
+     <y>509</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonselectall</sender>
+   <signal>clicked()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>pushbuttonselectall_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>436</x>
+     <y>509</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonremove</sender>
+   <signal>clicked()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>pushbuttonremove_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>165</x>
+     <y>509</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonredo</sender>
+   <signal>clicked()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>pushbuttonredo_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>707</x>
+     <y>509</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttongenerate</sender>
+   <signal>clicked()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>pushbuttongenerate_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>301</x>
+     <y>544</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonexit</sender>
+   <signal>clicked()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>pushbuttonexit_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>571</x>
+     <y>544</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonclearall</sender>
+   <signal>clicked()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>pushbuttonclearall_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>30</x>
+     <y>509</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonchecksystem</sender>
+   <signal>clicked()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>pushbuttonchecksystem_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>30</x>
+     <y>544</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonadd</sender>
+   <signal>clicked()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>pushbuttonadd_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>301</x>
+     <y>509</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>helpIndexAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>helpIndex()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>helpContentsAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>helpContents()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>helpAboutAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>helpAbout()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>header_filesRead_OpenGL_Header_FilesAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_headerfilesreadfiles_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>header_filesDownload_OpenGL_Header_FilesAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_headerfilesdownloadfiles_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileSaveAsAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>fileSaveAs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileSaveAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>fileSave()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileOpenAndMergeAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>fileOpenAndMerge()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editUndoAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_editundo_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editRedoAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_editredo_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>registryRead_New_ExtensionsAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_registryreadnew_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editAddAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_editadd_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editClear_AllAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_editclearall_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editRemoveAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_editremove_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editSelect_AllAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_editselectall_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editnew_itemAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_editchecksystem_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editGenerate_Output_FilesAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_editgenerateoutputfiles_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listnew</sender>
+   <signal>doubleClicked(Q3ListBoxItem*)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listnew_doubleClicked(Q3ListBoxItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>32</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listnew</sender>
+   <signal>itemsDropped(QString&amp;)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listnew_itemsDropped(QString&amp;)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>32</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listignore</sender>
+   <signal>doubleClicked(Q3ListBoxItem*)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listignore_doubleClicked(Q3ListBoxItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>417</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listignore</sender>
+   <signal>itemsDropped(QString&amp;)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listignore_itemsDropped(QString&amp;)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>417</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listsystem</sender>
+   <signal>doubleClicked(Q3ListBoxItem*)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listsystem_doubleClicked(Q3ListBoxItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>31</x>
+     <y>101</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listsystem</sender>
+   <signal>itemsDropped(QString&amp;)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listsystem_itemsDropped(QString&amp;)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>31</x>
+     <y>101</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listvendorselected</sender>
+   <signal>doubleClicked(Q3ListBoxItem*)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listvendorselected_doubleClicked(Q3ListBoxItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>427</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listvendorselected</sender>
+   <signal>itemsDropped(QString&amp;)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listvendorselected_itemsDropped(QString&amp;)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>427</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listvendoravailable</sender>
+   <signal>doubleClicked(Q3ListBoxItem*)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listvendoravailable_doubleClicked(Q3ListBoxItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>32</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listvendoravailable</sender>
+   <signal>itemsDropped(QString&amp;)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listvendoravailable_itemsDropped(QString&amp;)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>32</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listglxavailable</sender>
+   <signal>doubleClicked(Q3ListBoxItem*)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listglxavailable_doubleClicked(Q3ListBoxItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>32</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listglxavailable</sender>
+   <signal>itemsDropped(QString&amp;)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listglxavailable_itemsDropped(QString&amp;)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>32</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listglxselected</sender>
+   <signal>doubleClicked(Q3ListBoxItem*)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listglxselected_doubleClicked(Q3ListBoxItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>427</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listglxselected</sender>
+   <signal>itemsDropped(QString&amp;)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listglxselected_itemsDropped(QString&amp;)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>427</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listwglavailable</sender>
+   <signal>doubleClicked(Q3ListBoxItem*)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listwglavailable_doubleClicked(Q3ListBoxItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>32</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listwglavailable</sender>
+   <signal>itemsDropped(QString&amp;)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listwglavailable_itemsDropped(QString&amp;)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>32</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listwglselected</sender>
+   <signal>doubleClicked(Q3ListBoxItem*)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listwglselected_doubleClicked(Q3ListBoxItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>427</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listwglselected</sender>
+   <signal>itemsDropped(QString&amp;)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listwglselected_itemsDropped(QString&amp;)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>427</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listglavailable</sender>
+   <signal>doubleClicked(Q3ListBoxItem*)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listglavailable_doubleClicked(Q3ListBoxItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>32</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listglavailable</sender>
+   <signal>itemsDropped(QString&amp;)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listglavailable_itemsDropped(QString&amp;)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>32</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listglselected</sender>
+   <signal>doubleClicked(Q3ListBoxItem*)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listglselected_doubleClicked(Q3ListBoxItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>427</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_listglselected</sender>
+   <signal>itemsDropped(QString&amp;)</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>listglselected_itemsDropped(QString&amp;)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>427</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>optionsOutput_FilesAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_optionsoutputsettings_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileNewAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>fileNew()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileOpenAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>fileOpen()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileExitAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>fileExit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>optionsConfiguration_FilesAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_optionsconfigurationfiles_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>searchExtension_SpecificationsAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_searchfindextensionspecs_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>registryDownload_all_registry_pagesAction</sender>
+   <signal>activated()</signal>
+   <receiver>CMainWindowBaseDialog</receiver>
+   <slot>menubar_registrydownloadpages_activated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>412</x>
+     <y>290</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+ </slots>
+</ui>

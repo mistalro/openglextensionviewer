@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>COutputFileSettingsBaseDialog</class>
+ <widget class="QDialog" name="COutputFileSettingsBaseDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>714</width>
+    <height>341</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Output File Settings</string>
+  </property>
+  <layout class="QGridLayout">
+   <item row="0" column="0">
+    <widget class="Q3GroupBox" name="m_groupboxscriptfiletype">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QGridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="m_textscriptfiletype">
+        <property name="text">
+         <string>Script file type</string>
+        </property>
+        <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="m_textexternalscript">
+        <property name="text">
+         <string>External script file</string>
+        </property>
+        <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QPushButton" name="m_pushbuttonexternalbrowse">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Browse</string>
+        </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <spacer name="spacer2_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Preferred</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>80</width>
+          <height>31</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="1">
+       <layout class="QHBoxLayout">
+        <item>
+         <widget class="QRadioButton" name="m_radiointernal">
+          <property name="text">
+           <string>Internal</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="m_radioexternal">
+          <property name="text">
+           <string>External</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="spacer15_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>210</width>
+            <height>31</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="m_editexternalscript"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="Q3GroupBox" name="m_groupboxoutputfiles">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QGridLayout">
+      <item row="0" column="2">
+       <widget class="QPushButton" name="m_pushbuttonheaderbrowse">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Browse</string>
+        </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <layout class="QHBoxLayout">
+        <item>
+         <widget class="QRadioButton" name="m_radioc">
+          <property name="text">
+           <string>C</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="m_radiocpp">
+          <property name="text">
+           <string>C++</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="spacer14_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>301</width>
+            <height>31</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="m_textoutputheader">
+        <property name="text">
+         <string>Output header file</string>
+        </property>
+        <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <spacer name="spacer12">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>82</width>
+          <height>31</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="3" column="2">
+       <spacer name="spacer10">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>82</width>
+          <height>31</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="2">
+       <widget class="QPushButton" name="m_pushbuttonsourcebrowse">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Browse</string>
+        </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="m_editoutputsourcefile"/>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="m_editoutputclassname"/>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="m_editoutputheaderfile"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="m_textoutputlanguage">
+        <property name="text">
+         <string>Output language</string>
+        </property>
+        <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="m_textoutputclass">
+        <property name="text">
+         <string>Output class name</string>
+        </property>
+        <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="m_textoutputsource">
+        <property name="text">
+         <string>Output source file</string>
+        </property>
+        <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <layout class="QHBoxLayout">
+     <item>
+      <widget class="QPushButton" name="m_pushbuttonreset">
+       <property name="text">
+        <string>Reset</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="spacer48">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>80</width>
+         <height>21</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_pushbuttoncancel">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_pushbuttonapply">
+       <property name="text">
+        <string>Apply</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_pushbuttonok">
+       <property name="text">
+        <string>OK</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3GroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>Qt3Support/Q3GroupBox</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>m_radiointernal</sender>
+   <signal>clicked()</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>radiointernal_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>158</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>2</x>
+     <y>21</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_radioexternal</sender>
+   <signal>clicked()</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>radioexternal_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>244</x>
+     <y>52</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>57</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_editexternalscript</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>editexternalscript_textChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>249</x>
+     <y>89</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>13</x>
+     <y>113</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonexternalbrowse</sender>
+   <signal>clicked()</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>pushbuttonexternalbrowse_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>651</x>
+     <y>85</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>84</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonreset</sender>
+   <signal>clicked()</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>pushbuttonreset_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>31</x>
+     <y>309</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>309</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttoncancel</sender>
+   <signal>clicked()</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>pushbuttonreset_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>468</x>
+     <y>307</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>289</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonapply</sender>
+   <signal>clicked()</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>pushbuttonapply_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>564</x>
+     <y>317</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>11</x>
+     <y>336</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonok</sender>
+   <signal>clicked()</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>pushbuttonok_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>647</x>
+     <y>313</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>6</x>
+     <y>245</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_radioc</sender>
+   <signal>clicked()</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>radioc_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>164</x>
+     <y>261</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>2</x>
+     <y>278</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_radiocpp</sender>
+   <signal>clicked()</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>radiocpp_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>8</x>
+     <y>270</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_editoutputheaderfile</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>editoutputheaderfile_textChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>193</x>
+     <y>155</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>6</x>
+     <y>159</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_editoutputsourcefile</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>editoutputsourcefile_textChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>187</x>
+     <y>191</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_editoutputclassname</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>editoutputclassname_textChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>302</x>
+     <y>226</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>230</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonheaderbrowse</sender>
+   <signal>clicked()</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>pushbuttonheaderbrowse_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>633</x>
+     <y>149</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1</x>
+     <y>133</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonsourcebrowse</sender>
+   <signal>clicked()</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>pushbuttonsourcebrowse_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>657</x>
+     <y>187</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>192</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_editexternalscript</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>editexternalscript_textChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>93</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>9</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_editoutputheaderfile</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>editoutputheaderfile_textChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>329</x>
+     <y>155</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>710</x>
+     <y>120</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_editoutputsourcefile</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>editoutputsourcefile_textChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>551</x>
+     <y>180</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>713</x>
+     <y>190</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttoncancel</sender>
+   <signal>clicked()</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>pushbuttoncancel_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>487</x>
+     <y>308</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>718</x>
+     <y>237</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonapply</sender>
+   <signal>clicked()</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>pushbuttonapply_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>599</x>
+     <y>304</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>722</x>
+     <y>302</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pushbuttonok</sender>
+   <signal>clicked()</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>pushbuttonok_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>668</x>
+     <y>318</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>698</x>
+     <y>336</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>editexternalscript_textChanged(QString)</slot>
+  <slot>editoutputheaderfile_textChanged(QString)</slot>
+  <slot>editoutputsourcefile_textChanged(QString)</slot>
+  <slot>editoutputclassname_textChanged(QString)</slot>
+  <slot>pushbuttonok_clicked()</slot>
+  <slot>pushbuttonapply_clicked()</slot>
+  <slot>pushbuttoncancel_clicked()</slot>
+  <slot>pushbuttonreset_clicked()</slot>
+  <slot>pushbuttonexternalbrowse_clicked()</slot>
+  <slot>pushbuttonheaderbrowse_clicked()</slot>
+  <slot>pushbuttonsourcebrowse_clicked()</slot>
+  <slot>radiointernal_clicked()</slot>
+  <slot>radioexternal_clicked()</slot>
+  <slot>radioc_clicked()</slot>
+  <slot>radiocpp_clicked()</slot>
+ </slots>
+</ui>

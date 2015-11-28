@@ -1,0 +1,54 @@
+{extcreator
+	{registrysettings
+		{downloadstatus 8 }
+		{dryrunmode 0 }
+	}
+	{headerfileset
+		{systemlist
+		}
+		{newlist
+		}
+		{ignorelist
+		}
+		{vendorlist
+		}
+		{versionlist
+		}
+		{savedstates 0 }
+	}
+	{sitelist
+		{website
+			{description "OpenGL.org registry"  }
+			{indexdirlocal "registry"  }
+			{indexpagenet "https://www.opengl.org/registry/"  }
+			{indexpagelocal "registry.html"  }
+			{glheadernet "https://www.opengl.org/registry/api/GL/glext.h"  }
+			{glheaderlocal "registry/glext.h"  }
+			{glxheadernet "https://www.opengl.org/registry/api/GL/glxext.h"  }
+			{glxheaderlocal "registry/glxext.h"  }
+			{wglheadernet "https://www.opengl.org/registry/api/GL/wglxext.h"  }
+			{wglheaderlocal "registry/wglext.h"  }
+			{coreheadernet "https://www.opengl.org/registry/api/GL/glcorearb.h"  }
+			{coreheaderlocal "registry/glcorearb.h"  }
+			{downloadflags 15 }
+			{filetypefilters "*.txt,*.pdf"  }
+		}
+	}
+	{scriptsettings
+		{scriptmode 0 }
+	}
+	{outputsettings
+		{outputheader "extmanager.h"  }
+		{outputsource "extmanager.cpp"  }
+		{scriptfile "extcode.txt"  }
+		{classname "CExtensionManager"  }
+		{classnamedcolon "CExtensionManager::"  }
+		{cppmode 1 }
+	}
+	{configfilesettings
+		{configsettingsfile "config.txt"  }
+		{autoreadheaderflags 1 }
+		{autoloadconfigflags 1 }
+		{autosaveconfigflags 1 }
+	}
+}

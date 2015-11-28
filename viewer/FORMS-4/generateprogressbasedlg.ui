@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CGenerateProgressBaseDialog</class>
+ <widget class="QDialog" name="CGenerateProgressBaseDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>361</width>
+    <height>220</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Generate Files</string>
+  </property>
+  <layout class="QVBoxLayout">
+   <item>
+    <widget class="Q3GroupBox" name="m_groupboxheader">
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QVBoxLayout">
+      <item>
+       <widget class="QLineEdit" name="m_editheader">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QProgressBar" name="m_progressheader"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="Q3GroupBox" name="m_groupboxsource">
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QVBoxLayout">
+      <item>
+       <widget class="QLineEdit" name="m_editsource">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QProgressBar" name="m_progresssource"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3GroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>Qt3Support/Q3GroupBox</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
