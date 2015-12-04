@@ -59,7 +59,7 @@
 // Find the call address of a WGL or GLX extension function
 // ----------------------------------------------------------------------------
 
-void *<classname::>GetGLProcAddress( char *buf )
+void *<classname::>GetGLProcAddress( const char *buf )
 {
 #ifdef _WIN32
 	return( wglGetProcAddress( buf ) );
@@ -126,7 +126,7 @@ void *m_libhandler;
 <foreach><glxext><if><selected><if><funcnum><call><headerprototype>
 <endif><endif><endfor><endif><if><wglfuncnum>int padding2[1024]; // Bodge to handle Visual Studio C++ bug
 
-<endif><if><cppmode><call><headercondes><endif>void *GetGLProcAddress( char *buf );
+<endif><if><cppmode><call><headercondes><endif>void *GetGLProcAddress( const char *buf );
 int  StringSearch( char *pext, char *pstring );
 int  CheckGLExtension(  char *pchname );
 void CheckOpenGLVersion( void );

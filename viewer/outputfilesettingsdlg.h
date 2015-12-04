@@ -87,6 +87,7 @@ void radiointernal_clicked();
 void radioexternal_clicked();
 void radioc_clicked();
 void radiocpp_clicked();
+void radiouseglxgetprocaddressarb_clicked();
 };
 
 #endif // OUTPUTFILESETTINGSDIALOG_H

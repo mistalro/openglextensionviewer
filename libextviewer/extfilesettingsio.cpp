@@ -25,13 +25,16 @@ static const char *str_scriptfile = "scriptfile";
 static const char *str_classname = "classname";
 static const char *str_classnamedcolon = "classnamedcolon";
 static const char *str_cppmode = "cppmode";
+static const char *str_useglxgetprocaddressarb = "useglxgetprocaddressarb";
 
 #define STRING_OUTPUTHEADER	str_outputheader
 #define STRING_OUTPUTSOURCE	str_outputsource
 #define STRING_SCRIPTFILE	str_scriptfile
 #define STRING_CLASSNAME	str_classname
 #define STRING_CLASSNAMEDCOLON	str_classnamedcolon
-#define STRING_CPPMODE	str_cppmode
+#define STRING_CPPMODE		str_cppmode
+#define STRING_USEGLXGETPROCADDRESSARB  str_useglxgetprocaddressarb
+
 // --------------------------------------------------------------------------
 // Token ID numbers
 // --------------------------------------------------------------------------
@@ -44,6 +47,7 @@ static const char *str_cppmode = "cppmode";
 #define TOKEN_CLASSNAME	0x1005
 #define TOKEN_CLASSNAMEDCOLON	0x1006
 #define TOKEN_CPPMODE	0x1007
+#define TOKEN_USEGLXGETPROCADDRESSARB 0x1008
 
 // --------------------------------------------------------------------------
 // Token entry list
@@ -56,7 +60,8 @@ CTokenEntry( TOKEN_OUTPUTSOURCE, STRING_OUTPUTSOURCE ),
 CTokenEntry( TOKEN_SCRIPTFILE, STRING_SCRIPTFILE ),
 CTokenEntry( TOKEN_CLASSNAME, STRING_CLASSNAME ),
 CTokenEntry( TOKEN_CLASSNAMEDCOLON, STRING_CLASSNAMEDCOLON ),
-CTokenEntry( TOKEN_CPPMODE, STRING_CPPMODE )
+CTokenEntry( TOKEN_CPPMODE, STRING_CPPMODE ),
+CTokenEntry( TOKEN_USEGLXGETPROCADDRESSARB, STRING_USEGLXGETPROCADDRESSARB )
 };
 
 static int token_num = sizeof(token_list)/sizeof(CTokenEntry);
@@ -102,6 +107,7 @@ string entry_scriptfile;
 string entry_classname;
 string entry_classnamedcolon;
 int entry_cppmode;
+int entry_useglxgetprocaddressARB;
 
 result = true;
 
@@ -182,6 +188,16 @@ while ( ReadOpenClosePar( stream ) != 0 )
 				}
 			break;
 
+		case TOKEN_USEGLXGETPROCADDRESSARB:
+			ReadInteger( stream, entry_useglxgetprocaddressARB );
+
+			m_useglxgetprocaddressARB = entry_useglxgetprocaddressARB;
+			if ( g_verbose )
+				{
+				cout << "Read <useglxgetprocaddressarb> = <" << entry_cppmode << ">\n";
+				}
+			break;
+
 		default:
 			cout << "COutputFileSettingsIO::Unknown token <" << tokenid << ">\n";
 			break;
@@ -227,6 +243,7 @@ WriteNamedString( stream, depth, STRING_SCRIPTFILE, m_scriptfile );
 WriteNamedString( stream, depth, STRING_CLASSNAME, m_classname );
 WriteNamedString( stream, depth, STRING_CLASSNAMEDCOLON, m_classnamedcolon );
 WriteNamedInteger( stream, depth, STRING_CPPMODE, m_cppmode );
+WriteNamedInteger( stream, depth, STRING_USEGLXGETPROCADDRESSARB, m_useglxgetprocaddressARB );
 
 WriteClosePar( stream, depth );
 

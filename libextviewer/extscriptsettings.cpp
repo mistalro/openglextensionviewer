@@ -8,6 +8,12 @@ using namespace std;
 #include "extcode.h"
 
 // --------------------------------------------------------------------------
+// String used to avoid generating the PROC for the static GLX function
+// --------------------------------------------------------------------------
+
+static string str_glxarbgetprocaddress = "GLX_ARB_get_proc_address";
+
+// --------------------------------------------------------------------------
 // Main initialiser
 //
 // Inputs: None
@@ -213,6 +219,7 @@ m_tokenlist.TokenAdd( "<username>",     TOKEN_STRING_USERNAME     );
 
 m_tokenlist.TokenAdd( "<versionvar>",   TOKEN_STRING_VERSIONVAR   );
 m_tokenlist.TokenAdd( "<versionname>",  TOKEN_STRING_VERSIONNAME  );
+m_tokenlist.TokenAdd( "<versionnumber>", TOKEN_STRING_VERSIONNUMBERS );
 }
 
 // ==========================================================================
@@ -1031,7 +1038,17 @@ cout << "Token: Command - call done\n";
 				m_headerfileset.m_glxlist.m_extlist.size(); 
 				m_scriptsettings.m_pos++, m_scriptsettings.m_pextentry++ )
 				{
-				ProcessScript( curaddr+1, finishaddr );            
+				bool active = true;
+
+				if ( m_headerfileset.m_glxlist.m_extlist[m_scriptsettings.m_pos].m_name == str_glxarbgetprocaddress )
+					{
+					active = m_outputfilesettings.m_useglxgetprocaddressARB;
+					}
+
+				if ( active )
+					{
+					ProcessScript( curaddr+1, finishaddr );            
+					}
 				}
 
 			m_scriptsettings.m_activeglx = false;              
@@ -1053,7 +1070,7 @@ cout << "Token: Command - call done\n";
 					m_scriptsettings.m_versionpos++ )
 				{
 				ProcessScript( curaddr+1, finishaddr );
-                }    
+                		}    
 
 			m_scriptsettings.m_activeversion = false;
 			curaddr = finishaddr;
@@ -1355,10 +1372,7 @@ cout << "Token: Command - call done\n";
 			outstr = m_headerfileset.m_versionlist.at(
 				m_scriptsettings.m_versionpos).m_name.data();
 
-cout << "VersionVar before |" << outstr << "|" << endl;
-
 			stl_strdel( outstr, '_');
-cout << "VersionVar after |" << outstr << "|" << endl;
 			}
 		break;
 
@@ -1368,6 +1382,38 @@ cout << "VersionVar after |" << outstr << "|" << endl;
 			outstr = "GL_VERSION" +
 				m_headerfileset.m_versionlist.at(
 					m_scriptsettings.m_versionpos).m_name;
+			}
+		break;
+
+	case TOKEN_STRING_VERSIONNUMBERS:
+		if ( m_scriptsettings.m_activeversion )
+			{
+			string str;
+
+			str = m_headerfileset.m_versionlist.at(
+                                        m_scriptsettings.m_versionpos).m_name;
+
+			char *pch = (char *) str.data();
+
+			while (*pch != '\0' && *pch == '_')
+				pch++;
+		
+			while (*pch != '\0' && *pch != '_' )
+				{
+				outstr += *pch;
+				pch++;
+				}
+
+			outstr += ", ";
+	
+			while (*pch != '\0' && *pch == '_')
+				pch++;
+
+			while (*pch != '\0' && *pch != '_' )
+				{
+				outstr += *pch;
+				pch++;
+				}
 			}
 		break;
 

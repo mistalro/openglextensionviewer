@@ -65,6 +65,7 @@ m_editoutputsourcefile->setText( m_localconfig.m_outputsourcefile.data() );
 m_editoutputclassname->setText( m_localconfig.m_classname.data() );
 m_radioc->setChecked( !m_localconfig.m_cppmode );
 m_radiocpp->setChecked( m_localconfig.m_cppmode );
+m_radiouseglxprocaddressarb->setChecked( m_localconfig.m_useglxgetprocaddressARB );
 }
 
 // --------------------------------------------------------------------------
@@ -246,6 +247,11 @@ SetProgrammingLanguage( 0 );
 void COutputFileSettingsDialog::radiocpp_clicked()
 {
 SetProgrammingLanguage( 1 );
+}
+
+void COutputFileSettingsDialog::radiouseglxgetprocaddressarb_clicked()
+{
+m_localconfig.m_useglxgetprocaddressARB = m_radiouseglxprocaddressarb->isChecked();
 }
 
 void COutputFileSettingsDialog::editoutputheaderfile_textChanged( 

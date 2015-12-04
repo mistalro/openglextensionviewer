@@ -7,14 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>714</width>
-    <height>341</height>
+    <height>435</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Output File Settings</string>
   </property>
-  <layout class="QGridLayout">
-   <item row="0" column="0">
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
     <widget class="Q3GroupBox" name="m_groupboxscriptfiletype">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -118,7 +118,7 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="0">
+   <item>
     <widget class="Q3GroupBox" name="m_groupboxoutputfiles">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -280,7 +280,49 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="0">
+   <item>
+    <widget class="QFrame" name="frame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Use ARB_GLX_get_proc_address</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="m_radiouseglxprocaddressarb">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="spacer48_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>465</width>
+          <height>21</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
     <layout class="QHBoxLayout">
      <item>
       <widget class="QPushButton" name="m_pushbuttonreset">
@@ -378,7 +420,7 @@
      <y>52</y>
     </hint>
     <hint type="destinationlabel">
-     <x>-1</x>
+     <x>0</x>
      <y>57</y>
     </hint>
    </hints>
@@ -422,8 +464,8 @@
    <slot>pushbuttonreset_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>31</x>
-     <y>309</y>
+     <x>41</x>
+     <y>404</y>
     </hint>
     <hint type="destinationlabel">
      <x>3</x>
@@ -438,8 +480,8 @@
    <slot>pushbuttonreset_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>468</x>
-     <y>307</y>
+     <x>531</x>
+     <y>404</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
@@ -454,8 +496,8 @@
    <slot>pushbuttonapply_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>564</x>
-     <y>317</y>
+     <x>617</x>
+     <y>404</y>
     </hint>
     <hint type="destinationlabel">
      <x>11</x>
@@ -470,8 +512,8 @@
    <slot>pushbuttonok_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>647</x>
-     <y>313</y>
+     <x>703</x>
+     <y>404</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -603,7 +645,7 @@
     </hint>
     <hint type="destinationlabel">
      <x>9</x>
-     <y>-1</y>
+     <y>0</y>
     </hint>
    </hints>
   </connection>
@@ -646,11 +688,11 @@
    <slot>pushbuttoncancel_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>487</x>
-     <y>308</y>
+     <x>531</x>
+     <y>404</y>
     </hint>
     <hint type="destinationlabel">
-     <x>718</x>
+     <x>713</x>
      <y>237</y>
     </hint>
    </hints>
@@ -662,11 +704,11 @@
    <slot>pushbuttonapply_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>599</x>
-     <y>304</y>
+     <x>617</x>
+     <y>404</y>
     </hint>
     <hint type="destinationlabel">
-     <x>722</x>
+     <x>713</x>
      <y>302</y>
     </hint>
    </hints>
@@ -678,12 +720,28 @@
    <slot>pushbuttonok_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>668</x>
-     <y>318</y>
+     <x>703</x>
+     <y>404</y>
     </hint>
     <hint type="destinationlabel">
      <x>698</x>
      <y>336</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_radiouseglxprocaddressarb</sender>
+   <signal>clicked()</signal>
+   <receiver>COutputFileSettingsBaseDialog</receiver>
+   <slot>radiouseoglxprocaddressarb_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>215</x>
+     <y>332</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>292</x>
+     <y>433</y>
     </hint>
    </hints>
   </connection>
@@ -704,5 +762,6 @@
   <slot>radioexternal_clicked()</slot>
   <slot>radioc_clicked()</slot>
   <slot>radiocpp_clicked()</slot>
+  <slot>radiouseoglxprocaddressarb_clicked()</slot>
  </slots>
 </ui>

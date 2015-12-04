@@ -280,8 +280,6 @@ if ( replacemode == MODE_REPLACE )
         Init();
         }
 
-cout << "CExtensionHeaderFileSet::ReadHeaderFiles started reading" << endl;
-
 // ----- Read the main OpenGL header ---------------------------------------
 
 resultgl  = m_gllist.ReadHeaderFile(
@@ -301,8 +299,6 @@ resultglx = m_glxlist.ReadHeaderFile(
 
 resultcorearb = m_corearblist.ReadHeaderFile(
                 corearbheader, callback, m_versionlist, m_vendorlist );
-
-cout << "CExtensionHeaderFileSet::ReadHeaderFiles finished reading" << endl;
 
 // ------ Return final result ----------------------------------------------
 

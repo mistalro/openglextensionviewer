@@ -36,6 +36,7 @@ string	m_scriptfile;		// Script file
 string	m_classname;		// Name of new class
 string	m_classnamedcolon;	// Name of new class with double colon
 int	m_cppmode;		// Output C++ or C files
+int     m_useglxgetprocaddressARB; // Function get get ARB
 
 // ----- Constructor and destructor ------------------------------------------ 
 
@@ -59,6 +60,7 @@ void Init( void )
 	m_classname = "";
 	m_classnamedcolon = "";
 	m_cppmode = 0;
+	m_useglxgetprocaddressARB = 0;
 	}
 
 void Deallocate()
@@ -158,6 +160,15 @@ inline void SetCppmode( const int value )
 	m_cppmode = value;
 	}
 
+inline void SetUseglxgetprocaddressarb( const int value )
+	{
+	m_useglxgetprocaddressARB = value;
+	}
+
+inline int GetUseglxgetprocaddressarb( void )
+	{
+	return( m_useglxgetprocaddressARB );
+	}
 };
 
 // ---------------------------------------------------------------------
