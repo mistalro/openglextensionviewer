@@ -59,14 +59,10 @@
 // Find the call address of a WGL or GLX extension function
 // ----------------------------------------------------------------------------
 
-void *<classname::>GetGLProcAddress( const char *buf )
+void *<classname::>GetGLProcAddress( char *buf )
 {
 #ifdef _WIN32
 	return( wglGetProcAddress( buf ) );
-#endif
-
-#ifdef LOAD_LIBRARY
-return( dlsym( m_libhandler, buf ) );
 #endif
 
 #ifdef _GLX
@@ -76,8 +72,6 @@ return( dlsym( m_libhandler, buf ) );
 return( NULL );
 }
 <end><begin><headerfile></begin><call><fileheader>
-#define LOAD_LIBRARY
-
 #ifndef __EXTMANAGER__
 #define __EXTMANAGER__
 
@@ -86,9 +80,7 @@ return( NULL );
 public:
 <endif><if><extnum>// Extension presence flags
 
-<endif>
-void *m_libhandler;
-<if><cmode><foreach><version>extern int m_OpenGL<versionvar>;
+<endif><if><cmode><foreach><version>extern int m_OpenGL<versionvar>;
 <endfor><endif><if><cppmode><foreach><version>int m_OpenGL<versionvar>;
 <endfor><endif>
 <if><cmode><foreach><glext><if><selected>extern int m_<extname>;
@@ -112,8 +104,10 @@ void *m_libhandler;
 // ----- GL extensions --------
 //
 
+#ifdef NONO
 <foreach><glext><if><selected><if><funcnum><call><headerprototype>
-<endif><endif><endfor><endif><if><wglfuncnum>//
+<endif><endif><endfor><endif>#endif
+<if><wglfuncnum>//
 // ----- WGL extensions --------
 //
 
@@ -123,10 +117,13 @@ void *m_libhandler;
 // ----- GLX extensions --------
 //
 
+#ifdef NONO
 <foreach><glxext><if><selected><if><funcnum><call><headerprototype>
-<endif><endif><endfor><endif><if><wglfuncnum>int padding2[1024]; // Bodge to handle Visual Studio C++ bug
+<endif><endif><endfor><endif>#endif
 
-<endif><if><cppmode><call><headercondes><endif>void *GetGLProcAddress( const char *buf );
+<if><wglfuncnum>int padding2[1024]; // Bodge to handle Visual Studio C++ bug
+
+<endif><if><cppmode><call><headercondes><endif>void *GetGLProcAddress( char *buf );
 int  StringSearch( char *pext, char *pstring );
 int  CheckGLExtension(  char *pchname );
 void CheckOpenGLVersion( void );
@@ -370,21 +367,15 @@ void <classname::>CheckGLXExtensions( void )
 #define _GLX
 
 #ifdef  _GLX
-//#include "X.h"
-//#include "Xlib.h"
-//#include "Xutil.h"
-#include <GL/gl.h>
+#include <X11/X.h>
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+
 #include <GL/glx.h>
 #include <GL/glxext.h>
 #endif
 
 #include "<outputheader>"
-
-// Include this so we can read the libGL.so.1 file directly
-
-#ifdef LOAD_LIBRARY
-#include <dlfcn.h>
-#endif
 
 <if><cppmode>// --------------------------------------------------------------------------
 // Default constructor
@@ -464,11 +455,33 @@ return( 1 );
 
 int <classname::>CheckGLExtension( char *pchname )
 {
-GLubyte *pextstring;
-
-pextstring = (GLubyte *) glGetString(GL_EXTENSIONS);
+GLubyte *pextstring = (GLubyte *) glGetString(GL_EXTENSIONS);
 
 return( StringSearch( (char *) pextstring, (char *) pchname ) );
+}
+
+// --------------------------------------------------------------------------
+// Routine to check whether an OpenGL version is supported
+// The OpenGL version is specified using integer format <hi>.<lo>
+//
+// Inputs: shi - first integer <hi>
+//         slo - second integer <lo>
+//
+// Outputs: None
+//
+// Results: true if the version is supported, false otherwise
+// --------------------------------------------------------------------------
+
+bool CheckGLVersion( unsigned int shi, unsigned int slo )
+{
+unsigned int dlo, dhi, dvlo;
+
+// Get the device driver number
+GLubyte *pextstring = (GLubyte *) glGetString(GL_VERSION);
+
+sscanf( (char *) pextstring, "%d.%d.%d", &dhi, &dlo, &dvlo);
+
+return (dhi > shi) || ((dhi == shi) && (dlo >= slo));
 }
 
 // --------------------------------------------------------------------------
@@ -485,7 +498,7 @@ return( StringSearch( (char *) pextstring, (char *) pchname ) );
 
 void <classname::>CheckOpenGLVersion( void )
 {
-<foreach><version>m_OpenGL<versionvar> = CheckGLExtension( "<versionname>" );
+<foreach><version>m_OpenGL<versionvar> = CheckGLVersion( <versionnumber> );
 <endfor>}
 
 <if><glnum><call><checkglext><endif><if><wglnum><call><checkwglext><endif><if><glxnum><call><checkglxext><endif>// --------------------------------------------------------------------------
@@ -502,11 +515,6 @@ void <classname::>CheckOpenGLVersion( void )
 
 void <classname::>ExtensionInit( void )
 {
-#ifdef LOAD_LIBRARY
-m_libhandler = dlopen( "/usr/lib/libGL.so.1", RTLD_NOW | RTLD_GLOBAL );
-// printf( "Opened handler = %08X\n", (unsigned int) m_libhandler );
-#endif
-
 CheckOpenGLVersion();
 <if><glnum>CheckOpenGLExtensions();
 <endif><if><glfuncnum>
@@ -522,11 +530,7 @@ CheckWGLExtensions();
 CheckGLXExtensions();
 <foreach><glxext><if><selected><if><funcnum>Init_<extname>();
 <endif><endif><endfor>#endif
-<endif>#ifdef LOAD_LIBRARY
-//printf( "Closing libhandler %08X\n", (unsigned int) m_libhandler );
-dlclose( m_libhandler );
-#endif // LOAD_LIBRARY
-}
+<endif>}
 
 <foreach><glext><if><selected><if><funcnum><call><sourceinit><endif><endif><endfor><if><wglnum>#ifdef _WIN32
 <foreach><wglext><if><selected><if><funcnum><call><sourceinit><endif><endif><endfor>#endif

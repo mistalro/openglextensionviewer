@@ -11,8 +11,380 @@
 		{ignorelist
 		}
 		{vendorlist
+			{extentry
+				{name "GL_VERSION_1_2"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_VERSION_1_3"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_VERSION_1_4"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_VERSION_1_5"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_VERSION_2_0"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_VERSION_2_1"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_VERSION_3_0"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_VERSION_3_1"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_VERSION_3_2"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_VERSION_3_3"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_VERSION_4_0"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_VERSION_4_1"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_VERSION_4_2"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_VERSION_4_3"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_VERSION_4_4"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_VERSION_4_5"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_ES2_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_ES3_1_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_ES3_2_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_ES3_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_KHR_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_OES_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_3DFX_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_AMD_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_APPLE_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ATI_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_422_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_GREMEDY_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_HP_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_IBM_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_INGR_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_INTEL_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_MESAX_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_MESA_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NVX_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_OML_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_OVR_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_PGI_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_REND_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_S3_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_SGIS_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_SGIX_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_SGI_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_SUNX_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_SUN_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_WIN_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "WGL_ARB_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "WGL_3DFX_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "WGL_3DL_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "WGL_AMD_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "WGL_ATI_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "WGL_EXT_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "WGL_I3D_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "WGL_NV_DX_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "WGL_NV_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "WGL_OML_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_VERSION_1_3"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_VERSION_1_4"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_ARB_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_3DFX_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_AMD_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_EXT_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_INTEL_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_MESA_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_NV_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_OML_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_SGIS_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_SGIX_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_SGI_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_SUN_"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_VERSION_1_0"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_VERSION_1_1"  }
+				{flags 0 }
+			}
 		}
 		{versionlist
+			{extentry
+				{name "_1_2"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "_1_3"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "_1_4"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "_1_5"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "_2_0"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "_2_1"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "_3_0"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "_3_1"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "_3_2"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "_3_3"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "_4_0"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "_4_1"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "_4_2"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "_4_3"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "_4_4"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "_4_5"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "_1_0"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "_1_1"  }
+				{flags 0 }
+			}
 		}
 		{savedstates 0 }
 	}
@@ -26,7 +398,7 @@
 			{glheaderlocal "registry/glext.h"  }
 			{glxheadernet "https://www.opengl.org/registry/api/GL/glxext.h"  }
 			{glxheaderlocal "registry/glxext.h"  }
-			{wglheadernet "https://www.opengl.org/registry/api/GL/wglxext.h"  }
+			{wglheadernet "https://www.opengl.org/registry/api/GL/wglext.h"  }
 			{wglheaderlocal "registry/wglext.h"  }
 			{coreheadernet "https://www.opengl.org/registry/api/GL/glcorearb.h"  }
 			{coreheaderlocal "registry/glcorearb.h"  }

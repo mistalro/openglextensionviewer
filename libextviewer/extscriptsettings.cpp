@@ -1729,7 +1729,9 @@ m_scriptsettings.m_activeregistry   = false;
 m_scriptsettings.m_nomacros      = false;
 m_scriptsettings.m_funcdepth     = 0;
 
+#ifdef DEBUG
 m_scriptsettings.ScriptDump( "debug.txt" );
+#endif
 
 start = m_scriptsettings.m_prefunclist.FindName( str_main );
 
