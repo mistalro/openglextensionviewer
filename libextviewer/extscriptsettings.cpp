@@ -2,8 +2,6 @@
 // Copyright: (C) VFX Research 2002 - 2014. All Rights Reserved.
 // ---------------------------------------------------------------------------
 
-using namespace std;
-
 #include "extensionlib.h"
 #include "extcode.h"
 
@@ -11,7 +9,7 @@ using namespace std;
 // String used to avoid generating the PROC for the static GLX function
 // --------------------------------------------------------------------------
 
-static string str_glxarbgetprocaddress = "GLX_ARB_get_proc_address";
+static std::string str_glxarbgetprocaddress = "GLX_ARB_get_proc_address";
 
 // --------------------------------------------------------------------------
 // Main initialiser
@@ -30,7 +28,7 @@ void CExtensionScriptSettings::Init( void )
 m_replacemode = MODE_REPLACE;
 m_scriptmode = false;
 
-m_scriptinternal = string(internalscript);	// Internal script
+m_scriptinternal = std::string(internalscript);	// Internal script
 m_scriptinternalsize = m_scriptinternal.length();
 m_scriptinternalpos = 0;
 
@@ -75,7 +73,7 @@ ScriptParse();
 // Results: None
 // --------------------------------------------------------------------------
 
-void CExtensionScriptSettings::ScriptSetFilename( const string &str)
+void CExtensionScriptSettings::ScriptSetFilename( const std::string &str)
 {
 if ( m_filename )
 	{
@@ -238,7 +236,7 @@ m_tokenlist.TokenAdd( "<versionnumber>", TOKEN_STRING_VERSIONNUMBERS );
 // Effects: The external script file
 // --------------------------------------------------------------------------
 
-void CExtensionScriptSettings::ScriptSetExternal( const string &path )
+void CExtensionScriptSettings::ScriptSetExternal( const std::string &path )
 {
 if ( path.length() > 0 )
 	{
@@ -259,12 +257,12 @@ if ( path.length() > 0 )
 // Effects: The file is read in and parsed
 // --------------------------------------------------------------------------
 
-int CExtensionScriptSettings::ScriptReadExternal( const string &path )
+int CExtensionScriptSettings::ScriptReadExternal( const std::string &path )
 {
 struct stat buf;
-ifstream stream;
+std::ifstream stream;
 
-stream.open( path.data(), ios::binary );
+stream.open( path.data(), std::ios::binary );
 
 if ( stream.is_open() )
 	{
@@ -293,12 +291,12 @@ return(1);
 // Effects: The file is read in and parsed
 // --------------------------------------------------------------------------
 
-int CExtensionScriptSettings::ScriptWrite( const string &path, int which )
+int CExtensionScriptSettings::ScriptWrite( const std::string &path, int which )
 {
 const char *pscript = NULL;
 int scriptlen = 0;
 
-ofstream stream;
+std::ofstream stream;
 
 switch ( which )
 	{
@@ -361,8 +359,8 @@ else
 // --------------------------------------------------------------------------
 // Parse a single token of the script
 //
-// Inputs:  pstart - First character in unparsed string
-//          pend   - Last character in unparsed string
+// Inputs:  pstart - First character in unparsed std::string
+//          pend   - Last character in unparsed std::string
 //
 // Outputs: scrtoken - processed Script token
 // 
@@ -394,7 +392,7 @@ while ( !done && (pstr<pend) ) // 1.  While ( !Done And (pbuffer<pend)
                 {       
                 if ( strlen > 0 )
                     {
-					// 7.   returntoken   = string
+					// 7.   returntoken   = std::string
                     scrtoken.m_tokenid = TOKEN_STRING_STRING; 
                     scrtoken.m_strlen  = strlen;
                     scrtoken.m_pstrbuf = new char[strlen+2];
@@ -407,13 +405,13 @@ while ( !done && (pstr<pend) ) // 1.  While ( !Done And (pbuffer<pend)
                 pstr++;
                 }        
             else
-                strbuf[strlen++] = *pstr++;  // Add character to string
+                strbuf[strlen++] = *pstr++;  // Add character to std::string
             }
         else        
             {
-            if ( strlen > 0 )   //   Return string first
+            if ( strlen > 0 )   //   Return std::string first
                 {               //      returnpointer = curptr
-				// 7.   returntoken   = string
+				// 7.   returntoken   = std::string
                 scrtoken.m_tokenid = TOKEN_STRING_STRING; 
                 scrtoken.m_strlen  = strlen;
                 scrtoken.m_pstrbuf = new char[strlen+2];
@@ -476,7 +474,7 @@ while ( pstart < pend )
     m_script.AddToken( stoken );
     }
 
-// ----- Stage 2: For every begin statement preceded by a string name
+// ----- Stage 2: For every begin statement preceded by a std::string name
 //                add the name onto the function list
 
 for ( pn = 0; pn < m_script.m_tokennum-1; pn++ )
@@ -508,12 +506,12 @@ for ( pn = 0; pn < m_script.m_tokennum-1; pn++ )
 // Effects: The contents of the tokenised script are saved to disk
 // --------------------------------------------------------------------------
 
-void CExtensionScriptSettings::ScriptDump( const string &strdump )
+void CExtensionScriptSettings::ScriptDump( const std::string &strdump )
 {
 CScriptToken *pstoken;
 CToken *ptoken;
 unsigned int pn;
-ofstream stream;
+std::ofstream stream;
 
 stream.open( strdump.data() );
 
@@ -527,13 +525,13 @@ if ( stream.is_open() )
 
 		if ( pstoken->m_tokenid == TOKEN_STRING_STRING )
 			{
-			stream << "<STRING> " << pstoken->m_pstrbuf << endl;
+			stream << "<STRING> " << pstoken->m_pstrbuf << std::endl;
 			}
 		else
 			{
 			ptoken = m_tokenlist.TokenFind( pstoken->m_tokenid );
 
-			stream << "<TOKEN>  " << ptoken->m_name << endl;	
+			stream << "<TOKEN>  " << ptoken->m_name << std::endl;	
 			}
 		}
 
@@ -732,18 +730,18 @@ void CExtensionViewer::DebugLevel0( CScriptToken *pstoken,
 {
 CToken *ptoken = m_scriptsettings.m_tokenlist.TokenFind( pstoken->m_tokenid );
 
-cout << "Position = " << curaddr << ", Last = " << lastaddr << "\n";
+std::cout << "Position = " << curaddr << ", Last = " << lastaddr << "\n";
 
 if ( ptoken != NULL )
 	{
-	cout << "Token = " << ptoken->m_name  << "\n";
+	std::cout << "Token = " << ptoken->m_name  << "\n";
 	}
 else
 	{
-	cout << "Token = <STRING> |"<<pstoken->m_pstrbuf <<"|\n";
+	std::cout << "Token = <STRING> |"<<pstoken->m_pstrbuf <<"|\n";
 	}
 
-cout << endl;
+std::cout << std::endl;
 }
 
 int CExtensionViewer::ProcessScript( int curaddr, int finishaddr )
@@ -803,7 +801,7 @@ int CExtensionViewer::ProcessScriptToken( int &curaddr, int &lastaddr,
 int len, version, finishaddr;
 char tempbuf[1024];
 CExtensionSiteInfo *psiteinfo;
-string outstr;
+std::string outstr;
 int done = 0;
 
 /*
@@ -816,7 +814,7 @@ switch ( (*pstoken)->m_tokenid )
 
 	case TOKEN_COMMAND_FILEOPEN:
 #ifdef DEBUG
-cout << "Token: Command - fileopen";
+std::cout << "Token: Command - fileopen";
 #endif
 		curaddr++;
 		(*pstoken)++;
@@ -829,7 +827,7 @@ cout << "Token: Command - fileopen";
 		if ( (*pstoken)->m_tokenid == TOKEN_STRING_OUTPUTHEADER )
 			{
 #ifdef DEBUG
-cout << "(header file" << 
+std::cout << "(header file" << 
 			m_outputfilesettings.m_outputheaderfile.data() << ")\n";
 #endif
 
@@ -844,7 +842,7 @@ cout << "(header file" <<
 		if ( (*pstoken)->m_tokenid == TOKEN_STRING_OUTPUTSOURCE )
 			{
 #ifdef DEBUG
-cout << "(source file" << 
+std::cout << "(source file" << 
 			m_outputfilesettings.m_outputsourcefile.data() << ")\n";
 #endif
 			m_scriptsettings.m_outputstream.open( 
@@ -860,7 +858,7 @@ cout << "(source file" <<
 		if ( m_scriptsettings.m_outputstream.is_open() )
 			{
 #ifdef DEBUG
-cout << "Token: Command - fileclose" << endl;
+std::cout << "Token: Command - fileclose" << std::endl;
 #endif
 			m_scriptsettings.m_outputstream.close();
 			}
@@ -879,7 +877,7 @@ cout << "Token: Command - fileclose" << endl;
 			(*pstoken)->m_pstrbuf, tempbuf, len );
 
 #ifdef DEBUG
-cout << "Token: Command - call" << tempbuf << endl;
+std::cout << "Token: Command - call" << tempbuf << std::endl;
 #endif
 		m_scriptsettings.m_funccuraddr[m_scriptsettings.m_funcdepth] = curaddr;
 		m_scriptsettings.m_funclastaddr[m_scriptsettings.m_funcdepth] = lastaddr;
@@ -889,7 +887,7 @@ cout << "Token: Command - call" << tempbuf << endl;
 
 		if ( funcid == -1 )
 			{
-        		cerr << "Error: Could not find first script function\n";
+        		std::cerr << "Error: Could not find first script function\n";
 			}
 		else
        			{
@@ -908,7 +906,7 @@ cout << "Token: Command - call" << tempbuf << endl;
 		lastaddr = m_scriptsettings.m_funclastaddr[m_scriptsettings.m_funcdepth];
 
 #ifdef DEBUG
-cout << "Token: Command - call done\n";
+std::cout << "Token: Command - call done\n";
 #endif
 		outstr.clear();
 		break;
@@ -1144,7 +1142,7 @@ cout << "Token: Command - call done\n";
 		break;
 
 	// For C++, m_classnamedcolon is "ExtensionManager::"
-	// For C    m_classname is an empty string
+	// For C    m_classname is an empty std::string
 
 	case TOKEN_STRING_DCOLON:	
 		outstr = m_outputfilesettings.m_classnamedcolon.data();
@@ -1388,7 +1386,7 @@ cout << "Token: Command - call done\n";
 	case TOKEN_STRING_VERSIONNUMBERS:
 		if ( m_scriptsettings.m_activeversion )
 			{
-			string str;
+			std::string str;
 
 			str = m_headerfileset.m_versionlist.at(
                                         m_scriptsettings.m_versionpos).m_name;
@@ -1641,7 +1639,7 @@ cout << "Token: Command - call done\n";
 #ifdef DEBUG   
 if ( (*pstoken)->m_tokenid == TOKEN_COMMAND_ENDIF )
 	{
-	cout << "ENDIF here #1\n";
+	std::cout << "ENDIF here #1\n";
 	}
 #endif
  
@@ -1668,7 +1666,7 @@ if ( (*pstoken)->m_tokenid & TOKEN_STRING )
 if ( (*pstoken)->m_tokenid != TOKEN_COMMAND_END )
 	{
 #ifdef DEBUG
-	cout << "Incrementing\n";
+	std::cout << "Incrementing\n";
 #endif
 	(*pstoken)++;
 	curaddr++;
@@ -1677,7 +1675,7 @@ if ( (*pstoken)->m_tokenid != TOKEN_COMMAND_END )
 #ifdef DEBUG   
 if ( (*pstoken)->m_tokenid == TOKEN_COMMAND_ENDIF )
 	{
-	cout << "ENDIF here #2\n";
+	std::cout << "ENDIF here #2\n";
 	}
 #endif
 
@@ -1750,16 +1748,16 @@ return(1);
 // --------------------------------------------------------------------------
 // Extract a variable name from the surrounding parenthesis
 //
-// Inputs: pchlist - Character pointer to source string
-//         tempbuf - Character pointer to destination string
-//         len     - Reference to the final length of the new string
+// Inputs: pchlist - Character pointer to source std::string
+//         tempbuf - Character pointer to destination std::string
+//         len     - Reference to the final length of the new std::string
 //
-// Outputs: tempbuf - The extracted string is placed in this variable
-//          len     - The length of the string is stored in len
+// Outputs: tempbuf - The extracted std::string is placed in this variable
+//          len     - The length of the std::string is stored in len
 //
 // Results: None
 //
-// Effects: The string is extracted
+// Effects: The std::string is extracted
 // --------------------------------------------------------------------------
                                                                                 
 const char *CExtensionScriptSettings::ExtractVariable( 

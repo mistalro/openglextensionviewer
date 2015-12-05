@@ -5,8 +5,6 @@
 #ifndef EXITAPPLICATIONDIALOG_H
 #define EXITAPPLICATIONDIALOG_H
 
-using namespace std;
-
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>

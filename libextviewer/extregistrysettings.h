@@ -47,62 +47,62 @@ int GetDownloadStatus( void )
                                                                                 
 // ------ Create, read and save files to the OpenGL Registry -----
                                                                                 
-int   SaveLocalCache( const string &destpath, const string &data );
-int   LoadLocalCache( string &name, string &localdir, string &data );
+int   SaveLocalCache( const std::string &destpath, const std::string &data );
+int   LoadLocalCache( std::string &name, std::string &localdir, std::string &data );
                                                                                 
 const char *ExtractExtensionName( const char *pbuf, 
-				string &exname, string &exprefix, int &done );
+				std::string &exname, std::string &exprefix, int &done );
                                                                                 
 const char *ExtractExtensionNameStrings(const char *pbuf, 
-				string &namestrings, int &done );
+				std::string &namestrings, int &done );
                                                                                 
 const char *ExtractExtensionProceduresAndFunctions( const char *pbuf, 
 				int winflag, int expos, int &done, 
 				CExtensionHeaderFileSet &fileset );
                                                                                 
 const char *ExtractExtensionTokens( const char *pbuf, 
-				int winflag, int expos, string &exprefix, 
+				int winflag, int expos, std::string &exprefix, 
 			int &done, CExtensionHeaderFileSet &fileset );
                                                                                 
 const char *ExtractExtensionContributors( const char *pbuf, 
-				string &contributors, int &done );
+				std::string &contributors, int &done );
 
 const char *ExtractExtensionContact(    const char *pbuf, 
-				string &contact,      int &done );
+				std::string &contact,      int &done );
 
 const char *ExtractExtensionIPStatus(  const  char *pbuf, 
-				string &pipstatus,     int &done );
+				std::string &pipstatus,     int &done );
 
 const char *ExtractExtensionStatus(    const  char *pbuf, 
-				string &status,       int &done );
+				std::string &status,       int &done );
 
 const char *ExtractExtensionVersion(   const char *pbuf, 
-				string &version,      int &done );
+				std::string &version,      int &done );
 
 const char *ExtractExtensionNumber(    const  char *pbuf, 
-				string &number,       int &done );
+				std::string &number,       int &done );
 
 const char *ExtractExtensionDependencies( const char *pbuf, 
-				string &dependencies, int &done );
+				std::string &dependencies, int &done );
 
 const char *ExtractExtensionOverview( const char *pbuf, 
-				string &overview,     int &done );
+				std::string &overview,     int &done );
 
 const char *ExtractExtensionIssues(   const char *pbuf,  
-				string &issues,       int &done );                                                                                
-void  ExtractExtensionInit( string &exname, int &winflag, int &expos,
+				std::string &issues,       int &done );                                                                                
+void  ExtractExtensionInit( std::string &exname, int &winflag, int &expos,
 				CExtensionHeaderFileSet &fileset);
                                                                                 
-void ReadExtensionBuffer( string &exbuf,
+void ReadExtensionBuffer( std::string &exbuf,
         			CRegistryFileProgressCallback &callback,
-        			string &extname, int filepos, int filemax, 
+        			std::string &extname, int filepos, int filemax, 
 				CExtensionHeaderFileSet &fileset );
 
-void  CheckLocalPath( const string &path );
+void  CheckLocalPath( const std::string &path );
 
-int  GetRegistryCount( string &path );
+int  GetRegistryCount( std::string &path );
 
-void ReadNewExtensions( string &localdir,
+void ReadNewExtensions( std::string &localdir,
 				CExtensionHeaderFileSet &fileset,
 				CRegistryFileProgressCallback &callback );
 };

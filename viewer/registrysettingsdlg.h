@@ -5,8 +5,6 @@
 #ifndef REGISTRYSETTINGSDIALOG_H
 #define REGISTRYSETTINGSDIALOG_H
 
-using namespace std;
-
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>

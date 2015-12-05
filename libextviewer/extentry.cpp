@@ -2,8 +2,6 @@
 // Copyright: (C) VFX Research 2002 - 2014. All Rights Reserved.
 // ---------------------------------------------------------------------------
 
-using namespace std;
-
 #include "extensionlib.h"
 
 // --------------------------------------------------------------------------
@@ -19,7 +17,7 @@ if( NULL != value )
         m_value = value;
         }
 
-m_pfnproc = string("PFN") + m_name + string("PROC");
+m_pfnproc = std::string("PFN") + m_name + std::string("PROC");
 
 strupcase( m_pfnproc );
 }
@@ -32,7 +30,7 @@ void CExtensionEntry::SetPrefixNameValue( const char *prefix, const char *name, 
 {
 m_prefix  = prefix;
 m_name    = name;
-m_pfnproc = string("PFN") + m_name + string( "PROC" );
+m_pfnproc = std::string("PFN") + m_name + std::string( "PROC" );
 
 strupcase( m_pfnproc );
 }
@@ -41,13 +39,13 @@ strupcase( m_pfnproc );
 // Set the prefix, name and header of the entry
 // --------------------------------------------------------------------------
 
-void CExtensionEntry::SetPrefixNameHeader( const string &prefix, const string &name, const string &header )
+void CExtensionEntry::SetPrefixNameHeader( const std::string &prefix, const std::string &name, const std::string &header )
 {
 
 m_prefix  = prefix;
 m_name    = name;
 m_header  = header;
-m_pfnproc = string("PFN") + m_name + string("PROC");
+m_pfnproc = std::string("PFN") + m_name + std::string("PROC");
 
 strupcase( m_pfnproc );
 }
@@ -56,15 +54,15 @@ strupcase( m_pfnproc );
 // Set the prefix, name, value and prototype of the entry
 // --------------------------------------------------------------------------
 
-void CExtensionEntry::SetPrefixNameValueProto( const string &prefix, 
-				const string &name, 
-				const string &header, 
-				const string &proto )
+void CExtensionEntry::SetPrefixNameValueProto( const std::string &prefix, 
+				const std::string &name, 
+				const std::string &header, 
+				const std::string &proto )
 {
 m_prefix  = prefix;
 m_name    = name;
 m_header  = header;
-m_pfnproc = string("PFN") + m_name + string( "PROC" );
+m_pfnproc = std::string("PFN") + m_name + std::string( "PROC" );
 
 strupcase( m_pfnproc );
 

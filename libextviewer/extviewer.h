@@ -50,17 +50,17 @@ int  ConfigurationFileLoad( void );
 int  ConfigurationFileLoadAndMerge();
 int  ConfigurationFileSave( void );
 
-int  ConfigurationFileLoad( const string &path ) 
+int  ConfigurationFileLoad( const std::string &path ) 
 	{
 	return CExtensionViewerIO::ReadFile( path );
 	}
   
-int  ConfigurationFileLoadAndMerge( const string &path )
+int  ConfigurationFileLoadAndMerge( const std::string &path )
 	{
 	return CExtensionViewerIO::ReadFile( path );
 	}
 
-int  ConfigurationFileSaveAs( const string &path )
+int  ConfigurationFileSaveAs( const std::string &path )
 	{
 	return CExtensionViewerIO::WriteFile( path );
 	}
@@ -111,27 +111,27 @@ int  DownloadRegistryHeaders( int site,
 
 int DownloadAllRegistryHeaders( CHeaderDownloadProgressCallback &callback );
 
-int DownloadRegistryIndexPage( int site, string &regbuf, 
+int DownloadRegistryIndexPage( int site, std::string &regbuf, 
 			CRegistryDownloadCallback &callback, int mode );
 
 void DownloadRegistryWebpage( int site, 
 			CRegistryDownloadCallback &callback, int mode );
 
 void DownloadRegistryExtensions( int site,
-                	const string &regbuf,
+                	const std::string &regbuf,
                 	CRegistryDownloadCallback &callback, int mode);
 
-void DownloadRegistryExtension( const string &fullpath,
-                                const string &destpath );
+void DownloadRegistryExtension( const std::string &fullpath,
+                                const std::string &destpath );
 
 void DownloadAllRegistryWebpages( 
 			CRegistryDownloadCallback &callback, int mode );
 
-void GenerateTransferPaths( const string &srcpath,
-                            const string &destpath,
-                            const string &extpath );
+void GenerateTransferPaths( const std::string &srcpath,
+                            const std::string &destpath,
+                            const std::string &extpath );
 
-int CheckExtensionDownload( const string &extname, int mode );
+int CheckExtensionDownload( const std::string &extname, int mode );
 
 int CreateLocalRegistryDir(int site,
                 CRegistryDownloadCallback &callback, int mode );
@@ -142,7 +142,7 @@ int  ReadHeaderFiles( int site, CHeaderFileProgressCallback &callback, int mode 
 
 int  ReadAllHeaderFiles( CHeaderFileProgressCallback &callback );
 
-void ReadExtensionFile( string &, CRegistryFileProgressCallback &callback,
+void ReadExtensionFile( std::string &, CRegistryFileProgressCallback &callback,
 		int filepos, int filemax  );
 
 int  ReadRegistry( int site, 
@@ -185,23 +185,23 @@ int GetAutoReadHeaderFlags( void )
 	return( m_configfilesettings.GetAutoReadHeaderFlags() );
 	};
 
-// ----- Search the string --------------------------------------------------
+// ----- Search the std::string --------------------------------------------------
 
-int SearchString( int mode, const string &strsearch,
+int SearchString( int mode, const std::string &strsearch,
                   CHeaderFileDataSearchCallback &callback )
 	{
 	return( m_headerfileset.SearchAllLists( mode, strsearch, callback ) );
 	};
 
-int SearchExtensionSpecs( int mode, const string &strdata,
+int SearchExtensionSpecs( int mode, const std::string &strdata,
 		CRegistryStringSearchCallback &callback );
 
-int  SearchRegistry( int site, const string &strdata,
+int  SearchRegistry( int site, const std::string &strdata,
                 CRegistryStringSearchCallback &callback, int mode );
 
-int RegistryFileStringSearch( const string &path,
-                                int site, const string &strdata,
+int RegistryFileStringSearch( const std::string &path,
+                                int site, const std::string &strdata,
                 CRegistryStringSearchCallback &callback, int mode );
 
-int ReadRegistryWebpage(string &strdata, const string &targetname );
+int ReadRegistryWebpage(std::string &strdata, const std::string &targetname );
 };

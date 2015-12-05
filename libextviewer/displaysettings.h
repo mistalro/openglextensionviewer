@@ -106,7 +106,7 @@ int operator > ( const CDisplaySettings &display )
 // Class used to represent a list of display modes
 // --------------------------------------------------------------------------
 
-class CDisplaySettingsList : public vector <CDisplaySettings>
+class CDisplaySettingsList : public std::vector <CDisplaySettings>
 {
 public:
 int     m_sortmode;   // Sort mode for list
@@ -160,12 +160,12 @@ CDisplaySettings & GetListItem( int pos )
 	return( at(pos) ); 
 	};
 
-void SaveDisplaySettingsList( ofstream &stream );
+void SaveDisplaySettingsList( std::ofstream &stream );
 int  SaveDisplaySettingsList( const char *path );
-void SaveDisplaySettingsModeTable( ofstream &stream );
+void SaveDisplaySettingsModeTable( std::ofstream &stream );
 
 int  ReadConfigurationFile( const char *path );
-void ReadConfigurationFile( ifstream &stream);
+void ReadConfigurationFile( std::ifstream &stream);
 
 int AddDimensions( int width, int height, int depth );
 };

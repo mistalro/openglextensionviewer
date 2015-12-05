@@ -43,7 +43,7 @@
 class CHeaderDownloadProgressCallback
 {
 public:
-virtual int HeaderDownloadProgressCallback( const string &name, int mode ) = 0;
+virtual int HeaderDownloadProgressCallback( const std::string &name, int mode ) = 0;
 
 CHeaderDownloadProgressCallback( void ) { };
 virtual ~CHeaderDownloadProgressCallback( void ) { };
@@ -59,7 +59,7 @@ int m_downloadstatus;
 
 public:
 virtual int HeaderFileProgressCallback(
-	const string &name, const string &extname, int pos, int max) = 0;
+	const std::string &name, const std::string &extname, int pos, int max) = 0;
                                                                                 
 CHeaderFileProgressCallback( void ) 
 	{
@@ -78,7 +78,7 @@ class CRegistryDownloadCallback
 public:
 int       m_downloadstatus;     // Current status of registry download
 
-virtual int RegistryDownloadCallback( const string &str, int mode ) = 0;
+virtual int RegistryDownloadCallback( const std::string &str, int mode ) = 0;
                                                                                 
 CRegistryDownloadCallback( void ) { };
 virtual ~CRegistryDownloadCallback( void ) { };
@@ -91,7 +91,7 @@ class CRegistryFileProgressCallback
 {
 public:
 virtual int RegistryFileProgressCallback(
-	const string &name, const string &extname, int pos, int max) = 0;
+	const std::string &name, const std::string &extname, int pos, int max) = 0;
                                                                                 
 CRegistryFileProgressCallback( void ) { };
 virtual ~CRegistryFileProgressCallback( void ) { };
@@ -131,7 +131,7 @@ class CHeaderFileDataSearchCallback
 {
 public:
 virtual int HeaderFileDataSearchCallback(int list,
-                        const string &name, const string &value ) = 0;
+                        const std::string &name, const std::string &value ) = 0;
 
 CHeaderFileDataSearchCallback( void ) { };
 virtual ~CHeaderFileDataSearchCallback( void ) { };
@@ -145,7 +145,7 @@ class CRegistryStringSearchCallback
 {
 public:
 virtual int RegistryStringSearchCallback( int site, int linenumber,
-			const string &path, const string &line, int mode ) = 0;
+			const std::string &path, const std::string &line, int mode ) = 0;
 
 virtual int RegistryStringSearchProgressCallback( int pos, int max ) = 0;
 

@@ -2,19 +2,17 @@
 // Copyright: (C) VFX Research 2002 - 2014. All Rights Reserved.
 // ---------------------------------------------------------------------------
 
-using namespace std;
-
 #include <stdlib.h>
 #include <string>
 #include <iostream>
 
 // --------------------------------------------------------------------------
-// Extract a single pattern from a string
+// Extract a single pattern from a std::string
 // --------------------------------------------------------------------------
 
 static int StringExtractPattern( 
-		string &strpat, 
-		const string &strmask, 
+		std::string &strpat, 
+		const std::string &strmask, 
 		unsigned int &pos )
 {
 int done, literal;
@@ -27,7 +25,7 @@ if ( strmask.length() == 0 )	// No pattern, so always pass
 	}
 
 max     = strmask.size();	// Length of mask pattern
-strpat  = "";			// Clear pattern string
+strpat  = "";			// Clear pattern std::string
 done    = false;		// Clear done flag
 literal = false;		// Clear literal flag
 
@@ -74,7 +72,7 @@ return true;
 // --------------------------------------------------------------------------
 
 static int StringGetToken( 
-		const string &strmask, 
+		const std::string &strmask, 
 		unsigned int &pos, 
 		char &token )
 {
@@ -98,10 +96,10 @@ return false;
 }
 
 // --------------------------------------------------------------------------
-// Match a string against a pattern
+// Match a std::string against a pattern
 // --------------------------------------------------------------------------
 
-static int StringMatchPattern( const string &strpath, const string &strmask )
+static int StringMatchPattern( const std::string &strpath, const std::string &strmask )
 {
 bool done = false;
 unsigned int pathpos = 0;
@@ -247,15 +245,15 @@ return true;
 }
 
 // --------------------------------------------------------------------------
-// Match a string against a mask filter
+// Match a std::string against a mask filter
 // --------------------------------------------------------------------------
 
-int StringMatch( const string &strtarget, const string &strmask )
+int StringMatch( const std::string &strtarget, const std::string &strmask )
 {
 bool found = false;      // found = false
 bool done = false;      // done = false
 unsigned int pos = 0;
-string strpat;
+std::string strpat;
 
 #ifdef DEBUG
 cout << "Matching target |" << strtarget;
@@ -277,7 +275,7 @@ cout << "Pattern = |" << strpat << "|" << endl;
 		}
 	else
 		{
-		//      Match string against pattern
+		//      Match std::string against pattern
 		found = StringMatchPattern( strtarget, strpat );
 
 		if ( found )

@@ -2,8 +2,6 @@
 // Copyright: (C) VFX Research 2002 - 2014. All Rights Reserved.
 // ---------------------------------------------------------------------------
 
-using namespace std;
-
 #include "extensionlib.h"
 
 // --------------------------------------------------------------------------
@@ -27,8 +25,8 @@ m_constlist.Allocate( MAX_CONSTANTLIST );
 // Set general parameters
 // --------------------------------------------------------------------------
 
-void CExtensionHeaderFileData::SetParameters(const string &prefix, 
-			const string &funcprefix, const string &prototype )
+void CExtensionHeaderFileData::SetParameters(const std::string &prefix, 
+			const std::string &funcprefix, const std::string &prototype )
 {
 m_prefix = prefix;
 m_funcprefix = funcprefix;
@@ -39,7 +37,7 @@ m_prototype = prototype;
 // Get name flag
 // --------------------------------------------------------------------------
 
-int CExtensionHeaderFileData::GetNameFlag( const string &name, int flag )
+int CExtensionHeaderFileData::GetNameFlag( const std::string &name, int flag )
 {
 int index = m_extlist.FindName( name );
 
@@ -74,7 +72,7 @@ m_extlist.DeleteIndex( index );
 // Delete selected name
 // --------------------------------------------------------------------------
 
-int CExtensionHeaderFileData::DeleteName( const string &name )
+int CExtensionHeaderFileData::DeleteName( const std::string &name )
 {
 int extid = m_extlist.FindName( name );
 
@@ -116,15 +114,15 @@ cout << "SelectedFuncNum = " << m_selectedfuncnum << endl;
 }
 
 // --------------------------------------------------------------------------
-// Add string to vendor list
+// Add std::string to vendor list
 //
-// Inputs: str - The string to add
+// Inputs: str - The std::string to add
 //
 // Outputs: None
 //
 // Results: None
 //
-// Effects: If the string is not already in the list, it is added
+// Effects: If the std::string is not already in the list, it is added
 //          otherwise, it is ignored
 // --------------------------------------------------------------------------
 
@@ -133,7 +131,7 @@ static const char str_version[] = "VERSION";
 void CExtensionHeaderFileData::VendorListAdd( 
 			const char *str, CExtensionEntryList &vendorlist )
 {
-string vendor;
+std::string vendor;
 
 if ( strncmp( str, str_version, 7 ) != 0 )
 	{
@@ -149,7 +147,7 @@ if ( strncmp( str, str_version, 7 ) != 0 )
 // --------------------------------------------------------------------------
 // Check to see if an extension has a valid name 
 //
-// Inputs:  chptr - Pointer to the string 
+// Inputs:  chptr - Pointer to the std::string 
 //
 // Outputs: None
 //
@@ -189,7 +187,7 @@ return hasversion | haslowercase | hasdigits;
 }
 
 // --------------------------------------------------------------------------
-// Search for OpenGL Version strings
+// Search for OpenGL Version std::strings
 // --------------------------------------------------------------------------                                                                        
 void CExtensionHeaderFileData::ReadVersion( char *curline, 
 					CExtensionEntryList &versionlist )
@@ -262,14 +260,14 @@ cout << "Setting version |" << value << "|" << endl;
 // 
 // Results: Cancel flag
 
-// Valid lines contain the string #ifndef XXXXXXXX
+// Valid lines contain the std::string #ifndef XXXXXXXX
 // The #ifndef is discarded by skipping 8 characters from the start
 // --------------------------------------------------------------------------
 
 int CExtensionHeaderFileData::ReadExtensionBlockHeader( char *curline, 
 				const char *filename, 
   				CHeaderFileProgressCallback &callback,
-				ifstream &stream, 
+				std::ifstream &stream, 
                                 int filelen, CExtensionEntryList &vendorlist, int pextlen )
 {
 #ifdef DEBUG
@@ -288,7 +286,7 @@ int CExtensionHeaderFileData::ReadExtensionBlockHeader( char *curline,
         // [2] Has "VERSION"            Yes 
         // [3] Has lowercase            Yes
         //
-        // If the string has no digits or version or lowercase then reject
+        // If the std::string has no digits or version or lowercase then reject
 
         if ( CheckValidExtension( curline+8 ) )
                 {
@@ -370,11 +368,11 @@ cout << "ExtListList count = " << m_extlist.GetCount() << endl;
 // Search for list of OpenGL functions
 // --------------------------------------------------------------------------
 
-void CExtensionHeaderFileData::ReadFileFunctions( char *curline, char *lastline,char *name, ifstream &stream )
+void CExtensionHeaderFileData::ReadFileFunctions( char *curline, char *lastline,char *name, std::ifstream &stream )
 {
 int done = 0, curext;
 char *pfuncname, *pchptr;
-string funcreturn, funcname, funcparams;
+std::string funcreturn, funcname, funcparams;
 
 #ifdef DEBUG
 cout << "vvvvv ReadFileFunctions" << endl;
@@ -480,7 +478,7 @@ cout << "^^^^^ ReadFileFunctions" << endl;
 }
 
 void CExtensionHeaderFileData::ReadFileFunctionPrototypes( 
-					char *curline, ifstream &stream )
+					char *curline, std::ifstream &stream )
 {
 int done = 0;
 char *pchptr, *pchptrb, *pchptrc, *pchptrd;
@@ -547,7 +545,7 @@ cout << "FuncList count = " << m_funclist.GetCount() << "\n";
 //          of extensions and functions
 // --------------------------------------------------------------------------
 
-int CExtensionHeaderFileData::ReadHeaderFile(const string &filename,
+int CExtensionHeaderFileData::ReadHeaderFile(const std::string &filename,
         CHeaderFileProgressCallback &callback,
         CExtensionEntryList &versionlist, 
 	CExtensionEntryList &vendorlist )
@@ -558,9 +556,9 @@ char name[1024];
 struct stat statbuf;
 int  pextlen, filelen;
        
-ifstream stream;
+std::ifstream stream;
 
-string funcreturn, funcname, funcparams;                                                                                
+std::string funcreturn, funcname, funcparams;                                                                                
 #ifdef DEBUG
 cout << "CExtensionHeaderFileData:: Reading header file <"<< filename << ">\n" << endl;
 #endif

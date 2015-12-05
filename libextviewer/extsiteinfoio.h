@@ -38,20 +38,20 @@ class CExtensionSiteInfoIOData
 // ----- Class members ------------------------------------------------------- 
 public:
 
-string	m_description;		// Description
-string	m_indexdirlocal;	// OpenGL registry local directory
-string	m_indexpagenet;		// OpenGL registry web page
-string	m_indexpagelocal;	// OpenGL registry local copy
-string	m_glheadernet;		// OpenGL registry header file
-string	m_glheaderlocal;	// OpenGL header local copy
-string	m_glxheadernet;		// GLX registry header file
-string	m_glxheaderlocal;	// GLX header local copy
-string	m_wglheadernet;		// WGL registry header file
-string	m_wglheaderlocal;	// WGL header local copy
-string	m_coreheadernet;	// Core ARB header file
-string	m_coreheaderlocal;	// Core ARB header local copy
+std::string	m_description;		// Description
+std::string	m_indexdirlocal;	// OpenGL registry local directory
+std::string	m_indexpagenet;		// OpenGL registry web page
+std::string	m_indexpagelocal;	// OpenGL registry local copy
+std::string	m_glheadernet;		// OpenGL registry header file
+std::string	m_glheaderlocal;	// OpenGL header local copy
+std::string	m_glxheadernet;		// GLX registry header file
+std::string	m_glxheaderlocal;	// GLX header local copy
+std::string	m_wglheadernet;		// WGL registry header file
+std::string	m_wglheaderlocal;	// WGL header local copy
+std::string	m_coreheadernet;	// Core ARB header file
+std::string	m_coreheaderlocal;	// Core ARB header local copy
 int	m_downloadflags;	// Download flags
-string	m_filetypefilter;	// File type filters
+std::string	m_filetypefilter;	// File type filters
 
 // ----- Constructor and destructor ------------------------------------------ 
 
@@ -105,12 +105,12 @@ void Deallocate()
 	}
 // ----- Manage getting and setting values -----------------------------------
 
-inline string & GetDescription( void )
+inline std::string & GetDescription( void )
 	{
 	return( m_description );
 	}
 
-inline void SetDescription( const string  &value )
+inline void SetDescription( const std::string  &value )
 	{
 	m_description = value;
 	}
@@ -120,12 +120,12 @@ inline void SetDescription( const char *  &value )
 	m_description = value;
 	}
 
-inline string & GetIndexdirlocal( void )
+inline std::string & GetIndexdirlocal( void )
 	{
 	return( m_indexdirlocal );
 	}
 
-inline void SetIndexdirlocal( const string  &value )
+inline void SetIndexdirlocal( const std::string  &value )
 	{
 	m_indexdirlocal = value;
 	}
@@ -135,12 +135,12 @@ inline void SetIndexdirlocal( const char *  &value )
 	m_indexdirlocal = value;
 	}
 
-inline string & GetIndexpagenet( void )
+inline std::string & GetIndexpagenet( void )
 	{
 	return( m_indexpagenet );
 	}
 
-inline void SetIndexpagenet( const string  &value )
+inline void SetIndexpagenet( const std::string  &value )
 	{
 	m_indexpagenet = value;
 	}
@@ -150,12 +150,12 @@ inline void SetIndexpagenet( const char *  &value )
 	m_indexpagenet = value;
 	}
 
-inline string & GetIndexpagelocal( void )
+inline std::string & GetIndexpagelocal( void )
 	{
 	return( m_indexpagelocal );
 	}
 
-inline void SetIndexpagelocal( const string  &value )
+inline void SetIndexpagelocal( const std::string  &value )
 	{
 	m_indexpagelocal = value;
 	}
@@ -165,12 +165,12 @@ inline void SetIndexpagelocal( const char *  &value )
 	m_indexpagelocal = value;
 	}
 
-inline string & GetGlheadernet( void )
+inline std::string & GetGlheadernet( void )
 	{
 	return( m_glheadernet );
 	}
 
-inline void SetGlheadernet( const string  &value )
+inline void SetGlheadernet( const std::string  &value )
 	{
 	m_glheadernet = value;
 	}
@@ -180,12 +180,12 @@ inline void SetGlheadernet( const char *  &value )
 	m_glheadernet = value;
 	}
 
-inline string & GetGlheaderlocal( void )
+inline std::string & GetGlheaderlocal( void )
 	{
 	return( m_glheaderlocal );
 	}
 
-inline void SetGlheaderlocal( const string  &value )
+inline void SetGlheaderlocal( const std::string  &value )
 	{
 	m_glheaderlocal = value;
 	}
@@ -195,12 +195,12 @@ inline void SetGlheaderlocal( const char *  &value )
 	m_glheaderlocal = value;
 	}
 
-inline string & GetGlxheadernet( void )
+inline std::string & GetGlxheadernet( void )
 	{
 	return( m_glxheadernet );
 	}
 
-inline void SetGlxheadernet( const string  &value )
+inline void SetGlxheadernet( const std::string  &value )
 	{
 	m_glxheadernet = value;
 	}
@@ -210,12 +210,12 @@ inline void SetGlxheadernet( const char *  &value )
 	m_glxheadernet = value;
 	}
 
-inline string & GetGlxheaderlocal( void )
+inline std::string & GetGlxheaderlocal( void )
 	{
 	return( m_glxheaderlocal );
 	}
 
-inline void SetGlxheaderlocal( const string  &value )
+inline void SetGlxheaderlocal( const std::string  &value )
 	{
 	m_glxheaderlocal = value;
 	}
@@ -225,12 +225,12 @@ inline void SetGlxheaderlocal( const char *  &value )
 	m_glxheaderlocal = value;
 	}
 
-inline string & GetWglheadernet( void )
+inline std::string & GetWglheadernet( void )
 	{
 	return( m_wglheadernet );
 	}
 
-inline void SetWglheadernet( const string  &value )
+inline void SetWglheadernet( const std::string  &value )
 	{
 	m_wglheadernet = value;
 	}
@@ -240,12 +240,12 @@ inline void SetWglheadernet( const char *  &value )
 	m_wglheadernet = value;
 	}
 
-inline string & GetWglheaderlocal( void )
+inline std::string & GetWglheaderlocal( void )
 	{
 	return( m_wglheaderlocal );
 	}
 
-inline void SetWglheaderlocal( const string  &value )
+inline void SetWglheaderlocal( const std::string  &value )
 	{
 	m_wglheaderlocal = value;
 	}
@@ -255,12 +255,12 @@ inline void SetWglheaderlocal( const char *  &value )
 	m_wglheaderlocal = value;
 	}
 
-inline string & GetCoreheadernet( void )
+inline std::string & GetCoreheadernet( void )
 	{
 	return( m_coreheadernet );
 	}
 
-inline void SetCoreheadernet( const string  &value )
+inline void SetCoreheadernet( const std::string  &value )
 	{
 	m_coreheadernet = value;
 	}
@@ -270,12 +270,12 @@ inline void SetCoreheadernet( const char *  &value )
 	m_coreheadernet = value;
 	}
 
-inline string & GetCoreheaderlocal( void )
+inline std::string & GetCoreheaderlocal( void )
 	{
 	return( m_coreheaderlocal );
 	}
 
-inline void SetCoreheaderlocal( const string  &value )
+inline void SetCoreheaderlocal( const std::string  &value )
 	{
 	m_coreheaderlocal = value;
 	}
@@ -295,12 +295,12 @@ inline void SetDownloadflags( const int value )
 	m_downloadflags = value;
 	}
 
-inline string & GetFiletypefilters( void )
+inline std::string & GetFiletypefilters( void )
 	{
 	return( m_filetypefilter );
 	}
 
-inline void SetFiletypefilters( const string  &value )
+inline void SetFiletypefilters( const std::string  &value )
 	{
 	m_filetypefilter = value;
 	}
@@ -324,13 +324,13 @@ public:
 
 using CVirtualFileSystemAscii::ReadFile;
 
-int ReadFile( ifstream &stream );
-int ReadFileInternal( ifstream &stream );
+int ReadFile( std::ifstream &stream );
+int ReadFileInternal( std::ifstream &stream );
 
 using CVirtualFileSystemAscii::WriteFile;
 
-int WriteFile( ofstream &stream, unsigned int depth );
-int WriteFile( ofstream &stream, unsigned int depth, const char *pstr );
+int WriteFile( std::ofstream &stream, unsigned int depth );
+int WriteFile( std::ofstream &stream, unsigned int depth, const char *pstr );
 };
 
 // ---------------------------------------------------------------------

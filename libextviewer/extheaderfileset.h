@@ -25,7 +25,7 @@
 #define FLAG_ALL (FLAG_GL|FLAG_WGL|FLAG_GLX|FLAG_COREARB)
 
 // --------------------------------------------------------------------------
-// Flags for reading OpenGL Extension string
+// Flags for reading OpenGL Extension std::string
 // --------------------------------------------------------------------------
                                                                                 
 #define EXTENSION_GL        0x001
@@ -61,20 +61,20 @@ int  SavedStateCount( void )
 	return( m_savedstates );	
 	}
                                                                       
-int  SearchAllLists( int mode, const string &strsearch, 
+int  SearchAllLists( int mode, const std::string &strsearch, 
 			CHeaderFileDataSearchCallback &callback );
 
-void ListClearNameFlag(   int listid, const string &name, int flag );
-void ListAddName(         int listid, const string &name );
-void ListRemoveName(      int listid, const string &name );
-int  ListSetFullNameFlag( int listid, const string &name, int flag, int matchmode );
+void ListClearNameFlag(   int listid, const std::string &name, int flag );
+void ListAddName(         int listid, const std::string &name );
+void ListRemoveName(      int listid, const std::string &name );
+int  ListSetFullNameFlag( int listid, const std::string &name, int flag, int matchmode );
 
 void ListClearAllFlags(   void );
 void ListSetAllFlags(     void );
 void ListSetAllFlags(     int listid );
 void ListClearAllFlags(   int listid );
 int  ListGetCount(        int listid );
-int  ListFindName(        int listid, const string &name );
+int  ListFindName(        int listid, const std::string &name );
 void ListSortAll( void );
 
 void IgnoreNewExtensions(    void );
@@ -82,22 +82,22 @@ char *GetNewExtensionString( void );
                                                                                 
 CExtensionHeaderFileFunc *ListFromIndex( int listid);
 
-void ListSetVariable(  int listid, const string &name, const string &value );
-void ListSelectByName( int listid, const string &name );
+void ListSetVariable(  int listid, const std::string &name, const std::string &value );
+void ListSelectByName( int listid, const std::string &name );
 int  ListGetIndexFlag( int listid, int pos, int flag );
 int  ListGetNameFlag(  int listid, const char *name, int flag );
 void ListSetIndexFlag( int listid, int pos, int flag );
 void ListDeleteExtensionIndex( int listid, int index );
 
-int  ListDeleteExtensionName( int listid, const string &name );
+int  ListDeleteExtensionName( int listid, const std::string &name );
 
-void ListSelectExtensionString( int listid, const string &extstring,
+void ListSelectExtensionString( int listid, const std::string &extstring,
 	int flag, int matchmode, int updatemode );                                                                  
-void ListUnselectExtensionString( int listid, const string &extstring,
+void ListUnselectExtensionString( int listid, const std::string &extstring,
 	int flag, int matchmode );
 
-void ListAddExtensionString(    int listid, const string &extstring );
-void ListRemoveExtensionString( int listid, const string &extstring );
+void ListAddExtensionString(    int listid, const std::string &extstring );
+void ListRemoveExtensionString( int listid, const std::string &extstring );
 
 // ----- Undo Operations -----------------
                                                                                 
@@ -113,11 +113,11 @@ void CountSelectedExtensions( void );
 
 void ClearLists( int flags);
 
-int CheckExtensionDownload( const string &extname, int mode );
+int CheckExtensionDownload( const std::string &extname, int mode );
 
 int ReadHeaderFiles( CHeaderFileProgressCallback &callback, 
-			const string &glheader, const string &pwglheader, 
-			const string &glxheader, const string &corearbheader,
+			const std::string &glheader, const std::string &pwglheader, 
+			const std::string &glxheader, const std::string &corearbheader,
 			int replacemode );
 
 int ReadHeaderFile( char *filename,

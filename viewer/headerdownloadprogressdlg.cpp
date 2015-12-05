@@ -6,7 +6,7 @@
 #include "headerdownloadprogressdlg.h"
 
 int CHeaderDownloadProgressDialog::HeaderDownloadProgressCallback( 
-				const string &str, int /* mode */ )
+				const std::string &str, int /* mode */ )
 {
 m_listboxlog->insertItem( str.data(), -1 );
 

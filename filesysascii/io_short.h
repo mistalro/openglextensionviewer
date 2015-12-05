@@ -23,9 +23,9 @@ public:
 
 // ----- Read routines ------------------------------------------------------
 
-inline void ReadShort( ifstream &stream, short &ivalue )
+inline void ReadShort( std::ifstream &stream, short &ivalue )
 	{
-	string buffer;
+	std::string buffer;
 
 	ReadString( stream, buffer );
 
@@ -44,19 +44,19 @@ inline void ReadShort( ifstream &stream, short &ivalue )
 
 // ----- Short data -------------------------------------------------------
 
-inline void WriteShort( ostream &stream, short value )
+inline void WriteShort( std::ofstream &stream, short value )
 	{
 	stream << " " << value;
 	}
 
-inline void WriteNamedShort( ostream &stream, int depth, const char *name,
+inline void WriteNamedShort( std::ofstream &stream, int depth, const char *name,
                                                         short value )
 	{
 	WriteTabbedDepth( stream, depth );
 	stream << "{" << name << " " << value << " }\n";
 	}
 
-inline void WriteNamedShort( ostream &stream, int depth, string &strname,
+inline void WriteNamedShort( std::ofstream &stream, int depth, std::string &strname,
                                                         short value )
 	{
 	WriteTabbedDepth( stream, depth );

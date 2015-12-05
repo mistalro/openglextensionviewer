@@ -2,28 +2,26 @@
 // Copyright: (C) VFX Research 2002 - 2014. All Rights Reserved.
 // ---------------------------------------------------------------------------
 
-using namespace std;
-
 #include "extensionlib.h"
 
 // --------------------------------------------------------------------------
-// Dump the value of all variable strings
+// Dump the value of all variable std::strings
 // --------------------------------------------------------------------------
 
 void CExtensionSiteInfo::DumpData( void )
 {
-cout << "Description      = <" << m_description.data()    << ">" << endl;
-cout << "Index dir local  = <" << m_indexdirlocal.data()  << ">" << endl;
-cout << "Index page net   = <" << m_indexpagenet.data()   << ">" << endl;
-cout << "Index page local = <" << m_indexpagelocal.data() << ">" << endl;
-cout << "Header GL net    = <" << m_glheadernet.data()    << ">" << endl;
-cout << "Header GL local  = <" << m_glheaderlocal.data()  << ">" << endl;
-cout << "Header GLX net   = <" << m_glxheadernet.data()   << ">" << endl;
-cout << "Header GLX local = <" << m_glxheaderlocal.data() << ">" << endl;
-cout << "Header WGL net   = <" << m_wglheadernet.data()   << ">" << endl;
-cout << "Header WGL local = <" << m_wglheaderlocal.data() << ">" << endl;
-cout << "Header CORE net   = <" << m_coreheadernet.data()   << ">" << endl;
-cout << "Header CORE local = <" << m_coreheaderlocal.data() << ">" << endl;
+std::cout << "Description      = <" << m_description.data()    << ">" << std::endl;
+std::cout << "Index dir local  = <" << m_indexdirlocal.data()  << ">" << std::endl;
+std::cout << "Index page net   = <" << m_indexpagenet.data()   << ">" << std::endl;
+std::cout << "Index page local = <" << m_indexpagelocal.data() << ">" << std::endl;
+std::cout << "Header GL net    = <" << m_glheadernet.data()    << ">" << std::endl;
+std::cout << "Header GL local  = <" << m_glheaderlocal.data()  << ">" << std::endl;
+std::cout << "Header GLX net   = <" << m_glxheadernet.data()   << ">" << std::endl;
+std::cout << "Header GLX local = <" << m_glxheaderlocal.data() << ">" << std::endl;
+std::cout << "Header WGL net   = <" << m_wglheadernet.data()   << ">" << std::endl;
+std::cout << "Header WGL local = <" << m_wglheaderlocal.data() << ">" << std::endl;
+std::cout << "Header CORE net   = <" << m_coreheadernet.data()   << ">" << std::endl;
+std::cout << "Header CORE local = <" << m_coreheaderlocal.data() << ">" << std::endl;
 }
 
 // --------------------------------------------------------------------------
@@ -85,7 +83,7 @@ switch ( itemid )
 // Inputs: pextpath - Pointer to file path
 //         pextname - Pointer to name of extension
 //
-// Outputs: pextpath - character string containing the local file path
+// Outputs: pextpath - character std::string containing the local file path
 //
 // Results: None
 //
@@ -93,11 +91,11 @@ switch ( itemid )
 // --------------------------------------------------------------------------
            
 int CExtensionSiteInfo::FindExtensionLocalPath(
-                         string &pextpath, string &pextname )
+                         std::string &pextpath, std::string &pextname )
 {
 struct stat statbuf;
 int result;
-string filepath, hostname, localfile, pbuffer;
+std::string filepath, hostname, localfile, pbuffer;
 
 // ----- Read the index html file first -------------------------------------
 
@@ -128,7 +126,7 @@ return(0);
 }
 
 // --------------------------------------------------------------------------
-// Given the registry file as a text string, find the full path to the
+// Given the registry file as a text std::string, find the full path to the
 // selected extension
 //
 // Inputs:  pregfile - Pointer to the web page in memory
@@ -141,7 +139,7 @@ return(0);
 //
 // Effects: None
 //
-// Notes: This routine searches for the following strings:
+// Notes: This routine searches for the following std::strings:
 //
 // <a href="EXT/abgr.txt">GL_EXT_abgr</a>
 // <a href="EXT/blend_color.txt">GL_EXT_blend_color</a>
@@ -151,11 +149,11 @@ return(0);
 // --------------------------------------------------------------------------
                                                                                 
 int CExtensionSiteInfo::FindRegistryExtensionPath(
-        string &pregfile, string &pextname, string &pextpath )
+        std::string &pregfile, std::string &pextname, std::string &pextpath )
 {
 const char *pcur;
 int   chprev, chcur;
-string refmode, pextlabel;
+std::string refmode, pextlabel;
                                                                                 
 if ( pregfile.length() == 0)        // If no webpage, no extensions
     {
@@ -237,7 +235,7 @@ return( -1 );                           // No extension was found, so return
 }
 
 // --------------------------------------------------------------------------
-// Given the registry file as a text string, find the full path to the
+// Given the registry file as a text std::string, find the full path to the
 // selected extension
 //
 // Inputs:  pregfile - Pointer to the text file
@@ -251,7 +249,7 @@ return( -1 );                           // No extension was found, so return
 //
 // Effects: None
 //
-// Notes: This routine searches for the following strings:
+// Notes: This routine searches for the following std::strings:
 //
 // <li value=1> <a href="EXT/abgr.txt">GL_EXT_abgr</a>
 // <li value=2> <a href="EXT/blend_color.txt">GL_EXT_blend_color</a>
@@ -261,13 +259,13 @@ return( -1 );                           // No extension was found, so return
 // --------------------------------------------------------------------------
                                           
 int CExtensionSiteInfo::FindRegistryExtensionPathIndex(
-                const string &pregfile, 
-                string &pextname, string &pextpath, int index )
+                const std::string &pregfile, 
+                std::string &pextname, std::string &pextpath, int index )
 {
 char const *pchcur;
 char chcur = 0, chprev = -1;
 int   indpos = 0;
-string extpath, refmode;
+std::string extpath, refmode;
 
 pchcur = pregfile.data();
 
@@ -284,7 +282,7 @@ while ( *pchcur != '\0' )     // While not at the end of the file
         {
         pchcur++;
 #ifdef DEBUG
-cout << "Found tag\n";
+std::cout << "Found tag\n";
 #endif
 	refmode.clear();
 
@@ -294,11 +292,11 @@ cout << "Found tag\n";
 		}
                                                                                 
 #ifdef DEBUG
-cout << "Tag = " << refmode.data() << "\n";
+std::cout << "Tag = " << refmode.data() << "\n";
 #endif
                                                                                 
 #ifdef DEBUG
-cout << "Start of tag\n";
+std::cout << "Start of tag\n";
 #endif
         while ( (*pchcur != '\"' ) )      // Get the reference link
 		{
@@ -308,7 +306,7 @@ cout << "Start of tag\n";
         pchcur++;
                                                                                 
 #ifdef DEBUG
-cout << "End of tag\n";
+std::cout << "End of tag\n";
 #endif
 	pextpath.clear();
 
@@ -318,7 +316,7 @@ cout << "End of tag\n";
 		}
                                                                                 
 #ifdef DEBUG
-cout << "Looking for end of open tag\n";
+std::cout << "Looking for end of open tag\n";
 #endif
                                                                                 
         while ( *pchcur && (*pchcur != '>' ) )  // Skip over '>'
@@ -329,7 +327,7 @@ cout << "Looking for end of open tag\n";
         pchcur++;
                                                                                 
 #ifdef DEBUG
-cout << "Looking for start of close tag\n";
+std::cout << "Looking for start of close tag\n";
 #endif
 	pextname.clear();
 
@@ -342,7 +340,7 @@ cout << "Looking for start of close tag\n";
         pchcur++;
                                                                                 
 #ifdef DEBUG
-cout << "Looking for end of close tag\n";
+std::cout << "Looking for end of close tag\n";
 #endif
                                                                                 
         while ( *pchcur && (*pchcur != '>' ) )
@@ -352,8 +350,8 @@ cout << "Looking for end of close tag\n";
         chcur = -1;
                                                                                 
 #ifdef DEBUG
-cout << "Index matched - returning\n";
-cout << "Extension path found = <" << pextpath.data() << ">\n";
+std::cout << "Index matched - returning\n";
+std::cout << "Extension path found = <" << pextpath.data() << ">\n";
 #endif
                                                                                 
         if ( indpos == index )
@@ -369,7 +367,7 @@ cout << "Extension path found = <" << pextpath.data() << ">\n";
     }
             
 #ifdef DEBUG
-cout <<"No match found\n";
+std::cout <<"No match found\n";
 #endif
                                                                     
 return( -1 );           // No match found
@@ -426,7 +424,7 @@ if ( 0 == GetFlags(FLAG_DOWNLOADHEADERFILES) )
 		(char *) "Download skipped (download flag not set)", 0 );
 	
 #ifdef DEBUG
-	cout << "Download of registry headers abandoned" << endl;
+	std::cout << "Download of registry headers abandoned" << std::endl;
 #endif
 
 	return 0;
@@ -443,7 +441,7 @@ callback.HeaderDownloadProgressCallback( GetGlheadernet(), 0 );
 resultgl = downloader.Download( GetGlheadernet(), GetGlheaderlocal() );
 
 #ifdef DEBUG
-cout << "ResultGL = " << resultgl << endl;
+std::cout << "ResultGL = " << resultgl << std::endl;
 #endif
 
 // ----- Download the WGL header --------------------------------------------
@@ -453,7 +451,7 @@ callback.HeaderDownloadProgressCallback( GetWglheadernet(), 0 );
 resultwgl = downloader.Download( GetWglheadernet(), GetWglheaderlocal() );
 
 #ifdef DEBUG
-cout << "ResultWGL = " << resultgl << endl;
+std::cout << "ResultWGL = " << resultgl << std::endl;
 #endif
 
 // ----- Download the GLX header --------------------------------------------
@@ -463,7 +461,7 @@ callback.HeaderDownloadProgressCallback( GetGlxheadernet(), 0 );
 resultglx = downloader.Download( GetGlxheadernet(), GetGlxheaderlocal() );
 
 #ifdef DEBUG
-cout << "ResultGLX = " << resultgl << endl;
+std::cout << "ResultGLX = " << resultgl << std::endl;
 #endif
 
 // ----- Download the Core ARB header ---------------------------------------
@@ -476,7 +474,7 @@ resultcorearb = downloader.Download( GetCoreheadernet(), GetCoreheaderlocal() );
 
 callback.HeaderDownloadProgressCallback( (char *) "Download complete", 0 );      
 #ifdef DEBUG
-cout << "Download of registry headers complete" << endl;
+std::cout << "Download of registry headers complete" << std::endl;
 #endif
 
 return( (resultwgl * FLAG_WGL)          // Calculate and return result code
@@ -533,7 +531,7 @@ return result;
 // --------------------------------------------------------------------------
 // Read a single registry webpage
 //
-// Inputs: strdata : string data
+// Inputs: strdata : std::string data
 //         targetname : target name
 // 
 // Outputs: None
@@ -541,10 +539,10 @@ return result;
 // Results: result of download
 // --------------------------------------------------------------------------
 
-int CExtensionSiteInfo::ReadRegistryWebpage(string &strdata, 
-						const string &extwanted)
+int CExtensionSiteInfo::ReadRegistryWebpage(std::string &strdata, 
+						const std::string &extwanted)
 {
-string strbuf, extname, extpath, destpath, srcpath;
+std::string strbuf, extname, extpath, destpath, srcpath;
 struct stat statbuf;
 int result, found, done, index, success;
 
@@ -554,7 +552,7 @@ GenerateTransferPaths( srcpath, destpath, extwanted );
 destpath = GetIndexdirlocal() + "/" + GetIndexpagelocal();
 
 #ifdef DEBUG
-cout << "Trying to read |" << destpath << "|\n";
+std::cout << "Trying to read |" << destpath << "|\n";
 #endif
 
 // Try and read file
@@ -564,7 +562,7 @@ found = 0;
 if (result <= 0)
 	{
 #ifdef DEBUG
-	cout << "Couldn't read file\n";
+	std::cout << "Couldn't read file\n";
 #endif
 	success = READ_EXTENSION_NOENTRY;
 	return success;
@@ -575,8 +573,8 @@ index = 0;
 done = 0;
 
 #ifdef DEBUG
-cout << "Read registry file - looking for matching extension\n";
-cout << "Extension wanted = " << extwanted << endl;
+std::cout << "Read registry file - looking for matching extension\n";
+std::cout << "Extension wanted = " << extwanted << std::endl;
 #endif
 
 while ( !done )
@@ -591,7 +589,7 @@ while ( !done )
 		if (extname == extwanted )	
 			{
 #ifdef DEBUG
-			cout << "Extension found " << extname << endl;
+			std::cout << "Extension found " << extname << std::endl;
 #endif
 			done++;
 			found = 1;
@@ -614,7 +612,7 @@ if (!found)
 else
 	{
 	// If we have found the extension path, read the file
-	string srcpath;
+	std::string srcpath;
 
 	srcpath = GetIndexdirlocal() + "/" + extpath;
 
@@ -663,12 +661,12 @@ return success;
 // eg. registry/specs/ARB/color_buffer_float.txt
 // --------------------------------------------------------------------------
 
-void CExtensionSiteInfo::GenerateTransferPaths( string &srcpath,
-					  string &destpath,
-                        		  const string &extpath )
+void CExtensionSiteInfo::GenerateTransferPaths( std::string &srcpath,
+					  std::string &destpath,
+                        		  const std::string &extpath )
 {
 const char *psrc, *pmid;
-string registrydir;
+std::string registrydir;
 
 // Extract the host directory
 
@@ -718,7 +716,7 @@ destpath = GetIndexdirlocal() + "/" + extpath; 	     // Step 3
 // Check that a prefix can be saved
 // --------------------------------------------------------------------------
 
-int CExtensionSiteInfo::CheckFileExtensionSave( const string &extpath )
+int CExtensionSiteInfo::CheckFileExtensionSave( const std::string &extpath )
 {
 int save = 0;
 

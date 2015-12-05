@@ -22,19 +22,19 @@ public:
 
 // ----- Read routines ------------------------------------------------------
 
-bool ReadOpenPar( ifstream &ifs );
-bool ReadClosePar( ifstream &ifs );
-bool ReadOpenClosePar( ifstream &ifs );
+bool ReadOpenPar( std::ifstream &ifs );
+bool ReadClosePar( std::ifstream &ifs );
+bool ReadOpenClosePar( std::ifstream &ifs );
 
 // ----- Write routines -----------------------------------------------------
 
-void WriteTabbedDepth( ostream &stream, unsigned int depth );
+void WriteTabbedDepth( std::ofstream &stream, unsigned int depth );
 
-void WriteOpenParBasic( ostream &stream, unsigned int depth, const char *name );
-void WriteOpenPar( ostream &stream, unsigned int &depth, const char *name );
-void WriteOpenPar( ostream &stream, unsigned int &depth, string &string );
-void WriteClosePar( ostream &stream,unsigned int &depth );
-void WriteCloseParBasic( ostream &stream, unsigned int depth );
+void WriteOpenParBasic( std::ofstream &stream, unsigned int depth, const char *name );
+void WriteOpenPar( std::ofstream &stream, unsigned int &depth, const char *name );
+void WriteOpenPar( std::ofstream &stream, unsigned int &depth, std::string &string );
+void WriteClosePar( std::ofstream &stream,unsigned int &depth );
+void WriteCloseParBasic( std::ofstream &stream, unsigned int depth );
 };
 
 #endif	// _IO_PAR_H_

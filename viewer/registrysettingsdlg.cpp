@@ -155,7 +155,7 @@ else
 
 void CRegistrySettingsDialog::SetInputFilesGL( void )
 {
-string strbuf;
+std::string strbuf;
 int  version;
 
 CExtensionSiteInfo *psiteinfo;
@@ -210,7 +210,7 @@ void CRegistrySettingsDialog::SetInputFilesWGL( void )
 {
 int  version;
 CExtensionSiteInfo *psiteinfo;
-string strbuf;
+std::string strbuf;
                                                                 
 TRACE();
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
@@ -260,7 +260,7 @@ else
 
 void CRegistrySettingsDialog::SetInputFilesGLX( void )
 {
-string strbuf;
+std::string strbuf;
 int  version;
 CExtensionSiteInfo *psiteinfo;
                                                                                 
@@ -311,7 +311,7 @@ else
 
 void CRegistrySettingsDialog::SetInputFilesCoreARB( void )
 {
-string strbuf;
+std::string strbuf;
 int  version;
 CExtensionSiteInfo *psiteinfo;
 

@@ -23,9 +23,9 @@ public:
 
 // ----- Read routines ------------------------------------------------------
 
-void ReadByte( ifstream &stream, BYTE &ivalue )
+void ReadByte( std::ifstream &stream, BYTE &ivalue )
 	{
-	string buffer;
+	std::string buffer;
 	int bvalue;
 
 	ReadString( stream, buffer );
@@ -48,12 +48,12 @@ void ReadByte( ifstream &stream, BYTE &ivalue )
 
 // ----- Byte data ---------------------------------------------------------
 
-void WriteByte( ostream &stream, bool value )
+void WriteByte( std::ofstream &stream, bool value )
 	{
 	stream << value;
 	}
 
-void WriteNamedByte( ostream &stream, unsigned int depth, const char *name,
+void WriteNamedByte( std::ofstream &stream, unsigned int depth, const char *name,
                                                         BYTE value )
 	{
 	WriteTabbedDepth( stream, depth );
@@ -61,7 +61,7 @@ void WriteNamedByte( ostream &stream, unsigned int depth, const char *name,
 	}
 
 
-void WriteNamedByte( ostream &stream, unsigned int depth, string &strname,
+void WriteNamedByte( std::ofstream &stream, unsigned int depth, std::string &strname,
                                                         BYTE value )
 	{
 	WriteTabbedDepth( stream, depth );

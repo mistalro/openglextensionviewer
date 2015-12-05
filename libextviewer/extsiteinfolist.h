@@ -122,8 +122,8 @@ CExtensionSiteInfo *GetSiteInfo( unsigned int site )
         };
 
 int FindExtensionLocalPath( unsigned int site, 	
-			string &pextpath,
-			string &pextname )
+			std::string &pextpath,
+			std::string &pextname )
 	{
 	if ( site < size() )
 		{
@@ -133,7 +133,7 @@ int FindExtensionLocalPath( unsigned int site,
 	return(0);
 	}
 
-int FindSite( string &path )
+int FindSite( std::string &path )
 	{
 	for ( unsigned int site = 0; site < size(); site++ )
 		{
@@ -146,8 +146,8 @@ int FindSite( string &path )
 	return -1;
 	}
 
-int FindExtensionLocalPath( string &pextpath,
-			    string &pextname )
+int FindExtensionLocalPath( std::string &pextpath,
+			    std::string &pextname )
 	{
 	for ( unsigned int site = 0; site < size(); site++ )
 		{
@@ -163,9 +163,9 @@ int FindExtensionLocalPath( string &pextpath,
 	return(0);
 	}                                                                                
 int FindRegistryExtensionPathIndex( unsigned int site,
-			const string &regbuf,
-			string &pextname,
-			string &pextpath,
+			const std::string &regbuf,
+			std::string &pextname,
+			std::string &pextpath,
                        	int index )
 	{
 	if ( site < size() )
@@ -182,14 +182,14 @@ int GetCount( void )
 
 void DumpData( void )
 	{
-	cout << "List Dump Data ---------------------------------" << endl;
+	std::cout << "List Dump Data ---------------------------------" << std::endl;
 
 	for ( unsigned int pos = 0; pos < size(); pos++ )	
 		{
 		at(pos).DumpData();
 		}
 
-	cout << "------------------------------------------------" << endl;
+	std::cout << "------------------------------------------------" << std::endl;
 	}
 
 int WebsiteMatch( CExtensionSiteInfo &info );

@@ -37,22 +37,22 @@ virtual void FuncSetAllFlags( void )
 	SetAllFlags( FLAG_OUTPUT );
 	}
 
-virtual void FuncClearNameFlag( const string &name, int flag )
+virtual void FuncClearNameFlag( const std::string &name, int flag )
 	{
 	ClearNameFlag( name, flag );
 	}
 
-virtual void FuncAddName( const string &name ) 
+virtual void FuncAddName( const std::string &name ) 
 	{
 	Add( name );
 	}
 
-virtual void FuncRemoveName( const string &name ) 
+virtual void FuncRemoveName( const std::string &name ) 
 	{
 	RemoveName( name );
 	}
 
-virtual int FuncSetFullNameFlag( const string &name, int flag, int matchcode ) 
+virtual int FuncSetFullNameFlag( const std::string &name, int flag, int matchcode ) 
 	{
 	return SetFullNameFlag( name, flag, matchcode );	
 	}
@@ -62,19 +62,19 @@ virtual int FuncGetCount( void )
 	return GetCount();
 	}
 
-virtual int FuncFindName( const string &name ) 
+virtual int FuncFindName( const std::string &name ) 
 	{
 	return FindName( name );
 	}
 
-virtual void FuncSetVariable( const string &name, const string &value ) 
+virtual void FuncSetVariable( const std::string &name, const std::string &value ) 
 	{
 	int index = (atoi(value.data() ) !=0) * FLAG_OUTPUT;
 
 	SetNameFlag( name, index );
 	}
 
-virtual void FuncSelectByName( const string &name ) 
+virtual void FuncSelectByName( const std::string &name ) 
 	{
 	SelectByName( name );
 	}
@@ -84,7 +84,7 @@ virtual int FuncGetIndexFlag( int pos, int flag )
 	return GetIndexFlag( pos, flag );
 	}
 
-virtual int FuncGetNameFlag( const string &name, int flag ) 
+virtual int FuncGetNameFlag( const std::string &name, int flag ) 
 	{
 	return GetNameFlag( name, flag );
 	}
@@ -94,7 +94,7 @@ virtual void FuncSetIndexFlag( int pos, int flag )
 	SetIndexFlag( pos, flag );
 	}
 
-virtual void FuncSelectExtensionString( const string &extstring, 
+virtual void FuncSelectExtensionString( const std::string &extstring, 
 				CExtensionHeaderFileFuncIgnore &ignorelist, 
 				CExtensionHeaderFileFuncNew &newlist,
 				int flag, int matchmode, int updatemode ) 
@@ -103,17 +103,17 @@ virtual void FuncSelectExtensionString( const string &extstring,
 	}
 
 
-virtual void FuncUnselectExtensionString( const string &extstring, int flag, int matchmode ) 
+virtual void FuncUnselectExtensionString( const std::string &extstring, int flag, int matchmode ) 
 	{
 	UnselectExtensionString( extstring, flag, matchmode );
 	}
 
-virtual void FuncAddExtensionString( const string & /* extstring */ ) 
+virtual void FuncAddExtensionString( const std::string & /* extstring */ ) 
 	{
 	/* Nothing to do here */
 	}
 
-virtual void FuncRemoveExtensionString( const string &extstring ) 
+virtual void FuncRemoveExtensionString( const std::string &extstring ) 
 	{
 	RemoveExtensionString( extstring );
 	}
@@ -123,7 +123,7 @@ virtual void FuncDeleteIndex( int index )
 	DeleteIndex(index);
 	}
 
-virtual int FuncDeleteExtensionName( const string &pname ) 
+virtual int FuncDeleteExtensionName( const std::string &pname ) 
 	{
 	return DeleteName(pname);	
 	}

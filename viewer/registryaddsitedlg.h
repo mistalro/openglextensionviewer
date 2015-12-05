@@ -5,8 +5,6 @@
 #ifndef REGISTRYADDSITEDIALOG_H
 #define REGISTRYADDSITEDIALOG_H
 
-using namespace std;
-
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
@@ -32,7 +30,7 @@ public:
 // ----- Internal variables -------------------------------------------------
 
 CExtensionSiteInfoList *m_psiteinfolist;
-string			m_localstring;
+std::string		m_localstring;
 CRegistryUpdateListFunc *m_pupdatelistfunc;
 
 // ----- Constructor and Destructor -----------------------------------------

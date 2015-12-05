@@ -5,6 +5,8 @@
 #ifndef CONSTANTLISTWIDGET_H
 #define CONSTANTLISTWIDGET_H
 
+#include <vector>
+
 #include <Qt3Support>
 #include <qnamespace.h>
 #include <QWidget>
@@ -60,7 +62,7 @@ public:
 CDerivedListViewConstant	*m_plistview;   // Pointer to list view
 CExtensionViewer   		*m_pextcreator;
 CExtensionEntry			*m_pextentry;
-vector <CDerivedListViewItem *> m_itemlist;
+std::vector <CDerivedListViewItem *> m_itemlist;
 int 				 m_listempty;	// List is empty
 
 // ----- Constructor and destructor -----------------------------------------

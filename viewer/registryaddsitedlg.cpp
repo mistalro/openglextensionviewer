@@ -51,7 +51,7 @@ if ( NULL == m_psiteinfolist )
 
 if ( m_psiteinfolist->FindSite( m_localstring ) != -1 )
 	{	
-	cout << "Site already exists\n";
+	std::cout << "Site already exists\n";
 	return;
 	}
 
@@ -98,6 +98,6 @@ void  CRegistryAddSiteDialog::lineeditdescription_textChanged( const QString &st
 {
 if ( strcmp( m_localstring.data(), strdata.ascii() ) != 0 )
 	{
-	m_localstring = string( strdata.ascii() );
+	m_localstring = std::string( strdata.ascii() );
 	}
 }

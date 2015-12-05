@@ -7,8 +7,6 @@
 #include <iostream>
 #include <fstream>
 
-using namespace std;
-
 #include "extensionlib.h"
 
 // ---------------------------------------------------------------------------
@@ -22,6 +20,7 @@ static const char *str_blockname = "sitelist";
 static const char *str_listdata = "website";
 
 #define STRING_LISTDATA	str_listdata
+
 // --------------------------------------------------------------------------
 // Token ID numbers
 // --------------------------------------------------------------------------
@@ -45,9 +44,9 @@ static int token_num = sizeof(token_list)/sizeof(CTokenEntry);
 // Read CExtensionSiteInfoListIOData in from an open stream
 // --------------------------------------------------------------------------
 
-int CExtensionSiteInfoListIODataAsciiIO::ReadFileInternal( ifstream &stream )
+int CExtensionSiteInfoListIODataAsciiIO::ReadFileInternal( std::ifstream &stream )
 {
-string tokenid;
+std::string tokenid;
 int result;
 
 while ( ReadOpenClosePar( stream ) != 0 )
@@ -71,14 +70,13 @@ return( result );
 // Read CExtensionSiteInfoListIOData in from an open stream
 // --------------------------------------------------------------------------
 
-int CExtensionSiteInfoListIODataAsciiIO::ReadFile( ifstream &stream )
+int CExtensionSiteInfoListIODataAsciiIO::ReadFile( std::ifstream &stream )
 {
-int result;
-string tokenid;
+std::string tokenid;
 
 CExtensionSiteInfo entry_listdata;
 
-result = true;
+int result = true;
 
 while ( ReadOpenClosePar( stream ) != 0 )
 	{
@@ -92,7 +90,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 			break;
 
 		default:
-			cout << "CExtensionSiteInfoListIO::Unknown token <" << tokenid << ">\n";
+			std::cout << "CExtensionSiteInfoListIO::Unknown token <" << tokenid << ">\n";
 			break;
 		}
 
@@ -108,7 +106,7 @@ return( result );
 // Write data out to an open stream at specified tab depth
 // --------------------------------------------------------------------------
 
-int CExtensionSiteInfoListIODataAsciiIO::WriteFile( ofstream &stream, unsigned int depth )
+int CExtensionSiteInfoListIODataAsciiIO::WriteFile( std::ofstream &stream, unsigned int depth )
 {
 return( WriteFile( stream, depth, STRING_BLOCKNAME ) );
 }
@@ -117,7 +115,7 @@ return( WriteFile( stream, depth, STRING_BLOCKNAME ) );
 // Write data out to an open stream at specified tab depth
 // --------------------------------------------------------------------------
 
-int CExtensionSiteInfoListIODataAsciiIO::WriteFile( ofstream &stream, unsigned int depth, const char *pstr )
+int CExtensionSiteInfoListIODataAsciiIO::WriteFile( std::ofstream &stream, unsigned int depth, const char *pstr )
 {
 int result;
 

@@ -9,13 +9,11 @@
 
 #include "string.h"
 
-using namespace std;
-
 // --------------------------------------------------------------------------
 // Replacements for 'string' class
 // --------------------------------------------------------------------------
 
-void stl_strupr( string &str )
+void stl_strupr( std::string &str )
 {
 for (unsigned int pn = 0; pn < str.length(); pn++ )
         {
@@ -23,7 +21,7 @@ for (unsigned int pn = 0; pn < str.length(); pn++ )
         }
 }
 
-void stl_strlwr( string &str )
+void stl_strlwr( std::string &str )
 {
 for (unsigned int pn = 0; pn < str.length(); pn++ )
         {
@@ -31,18 +29,18 @@ for (unsigned int pn = 0; pn < str.length(); pn++ )
         }
 }
 
-void stl_hostname( string &str )
+void stl_hostname( std::string &str )
 {
 char buffer[128];
 
 gethostname( buffer, 128 );
 
-str = string(buffer);
+str = std::string(buffer);
 }
 
-void stl_strdel( string &str, int delch )
+void stl_strdel( std::string &str, int delch )
 {
-string newstr;
+std::string newstr;
 int pn, len, ch;
 
 len = str.length();
@@ -60,12 +58,12 @@ for ( pn = 0 ;pn < len; pn++ )
 str = newstr;
 }	
 
-void stl_getusername( string &str )
+void stl_getusername( std::string &str )
 {
 str= getenv( "USER");
 }
 
-void stl_getcwd( string &str )
+void stl_getcwd( std::string &str )
 {
 char buffer[1024];
 
@@ -74,7 +72,7 @@ getcwd( buffer,1023);
 str = buffer;
 }
 
-void stl_itoa( string &str, int value )
+void stl_itoa( std::string &str, int value )
 {
 char buffer[64];
 
@@ -84,7 +82,7 @@ str = buffer;
 }
 
 // --------------------------------------------------------------------------
-// Convert an entire string to upper case
+// Convert an entire std::string to upper case
 // --------------------------------------------------------------------------
 
 void strupr( char *chptr )
@@ -97,7 +95,7 @@ while (*chptr != 0 )
 }
 
 // --------------------------------------------------------------------------
-// Convert an entire string to lower case
+// Convert an entire std::string to lower case
 // --------------------------------------------------------------------------
 
 void strlwr( char *str )
@@ -110,7 +108,7 @@ while (*str )
 }
 
 // --------------------------------------------------------------------------
-// Delete the selected character from the string
+// Delete the selected character from the std::string
 // --------------------------------------------------------------------------
 
 int strdel( char *str, char chdel )
@@ -137,11 +135,9 @@ return(src);
 // Convert a HTTP path to a file path
 // --------------------------------------------------------------------------
 
-void ExtractServerPath( char *string, char *server, char *path )
+void ExtractServerPath( char *fullpath, char *server, char *path )
 {
-char *tptr;
-
-tptr = string;
+char *tptr = fullpath;
 
 if ( strncmp( tptr, "http://", 7 ) == 0 )
     tptr += 7;

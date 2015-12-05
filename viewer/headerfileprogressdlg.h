@@ -37,7 +37,7 @@ CHeaderFileProgressDialog() : QDialog(),
 
 // ----- Functions and Procedures ---------------------------------------------
 
-int HeaderFileProgressCallback( const string &name, const string &extname, int pos, int max );
+int HeaderFileProgressCallback( const std::string &name, const std::string &extname, int pos, int max );
 
 protected:
 

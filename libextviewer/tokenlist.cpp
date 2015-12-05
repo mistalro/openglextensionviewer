@@ -73,7 +73,7 @@ void CTokenList::TokenAdd( const char *name, int tokenid )
         push_back( token );
         };
 
-CToken *CTokenList::TokenFind( const string &name )
+CToken *CTokenList::TokenFind( const std::string &name )
         {
         for ( unsigned int pn = 0; pn < size(); pn++ )
         {
@@ -108,9 +108,9 @@ void CTokenList::ResetCount( void )
                 }
         }
 
-void CTokenList::WriteStats(const string &path)
+void CTokenList::WriteStats(const std::string &path)
 	{
-        ofstream stream;
+        std::ofstream stream;
 
         stream.open( path.data() );
 

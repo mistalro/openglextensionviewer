@@ -2,7 +2,6 @@
 // Copyright: (C) VFX Research 2002 - 2014. All Rights Reserved.
 // ---------------------------------------------------------------------------
 
-using namespace std;                                                                                 
 #define _EXTENSIONLIB_INTERNAL_
 
 #include "extensionlib.h"
@@ -61,9 +60,7 @@ return(0);                      // Return failure
                                                                                 
 int SortByFlags( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formata.m_dwFlags - formatb.m_dwFlags;
+int compare = formata.m_dwFlags - formatb.m_dwFlags;
                                                                                 
 if ( !compare )
 	{
@@ -75,9 +72,7 @@ return( compare );
                                                                                 
 int SortByFlagsReversed( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formatb.m_dwFlags - formata.m_dwFlags;
+int compare = formatb.m_dwFlags - formata.m_dwFlags;
                                                                                 
 if ( !compare )
 	{
@@ -107,9 +102,7 @@ return( formatb.m_index - formata.m_index );
                                                                                 
 int SortByPixelType( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formata.m_iPixelType - formatb.m_iPixelType;
+int compare = formata.m_iPixelType - formatb.m_iPixelType;
                                                                                 
 if ( !compare )
 	{	
@@ -121,9 +114,7 @@ return( compare );
                                                                                 
 int SortByPixelTypeReversed( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formatb.m_iPixelType - formata.m_iPixelType;
+int compare = formatb.m_iPixelType - formata.m_iPixelType;
                                                                                 
 if ( !compare )
 	{
@@ -139,9 +130,7 @@ return( compare );
                                                                                 
 int SortByColorBits( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formata.m_cColorBits - formatb.m_cColorBits;
+int compare = formata.m_cColorBits - formatb.m_cColorBits;
                                                                                 
 if ( !compare )
 	{
@@ -153,10 +142,8 @@ return( compare );
                                                                                 
 int SortByColorBitsReversed( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formatb.m_cColorBits - formata.m_cColorBits;
-                                                                                
+int compare = formatb.m_cColorBits - formata.m_cColorBits;
+                                                                               
 if ( !compare )
 	{
         compare = formatb.m_index - formata.m_index;
@@ -185,9 +172,7 @@ return( compare );
                                                                                 
 int SortByRedBitsReversed( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formatb.m_cRedBits - formata.m_cRedBits;
+int compare = formatb.m_cRedBits - formata.m_cRedBits;
                                                                                
 if ( !compare )
 	{
@@ -203,9 +188,7 @@ return( compare );
                                                                                 
 int SortByGreenBits( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                               
-compare = formata.m_cGreenBits - formatb.m_cGreenBits;
+int compare = formata.m_cGreenBits - formatb.m_cGreenBits;
 
 if ( !compare )
 	{
@@ -217,9 +200,7 @@ return( compare );
                                                                                 
 int SortByGreenBitsReversed( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formata.m_cGreenBits - formatb.m_cGreenBits;
+int compare = formata.m_cGreenBits - formatb.m_cGreenBits;
                                                                                
 if ( !compare )
 	{
@@ -235,9 +216,7 @@ return( compare );
                                                                                 
 int SortByBlueBits( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formata.m_cBlueBits - formatb.m_cBlueBits;
+int compare = formata.m_cBlueBits - formatb.m_cBlueBits;
                                                                                 
 if ( !compare )
 	{
@@ -249,9 +228,7 @@ return( compare );
                                                                                 
 int SortByBlueBitsReversed( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formatb.m_cBlueBits - formata.m_cBlueBits;
+int compare = formatb.m_cBlueBits - formata.m_cBlueBits;
                                                                                 
 if ( !compare )
 	{
@@ -267,9 +244,7 @@ return( compare );
                                                                                 
 int SortByAlphaBits( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formata.m_cAlphaBits - formatb.m_cAlphaBits;
+int compare = formata.m_cAlphaBits - formatb.m_cAlphaBits;
                                                                                 
 if ( !compare )
 	{
@@ -281,9 +256,7 @@ return( compare );
                                                                                 
 int SortByAlphaBitsReversed( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formatb.m_cAlphaBits - formata.m_cAlphaBits;
+int compare = formatb.m_cAlphaBits - formata.m_cAlphaBits;
                                                                                 
 if ( !compare )
 	{
@@ -299,9 +272,7 @@ return( compare );
                                                                                 
 int SortByAccumBits( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formata.m_cAccumBits - formatb.m_cAccumBits;
+int compare = formata.m_cAccumBits - formatb.m_cAccumBits;
                                                                                 
 if ( !compare )
 	{
@@ -313,9 +284,7 @@ return( compare );
                                                                                 
 int SortByAccumBitsReversed( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formatb.m_index - formata.m_index;
+int compare = formatb.m_index - formata.m_index;
                                                                                 
 if ( !compare )
 	{
@@ -331,9 +300,7 @@ return( compare );
                                                                                 
 int SortByAccumRedBits( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formata.m_cAccumRedBits - formatb.m_cAccumRedBits;
+int compare = formata.m_cAccumRedBits - formatb.m_cAccumRedBits;
                                                                                 
 if ( !compare )
 	{
@@ -345,9 +312,7 @@ return( compare );
                                                                                 
 int SortByAccumRedBitsReversed( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formatb.m_cAccumRedBits - formata.m_cAccumRedBits;
+int compare = formatb.m_cAccumRedBits - formata.m_cAccumRedBits;
                                                                                 
 if ( !compare )
 	{
@@ -363,9 +328,7 @@ return( compare );
                                                                                 
 int SortByAccumGreenBits( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formata.m_cAccumGreenBits - formatb.m_cAccumGreenBits;
+int compare = formata.m_cAccumGreenBits - formatb.m_cAccumGreenBits;
                                                                                 
 if ( !compare )
 	{
@@ -377,9 +340,7 @@ return( compare );
                                                                                 
 int SortByAccumGreenBitsReversed( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formatb.m_cAccumGreenBits - formata.m_cAccumGreenBits;
+int compare = formatb.m_cAccumGreenBits - formata.m_cAccumGreenBits;
                                                                                 
 if ( !compare )
 	{
@@ -395,9 +356,7 @@ return( compare );
                                                                                 
 int SortByAccumBlueBits( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formata.m_cAccumBlueBits - formatb.m_cAccumBlueBits;
+int compare = formata.m_cAccumBlueBits - formatb.m_cAccumBlueBits;
                                                                                 
 if ( !compare )
 	{
@@ -409,9 +368,7 @@ return( compare );
                                                                                 
 int SortByAccumBlueBitsReversed( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )    
 {
-int compare;
-                                                                                
-compare = formatb.m_cAccumBlueBits - formata.m_cAccumBlueBits;
+int compare = formatb.m_cAccumBlueBits - formata.m_cAccumBlueBits;
                                                                                 
 if ( !compare )
 	{
@@ -427,9 +384,7 @@ return( compare );
                                                                                 
 int SortByAccumAlphaBits( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-
-compare = formata.m_cAccumAlphaBits - formatb.m_cAccumAlphaBits;
+int compare = formata.m_cAccumAlphaBits - formatb.m_cAccumAlphaBits;
                                                                                
 if ( !compare )
 	{
@@ -441,9 +396,7 @@ return( compare );
                                                                                 
 int SortByAccumAlphaBitsReversed( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formatb.m_cAccumAlphaBits - formata.m_cAccumAlphaBits;
+int compare = formatb.m_cAccumAlphaBits - formata.m_cAccumAlphaBits;
                                                                                 
 if ( !compare )
 	{
@@ -459,9 +412,7 @@ return( compare );
                                                                                 
 int SortByDepthBits( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formata.m_cDepthBits - formatb.m_cDepthBits;
+int compare = formata.m_cDepthBits - formatb.m_cDepthBits;
                                                                                 
 if ( !compare )
 	{
@@ -473,9 +424,7 @@ return( compare );
                                                                                 
 int SortByDepthBitsReversed( CPixelFormatDescriptor const &formata, CPixelFormatDescriptor const &formatb )
 {
-int compare;
-                                                                                
-compare = formatb.m_cDepthBits - formata.m_cDepthBits;
+int compare = formatb.m_cDepthBits - formata.m_cDepthBits;
                                                                                 
 if ( !compare )
 	{
@@ -742,7 +691,7 @@ SortRange( 0, m_maxformat );
 // Save the pixel format list count to an open stream
 // --------------------------------------------------------------------------
 
-void CPixelFormatDescriptorList::SavePixelFormatListCount( ostream &stream)
+void CPixelFormatDescriptorList::SavePixelFormatListCount( std::ofstream &stream)
 {
 stream << "No. of pixel formats [" << m_maxformat << "]    ";
 }
@@ -751,7 +700,7 @@ stream << "No. of pixel formats [" << m_maxformat << "]    ";
 // Save the pixel format list sorting mode to an open stream
 // --------------------------------------------------------------------------
 
-void CPixelFormatDescriptorList::SavePixelFormatListSortMode( ostream &stream)
+void CPixelFormatDescriptorList::SavePixelFormatListSortMode( std::ofstream &stream)
 {
 stream << "Sorted by [";
 
@@ -821,33 +770,33 @@ else
 // Save the pixel format list horizontal border to an open stream
 // --------------------------------------------------------------------------
 
-void CPixelFormatDescriptorList::SavePixelFormatListHorizBorder( ostream &stream )
+void CPixelFormatDescriptorList::SavePixelFormatListHorizBorder( std::ofstream &stream )
 {
 stream << "+-------+------------+-";
 stream << "-----------+----------------+------------------+----------------";
 stream << "-+------------------+---------------------+------------+--------------";
 stream << "+------------------------------------------------------------------------------+";
-stream << endl;
+stream << std::endl;
 }
 
 // --------------------------------------------------------------------------
 // Save the pixel format list horizontal title to an open stream
 // --------------------------------------------------------------------------
 
-void CPixelFormatDescriptorList::SavePixelFormatListHorizTitle( ostream &stream )
+void CPixelFormatDescriptorList::SavePixelFormatListHorizTitle( std::ofstream &stream )
 {
 stream << "| Index | Pixel type | ";
 stream << "Color bits | Red bits/shift | Green bits/shift | Blue bits/shift";
 stream << " | Alpha bits/shift | Accumulation bits   | Depth bits | Stencil bits ";
 stream << "| Flags                                                                        |";
-stream << endl;
+stream << std::endl;
 }
 
 // --------------------------------------------------------------------------
 // Save the pixel format list index to an open stream
 // --------------------------------------------------------------------------
 
-void CPixelFormatDescriptorList::SavePixelFormatListIndex( ostream &stream, CPixelFormatDescriptor *pdesc)
+void CPixelFormatDescriptorList::SavePixelFormatListIndex( std::ofstream &stream, CPixelFormatDescriptor *pdesc)
 {
 stream << "| ";
 stream.width( 4 );
@@ -858,7 +807,7 @@ stream << pdesc->m_index+1;
 // Save the pixel format list type to an open stream
 // --------------------------------------------------------------------------
 
-void CPixelFormatDescriptorList::SavePixelFormatListType( ostream &stream, CPixelFormatDescriptor *pdesc)
+void CPixelFormatDescriptorList::SavePixelFormatListType( std::ofstream &stream, CPixelFormatDescriptor *pdesc)
 {
 // ----- Pixel format type -----
 stream << "  | ";
@@ -883,7 +832,7 @@ else
 // Save the pixel format list RGBA type to an open stream
 // --------------------------------------------------------------------------
 
-void CPixelFormatDescriptorList::SavePixelFormatListRGBA( ostream &stream, CPixelFormatDescriptor *pdesc)
+void CPixelFormatDescriptorList::SavePixelFormatListRGBA( std::ofstream &stream, CPixelFormatDescriptor *pdesc)
 {
 // ----- Red/Green/Blue/Alpha bits -----
 stream << "    | ";
@@ -911,7 +860,7 @@ stream << (int) pdesc->m_cAlphaBits << "/" << (int) pdesc->m_cAlphaShift;
 // Save the pixel format list accumulator type to an open stream
 // --------------------------------------------------------------------------
 
-void CPixelFormatDescriptorList::SavePixelFormatListAccum( ostream &stream, CPixelFormatDescriptor *pdesc)
+void CPixelFormatDescriptorList::SavePixelFormatListAccum( std::ofstream &stream, CPixelFormatDescriptor *pdesc)
 {
 stream << " | ";
 stream.width( 3 );
@@ -930,7 +879,7 @@ stream << (int) pdesc->m_cAccumAlphaBits << " )";
 // Save the pixel format list depth bits to an open stream
 // --------------------------------------------------------------------------
 
-void CPixelFormatDescriptorList::SavePixelFormatListDepth( ostream &stream, CPixelFormatDescriptor *pdesc)
+void CPixelFormatDescriptorList::SavePixelFormatListDepth( std::ofstream &stream, CPixelFormatDescriptor *pdesc)
 {
 stream << " | ";
 stream.width( 10 );
@@ -941,7 +890,7 @@ stream << (int) pdesc->m_cDepthBits;
 // Save the pixel format list stencil bits to an open stream
 // --------------------------------------------------------------------------
 
-void CPixelFormatDescriptorList::SavePixelFormatListStencil( ostream &stream, CPixelFormatDescriptor *pdesc)
+void CPixelFormatDescriptorList::SavePixelFormatListStencil( std::ofstream &stream, CPixelFormatDescriptor *pdesc)
 {
 stream << " | ";
 stream.width( 12 );
@@ -952,9 +901,9 @@ stream << (int) pdesc->m_cStencilBits;
 // Save the pixel format list Linux flags to an open stream
 // --------------------------------------------------------------------------
 
-void CPixelFormatDescriptorList::SavePixelFormatListLinux( ostream &stream, CPixelFormatDescriptor *pdesc)
+void CPixelFormatDescriptorList::SavePixelFormatListLinux( std::ofstream &stream, CPixelFormatDescriptor *pdesc)
 {
-string buffer;
+std::string buffer;
 XVisualInfo *pvisual = (XVisualInfo *) pdesc->m_pvisualinfo;
 stream << " | ";
 stream.width( 76 );
@@ -1017,33 +966,33 @@ stream << buffer;
 // Save the pixel format list end-of-line to an open stream
 // --------------------------------------------------------------------------
 
-void CPixelFormatDescriptorList::SavePixelFormatListEndLine( ostream &stream, CPixelFormatDescriptor *pdesc)
+void CPixelFormatDescriptorList::SavePixelFormatListEndLine( std::ofstream &stream, CPixelFormatDescriptor *pdesc)
 {
 stream << " |";
-stream << endl;
+stream << std::endl;
 }
 
 // --------------------------------------------------------------------------
 // Save the pixel format list end-of-line to an open stream
 // --------------------------------------------------------------------------
 
-void CPixelFormatDescriptorList::SavePixelFormatList( ostream &stream )
+void CPixelFormatDescriptorList::SavePixelFormatList( std::ofstream &stream )
 {
 int pn;
 
-stream << "Pixel Format List" << endl;
-stream << "-----------------" << endl << endl;
+stream << "Pixel Format List" << std::endl;
+stream << "-----------------" << std::endl << std::endl;
 
 SavePixelFormatListCount(stream);
 SavePixelFormatListSortMode( stream);
 
-stream << endl << endl;
+stream << std::endl << std::endl;
 
 SavePixelFormatListHorizBorder( stream );
 SavePixelFormatListHorizTitle( stream );
 SavePixelFormatListHorizBorder( stream );
 
-stream.flags( ios::left );
+stream.flags( std::ios::left );
 
 for ( pn = 0; pn < m_maxformat; pn++)
 	{
@@ -1068,11 +1017,11 @@ SavePixelFormatListHorizBorder( stream );
 // Save the pixel format to the selected file path
 // ----------------------------------------------------------------------------
 
-int CPixelFormatDescriptorList::SavePixelFormatList( const string &path )
+int CPixelFormatDescriptorList::SavePixelFormatList( const std::string &path )
 {
-ofstream outbuf;
+std::ofstream outbuf;
 
-outbuf.open( path.data(), ios::out );
+outbuf.open( path.data(), std::ios::out );
 
 if ( !outbuf.is_open() )
 	{

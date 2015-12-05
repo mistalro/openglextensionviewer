@@ -26,18 +26,18 @@ public:
 // ----- Reading files ------------------------------------------------------
 
 int ReadFile( const char *path );
-int ReadFile( const string &path );
+int ReadFile( const std::string &path );
 
-virtual int ReadFileInternal( ifstream &stream ) = 0;
-virtual int ReadFile( ifstream &stream ) = 0;
+virtual int ReadFileInternal( std::ifstream &stream ) = 0;
+virtual int ReadFile( std::ifstream &stream ) = 0;
 
 // ----- Writing files ------------------------------------------------------
 
 int WriteFile( const char *path );
-int WriteFile( const string &path );
+int WriteFile( const std::string &path );
 
-virtual int WriteFile( ofstream &stream, unsigned int depth ) = 0;
-virtual int WriteFile( ofstream &stream, unsigned int depth, const char *pstr ) = 0;
+virtual int WriteFile( std::ofstream &stream, unsigned int depth ) = 0;
+virtual int WriteFile( std::ofstream &stream, unsigned int depth, const char *pstr ) = 0;
 };
 
 // --------------------------------------------------------------------------

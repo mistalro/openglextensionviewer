@@ -5,8 +5,6 @@
 #ifndef PIXELFORMATSDIALOG_H
 #define PIXELFORMATSDIALOG_H
 
-using namespace std;
-
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>

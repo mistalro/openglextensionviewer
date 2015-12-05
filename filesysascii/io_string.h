@@ -15,8 +15,8 @@
 // Utility functions
 // --------------------------------------------------------------------------
 
-void strlwr( string &pstr );
-void strupr( string &pstr );
+void strlwr( std::string &pstr );
+void strupr( std::string &pstr );
 
 // --------------------------------------------------------------------------
 // File system for string management
@@ -29,18 +29,18 @@ public:
 
 // ----- Read routines ------------------------------------------------------
 
-void ReadString( ifstream &ifs, string &string );
-void ReadQuotedString( ifstream &ifs, string &string );
+void ReadString( std::ifstream &ifs, std::string &string );
+void ReadQuotedString( std::ifstream &ifs, std::string &string );
 
 // ----- Write routines -----------------------------------------------------
 
-void WriteQuotedString( ostream &stream, string &string );
+void WriteQuotedString( std::ofstream &stream, std::string &string );
 
-void WriteNamedString( ostream &stream, unsigned int depth,
-                                        string &strname, string &string );
+void WriteNamedString( std::ofstream &stream, unsigned int depth,
+                                        std::string &strname, std::string &string );
 
-void WriteNamedString( ostream &stream, unsigned int depth,
-                                const char *name, string &string );
+void WriteNamedString( std::ofstream &stream, unsigned int depth,
+                                const char *name, std::string &string );
 };
 
 #endif	 // IO_STRING_H_

@@ -30,7 +30,7 @@ class CConfigurationFileSettingsData
 public:
 
 int	m_newconfigflag;	// New configuration flag - no name
-string	m_configfile;		// Configuration file
+std::string	m_configfile;		// Configuration file
 int	m_autoreadheaderflags;	// Automatically read header files
 int	m_autoloadconfigflags;	// Automatically load configuration files
 int	m_autosaveconfigflags;	// Automatically save configuration files
@@ -76,12 +76,12 @@ inline void SetNewconfigflag( const int value )
 	m_newconfigflag = value;
 	}
 
-inline string & GetConfigsettingsfile( void )
+inline std::string & GetConfigsettingsfile( void )
 	{
 	return( m_configfile );
 	}
 
-inline void SetConfigsettingsfile( const string  &value )
+inline void SetConfigsettingsfile( const std::string  &value )
 	{
 	m_configfile = value;
 	}
@@ -135,13 +135,13 @@ public:
 
 using CVirtualFileSystemAscii::ReadFile;
 
-int ReadFile( ifstream &stream );
-int ReadFileInternal( ifstream &stream );
+int ReadFile( std::ifstream &stream );
+int ReadFileInternal( std::ifstream &stream );
 
 using CVirtualFileSystemAscii::WriteFile;
 
-int WriteFile( ofstream &stream, unsigned int depth );
-int WriteFile( ofstream &stream, unsigned int depth, const char *pstr );
+int WriteFile( std::ofstream &stream, unsigned int depth );
+int WriteFile( std::ofstream &stream, unsigned int depth, const char *pstr );
 };
 
 // ---------------------------------------------------------------------

@@ -7,8 +7,6 @@
 #include <iostream>
 #include <fstream>
 
-using namespace std;
-
 #include "extensionlib.h"
 
 // ---------------------------------------------------------------------------
@@ -61,9 +59,9 @@ static int token_num = sizeof(token_list)/sizeof(CTokenEntry);
 // Read CConfigurationFileSettingsData in from an open stream
 // --------------------------------------------------------------------------
 
-int CConfigurationFileSettingsDataAsciiIO::ReadFileInternal( ifstream &stream )
+int CConfigurationFileSettingsDataAsciiIO::ReadFileInternal( std::ifstream &stream )
 {
-string tokenid;
+std::string tokenid;
 int result;
 
 while ( ReadOpenClosePar( stream ) != 0 )
@@ -87,13 +85,13 @@ return result;
 // Read CConfigurationFileSettingsData in from an open stream
 // --------------------------------------------------------------------------
 
-int CConfigurationFileSettingsDataAsciiIO::ReadFile( ifstream &stream )
+int CConfigurationFileSettingsDataAsciiIO::ReadFile( std::ifstream &stream )
 {
 int result;
-string tokenid;
+std::string tokenid;
 
 int entry_newconfigflag;
-string entry_configsettingsfile;
+std::string entry_configsettingsfile;
 int entry_autoreadheaderflags;
 int entry_autoloadconfigflags;
 int entry_autosaveconfigflags;
@@ -103,7 +101,7 @@ result = true;
 
 if ( g_verbose )
 	{
-	cout << "Reading CConfigurationFileSettingsDataAsciiIO" << endl;
+	std::cout << "Reading CConfigurationFileSettingsDataAsciiIO" << std::endl;
 	}
 
 while ( ReadOpenClosePar( stream ) != 0 )
@@ -112,7 +110,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 	if ( g_verbose > 1 )
 		{
-		cout << "Read Token = <" << tokenid << ">\n";
+		std::cout << "Read Token = <" << tokenid << ">\n";
 		}
 
 	switch( token_match( tokenid, token_list, token_num ) )
@@ -123,7 +121,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <newconfigflag> = <" << entry_newconfigflag << ">\n";
+				std::cout << "Read <newconfigflag> = <" << entry_newconfigflag << ">\n";
 				}
 			break;
 
@@ -133,7 +131,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <configsettingsfile> = <" << entry_configsettingsfile << ">\n";
+				std::cout << "Read <configsettingsfile> = <" << entry_configsettingsfile << ">\n";
 				}
 			break;
 
@@ -143,7 +141,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <autoreadheaderflags> = <" << entry_autoreadheaderflags << ">\n";
+				std::cout << "Read <autoreadheaderflags> = <" << entry_autoreadheaderflags << ">\n";
 				}
 			break;
 
@@ -153,7 +151,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <autoloadconfigflags> = <" << entry_autoloadconfigflags << ">\n";
+				std::cout << "Read <autoloadconfigflags> = <" << entry_autoloadconfigflags << ">\n";
 				}
 			break;
 
@@ -163,12 +161,12 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <autosaveconfigflags> = <" << entry_autosaveconfigflags << ">\n";
+				std::cout << "Read <autosaveconfigflags> = <" << entry_autosaveconfigflags << ">\n";
 				}
 			break;
 
 		default:
-			cout << "CConfigurationFileSettingsIO::Unknown token <" << tokenid << ">\n";
+			std::cout << "CConfigurationFileSettingsIO::Unknown token <" << tokenid << ">\n";
 			break;
 		}
 
@@ -179,7 +177,7 @@ stream.putback( '}' );
 
 if ( g_verbose )
 	{
-	cout << "Reading complete." << endl << endl;
+	std::cout << "Reading complete." << std::endl << std::endl;
 	}
 
 return result;
@@ -189,7 +187,7 @@ return result;
 // Write data out to an open stream at specified tab depth
 // --------------------------------------------------------------------------
 
-int CConfigurationFileSettingsDataAsciiIO::WriteFile( ofstream &stream, unsigned int depth )
+int CConfigurationFileSettingsDataAsciiIO::WriteFile( std::ofstream &stream, unsigned int depth )
 {
 return WriteFile( stream, depth, STRING_BLOCKNAME );
 }
@@ -198,7 +196,7 @@ return WriteFile( stream, depth, STRING_BLOCKNAME );
 // Write data out to an open stream at specified tab depth
 // --------------------------------------------------------------------------
 
-int CConfigurationFileSettingsDataAsciiIO::WriteFile( ofstream &stream, unsigned int depth, const char *pstr )
+int CConfigurationFileSettingsDataAsciiIO::WriteFile( std::ofstream &stream, unsigned int depth, const char *pstr )
 {
 int result;
 

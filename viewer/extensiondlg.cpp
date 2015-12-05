@@ -3,7 +3,6 @@
 // ---------------------------------------------------------------------------
 
 #include <QtCore>
-using namespace Qt;
 
 #include "extensiondlg.h"
 #include "extensionviewdlg.h"
@@ -102,7 +101,7 @@ if ( m_pextcreator != NULL )
 
 void CExtensionDialog::SetDialogData( void )
 {
-string srcpath, text, strbuf;
+std::string srcpath, text, strbuf;
 int index, result;
 
 #ifdef DEBUG

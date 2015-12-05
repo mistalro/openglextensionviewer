@@ -1,10 +1,6 @@
 // ---------------------------------------------------------------------------
 // Copyright: (C) VFX Research 2002 - 2014. All Rights Reserved.
 // ---------------------------------------------------------------------------
-
-using namespace std;
-                                                                                
-//#define _LINUX
                                                                                 
 #include <qlabel.h>
 #include <q3listbox.h>

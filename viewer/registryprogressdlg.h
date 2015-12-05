@@ -5,8 +5,6 @@
 #ifndef REGISTRYPROGRESSDIALOG_H
 #define REGISTRYPROGRESSDIALOG_H
 
-using namespace std;
-
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
@@ -42,7 +40,7 @@ CRegistryProgressDialog() : Ui_CRegistryProgressBaseDialog()
 
 // ----- Functions and Procedures ---------------------------------------------
 
-int RegistryDownloadCallback( const string &str, int mode );
+int RegistryDownloadCallback( const std::string &str, int mode );
 
 protected:
 

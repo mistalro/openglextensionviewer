@@ -11,12 +11,10 @@
 #include <iostream>
 #include <fstream>
 
-using namespace std;
-
 #include "extensionlib.h"
 
 // ---------------------------------------------------------------------------
-// Keyword strings
+// Keyword std::strings
 // ---------------------------------------------------------------------------
 
 static const char *str_blockname = "extentry";
@@ -73,9 +71,9 @@ static int token_num = sizeof(token_list)/sizeof(CTokenEntry);
 // Read CExtensionEntryData in from an open stream
 // --------------------------------------------------------------------------
 
-int CExtensionEntryDataAsciiIO::ReadFileInternal( ifstream &stream )
+int CExtensionEntryDataAsciiIO::ReadFileInternal( std::ifstream &stream )
 {
-string tokenid;
+std::string tokenid;
 int result;
 
 while ( ReadOpenClosePar( stream ) != 0 )
@@ -99,16 +97,16 @@ return result;
 // Read CExtensionEntryData in from an open stream
 // --------------------------------------------------------------------------
 
-int CExtensionEntryDataAsciiIO::ReadFile( ifstream &stream )
+int CExtensionEntryDataAsciiIO::ReadFile( std::ifstream &stream )
 {
 int result;
-string tokenid;
+std::string tokenid;
 
-string entry_prefix;
-string entry_name;
-string entry_value;
-string entry_header;
-string entry_pfnproc;
+std::string entry_prefix;
+std::string entry_name;
+std::string entry_value;
+std::string entry_header;
+std::string entry_pfnproc;
 int entry_funcstart;
 int entry_funcnum;
 int entry_conststart;
@@ -119,13 +117,13 @@ result = true;
 
 
 #ifdef DEBUG
-cout << "CExtensionEntryDataAsciiIO::ReadFile\n";
+std::cout << "CExtensionEntryDataAsciiIO::ReadFile\n";
 #endif
 
 
 if ( g_verbose )
 	{
-	cout << "Reading CExtensionEntryDataAsciiIO" << endl;
+	std::cout << "Reading CExtensionEntryDataAsciiIO" << std::endl;
 	}
 
 while ( ReadOpenClosePar( stream ) != 0 )
@@ -133,12 +131,12 @@ while ( ReadOpenClosePar( stream ) != 0 )
 	ReadString( stream, tokenid );
 
 #ifdef DEBUG
-cout << "Token = " << tokenid << endl;
+std::cout << "Token = " << tokenid << std::endl;
 #endif
 
 	if ( g_verbose > 1 )
 		{
-		cout << "Read Token = <" << tokenid << ">\n";
+		std::cout << "Read Token = <" << tokenid << ">\n";
 		}
 
 	switch( token_match( tokenid, token_list, token_num ) )
@@ -148,12 +146,12 @@ cout << "Token = " << tokenid << endl;
 			m_prefix = entry_prefix;
 
 #ifdef DEBUG
-			cout << "Reading prefix" << endl;
+			std::cout << "Reading prefix" << std::endl;
 #endif
 
 			if ( g_verbose )
 				{
-				cout << "Read <prefix> = <" << entry_prefix << ">\n";
+				std::cout << "Read <prefix> = <" << entry_prefix << ">\n";
 				}
 			break;
 
@@ -162,12 +160,12 @@ cout << "Token = " << tokenid << endl;
 			m_name = entry_name;
 
 #ifdef DEBUG
-			cout << "Reading name" << endl;
+			std::cout << "Reading name" << std::endl;
 #endif
 
 			if ( g_verbose )
 				{
-				cout << "Read <name> = <" << entry_name << ">\n";
+				std::cout << "Read <name> = <" << entry_name << ">\n";
 				}
 			break;
 
@@ -176,12 +174,12 @@ cout << "Token = " << tokenid << endl;
 			m_value = entry_value;
 
 #ifdef DEBUG
-			cout << "Reading value" << endl;
+			std::cout << "Reading value" << std::endl;
 #endif
 
 			if ( g_verbose )
 				{
-				cout << "Read <value> = <" << entry_value << ">\n";
+				std::cout << "Read <value> = <" << entry_value << ">\n";
 				}
 			break;
 
@@ -190,12 +188,12 @@ cout << "Token = " << tokenid << endl;
 			m_header = entry_header;
 
 #ifdef DEBUG
-			cout << "Reading header" << endl;
+			std::cout << "Reading header" << std::endl;
 #endif
 
 			if ( g_verbose )
 				{
-				cout << "Read <header> = <" << entry_header << ">\n";
+				std::cout << "Read <header> = <" << entry_header << ">\n";
 				}
 			break;
 
@@ -204,12 +202,12 @@ cout << "Token = " << tokenid << endl;
 			m_pfnproc = entry_pfnproc;
 
 #ifdef DEBUG
-			cout << "Reading pfnproc" << endl;
+			std::cout << "Reading pfnproc" << std::endl;
 #endif
 
 			if ( g_verbose )
 				{
-				cout << "Read <pfnproc> = <" << entry_pfnproc << ">\n";
+				std::cout << "Read <pfnproc> = <" << entry_pfnproc << ">\n";
 				}
 			break;
 
@@ -218,12 +216,12 @@ cout << "Token = " << tokenid << endl;
 			m_funcstart = entry_funcstart;
 
 #ifdef DEBUG
-			cout << "Reading funcstart" << endl;
+			std::cout << "Reading funcstart" << std::endl;
 #endif
 
 			if ( g_verbose )
 				{
-				cout << "Read <funcstart> = <" << entry_funcstart << ">\n";
+				std::cout << "Read <funcstart> = <" << entry_funcstart << ">\n";
 				}
 			break;
 
@@ -232,12 +230,12 @@ cout << "Token = " << tokenid << endl;
 			m_funcnum = entry_funcnum;
 
 #ifdef DEBUG
-			cout << "Reading funcnum" << endl;
+			std::cout << "Reading funcnum" << std::endl;
 #endif
 
 			if ( g_verbose )
 				{
-				cout << "Read <funcnum> = <" << entry_funcnum << ">\n";
+				std::cout << "Read <funcnum> = <" << entry_funcnum << ">\n";
 				}
 			break;
 
@@ -246,12 +244,12 @@ cout << "Token = " << tokenid << endl;
 			m_conststart = entry_conststart;
 
 #ifdef DEBUG
-			cout << "Reading conststart" << endl;
+			std::cout << "Reading conststart" << std::endl;
 #endif
 
 			if ( g_verbose )
 				{
-				cout << "Read <conststart> = <" << entry_conststart << ">\n";
+				std::cout << "Read <conststart> = <" << entry_conststart << ">\n";
 				}
 			break;
 
@@ -260,12 +258,12 @@ cout << "Token = " << tokenid << endl;
 			m_constnum = entry_constnum;
 
 #ifdef DEBUG
-			cout << "Reading constnum" << endl;
+			std::cout << "Reading constnum" << endl;
 #endif
 
 			if ( g_verbose )
 				{
-				cout << "Read <constnum> = <" << entry_constnum << ">\n";
+				std::cout << "Read <constnum> = <" << entry_constnum << ">\n";
 				}
 			break;
 
@@ -274,17 +272,17 @@ cout << "Token = " << tokenid << endl;
 			m_flags = entry_flags;
 
 #ifdef DEBUG
-			cout << "Reading flags" << endl;
+			std::cout << "Reading flags" << endl;
 #endif
 
 			if ( g_verbose )
 				{
-				cout << "Read <flags> = <" << entry_flags << ">\n";
+				std::cout << "Read <flags> = <" << entry_flags << ">\n";
 				}
 			break;
 
 		default:
-			cout << "CExtensionEntryIO::Unknown token <" << tokenid << ">\n";
+			std::cout << "CExtensionEntryIO::Unknown token <" << tokenid << ">\n";
 			break;
 		}
 
@@ -295,7 +293,7 @@ stream.putback( '}' );
 
 if ( g_verbose )
 	{
-	cout << "Reading complete." << endl << endl;
+	std::cout << "Reading complete." << std::endl << std::endl;
 	}
 
 return result;
@@ -305,7 +303,7 @@ return result;
 // Write data out to an open stream at specified tab depth
 // --------------------------------------------------------------------------
 
-int CExtensionEntryDataAsciiIO::WriteFile( ofstream &stream, unsigned int depth )
+int CExtensionEntryDataAsciiIO::WriteFile( std::ofstream &stream, unsigned int depth )
 {
 return WriteFile( stream, depth, str_blockname );
 }
@@ -314,7 +312,7 @@ return WriteFile( stream, depth, str_blockname );
 // Write data out to an open stream at specified tab depth
 // --------------------------------------------------------------------------
 
-int CExtensionEntryDataAsciiIO::WriteFile( ofstream &stream, unsigned int depth, const char *pstr )
+int CExtensionEntryDataAsciiIO::WriteFile( std::ofstream &stream, unsigned int depth, const char *pstr )
 {
 int result;
 

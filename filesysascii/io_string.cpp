@@ -22,7 +22,7 @@
 // Utility function for making a string lower case
 // --------------------------------------------------------------------------
 
-void strlwr( string &pstr )
+void strlwr( std::string &pstr )
 {
 for (unsigned int pn = 0; pn < pstr.size(); pn++ )
         {
@@ -34,7 +34,7 @@ for (unsigned int pn = 0; pn < pstr.size(); pn++ )
 // Utility function for making a string upper case
 // --------------------------------------------------------------------------
 
-void strupr( string &pstr )
+void strupr( std::string &pstr )
 {
 for ( unsigned int pn = 0; pn < pstr.size(); pn++ )
         {
@@ -50,7 +50,7 @@ for ( unsigned int pn = 0; pn < pstr.size(); pn++ )
 // Read a single block of data from a file
 // --------------------------------------------------------------------------
 
-void CFileSystemString::ReadQuotedString( ifstream &stream, string &string )
+void CFileSystemString::ReadQuotedString( std::ifstream &stream, std::string &string )
 {
 int ch, oldch, done;
 
@@ -91,7 +91,7 @@ if (ch != '\"')                         // If no " found, then keep looking
 	}
 }
 
-void CFileSystemString::WriteQuotedString( ostream &stream, string &string )
+void CFileSystemString::WriteQuotedString( std::ofstream &stream, std::string &string )
 {
 const char *pdata;
 
@@ -122,7 +122,7 @@ stream << "\" ";
 // Read a unquoted string
 // --------------------------------------------------------------------------
 
-void CFileSystemString::ReadString( ifstream &stream, string &string )
+void CFileSystemString::ReadString( std::ifstream &stream, std::string &string )
 {
 int ch;
 
@@ -148,8 +148,8 @@ while ( !stream.eof() && ( !isspace( (ch = stream.peek()) ) ) && (ch!='}' ) )
 // Write named string
 // --------------------------------------------------------------------------
 
-void CFileSystemString::WriteNamedString( ostream &stream, unsigned int depth,
-                                string &strname, string &string )
+void CFileSystemString::WriteNamedString( std::ofstream &stream, unsigned int depth,
+                                std::string &strname, std::string &string )
 {
 WriteTabbedDepth( stream, depth );
 
@@ -158,8 +158,8 @@ WriteQuotedString( stream, string );
 stream << " }\n";
 }
 
-void CFileSystemString::WriteNamedString( ostream &stream, unsigned int depth,
-                                const char *name, string &string )
+void CFileSystemString::WriteNamedString( std::ofstream &stream, unsigned int depth,
+                                const char *name, std::string &string )
 {
 WriteTabbedDepth( stream, depth );
 

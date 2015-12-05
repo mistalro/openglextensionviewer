@@ -17,7 +17,7 @@
 // Constructor
 // ---------------------------------------------------------------------------
 
-CFindExtensionSpecDialog::CFindExtensionSpecDialog( QWidget*, const char* , bool, WFlags )
+CFindExtensionSpecDialog::CFindExtensionSpecDialog( QWidget*, const char* , bool, Qt::WFlags )
 		: Ui_CFindExtensionSpecBaseDialog() 
 {
 setupUi( this );
@@ -42,10 +42,10 @@ if ( CheckUpdateFlag() )
 // ---------------------------------------------------------------------------
 
 int CFindExtensionSpecDialog::RegistryStringSearchCallback( int site, 
-					int lineno, const string &file,
-						const string &line, int mode ) 
+					int lineno, const std::string &file,
+					const std::string &line, int mode ) 
 {
-string strbuf;
+std::string strbuf;
 QString str;
 
 CExtensionSiteInfo *psiteinfo;
@@ -131,7 +131,7 @@ cout << "List view clicked\n";
 
 void CFindExtensionSpecDialog::pushbuttonfind_clicked()
 {
-string strdata;
+std::string strdata;
 
 // Clear list
 m_listviewresults->clear(); 

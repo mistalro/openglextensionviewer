@@ -17,8 +17,6 @@
 #include <fstream>
 #include <string>
 
-using namespace std;
-
 extern int g_verbose;
 
 typedef unsigned char BYTE;

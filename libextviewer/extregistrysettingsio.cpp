@@ -7,8 +7,6 @@
 #include <iostream>
 #include <fstream>
 
-using namespace std;
-
 #include "extensionlib.h"
 
 // ---------------------------------------------------------------------------
@@ -49,9 +47,9 @@ static int token_num = sizeof(token_list)/sizeof(CTokenEntry);
 // Read CExtensionRegistrySettingsIOData in from an open stream
 // --------------------------------------------------------------------------
 
-int CExtensionRegistrySettingsIODataAsciiIO::ReadFileInternal( ifstream &stream )
+int CExtensionRegistrySettingsIODataAsciiIO::ReadFileInternal( std::ifstream &stream )
 {
-string tokenid;
+std::string tokenid;
 int result;
 
 while ( ReadOpenClosePar( stream ) != 0 )
@@ -75,10 +73,10 @@ return( result );
 // Read CExtensionRegistrySettingsIOData in from an open stream
 // --------------------------------------------------------------------------
 
-int CExtensionRegistrySettingsIODataAsciiIO::ReadFile( ifstream &stream )
+int CExtensionRegistrySettingsIODataAsciiIO::ReadFile( std::ifstream &stream )
 {
 int result;
-string tokenid;
+std::string tokenid;
 
 int entry_downloadstatus;
 int entry_dryrunmode;
@@ -88,7 +86,7 @@ result = true;
 
 if ( g_verbose )
 	{
-	cout << "Reading CExtensionRegistrySettingsIODataAsciiIO" << endl;
+	std::cout << "Reading CExtensionRegistrySettingsIODataAsciiIO" << std::endl;
 	}
 
 while ( ReadOpenClosePar( stream ) != 0 )
@@ -97,7 +95,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 	if ( g_verbose > 1 )
 		{
-		cout << "Read Token = <" << tokenid << ">\n";
+		std::cout << "Read Token = <" << tokenid << ">\n";
 		}
 
 	switch( token_match( tokenid, token_list, token_num ) )
@@ -108,7 +106,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <downloadstatus> = <" << entry_downloadstatus << ">\n";
+				std::cout << "Read <downloadstatus> = <" << entry_downloadstatus << ">\n";
 				}
 			break;
 
@@ -118,12 +116,12 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <dryrunmode> = <" << entry_dryrunmode << ">\n";
+				std::cout << "Read <dryrunmode> = <" << entry_dryrunmode << ">\n";
 				}
 			break;
 
 		default:
-			cout << "CExtensionRegistrySettingsIO::Unknown token <" << tokenid << ">\n";
+			std::cout << "CExtensionRegistrySettingsIO::Unknown token <" << tokenid << ">\n";
 			break;
 		}
 
@@ -134,7 +132,7 @@ stream.putback( '}' );
 
 if ( g_verbose )
 	{
-	cout << "Reading complete." << endl << endl;
+	std::cout << "Reading complete." << std::endl << std::endl;
 	}
 
 return( result );
@@ -144,7 +142,7 @@ return( result );
 // Write data out to an open stream at specified tab depth
 // --------------------------------------------------------------------------
 
-int CExtensionRegistrySettingsIODataAsciiIO::WriteFile( ofstream &stream, unsigned int depth )
+int CExtensionRegistrySettingsIODataAsciiIO::WriteFile( std::ofstream &stream, unsigned int depth )
 {
 return( WriteFile( stream, depth, STRING_BLOCKNAME ) );
 }
@@ -153,7 +151,7 @@ return( WriteFile( stream, depth, STRING_BLOCKNAME ) );
 // Write data out to an open stream at specified tab depth
 // --------------------------------------------------------------------------
 
-int CExtensionRegistrySettingsIODataAsciiIO::WriteFile( ofstream &stream, unsigned int depth, const char *pstr )
+int CExtensionRegistrySettingsIODataAsciiIO::WriteFile( std::ofstream &stream, unsigned int depth, const char *pstr )
 {
 int result;
 

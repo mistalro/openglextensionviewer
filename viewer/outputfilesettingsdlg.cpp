@@ -138,7 +138,9 @@ filepath = filedlg.getOpenFileName(
 
 if ( filepath.ascii() != NULL )
 	{
-	cout <<"Selected header file = " << (char *) filepath.ascii() << endl;
+#ifdef DEBUG
+	std::cout <<"Selected header file = " << (char *) filepath.ascii() << std::endl;
+#endif
 
 	m_localconfig.SetScriptfile( (char *) filepath.ascii() );
 	m_editexternalscript->setText( filepath );
@@ -148,7 +150,7 @@ if ( filepath.ascii() != NULL )
 void COutputFileSettingsDialog::editexternalscript_textChanged(
 						 const QString &strdata ) 
 {
-string strpath;
+std::string strpath;
 
 strpath = strdata.ascii();
 
@@ -197,7 +199,7 @@ filepath = filedlg.getSaveFileName(
 
 if ( filepath.ascii() != NULL )
 	{
-	cout << "Selected header file = " << (char *) filepath.ascii() << endl;
+	std::cout << "Selected header file = " << (char *) filepath.ascii() << std::endl;
 
 	m_localconfig.SetOutputheader( (char *) filepath.ascii() );
 	m_editoutputheaderfile->setText( filepath );
@@ -218,7 +220,7 @@ filepath = filedlg.getOpenFileName(
 
 if ( filepath.ascii() != NULL )
 	{
-	cout << "Selected source file = " << (char *) filepath.ascii() << endl;
+	std::cout << "Selected source file = " << (char *) filepath.ascii() << std::endl;
 
 	m_localconfig.SetOutputsource( (char *) filepath.ascii() );
 	m_editoutputsourcefile->setText( filepath );

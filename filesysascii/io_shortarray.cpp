@@ -43,7 +43,7 @@ static int token_num = sizeof(token_list)/sizeof(CTokenEntry);
 // Read 1D integer arrays
 // --------------------------------------------------------------------------
 
-void CFileSystemShortArray::ReadShortArray1D( ifstream &stream,
+void CFileSystemShortArray::ReadShortArray1D( std::ifstream &stream,
 	unsigned int nx, short *pdata )
 {
 for ( unsigned int pn = 0; pn < nx; pn++ )
@@ -52,7 +52,7 @@ for ( unsigned int pn = 0; pn < nx; pn++ )
 
         if ( g_verbose> 1 )
                 {
-                cout << "Read short <" << pdata[pn] << ">\n";
+                std::cout << "Read short <" << pdata[pn] << ">\n";
                 }
         }
 }
@@ -61,10 +61,10 @@ for ( unsigned int pn = 0; pn < nx; pn++ )
 // Read 2D integer arrays
 // --------------------------------------------------------------------------
 
-void CFileSystemShortArray::ReadShortArray2D( ifstream &stream,
+void CFileSystemShortArray::ReadShortArray2D( std::ifstream &stream,
 	unsigned int nx, unsigned int ny, short *pdata )
 {
-string buffer;
+std::string buffer;
 
 while ( ReadOpenClosePar( stream ) != 0 )
         {
@@ -72,7 +72,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
         if ( g_verbose > 1)
                 {
-                cout << "Read token <" << buffer << ">\n";
+                std::cout << "Read token <" << buffer << ">\n";
                 }
 
         switch( token_match( buffer, token_list, token_num ) )
@@ -80,7 +80,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
                 case TOKEN_YSLICE:
                         if ( g_verbose > 1 )
                                 {
-                                cout << "Reading Y-slice\n";
+                                std::cout << "Reading Y-slice\n";
                                 }
 
                         ReadShortArray1D( stream, nx, pdata );
@@ -88,8 +88,8 @@ while ( ReadOpenClosePar( stream ) != 0 )
                         break;
 
                 default:
-                        cout << "ReadShortArray2D::Unknown token <";
-                        cout << buffer.c_str() << " >\n";
+                        std::cout << "ReadShortArray2D::Unknown token <";
+                        std::cout << buffer.c_str() << " >\n";
                         break;
                 }
 
@@ -103,10 +103,10 @@ stream.putback( '}' );
 // Read 3D integer arrays
 // --------------------------------------------------------------------------
 
-void CFileSystemShortArray::ReadShortArray3D( ifstream &stream,
+void CFileSystemShortArray::ReadShortArray3D( std::ifstream &stream,
 	unsigned int nx, unsigned int ny, unsigned int nz, short *pdata )
 {
-string buffer;
+std::string buffer;
 
 while ( ReadOpenClosePar( stream ) != 0 )
         {
@@ -114,7 +114,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
         if ( g_verbose > 1 )
                 {
-                cout << "Read token <" << buffer << ">\n";
+                std::cout << "Read token <" << buffer << ">\n";
                 }
 
         switch( token_match( buffer, token_list, token_num ) )
@@ -122,7 +122,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
                 case TOKEN_ZSLICE:
                         if ( g_verbose > 1 )
                                 {
-                                cout << "Reading Z-slice\n";
+                                std::cout << "Reading Z-slice\n";
                                 }
 
                         ReadShortArray2D( stream, nx,ny, pdata );
@@ -130,8 +130,8 @@ while ( ReadOpenClosePar( stream ) != 0 )
                         break;
 
                 default:
-                        cout << "ReadShortArray3D::Unknown token <";
-                        cout << buffer.c_str() << " >\n";
+                        std::cout << "ReadShortArray3D::Unknown token <";
+                        std::cout << buffer.c_str() << " >\n";
                         break;
                 }
 
@@ -145,7 +145,7 @@ stream.putback( '}' );
 // WRITE ROUTINES
 // ===========================================================================
 
-void CFileSystemShortArray::WriteShortArray1D( ostream &stream,
+void CFileSystemShortArray::WriteShortArray1D( std::ofstream &stream,
                                         unsigned int nx, short *pdata )
 {
 stream << " ";
@@ -160,7 +160,7 @@ for ( unsigned int px = 0; px < nx; px++ )
 // Write 1D array
 // --------------------------------------------------------------------------
 
-void CFileSystemShortArray::WriteNamedShortArray1D( ostream &stream, 
+void CFileSystemShortArray::WriteNamedShortArray1D( std::ofstream &stream, 
 	unsigned int depth, const char *pstr, unsigned int nx, short *pdata )
 {
 WriteTabbedDepth( stream, depth );
@@ -168,7 +168,7 @@ WriteTabbedDepth( stream, depth );
 stream << "{" << pstr << " ";
 
 for ( unsigned int px = 0; px < nx; px++ )
-        {
+      	{ 
         stream << pdata[px] << " ";
         }
 
@@ -179,7 +179,7 @@ stream << "}\n";
 // Write 2D array
 // --------------------------------------------------------------------------
 
-void CFileSystemShortArray::WriteShortArray2D( ostream &stream,
+void CFileSystemShortArray::WriteShortArray2D( std::ofstream &stream,
                       unsigned int nx, unsigned int ny, short *pdata )
 {
 for ( unsigned int py = 0; py < ny; py++ )
@@ -188,7 +188,7 @@ for ( unsigned int py = 0; py < ny; py++ )
         }
 }
 
-void CFileSystemShortArray::WriteNamedShortArray2D( ostream &stream, 
+void CFileSystemShortArray::WriteNamedShortArray2D( std::ofstream &stream, 
 		unsigned int depth, const char *pstr, 
 		unsigned int nx, unsigned int ny, short *pdata )
 {
@@ -207,7 +207,7 @@ WriteClosePar( stream, depth );
 // Write 3D array
 // --------------------------------------------------------------------------
 
-void CFileSystemShortArray::WriteShortArray3D( ostream &stream,
+void CFileSystemShortArray::WriteShortArray3D( std::ofstream &stream,
 		unsigned int nx, unsigned int ny, unsigned int nz, short *pdata )
 {
 for ( unsigned int pz = 0; pz < nz; pz++ )
@@ -216,7 +216,7 @@ for ( unsigned int pz = 0; pz < nz; pz++ )
         }
 }
 
-void CFileSystemShortArray::WriteNamedShortArray3D( ostream &stream, 
+void CFileSystemShortArray::WriteNamedShortArray3D( std::ofstream &stream, 
 		unsigned int depth, const char *pstr, 
 		unsigned int nx, unsigned int ny, unsigned int nz,
         	short *pdata )

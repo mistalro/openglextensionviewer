@@ -39,7 +39,7 @@ static int token_num = sizeof(token_list)/sizeof(CTokenEntry);
 // Read 1D integer arrays
 // --------------------------------------------------------------------------
 
-void CFileSystemByteArray::ReadByteArray1D( ifstream &stream,
+void CFileSystemByteArray::ReadByteArray1D( std::ifstream &stream,
                                         unsigned int nx, BYTE *pdata )
 {
 for ( unsigned int pn = 0; pn < nx; pn++ )
@@ -48,7 +48,7 @@ for ( unsigned int pn = 0; pn < nx; pn++ )
 
         if ( g_verbose> 1 )
                 {
-                cout << "Read byte <" << pdata[pn] << ">\n";
+                std::cout << "Read byte <" << pdata[pn] << ">\n";
                 }
         }
 }
@@ -57,10 +57,10 @@ for ( unsigned int pn = 0; pn < nx; pn++ )
 // Read 2D integer arrays
 // --------------------------------------------------------------------------
 
-void CFileSystemByteArray::ReadByteArray2D( ifstream &stream,
+void CFileSystemByteArray::ReadByteArray2D( std::ifstream &stream,
                             unsigned int nx, unsigned int ny, BYTE *pdata )
 {
-string buffer;
+std::string buffer;
 
 while ( ReadOpenClosePar( stream ) != 0 )
         {
@@ -68,7 +68,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
         if ( g_verbose > 1)
                 {
-                cout << "Read token <" << buffer << ">\n";
+                std::cout << "Read token <" << buffer << ">\n";
                 }
 
         switch( token_match( buffer, token_list, token_num ) )
@@ -76,7 +76,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
                 case TOKEN_YSLICE:
                         if ( g_verbose > 1 )
                                 {
-                                cout << "Reading Y-slice\n";
+                                std::cout << "Reading Y-slice\n";
                                 }
 
                         ReadByteArray1D( stream, nx, pdata );
@@ -84,8 +84,8 @@ while ( ReadOpenClosePar( stream ) != 0 )
                         break;
 
                 default:
-                        cout << "ReadByteArray2D::Unknown token <";
-                        cout << buffer.c_str() << " >\n";
+                        std::cout << "ReadByteArray2D::Unknown token <";
+                        std::cout << buffer.c_str() << " >\n";
                         break;
                 }
 
@@ -99,10 +99,10 @@ stream.putback( '}' );
 // Read 3D integer arrays
 // --------------------------------------------------------------------------
 
-void CFileSystemByteArray::ReadByteArray3D( ifstream &stream,
+void CFileSystemByteArray::ReadByteArray3D( std::ifstream &stream,
             unsigned int nx, unsigned int ny, unsigned int nz, BYTE *pdata )
 {
-string buffer;
+std::string buffer;
 
 while ( ReadOpenClosePar( stream ) != 0 )
         {
@@ -110,7 +110,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
         if ( g_verbose > 1 )
                 {
-                cout << "Read token <" << buffer << ">\n";
+                std::cout << "Read token <" << buffer << ">\n";
                 }
 
         switch( token_match( buffer, token_list, token_num ) )
@@ -118,7 +118,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
                 case TOKEN_ZSLICE:
                         if ( g_verbose > 1 )
                                 {
-                                cout << "Reading Z-slice\n";
+                                std::cout << "Reading Z-slice\n";
                                 }
 
                         ReadByteArray2D( stream, nx,ny, pdata );
@@ -126,8 +126,8 @@ while ( ReadOpenClosePar( stream ) != 0 )
                         break;
 
                 default:
-                        cout << "ReadByteArray3D::Unknown token <";
-                        cout << buffer.c_str() << " >\n";
+                        std::cout << "ReadByteArray3D::Unknown token <";
+                        std::cout << buffer.c_str() << " >\n";
                         break;
                 }
 
@@ -141,7 +141,7 @@ stream.putback( '}' );
 // WRITE ROUTINES
 // ===========================================================================
 
-void CFileSystemByteArray::WriteByteArray1D( ostream &stream,
+void CFileSystemByteArray::WriteByteArray1D(std::ofstream &stream,
                                         unsigned int nx, BYTE *pdata )
 {
 stream << " ";
@@ -156,7 +156,7 @@ for ( unsigned int px = 0; px < nx; px++ )
 // Write 1D array
 // --------------------------------------------------------------------------
 
-void CFileSystemByteArray::WriteNamedByteArray1D( ostream &stream, 
+void CFileSystemByteArray::WriteNamedByteArray1D(std::ofstream &stream, 
 			unsigned int depth, const char *pstr, 
 			unsigned int nx, BYTE *pdata )
 {
@@ -174,7 +174,7 @@ WriteClosePar( stream, depth );
 // Write 2D array
 // --------------------------------------------------------------------------
 
-void CFileSystemByteArray::WriteByteArray2D( ostream &stream,
+void CFileSystemByteArray::WriteByteArray2D(std::ofstream &stream,
 	unsigned int nx, unsigned int ny, BYTE *pdata )
 {
 for ( unsigned int py = 0; py < ny; py++ )
@@ -183,7 +183,7 @@ for ( unsigned int py = 0; py < ny; py++ )
         }
 }
 
-void CFileSystemByteArray::WriteNamedByteArray2D( ostream &stream, 
+void CFileSystemByteArray::WriteNamedByteArray2D(std::ofstream &stream, 
 	unsigned int depth, const char *pstr, 
 	unsigned int nx, unsigned int ny, BYTE *pdata )
 {
@@ -202,7 +202,7 @@ WriteClosePar( stream, depth );
 // Write 3D array
 // --------------------------------------------------------------------------
 
-void CFileSystemByteArray::WriteByteArray3D( ostream &stream,
+void CFileSystemByteArray::WriteByteArray3D(std::ofstream &stream,
           unsigned int nx, unsigned int ny, unsigned int nz, BYTE *pdata )
 {
 for ( unsigned int pz = 0; pz < nz; pz++ )
@@ -211,7 +211,7 @@ for ( unsigned int pz = 0; pz < nz; pz++ )
         }
 }
 
-void CFileSystemByteArray::WriteNamedByteArray3D( ostream &stream,
+void CFileSystemByteArray::WriteNamedByteArray3D(std::ofstream &stream,
 	unsigned int depth, const char *pstr, 
 	unsigned int nx, unsigned int ny, unsigned int nz, BYTE *pdata )
 {

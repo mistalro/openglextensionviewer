@@ -43,7 +43,7 @@ static int token_num = sizeof(token_list)/sizeof(CTokenEntry);
 // Read 1D integer arrays
 // --------------------------------------------------------------------------
 
-void CFileSystemFloatArray::ReadFloatArray1D( ifstream &stream,
+void CFileSystemFloatArray::ReadFloatArray1D( std::ifstream &stream,
 			unsigned int nx, float *pdata )
 {
 for ( unsigned int pn = 0; pn < nx; pn++ )
@@ -52,7 +52,7 @@ for ( unsigned int pn = 0; pn < nx; pn++ )
 
         if ( g_verbose> 1 )
                 {
-                cout << "Read byte <" << pdata[pn] << ">\n";
+                std::cout << "Read byte <" << pdata[pn] << ">\n";
                 }
         }
 }
@@ -61,10 +61,10 @@ for ( unsigned int pn = 0; pn < nx; pn++ )
 // Read 2D integer arrays
 // --------------------------------------------------------------------------
 
-void CFileSystemFloatArray::ReadFloatArray2D( ifstream &stream,
+void CFileSystemFloatArray::ReadFloatArray2D( std::ifstream &stream,
 			unsigned int nx, unsigned int ny, float *pdata )
 {
-string buffer;
+std::string buffer;
 
 ReadOpenPar( stream );          //        {
 
@@ -74,7 +74,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
         if ( g_verbose > 1)
                 {
-                cout << "Read token <" << buffer << ">\n";
+                std::cout << "Read token <" << buffer << ">\n";
                 }
 
         switch( token_match( buffer, token_list, token_num ) )
@@ -82,7 +82,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
                 case TOKEN_YSLICE:
 			if ( g_verbose > 1 )
                                 {
-                                cout << "Reading Y-slice\n";
+                                std::cout << "Reading Y-slice\n";
                                 }
 
                         ReadFloatArray1D( stream, nx, pdata );
@@ -90,8 +90,8 @@ while ( ReadOpenClosePar( stream ) != 0 )
                         break;
 
                 default:
-                        cout << "ReadFloatArray2D::Unknown token <";
-                        cout << buffer.c_str() << " >\n";
+                        std::cout << "ReadFloatArray2D::Unknown token <";
+                        std::cout << buffer.c_str() << " >\n";
                         break;
                 }
 
@@ -105,10 +105,10 @@ stream.putback( '}' );
 // Read 3D integer arrays
 // --------------------------------------------------------------------------
 
-void CFileSystemFloatArray::ReadFloatArray3D( ifstream &stream,
+void CFileSystemFloatArray::ReadFloatArray3D( std::ifstream &stream,
          unsigned int nx, unsigned int ny, unsigned int nz, float *pdata )
 {
-string buffer;
+std::string buffer;
 
 ReadOpenPar( stream );          //        {
 
@@ -118,7 +118,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
         if ( g_verbose > 1 )
                 {
-                cout << "Read token <" << buffer << ">\n";
+                std::cout << "Read token <" << buffer << ">\n";
                 }
 
         switch( token_match( buffer, token_list, token_num ) )
@@ -126,7 +126,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
                 case TOKEN_ZSLICE:
                         if ( g_verbose > 1 )
                                 {
-                                cout << "Reading Z-slice\n";
+                                std::cout << "Reading Z-slice\n";
                                 }
 
                         ReadFloatArray2D( stream, nx,ny, pdata );
@@ -134,8 +134,8 @@ while ( ReadOpenClosePar( stream ) != 0 )
                         break;
 
                 default:
-                        cout << "ReadIntArray3D::Unknown token <";
-                        cout << buffer.c_str() << " >\n";
+                        std::cout << "ReadIntArray3D::Unknown token <";
+                        std::cout << buffer.c_str() << " >\n";
                         break;
                 }
 
@@ -149,7 +149,7 @@ stream.putback( '}' );
 // FILE WRITING
 // ==========================================================================
 
-void CFileSystemFloatArray::WriteFloatArray1D( ostream &stream,
+void CFileSystemFloatArray::WriteFloatArray1D( std::ofstream &stream,
 			unsigned int nx, float *pdata )
 {
 for ( unsigned int px = 0; px < nx; px++ )
@@ -162,7 +162,7 @@ for ( unsigned int px = 0; px < nx; px++ )
 // Write 1D array
 // --------------------------------------------------------------------------
 
-void CFileSystemFloatArray::WriteNamedFloatArray1D( ostream &stream, 
+void CFileSystemFloatArray::WriteNamedFloatArray1D( std::ofstream &stream, 
 			unsigned int depth, const char *pstr, unsigned int nx, float *pdata )
 {
 WriteTabbedDepth( stream, depth );
@@ -181,7 +181,7 @@ stream << "}\n";
 // Write 2D array
 // --------------------------------------------------------------------------
 
-void CFileSystemFloatArray::WriteFloatArray2D( ostream &stream,
+void CFileSystemFloatArray::WriteFloatArray2D( std::ofstream &stream,
 	unsigned int nx, unsigned int ny, float *pdata )
 {
 for ( unsigned int py = 0; py < ny; py++ )
@@ -190,7 +190,7 @@ for ( unsigned int py = 0; py < ny; py++ )
         }
 }
 
-void CFileSystemFloatArray::WriteNamedFloatArray2D( ostream &stream, 
+void CFileSystemFloatArray::WriteNamedFloatArray2D( std::ofstream &stream, 
 	unsigned int depth, const char *pstr, 	
 	unsigned int nx, unsigned int ny, float *pdata )
 {
@@ -208,7 +208,7 @@ WriteClosePar( stream, depth );
 // Write 3D array
 // --------------------------------------------------------------------------
 
-void CFileSystemFloatArray::WriteFloatArray3D( ostream &stream,
+void CFileSystemFloatArray::WriteFloatArray3D( std::ofstream &stream,
 	unsigned int nx, unsigned int ny, unsigned int nz, float *pdata )
 {
 for ( unsigned int pz = 0; pz < nz; pz++ )
@@ -217,7 +217,7 @@ for ( unsigned int pz = 0; pz < nz; pz++ )
         }
 }
 
-void CFileSystemFloatArray::WriteNamedFloatArray3D( ostream &stream, 
+void CFileSystemFloatArray::WriteNamedFloatArray3D( std::ofstream &stream, 
 	unsigned int depth, const char *pstr, 
 	unsigned int nx, unsigned int ny, unsigned int nz, float *pdata )
 {

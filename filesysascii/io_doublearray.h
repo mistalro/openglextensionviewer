@@ -25,30 +25,30 @@ public:
 
 // ----- Double arrays -------------------------------------------------------
 
-void ReadDoubleArray1D( ifstream &stream,
+void ReadDoubleArray1D( std::ifstream &stream,
                 unsigned int nx, double *pdata );
 
-void ReadDoubleArray2D( ifstream &stream,
+void ReadDoubleArray2D( std::ifstream &stream,
                 unsigned int nx, unsigned int ny, double *pdata );
 
-void ReadDoubleArray3D( ifstream &stream,
+void ReadDoubleArray3D( std::ifstream &stream,
                 unsigned int nx, unsigned int ny, unsigned int nz, double *pdata );
 
 // ----- Write routines -----------------------------------------------------
 
-void WriteDoubleArray1D( ostream &stream, unsigned int nx, double *pdata );
+void WriteDoubleArray1D( std::ofstream &stream, unsigned int nx, double *pdata );
 
-void WriteNamedDoubleArray1D( ostream &stream, unsigned int depth,
+void WriteNamedDoubleArray1D( std::ofstream &stream, unsigned int depth,
         const char *pstr, unsigned int nx, double *pdata );
 
-void WriteDoubleArray2D( ostream &stream, unsigned int nx, unsigned int ny, double *pdata );
+void WriteDoubleArray2D( std::ofstream &stream, unsigned int nx, unsigned int ny, double *pdata );
 
-void WriteNamedDoubleArray2D( ostream &stream, unsigned int depth,
+void WriteNamedDoubleArray2D( std::ofstream &stream, unsigned int depth,
         const char *pstr, unsigned int nx, unsigned int ny, double *pdata );
 
-void WriteDoubleArray3D( ostream &stream, unsigned int nx, unsigned int ny, unsigned int nz, double *pdata );
+void WriteDoubleArray3D( std::ofstream &stream, unsigned int nx, unsigned int ny, unsigned int nz, double *pdata );
 
-void WriteNamedDoubleArray3D( ostream &stream, unsigned int depth,
+void WriteNamedDoubleArray3D( std::ofstream &stream, unsigned int depth,
         const char *pstr, unsigned int nx, unsigned int ny, unsigned int nz, double *pdata );
 };
 

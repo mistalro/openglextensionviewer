@@ -5,8 +5,6 @@
 #ifndef FINDFUNCCONSTDIALOG_H
 #define FINDFUNCCONSTDIALOG_H
 
-using namespace std;
-
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
@@ -58,7 +56,7 @@ int  CheckUpdateFlag( void )
 void SetAllItems( void );
 
 int HeaderFileDataSearchCallback( int list, 
-			const string &name, const string &value );
+			const std::string &name, const std::string &value );
 
 void listview_setSorting( int column, bool ascending );
 

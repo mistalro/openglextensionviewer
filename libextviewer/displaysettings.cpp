@@ -8,8 +8,6 @@
 #include <string.h>
 #include <unistd.h>
 
-using namespace std;
-
 #include <algorithm>
 #include <vector>
 #include <iostream>
@@ -435,14 +433,14 @@ SortRange( 0, size() );
 }
 
 
-void CDisplaySettingsList::SaveDisplaySettingsList( ofstream &stream )
+void CDisplaySettingsList::SaveDisplaySettingsList( std::ofstream &stream )
 {
 char buffer[1024];
 
 //stream.setmode( filebuf::text );
 
-stream << "Display Settings List" << endl;
-stream << "---------------------" << endl << endl;
+stream << "Display Settings List" << std::endl;
+stream << "---------------------" << std::endl << std::endl;
 
 stream << "No. of display settings [" << size() << "]	";
 stream << "Sorted by [";
@@ -497,11 +495,11 @@ else
 	stream << "[ ]";
 	}
 
-stream << endl << endl;
+stream << std::endl << std::endl;
 
-stream << "+-------+-------+--------+--------+-----------+-----------+" << endl;
-stream << "| Index |  BPP  | Width  | Height | Frequency | Bandwidth |" << endl;
-stream << "+-------+-------+--------+--------+-----------+-----------+" << endl;
+stream << "+-------+-------+--------+--------+-----------+-----------+" << std::endl;
+stream << "| Index |  BPP  | Width  | Height | Frequency | Bandwidth |" << std::endl;
+stream << "+-------+-------+--------+--------+-----------+-----------+" << std::endl;
 
 for ( unsigned int pn = 0; pn < size(); pn++ )
 	{
@@ -548,15 +546,15 @@ for ( unsigned int pn = 0; pn < size(); pn++ )
 	stream.width( 9 );
 	stream << at(pn).m_displaybandwidth;
 
-	stream << " |" << endl;			
+	stream << " |" << std::endl;			
 	}
 
-stream << "+-------+-------+--------+--------+-----------+-----------+" << endl;
+stream << "+-------+-------+--------+--------+-----------+-----------+" << std::endl;
 }
 
 int CDisplaySettingsList::SaveDisplaySettingsList( const char *path )
 {
-ofstream stream;
+std::ofstream stream;
 
 stream.open( path );
 
@@ -571,7 +569,7 @@ if ( stream.is_open() )
 return false;
 }	
 	
-void CDisplaySettingsList::SaveDisplaySettingsModeTable( ofstream &stream )
+void CDisplaySettingsList::SaveDisplaySettingsModeTable( std::ofstream &stream )
 {
 CDisplaySettingsList videomodelist;
 CDisplaySettingsList pixelsizelist;
@@ -624,11 +622,11 @@ for (unsigned int pn = 0; pn < size(); pn++ )
 pixelsizelist.SetSortMode( LIST_SORTBITSPERPEL );
 pixelsizelist.Sort();
 
-stream << endl << endl;
-stream << "Display modes" << endl;
-stream << "-------------" << endl << endl;
+stream << std::endl << std::endl;
+stream << "Display modes" << std::endl;
+stream << "-------------" << std::endl << std::endl;
 
-stream << "Maximum bandwidth: " << m_maxfreq << " Hertz" << endl;
+stream << "Maximum bandwidth: " << m_maxfreq << " Hertz" << std::endl;
 
 if ( displayfreqlist.size() < 5)
 	{
@@ -654,9 +652,9 @@ padtop[padlen+1] = '\0';
 
 for (unsigned int qn = 0; qn < pixelsizelist.size(); qn++ )
 	{
-	stream << endl << endl;
-	stream << "Pixel size: " << pixelsizelist[qn].m_bitsperpel << " bits" << endl;
-	stream << "-------------------" << endl << endl;
+	stream << std::endl << std::endl;
+	stream << "Pixel size: " << pixelsizelist[qn].m_bitsperpel << " bits" << std::endl;
+	stream << "-------------------" << std::endl << std::endl;
 
 	// ------ Top line
 
@@ -668,7 +666,7 @@ for (unsigned int qn = 0; qn < pixelsizelist.size(); qn++ )
 		}
 
 	stream << padline;
-	stream << endl;
+	stream << std::endl;
   
 	// ------ Display frequencies
 
@@ -696,7 +694,7 @@ for (unsigned int qn = 0; qn < pixelsizelist.size(); qn++ )
 		len -= padlen;
 		}
 
-	stream << " |" << endl;
+	stream << " |" << std::endl;
 
 	// Top line for resolutions
 
@@ -707,7 +705,7 @@ for (unsigned int qn = 0; qn < pixelsizelist.size(); qn++ )
 		stream << padline;
 		}
 					
-	stream << endl;
+	stream << std::endl;
 	stream << "| Resolution   |";
 
 	// List of frequencies
@@ -730,7 +728,7 @@ for (unsigned int qn = 0; qn < pixelsizelist.size(); qn++ )
 			stream << " |";
 			}
 
-		stream << endl;
+		stream << std::endl;
 
 		// Bottom of resolutions
 
@@ -741,7 +739,7 @@ for (unsigned int qn = 0; qn < pixelsizelist.size(); qn++ )
 			stream << padline;
 			}
 					
-		stream << endl;
+		stream << std::endl;
 
 		// For each display resolution
 
@@ -811,7 +809,7 @@ for (unsigned int qn = 0; qn < pixelsizelist.size(); qn++ )
 						}
 					}
 
-				stream << endl;
+				stream << std::endl;
 				}
 
 			if ( pn == videomodelist.size()-1 )
@@ -823,7 +821,7 @@ for (unsigned int qn = 0; qn < pixelsizelist.size(); qn++ )
 					stream << padline;
 					}
 					
-				stream << endl;
+				stream << std::endl;
 				}		   
 			}	
 		}
@@ -832,7 +830,7 @@ for (unsigned int qn = 0; qn < pixelsizelist.size(); qn++ )
 
 int CDisplaySettingsList::ReadConfigurationFile( const char *path )
 {
-ifstream stream;
+std::ifstream stream;
 
 stream.open(path);
 
@@ -865,7 +863,7 @@ push_back( temp );
 return true;
 }
 
-void CDisplaySettingsList::ReadConfigurationFile( ifstream &stream)
+void CDisplaySettingsList::ReadConfigurationFile( std::ifstream &stream)
 {
 char buffer[1024], *pstr;
 int sectionscreen, subsectiondisplay;

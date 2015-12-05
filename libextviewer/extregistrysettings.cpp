@@ -2,8 +2,6 @@
 // Copyright: (C) VFX Research 2002 - 2014. All Rights Reserved.
 // ---------------------------------------------------------------------------
 
-using namespace std;
-
 #include "extensionlib.h"
 
 // --------------------------------------------------------------------------
@@ -18,10 +16,10 @@ using namespace std;
 // Effects: The local file path will be created if it does not already exist
 // --------------------------------------------------------------------------
 
-void CExtensionRegistrySettings::CheckLocalPath( const string &path )
+void CExtensionRegistrySettings::CheckLocalPath( const std::string &path )
 {
 struct stat statbuf;
-string tempbuf;
+std::string tempbuf;
 int res;
 
 tempbuf = path;
@@ -62,8 +60,8 @@ for (unsigned int pos = 0; pos < tempbuf.length(); pos++ )
 //
 // --------------------------------------------------------------------------
 
-int CExtensionRegistrySettings::SaveLocalCache( const string &destpath,
-						const string &data )
+int CExtensionRegistrySettings::SaveLocalCache( const std::string &destpath,
+						const std::string &data )
 {
 CheckLocalPath( destpath );
 
@@ -87,12 +85,12 @@ return( WriteStream( data, destpath ) );
 // --------------------------------------------------------------------------
 
 int CExtensionRegistrySettings::LoadLocalCache( 
-	string &name, string &destdir, string &destbuf )
+	std::string &name, std::string &destdir, std::string &destbuf )
 {
-string destpath, subdir;
+std::string destpath, subdir;
 
 const char *pstart;
-ifstream stream;
+std::ifstream stream;
 
 pstart = name.data();
 
@@ -246,8 +244,8 @@ return( exbuf );
 // 	    done   - completion flag
 // -------------------------------------------------------------------------
 
-const char *extbuffer_copystring( const string &exbuf, 
-					string &buffer, int &done )
+const char *extbuffer_copystring( const std::string &exbuf, 
+					std::string &buffer, int &done )
 {
 const char *psrc;
 
@@ -268,7 +266,7 @@ if ( *psrc == '\0' )
 return( exbuf.data() );
 }
 
-int extname_getexpandedcount( string &extname, int *excounts, int &exnum )
+int extname_getexpandedcount( std::string &extname, int *excounts, int &exnum )
 {
 const char *tptr;
 int total, lcount;
@@ -317,8 +315,8 @@ while ( (*tptr != '\0') )
 return( total );
 }
 
-void extname_generate( string &extname, int *excounts, int exnum,  
-			string &newname, int expos )
+void extname_generate( std::string &extname, int *excounts, int exnum,  
+			std::string &newname, int expos )
 {
 int pn, pos, intpos[20];
 const char *tptr;
@@ -371,7 +369,7 @@ while ( *tptr )
     }
 }
 
-const char *extname_cleanup( string &extname )
+const char *extname_cleanup( std::string &extname )
 {
 const char *pptr;
 const char *pfirst;
@@ -467,8 +465,8 @@ return( pfirst );
 // const GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride
 // --------------------------------------------------------------------------
 
-void extractglproto( string &proshort, 
-			string &prolong, int longflag, int glflag )
+void extractglproto( std::string &proshort, 
+			std::string &prolong, int longflag, int glflag )
 {
 int num;
 const char *plong;
@@ -565,8 +563,8 @@ static char str_name[] = "Name";
 
 const char *CExtensionRegistrySettings::ExtractExtensionName( 
 				const char *pbuf,
-                                 string &exname, 
-			 	 string &exprefix, int &done )
+                                 std::string &exname, 
+			 	 std::string &exprefix, int &done )
 {
 const char *newbuf;
 // Find string "Name"
@@ -619,7 +617,7 @@ return( newbuf );
 
 const char *CExtensionRegistrySettings::ExtractExtensionNameStrings( 
 			const char *pbuf,  
-                        string &namestrings, int &done )
+                        std::string &namestrings, int &done )
 {
 const char *newbuf;
 
@@ -663,7 +661,7 @@ return( pbuf );
 
 const char *CExtensionRegistrySettings::ExtractExtensionContributors( 
 			const char *pbuf, 
-			string &contributors, int &done )
+			std::string &contributors, int &done )
 {
 const char *newbuf;
 
@@ -700,7 +698,7 @@ return( pbuf );
 
 const char *CExtensionRegistrySettings::ExtractExtensionContact( 
 				const char *pbuf, 
-				string &contact, int &done )
+				std::string &contact, int &done )
 {
 const char *newbuf;
 
@@ -744,7 +742,7 @@ return( pbuf );
 
 const char *CExtensionRegistrySettings::ExtractExtensionIPStatus( 
 					const char *pbuf,
-                                        string &ipstatus, int &done )
+                                        std::string &ipstatus, int &done )
 {
 const char *newbuf;
 
@@ -781,7 +779,7 @@ return( pbuf );
 
 const char *CExtensionRegistrySettings::ExtractExtensionStatus( 
 		const char *pbuf, 
-		string &status, int &done )
+		std::string &status, int &done )
 {
 const char *newbuf = extbuffer_findnewlinestring( pbuf, "Status", done );
 
@@ -816,7 +814,7 @@ return( pbuf );
 
 const char *CExtensionRegistrySettings::ExtractExtensionVersion( 	
 					const char *pbufsrc, 
-                                         string &version, int &done )
+                                         std::string &version, int &done )
 {
 const char *pbuf = extbuffer_findnewlinestring( pbufsrc, "Version", done );
 
@@ -851,7 +849,7 @@ return( pbuf );
 
 const char *CExtensionRegistrySettings::ExtractExtensionNumber( 
 					const char *pbuf,
-                                        string &number, int &done )
+                                        std::string &number, int &done )
 {
 const char *newbuf = extbuffer_findnewlinestring( pbuf, "Number", done );
 
@@ -886,11 +884,11 @@ return( pbuf );
 // Prepare to add a new extension to the lists
 // --------------------------------------------------------------------------
 
-void CExtensionRegistrySettings::ExtractExtensionInit( string &exname, 
+void CExtensionRegistrySettings::ExtractExtensionInit( std::string &exname, 
 		int &winflag, int &expos, 
 		CExtensionHeaderFileSet &fileset )
 {
-string namebuf;
+std::string namebuf;
 
 if ( strstr( exname.data(), "WGL" ) != NULL || strstr( exname.data(), "WIN" ) != NULL )
 	{
@@ -953,7 +951,7 @@ const char *CExtensionRegistrySettings::ExtractExtensionProceduresAndFunctions(
 		CExtensionHeaderFileSet &fileset )
 {
 int tokendone, spaceflag, extotal, excounts[100], exnum, en;
-string returnbuf, namebuf, longproto, tempbuf, shortproto;
+std::string returnbuf, namebuf, longproto, tempbuf, shortproto;
 const char *newbuf;
 
 newbuf = extbuffer_findnewlinestring( 
@@ -1303,23 +1301,23 @@ while ( (strncmp( pbuf, "New Tokens", 10 ) != 0 ) &&
 	
 	if (extotal > 512 )
 	{
-	cout << "Error: More than 512 entries\n";
+	std::cout << "Error: More than 512 entries\n";
 	}
 	else
 	for ( en = 0; en < extotal; en++ )
 		{
-		string newreturnbuf, newlongproto;
+		std::string newreturnbuf, newlongproto;
              	extname_generate( namebuf, excounts, exnum, tempbuf, en );
 
 		switch ( winflag )
 			{
 			case FLAG_WGL:
-				newreturnbuf = string("extern ") + returnbuf + string(" WINAPI");
+				newreturnbuf = std::string("extern ") + returnbuf + std::string(" WINAPI");
 				break;
 
 			case FLAG_GLX:
 			case FLAG_GL:
-				newreturnbuf = string("GLAPI ") + returnbuf + string(" APIENTRY");
+				newreturnbuf = std::string("GLAPI ") + returnbuf + std::string(" APIENTRY");
 				break;
 
 			default:
@@ -1380,15 +1378,15 @@ return( pbuf );
 // Extract Tokens
 // --------------------------------------------------------------------------
 
-string info_unknown( "Unknown" );
+std::string info_unknown( "Unknown" );
 
 const char *CExtensionRegistrySettings::ExtractExtensionTokens( 
 	const char *pbuf, 
 	int winflag, int expos, 
-	string &exprefix, int &done,
+	std::string &exprefix, int &done,
 	CExtensionHeaderFileSet &fileset)
 {
-string tempbuf, lastword, curword;
+std::string tempbuf, lastword, curword;
 int   pos, lowercount, badcount, tokendone, pn;
 const char *newbuf;
 
@@ -1522,7 +1520,7 @@ while ( (*pbuf) && !tokendone )
 		if ( strstr( lastword.data(), exprefix.data() ) && 
    	                 (lowercount == 0) && (badcount == 0) )
 			{	
-			string glbuf;
+			std::string glbuf;
 
 			switch ( winflag )
 				{
@@ -1615,16 +1613,16 @@ return( pbuf );
 // --------------------------------------------------------------------------
 
 void CExtensionRegistrySettings::ReadExtensionBuffer( 
-	string &exbuf,    
+	std::string &exbuf,    
 	CRegistryFileProgressCallback &callback,
-        string &name, 
+        std::string &name, 
 	int filepos, int filemax, 
 	CExtensionHeaderFileSet &fileset )
 {
 const char *pbuf;
 int   winflag, expos, done, buflen;
-string exname, exprefix;
-string localname, localprefix;
+std::string exname, exprefix;
+std::string localname, localprefix;
 
 buflen = exbuf.length();
 
@@ -1688,14 +1686,14 @@ if ( pbuf )
 // Effects: The extension name, function and constant lists are 
 // --------------------------------------------------------------------------
 
-void CExtensionViewer::ReadExtensionFile( string &path, 
+void CExtensionViewer::ReadExtensionFile( std::string &path, 
 	CRegistryFileProgressCallback &callback,
          int filepos, int filemax )
 {
-ifstream stream;
+std::ifstream stream;
 int res;
-string pbuf;
-string strname;
+std::string pbuf;
+std::string strname;
 
 if ( (strstr(path.data(), ".html" ) != NULL) ||
      (strstr(path.data(), "/doc/" ) != NULL ) ||
@@ -1730,10 +1728,10 @@ m_registrysettings.ReadExtensionBuffer(
 //          for each extension specification
 // --------------------------------------------------------------------------
 
-int CExtensionRegistrySettings::GetRegistryCount( string &localdir )
+int CExtensionRegistrySettings::GetRegistryCount( std::string &localdir )
 {
-stack <string> stacklist;
-string filename, path, tempbuf;
+std::stack <std::string> stacklist;
+std::string filename, path, tempbuf;
 int     result, mode = CALLBACK_FILE, filecount;
 DIR      *handle;
 struct dirent *dirptr;
@@ -1811,9 +1809,8 @@ DIR    *handle;
 struct  dirent *dirptr;
 struct stat statbuf;
 CExtensionSiteInfo *psiteinfo;
-string path, filename,tempbuf, dirlocal;
-stack <string> stacklist;
-string strdir;
+std::string path, filename,tempbuf, dirlocal, strdir;
+std::stack <std::string> stacklist;
 
 if ( selectmode == READ_ALL )
     m_headerfileset.Init();
@@ -1888,13 +1885,13 @@ return( 1 );
 //
 // --------------------------------------------------------------------------
                                                                                 
-void CExtensionRegistrySettings::ReadNewExtensions( string &localdir, 
+void CExtensionRegistrySettings::ReadNewExtensions( std::string &localdir, 
 				CExtensionHeaderFileSet &fileset,
 				CRegistryFileProgressCallback &callback )
 {
 int result;
-string exbuf;
-vector <CExtensionEntry>::iterator it;
+std::string exbuf;
+std::vector <CExtensionEntry>::iterator it;
 
 for (it = fileset.m_newlist.begin(); it != fileset.m_newlist.end(); it++ )
 	{
@@ -1923,7 +1920,7 @@ for (it = fileset.m_newlist.begin(); it != fileset.m_newlist.end(); it++ )
 //          find
 // --------------------------------------------------------------------------
 
-int CExtensionViewer::SearchExtensionSpecs( int mode, const string &strdata,
+int CExtensionViewer::SearchExtensionSpecs( int mode, const std::string &strdata,
                 CRegistryStringSearchCallback &callback )
 {
 for (int site = 0; site < GetSiteCount(); site++ )
@@ -1950,7 +1947,7 @@ return(1);
 //          for each extension specification
 // --------------------------------------------------------------------------
 
-int CExtensionViewer::SearchRegistry( int site, const string &strdata,
+int CExtensionViewer::SearchRegistry( int site, const std::string &strdata,
                 CRegistryStringSearchCallback &callback, int mode )
 {
 int       filepos, filemax;
@@ -1958,9 +1955,8 @@ DIR *handle;
 struct dirent *dirptr;
 struct stat  statbuf;
 CExtensionSiteInfo *psiteinfo;
-string path, filename, tempbuf;
-stack <string> stacklist;
-string strdir;
+std::string path, filename, tempbuf, strdir;
+std::stack <std::string> stacklist;
 int done = 0, matches = 0;
 
 psiteinfo = GetSiteInfo( site );
@@ -2042,13 +2038,13 @@ return( 1 );
 // Effects: The callback is called according to string matches
 // --------------------------------------------------------------------------
 
-int CExtensionViewer::RegistryFileStringSearch( const string &path,
-		int site, const string &strsearch, 
+int CExtensionViewer::RegistryFileStringSearch( const std::string &path,
+		int site, const std::string &strsearch, 
                 CRegistryStringSearchCallback &callback, int mode )
 {
-ifstream stream;
-string filename,tempbuf, strdata, buffer;
-stack <string> stacklist;
+std::ifstream stream;
+std::string filename,tempbuf, strdata, buffer;
+std::stack <std::string> stacklist;
 int done, linecount, matches, lenbuf;
 
 strdata = strsearch;
@@ -2070,7 +2066,7 @@ stream.open( path.data() );
 // Sanity check
 if ( !stream.is_open() )
 	{
-	cout << "Error: Could not open file |" << path.data() << "|\n";
+	std::cout << "Error: Could not open file |" << path.data() << "|\n";
 	return(0);
 	}
 

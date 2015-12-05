@@ -16,7 +16,7 @@ class CTokenEntry
 // ----- Class members ------------------------------------------------------
 public:
 int     m_tokenid;
-string  m_string;
+std::string  m_string;
 
 // ----- Constructor and destructor -----------------------------------------
 
@@ -26,7 +26,7 @@ CTokenEntry( int tokenid, const char *pstring )
         m_string  = pstring;
         }
 
-CTokenEntry( int tokenid, string &string )
+CTokenEntry( int tokenid, std::string &string )
         {
         m_tokenid = tokenid;
         m_string  = string;
@@ -38,7 +38,7 @@ CTokenEntry( const char *pstring, int tokenid )
         m_string  = pstring;
         }
 
-CTokenEntry( string &string, int tokenid )
+CTokenEntry( std::string &string, int tokenid )
         {
         m_tokenid = tokenid;
         m_string  = string;
@@ -50,13 +50,13 @@ CTokenEntry( string &string, int tokenid )
 
 // ----- Class members ------------------------------------------------------
 
-int operator == (string &string )
+int operator == (std::string &string )
         {
         return( m_string == string );
         }
 };
 
-extern int token_match( string &buffer, CTokenEntry *plist, int num );
+extern int token_match( std::string &buffer, CTokenEntry *plist, int num );
 
 extern int token_findentry( int tokenid, CTokenEntry *plist, int num );
 

@@ -5,14 +5,14 @@
 #ifndef _STRSTREAM_H_
 #define _STRSTREAM_H_
 
-void strupcase( string &source);
-void strlowercase( string &source);
+void strupcase( std::string &source);
+void strlowercase( std::string &source);
 
-bool ReadStream( ifstream &stream, string &strdata, int length );
-bool ReadStream( string &strdata, string &strpath );
+bool ReadStream( std::ifstream &stream, std::string &strdata, int length );
+bool ReadStream( std::string &strdata, std::string &strpath );
 
-bool WriteStream( ofstream &stream, const string &strdata );
-bool WriteStream( const string &strdata, const string &strpath );
-bool WriteStream( const char *pdata, const string &strpath, int nbytes );
+bool WriteStream( std::ofstream &stream, const std::string &strdata );
+bool WriteStream( const std::string &strdata, const std::string &strpath );
+bool WriteStream( const char *pdata, const std::string &strpath, int nbytes );
 
 #endif

@@ -24,27 +24,27 @@ public:
 
 // ----- Doubles -----
 
-inline void ReadDouble( ifstream &stream, double &fvalue )
+inline void ReadDouble( std::ifstream &stream, double &fvalue )
 	{
 	stream >> fvalue;
 	}
 
 // ----- Write routines -----------------------------------------------------
 
-inline void WriteDouble( ostream &stream, double fvalue )
+inline void WriteDouble(std::ofstream &stream, double fvalue )
 	{
 	stream << fvalue;
 	}
 
-inline void WriteNamedDouble( ostream &stream, unsigned int depth, 
+inline void WriteNamedDouble(std::ofstream &stream, unsigned int depth, 
 				const char *pname, double fvalue )
 	{
 	WriteTabbedDepth( stream, depth );
 	stream << "{" << pname << " " << fvalue << " }\n";
 	}
 
-inline void WriteNamedDouble( ostream &stream, unsigned int depth, 
-				string &strname, double fvalue )
+inline void WriteNamedDouble(std::ofstream &stream, unsigned int depth, 
+				std::string &strname, double fvalue )
 	{
 	WriteTabbedDepth( stream, depth );
 	stream << "{" << strname.c_str() << " " << fvalue << " }\n";

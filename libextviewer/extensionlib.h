@@ -8,8 +8,6 @@
 
 #define _LINUX
 
-using namespace std;
-
 #include <ios>
 #include <fstream>
 #include <iostream>
@@ -118,12 +116,12 @@ struct XVisualInfo;
 
 extern void ExtractServerPath( char *src, char *server, char *path );
 
-void stl_strupr( string &str );
-void stl_strlwr( string &str );
-void stl_hostname( string &str );
-void stl_getusername( string &str );
-void stl_strdel( string &str, int delch );
-void stl_getcwd( string &str );
-void stl_itoa( string &str, int value );
+void stl_strupr( std::string &str );
+void stl_strlwr( std::string &str );
+void stl_hostname( std::string &str );
+void stl_getusername( std::string &str );
+void stl_strdel( std::string &str, int delch );
+void stl_getcwd( std::string &str );
+void stl_itoa( std::string &str, int value );
 
 

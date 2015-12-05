@@ -2,8 +2,6 @@
 // Copyright: (C) VFX Research 2002 - 2014. All Rights Reserved.
 // ---------------------------------------------------------------------------
 
-using namespace std;
-
 #include "extensionlib.h"
 #include <string.h>
                                                                                 
@@ -147,7 +145,7 @@ return ConfigurationFileSaveAs( m_configfilesettings.m_configfile );
 //          file name is: developers/index.html
 // --------------------------------------------------------------------------
 
-void ExtractHostName( const string &psrc, string &hostname, string &hostfile )
+void ExtractHostName( const std::string &psrc, std::string &hostname, std::string &hostfile )
 {
 const char *pchcur;
 
@@ -276,8 +274,8 @@ m_registrysettings.SetDownloadStatus( DOWNLOAD_COMPLETE );
 // Read registry file
 // --------------------------------------------------------------------------
 
-int CExtensionViewer::ReadRegistryWebpage(string &strdata,
-                                        const string &targetname )
+int CExtensionViewer::ReadRegistryWebpage(std::string &strdata,
+                                        const std::string &targetname )
 {
 int done = 0, success = 0;
 
@@ -363,14 +361,14 @@ return result;
 // Download the registry index page
 // --------------------------------------------------------------------------
 
-static string info_downloadingregistry( "Downloading registry..." );
+static std::string info_downloadingregistry( "Downloading registry..." );
 
 int CExtensionViewer::DownloadRegistryIndexPage( int site, 		
-		string &regbuf,
+		std::string &regbuf,
 		CRegistryDownloadCallback &callback, int mode )
 {
-string extname, extpath;
-string hostpath, hostfile, logbuf, extbuf, strmsg, destpath;
+std::string extname, extpath;
+std::string hostpath, hostfile, logbuf, extbuf, strmsg, destpath;
 
 m_registrysettings.SetDownloadStatus( DOWNLOAD_ACTIVE );
 
@@ -442,7 +440,7 @@ void CExtensionViewer::DownloadRegistryWebpage( int site,
                 CRegistryDownloadCallback &callback, int mode)
 {
 CExtensionSiteInfo *psiteinfo;
-string regbuf;
+std::string regbuf;
 
 psiteinfo = GetSiteInfo( site );
 
@@ -481,10 +479,10 @@ callback.RegistryDownloadCallback( (char *)
 // --------------------------------------------------------------------------
 
 void CExtensionViewer::DownloadRegistryExtensions( int site,
-		const string &regbuf,
+		const std::string &regbuf,
                 CRegistryDownloadCallback &callback, int mode)
 {
-string extbuf, pregtemp, srcpath, extname, extpath, logbuf, destpath;
+std::string extbuf, pregtemp, srcpath, extname, extpath, logbuf, destpath;
 int   done, index, found, dryrun;
 CExtensionSiteInfo *psiteinfo;
 
@@ -525,7 +523,7 @@ while ( !done )
 	// lists and whether it is selected for downloading.
 	if ( !done && m_headerfileset.CheckExtensionDownload( extname, mode ) )
 		{
-		string fullpath, srcpath, destpath;
+		std::string fullpath, srcpath, destpath;
 
 		// Generate the source and destination paths
 		psiteinfo->GenerateTransferPaths( srcpath, destpath, extpath );
@@ -555,13 +553,13 @@ while ( !done )
 		if (!save)
 			{
 			// Don't save file
-			logbuf += string("Ignoring ");
+			logbuf += std::string("Ignoring ");
 			logbuf += srcpath;
 			}
 		else 
 			{
 			// Keep the user informed
-			logbuf += string("Saving ");
+			logbuf += std::string("Saving ");
 			logbuf += srcpath + " to " + destpath;
 			}
 
@@ -599,12 +597,12 @@ m_registrysettings.SetDownloadStatus( DOWNLOAD_COMPLETE );
 // --------------------------------------------------------------------------
 
 void CExtensionViewer::DownloadRegistryExtension( 
-				const string &fullpath, 
-				const string &destpath )
+				const std::string &fullpath, 
+				const std::string &destpath )
 {
 m_registrysettings.SetDownloadStatus( DOWNLOAD_ACTIVE );
 
-string strhost, strpath;
+std::string strhost, strpath;
 ExtractHostName( fullpath, strhost, strpath );
 
 #ifdef DEBUG

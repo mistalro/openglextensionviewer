@@ -2,8 +2,6 @@
 // Copyright: (C) VFX Research 2002 - 2014. All Rights Reserved.
 // ---------------------------------------------------------------------------
 
-using namespace std;
-
 #include "extensionlib.h"
 
 #define OPTION_LISTFUNCS
@@ -156,7 +154,7 @@ m_corearblist.CountFunctions();
 // Search all lists
 // --------------------------------------------------------------------------
 
-int CExtensionHeaderFileSet::SearchAllLists( int mode, const string &strsearch,
+int CExtensionHeaderFileSet::SearchAllLists( int mode, const std::string &strsearch,
                         CHeaderFileDataSearchCallback &callback )
 {
 m_gllist.SearchString( mode, strsearch, callback );
@@ -267,8 +265,8 @@ m_corearblist.RedoState();
 
 int CExtensionHeaderFileSet::ReadHeaderFiles(
                         CHeaderFileProgressCallback &callback,
-                        const string &glheader, const string &wglheader,
-                        const string &glxheader, const string &corearbheader,
+                        const std::string &glheader, const std::string &wglheader,
+                        const std::string &glxheader, const std::string &corearbheader,
 			const int replacemode )
 {
 int resultgl, resultwgl, resultglx, resultcorearb;
@@ -364,7 +362,7 @@ if ( newindex == -1 )
 // --------------------------------------------------------------------------
 
 int CExtensionHeaderFileSet::CheckExtensionDownload(
-                                        const string &extname, int mode )
+                                        const std::string &extname, int mode )
 {
 int dodownload = false;
 
@@ -431,7 +429,7 @@ return dodownload;
 
 void CExtensionHeaderFileSet::IgnoreNewExtensions( void )
 {
-for ( vector <CExtensionEntry>::iterator it = m_newlist.begin(); it != m_newlist.end(); ++it)
+for ( std::vector <CExtensionEntry>::iterator it = m_newlist.begin(); it != m_newlist.end(); ++it)
         {
         m_ignorelist.Add( it->m_name.data() );
         }
@@ -444,7 +442,7 @@ for ( vector <CExtensionEntry>::iterator it = m_newlist.begin(); it != m_newlist
 //
 // Outputs: None
 //
-// Results: A character string listing the unknown extensions
+// Results: A character std::string listing the unknown extensions
 //
 // Effects: None
 // --------------------------------------------------------------------------
@@ -454,7 +452,7 @@ char *CExtensionHeaderFileSet::GetNewExtensionString( void )
 char *pnewext;
 int len = 0;
 
-for ( vector <CExtensionEntry>::iterator it = m_newlist.begin(); it != m_newlist.end(); ++it)
+for ( std::vector <CExtensionEntry>::iterator it = m_newlist.begin(); it != m_newlist.end(); ++it)
         {
         len += it->m_name.length() + 1;
         }
@@ -463,7 +461,7 @@ pnewext = (char *) calloc( len, sizeof(char) );
 
 len = 0;
 
-for ( vector <CExtensionEntry>::iterator it = m_newlist.begin(); it != m_newlist.end(); ++it)
+for ( std::vector <CExtensionEntry>::iterator it = m_newlist.begin(); it != m_newlist.end(); ++it)
         {
         strcpy( pnewext+len, it->m_name.data() );
 
@@ -492,7 +490,7 @@ return pnewext;
 //
 // Notes:
 //
-// For each pixel format, get the OpenGL extension string
+// For each pixel format, get the OpenGL extension std::string
 // Then for each extension name, check for a match in the GL and WGL lists
 // If an extension name does not exist in either of the GL or WGL lists
 // it is added to the new extension list. Otherwise do nothing
@@ -515,7 +513,7 @@ void CExtensionHeaderFileSet::ReadPixelFormatList(
                         CPixelFormatDescriptorList &pixelformatlist )
 {
 char *pstring;
-string strdata;
+std::string strdata;
 
 pstring = new char[10240];
 m_newlist.Deallocate();
@@ -528,7 +526,7 @@ cout << "Examining extension lists\n";
 // For each extension GLX, GL, WGL
 for ( unsigned int table = 0; table < MAX_TABLE; table++ )
 	{
-	// Get the GL extension string based upon the specified field
+	// Get the GL extension std::string based upon the specified field
 	pixelformatlist.GetExtensionString( 0, extension_table[table], pstring );
 
 #ifdef DEBUG
@@ -536,12 +534,12 @@ cout << "Examining item " << ", table " << table << "|" << pstring << "|\n";
 #endif
 
 	// Add the entries to the selected list
-	strdata = string(pstring);
+	strdata = std::string(pstring);
 
 	ListSelectExtensionString( list_table[table], strdata,
 			FLAG_OUTPUT, MATCH_EXACTLY, UPDATE_NEWLIST );
 
-	// Add extension string to the system list too
+	// Add extension std::string to the system list too
 	m_systemlist.AddExtensionString( strdata );
 	}
 
@@ -646,7 +644,7 @@ plist->FuncSetAllFlags();
 // --------------------------------------------------------------------------
 
 void CExtensionHeaderFileSet::ListClearNameFlag( 
-			int listid, const string &name, int flag )
+			int listid, const std::string &name, int flag )
 {
 CExtensionHeaderFileFunc *plist = ListFromIndex( listid );
 
@@ -666,7 +664,7 @@ plist->FuncClearNameFlag(name, FLAG_OUTPUT);
 // Effects: The selected list is updated
 // --------------------------------------------------------------------------
            
-void CExtensionHeaderFileSet::ListAddName( int listid, const string &name )
+void CExtensionHeaderFileSet::ListAddName( int listid, const std::string &name )
 {
 CExtensionHeaderFileFunc *plist = ListFromIndex( listid );
 
@@ -686,7 +684,7 @@ plist->FuncAddName(name);
 // Effects: The selected list is updated
 // --------------------------------------------------------------------------
                                                                      
-void CExtensionHeaderFileSet::ListRemoveName( int listid, const string &name )
+void CExtensionHeaderFileSet::ListRemoveName( int listid, const std::string &name )
 {
 CExtensionHeaderFileFunc *plist = ListFromIndex( listid );
 
@@ -707,7 +705,7 @@ plist->FuncRemoveName(name);
 // --------------------------------------------------------------------------
                                                                                 
 int CExtensionHeaderFileSet::ListSetFullNameFlag( 
-		int listid, const string &name, int flag, int matchmode )
+		int listid, const std::string &name, int flag, int matchmode )
 {
 CExtensionHeaderFileFunc *plist = ListFromIndex( listid );
 
@@ -747,7 +745,7 @@ return plist->FuncGetCount();
 // Effects: The selected list is updated
 // --------------------------------------------------------------------------
 
-int CExtensionHeaderFileSet::ListFindName( int listid, const string &name )
+int CExtensionHeaderFileSet::ListFindName( int listid, const std::string &name )
 {
 CExtensionHeaderFileFunc *plist = ListFromIndex( listid );
 
@@ -769,7 +767,7 @@ return plist->FuncFindName( name );
 // --------------------------------------------------------------------------
 
 void CExtensionHeaderFileSet::ListSetVariable( int listid, 
-					const string &name, const string &value )
+					const std::string &name, const std::string &value )
 {
 CExtensionHeaderFileFunc *plist = ListFromIndex( listid );
 
@@ -789,7 +787,7 @@ plist->FuncSetVariable( name, value );
 // Effects: The selected list is updated
 // --------------------------------------------------------------------------
 
-void CExtensionHeaderFileSet::ListSelectByName( int listid, const string &name )
+void CExtensionHeaderFileSet::ListSelectByName( int listid, const std::string &name )
 {
 CExtensionHeaderFileFunc *plist = ListFromIndex( listid );
 
@@ -861,10 +859,10 @@ plist->FuncSetIndexFlag( pos, flag );
 }
 
 // --------------------------------------------------------------------------
-// Select the extensions from an extension string
+// Select the extensions from an extension std::string
 //
 // Inputs:  list - Which list
-//	    pextstring - Pointer to the ASCII extension string
+//	    pextstring - Pointer to the ASCII extension std::string
 //          ignorelist - List of ignored extensions
 //          newlist    - List of new extensions
 //          systemlist - List of extensions known to system
@@ -879,7 +877,7 @@ plist->FuncSetIndexFlag( pos, flag );
 // --------------------------------------------------------------------------                                                                               
 
 void CExtensionHeaderFileSet::ListSelectExtensionString(         
-	int listid, const string &extstring, int flag,
+	int listid, const std::string &extstring, int flag,
         int matchmode, int updatemode )
 {
 CExtensionHeaderFileFunc *plist = ListFromIndex( listid );
@@ -888,10 +886,10 @@ plist->FuncSelectExtensionString( extstring, m_ignorelist, m_newlist, flag, matc
 }
 
 // --------------------------------------------------------------------------
-// Unselect the extensions from an extension string
+// Unselect the extensions from an extension std::string
 //
 // Inputs:  list - Which list
-//          pextstring - Pointer to the ASCII extension string
+//          pextstring - Pointer to the ASCII extension std::string
 //          ignorelist - List of ignored extensions
 //          newlist    - List of new extensions
 //          systemlist - List of extensions known to system
@@ -906,7 +904,7 @@ plist->FuncSelectExtensionString( extstring, m_ignorelist, m_newlist, flag, matc
 // --------------------------------------------------------------------------                                                                                 
 
 void CExtensionHeaderFileSet::ListUnselectExtensionString(
-        int listid, const string &extstring, int flag, int matchmode )
+        int listid, const std::string &extstring, int flag, int matchmode )
 {
 CExtensionHeaderFileFunc *plist = ListFromIndex( listid );
 
@@ -914,9 +912,9 @@ plist->FuncUnselectExtensionString( extstring, flag, matchmode);
 }
 
 // --------------------------------------------------------------------------
-// Add the extensions contained with the extension string to the list
+// Add the extensions contained with the extension std::string to the list
 //
-// Inputs: pextstring - Pointer to the ASCII character string
+// Inputs: pextstring - Pointer to the ASCII character std::string
 //
 // Outputs: None
 //
@@ -926,7 +924,7 @@ plist->FuncUnselectExtensionString( extstring, flag, matchmode);
 // --------------------------------------------------------------------------
                                                                                 
 void CExtensionHeaderFileSet::ListAddExtensionString( int listid, 
-						const string &extstring )
+						const std::string &extstring )
 {
 CExtensionHeaderFileFunc *plist = ListFromIndex( listid );
 
@@ -934,9 +932,9 @@ plist->FuncAddExtensionString( extstring );
 }
 
 // --------------------------------------------------------------------------
-// Remove the extensions contained with the extension string from the list
+// Remove the extensions contained with the extension std::string from the list
 //
-// Inputs: pextstring - Pointer to the ASCII character string
+// Inputs: pextstring - Pointer to the ASCII character std::string
 //
 // Outputs: None
 //
@@ -946,7 +944,7 @@ plist->FuncAddExtensionString( extstring );
 // --------------------------------------------------------------------------
 
 void CExtensionHeaderFileSet::ListRemoveExtensionString( int listid, 
-						const string &extstring )
+						const std::string &extstring )
 {
 CExtensionHeaderFileFunc *plist = ListFromIndex( listid );
 
@@ -987,7 +985,7 @@ plist->FuncDeleteIndex( index);
 // --------------------------------------------------------------------------                                                                               
 
 int CExtensionHeaderFileSet::ListDeleteExtensionName( int listid, 
-							const string &pname )
+					const std::string &pname )
 {
 CExtensionHeaderFileFunc *plist = ListFromIndex( listid );
 

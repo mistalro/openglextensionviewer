@@ -34,11 +34,11 @@ class CExtensionEntryData
 // ----- Class members ------------------------------------------------------- 
 public:
 
-string	m_prefix;		// Result of extension/function eg. void
-string	m_name;		// Name of extension/function
-string	m_value;		// For constants/function prototypes
-string	m_header;		// For header prototype
-string	m_pfnproc;		// Prototype name of function eg. PFN
+std::string	m_prefix;		// Result of extension/function eg. void
+std::string	m_name;		// Name of extension/function
+std::string	m_value;		// For constants/function prototypes
+std::string	m_header;		// For header prototype
+std::string	m_pfnproc;		// Prototype name of function eg. PFN
 int	m_funcstart;		// Offset to first function in list
 int	m_funcnum;		// Number of functions in this extension
 int	m_conststart;		// Offset to first constant in list
@@ -81,12 +81,12 @@ void Deallocate()
 	}
 // ----- Manage getting and setting values -----------------------------------
 
-inline string & GetPrefix( void )
+inline std::string & GetPrefix( void )
 	{
 	return( m_prefix );
 	}
 
-inline void SetPrefix( const string  &value )
+inline void SetPrefix( const std::string  &value )
 	{
 	m_prefix = value;
 	}
@@ -96,12 +96,12 @@ inline void SetPrefix( const char *  &value )
 	m_prefix = value;
 	}
 
-inline string & GetName( void )
+inline std::string & GetName( void )
 	{
 	return( m_name );
 	}
 
-inline void SetName( const string  &value )
+inline void SetName( const std::string  &value )
 	{
 	m_name = value;
 	}
@@ -111,12 +111,12 @@ inline void SetName( const char *  &value )
 	m_name = value;
 	}
 
-inline string & GetValue( void )
+inline std::string & GetValue( void )
 	{
 	return( m_value );
 	}
 
-inline void SetValue( const string  &value )
+inline void SetValue( const std::string  &value )
 	{
 	m_value = value;
 	}
@@ -126,12 +126,12 @@ inline void SetValue( const char *  &value )
 	m_value = value;
 	}
 
-inline string & GetHeader( void )
+inline std::string & GetHeader( void )
 	{
 	return( m_header );
 	}
 
-inline void SetHeader( const string  &value )
+inline void SetHeader( const std::string  &value )
 	{
 	m_header = value;
 	}
@@ -141,12 +141,12 @@ inline void SetHeader( const char *  &value )
 	m_header = value;
 	}
 
-inline string & GetPfnproc( void )
+inline std::string & GetPfnproc( void )
 	{
 	return( m_pfnproc );
 	}
 
-inline void SetPfnproc( const string  &value )
+inline void SetPfnproc( const std::string  &value )
 	{
 	m_pfnproc = value;
 	}
@@ -220,13 +220,13 @@ public:
 
 using CVirtualFileSystemAscii::ReadFile;
 
-int ReadFile( ifstream &stream );
-int ReadFileInternal( ifstream &stream );
+int ReadFile( std::ifstream &stream );
+int ReadFileInternal( std::ifstream &stream );
 
 using CVirtualFileSystemAscii::WriteFile;
 
-int WriteFile( ofstream &stream, unsigned int depth );
-int WriteFile( ofstream &stream, unsigned int depth, const char *pstr );
+int WriteFile( std::ofstream &stream, unsigned int depth );
+int WriteFile( std::ofstream &stream, unsigned int depth, const char *pstr );
 };
 
 // ---------------------------------------------------------------------

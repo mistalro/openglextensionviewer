@@ -5,8 +5,6 @@
 #ifndef DISPLAYSETTINGSDIALOG_H
 #define DISPLAYSETTINGSDIALOG_H
 
-using namespace std;
-
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>

@@ -23,37 +23,37 @@ public:
 
 // ----- Read routines ------------------------------------------------------
 
-void ReadBoolArray1D( ifstream &stream,
+void ReadBoolArray1D( std::ifstream &stream,
                 unsigned int ncols, bool *pdata );
 
-void ReadBoolArray2D( ifstream &stream,
+void ReadBoolArray2D( std::ifstream &stream,
                 unsigned int ncols, unsigned int nrows, bool *pdata );
 
-void ReadBoolArray3D( ifstream &stream,
+void ReadBoolArray3D( std::ifstream &stream,
                 unsigned int ncols, unsigned int nrows, unsigned int ndep, bool *pdata );
 
 // ----- Write routines -----------------------------------------------------
 
 // ----- Bool arrays -----------------------------------------------------
 
-void WriteBoolArray1D( ostream &stream, 
+void WriteBoolArray1D( std::ofstream &stream, 
 	unsigned int ncols, bool *pdata );
 
-void WriteNamedBoolArray1D( ostream &stream, unsigned int depth,
+void WriteNamedBoolArray1D( std::ofstream &stream, unsigned int depth,
         const char *pstr, unsigned int ncols, bool *pdata );
 
-void WriteBoolArray2D( ostream &stream, 
+void WriteBoolArray2D( std::ofstream &stream, 
 	unsigned int ncols, unsigned int nrows, bool *pdata );
 
-void WriteNamedBoolArray2D( ostream &stream, unsigned int depth,
+void WriteNamedBoolArray2D( std::ofstream &stream, unsigned int depth,
         const char *pstr, 
 	unsigned int ncols, unsigned int nrows, bool *pdata );
 
-void WriteBoolArray3D( ostream &stream, 
+void WriteBoolArray3D( std::ofstream &stream, 
 	unsigned int ncols, unsigned int nrows, 
 	unsigned int ndep, bool *pdata );
 
-void WriteNamedBoolArray3D( ostream &stream, unsigned int depth,
+void WriteNamedBoolArray3D( std::ofstream &stream, unsigned int depth,
         const char *pstr, 
 	unsigned int ncols, unsigned int nrows, 
 	unsigned int ndep, bool *pdata );

@@ -30,11 +30,11 @@ class COutputFileSettingsIOData
 // ----- Class members ------------------------------------------------------- 
 public:
 
-string	m_outputheaderfile;	// New configuration file - no name
-string	m_outputsourcefile;	// Output source file
-string	m_scriptfile;		// Script file
-string	m_classname;		// Name of new class
-string	m_classnamedcolon;	// Name of new class with double colon
+std::string	m_outputheaderfile;	// New configuration file - no name
+std::string	m_outputsourcefile;	// Output source file
+std::string	m_scriptfile;		// Script file
+std::string	m_classname;		// Name of new class
+std::string	m_classnamedcolon;	// Name of new class with double colon
 int	m_cppmode;		// Output C++ or C files
 int     m_useglxgetprocaddressARB; // Function get get ARB
 
@@ -75,12 +75,12 @@ void Deallocate()
 	}
 // ----- Manage getting and setting values -----------------------------------
 
-inline string & GetOutputheader( void )
+inline std::string & GetOutputheader( void )
 	{
 	return( m_outputheaderfile );
 	}
 
-inline void SetOutputheader( const string  &value )
+inline void SetOutputheader( const std::string  &value )
 	{
 	m_outputheaderfile = value;
 	}
@@ -90,12 +90,12 @@ inline void SetOutputheader( const char *  &value )
 	m_outputheaderfile = value;
 	}
 
-inline string & GetOutputsource( void )
+inline std::string & GetOutputsource( void )
 	{
 	return( m_outputsourcefile );
 	}
 
-inline void SetOutputsource( const string  &value )
+inline void SetOutputsource( const std::string  &value )
 	{
 	m_outputsourcefile = value;
 	}
@@ -105,12 +105,12 @@ inline void SetOutputsource( const char *  &value )
 	m_outputsourcefile = value;
 	}
 
-inline string & GetScriptfile( void )
+inline std::string & GetScriptfile( void )
 	{
 	return( m_scriptfile );
 	}
 
-inline void SetScriptfile( const string  &value )
+inline void SetScriptfile( const std::string  &value )
 	{
 	m_scriptfile = value;
 	}
@@ -120,12 +120,12 @@ inline void SetScriptfile( const char *  &value )
 	m_scriptfile = value;
 	}
 
-inline string & GetClassname( void )
+inline std::string & GetClassname( void )
 	{
 	return( m_classname );
 	}
 
-inline void SetClassname( const string  &value )
+inline void SetClassname( const std::string  &value )
 	{
 	m_classname = value;
 	}
@@ -135,12 +135,12 @@ inline void SetClassname( const char *  &value )
 	m_classname = value;
 	}
 
-inline string & GetClassnamedcolon( void )
+inline std::string & GetClassnamedcolon( void )
 	{
 	return( m_classnamedcolon );
 	}
 
-inline void SetClassnamedcolon( const string  &value )
+inline void SetClassnamedcolon( const std::string  &value )
 	{
 	m_classnamedcolon = value;
 	}
@@ -183,13 +183,13 @@ public:
 
 using CVirtualFileSystemAscii::ReadFile;
 
-int ReadFile( ifstream &stream );
-int ReadFileInternal( ifstream &stream );
+int ReadFile( std::ifstream &stream );
+int ReadFileInternal( std::ifstream &stream );
 
 using CVirtualFileSystemAscii::WriteFile;
 
-int WriteFile( ofstream &stream, unsigned int depth );
-int WriteFile( ofstream &stream, unsigned int depth, const char *pstr );
+int WriteFile( std::ofstream &stream, unsigned int depth );
+int WriteFile( std::ofstream &stream, unsigned int depth, const char *pstr );
 };
 
 // ---------------------------------------------------------------------

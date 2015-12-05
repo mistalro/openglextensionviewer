@@ -36,7 +36,8 @@ CRegistryFileProgressDialog( void ) : Ui_CRegistryFileProgressBaseDialog()
 
 // ----- Functions and Procedures ---------------------------------------------
 
-int RegistryFileProgressCallback( const string &name, const string &extname, 
+int RegistryFileProgressCallback( const std::string &name, 
+				const std::string &extname, 
 				int pos, int max );	
 
 protected:

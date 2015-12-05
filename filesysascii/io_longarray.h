@@ -23,30 +23,30 @@ public:
 
 // ----- Read routines ------------------------------------------------------
 
-void ReadLongArray1D( ifstream &stream,
+void ReadLongArray1D( std::ifstream &stream,
                 unsigned int nx, long *pdata );
 
-void ReadLongArray2D( ifstream &stream,
+void ReadLongArray2D( std::ifstream &stream,
                 unsigned int nx, unsigned int ny, long *pdata );
 
-void ReadLongArray3D( ifstream &stream,
+void ReadLongArray3D( std::ifstream &stream,
                 unsigned int nx, unsigned int ny, unsigned int nz, long *pdata );
 
 // ----- Write routines -----------------------------------------------------
 
-void WriteLongArray1D( ostream &stream, unsigned int nx, long *pdata );
+void WriteLongArray1D(std::ofstream &stream, unsigned int nx, long *pdata );
 
-void WriteNamedLongArray1D( ostream &stream, unsigned int depth,
+void WriteNamedLongArray1D(std::ofstream &stream, unsigned int depth,
         const char *pstr, unsigned int nx, long *pdata );
 
-void WriteLongArray2D( ostream &stream, unsigned int nx, unsigned int ny, long *pdata );
+void WriteLongArray2D(std::ofstream &stream, unsigned int nx, unsigned int ny, long *pdata );
 
-void WriteNamedLongArray2D( ostream &stream, unsigned int depth,
+void WriteNamedLongArray2D(std::ofstream &stream, unsigned int depth,
         const char *pstr, unsigned int nx, unsigned int ny, long *pdata );
 
-void WriteLongArray3D( ostream &stream, unsigned int nx, unsigned int ny, unsigned int nz, long *pdata );
+void WriteLongArray3D(std::ofstream &stream, unsigned int nx, unsigned int ny, unsigned int nz, long *pdata );
 
-void WriteNamedLongArray3D( ostream &stream, unsigned int depth,
+void WriteNamedLongArray3D(std::ofstream &stream, unsigned int depth,
         const char *pstr, unsigned int nx, unsigned int ny, unsigned int nz, long *pdata );
 
 };

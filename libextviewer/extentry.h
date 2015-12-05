@@ -33,7 +33,7 @@ void Duplicate( CExtensionEntry &entry )
 
 void Deallocate( void )
 	{
-cout << "ExtensionEntry::Deallocate\n";
+	std::cout << "ExtensionEntry::Deallocate\n";
 	};
 
 void Display( void )
@@ -43,11 +43,11 @@ void Display( void )
 
 void SetNameValue( const char *pname, const char *pvalue );
 void SetPrefixNameValue( const char *prefix, const char *name, const char *value);
-void SetPrefixNameHeader( const string &prefix, const string &name, const string &header );
-void SetPrefixNameValueProto( const string &prefix,
-                                const string &name,
-                                const string &header,
-                                const string &proto );
+void SetPrefixNameHeader( const std::string &prefix, const std::string &name, const std::string &header );
+void SetPrefixNameValueProto( const std::string &prefix,
+                                const std::string &name,
+                                const std::string &header,
+                                const std::string &proto );
 
 inline void EntrySetFlag(   int mode )
         {

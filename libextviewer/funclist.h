@@ -14,7 +14,7 @@
 class CFuncElement
 {
 public:
-string m_name;		// Name of function
+std::string m_name;		// Name of function
 int m_funcaddr;		// Token offset
 
 CFuncElement( void )
@@ -23,7 +23,7 @@ m_name.clear();
 m_funcaddr = 0;
 };
 
-CFuncElement( const string &name, int addr )
+CFuncElement( const std::string &name, int addr )
 {
 m_name = name;
 
@@ -74,12 +74,12 @@ void Deallocate( void )
     m_prefunclist = NULL;
     };
 
-void AddList( const string &name, int addr )
+void AddList( const std::string &name, int addr )
     { 	
     m_prefunclist[m_prefuncnum++] = CFuncElement( name, addr ); 
     };
 
-int FindName( const string &name )
+int FindName( const std::string &name )
     {
     int found = -1;
 

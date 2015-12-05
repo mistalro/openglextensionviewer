@@ -25,7 +25,7 @@ public:
                                                                                 
 CExtensionSiteInfoList *m_psiteinfolist;
 int 		  	 m_listempty;
-vector <CDerivedListViewItem *> m_itemlist;
+std::vector <CDerivedListViewItem *> m_itemlist;
                                                                                 
 // ----- Constructor and destructor -----------------------------------------
                                                                                 

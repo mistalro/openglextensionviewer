@@ -43,7 +43,7 @@ static int token_num = sizeof(token_list)/sizeof(CTokenEntry);
 // Read 1D integer arrays
 // --------------------------------------------------------------------------
 
-void CFileSystemBooleanArray::ReadBoolArray1D( ifstream &stream,
+void CFileSystemBooleanArray::ReadBoolArray1D( std::ifstream &stream,
                                         unsigned int nx, bool *pdata )
 {
 for ( unsigned int pn = 0; pn < nx; pn++ )
@@ -52,7 +52,7 @@ for ( unsigned int pn = 0; pn < nx; pn++ )
 
 	if ( g_verbose> 1 )
 		{
-		cout << "Read boolean <" << pdata[pn] << ">\n";
+		std::cout << "Read boolean <" << pdata[pn] << ">\n";
 		}
         }
 }
@@ -61,10 +61,10 @@ for ( unsigned int pn = 0; pn < nx; pn++ )
 // Read 2D integer arrays
 // --------------------------------------------------------------------------
 
-void CFileSystemBooleanArray::ReadBoolArray2D( ifstream &stream,
+void CFileSystemBooleanArray::ReadBoolArray2D( std::ifstream &stream,
 			unsigned int nx, unsigned int ny, bool *pdata )
 {
-string buffer;
+std::string buffer;
 
 while ( ReadOpenClosePar( stream ) != 0 )
         {
@@ -72,7 +72,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 	if ( g_verbose > 1)
 		{
-		cout << "Read token <" << buffer << ">\n";
+		std::cout << "Read token <" << buffer << ">\n";
 		}
 
         switch( token_match( buffer, token_list, token_num ) )
@@ -80,7 +80,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
                 case TOKEN_YSLICE:
 			if ( g_verbose > 1 )
 				{
-				cout << "Reading Y-slice\n";
+				std::cout << "Reading Y-slice\n";
 				}
 
                         ReadBoolArray1D( stream, nx, pdata );
@@ -88,8 +88,8 @@ while ( ReadOpenClosePar( stream ) != 0 )
                         break;
 
                 default:
-                        cout << "ReadBooleanArray2D::Unknown token <";
-                        cout << buffer.c_str() << " >\n";
+                        std::cout << "ReadBooleanArray2D::Unknown token <";
+                        std::cout << buffer.c_str() << " >\n";
                         break;
                 }
 
@@ -103,10 +103,10 @@ stream.putback( '}' );
 // Read 3D integer arrays
 // --------------------------------------------------------------------------
 
-void CFileSystemBooleanArray::ReadBoolArray3D( ifstream &stream,
+void CFileSystemBooleanArray::ReadBoolArray3D( std::ifstream &stream,
        unsigned int nx, unsigned int ny, unsigned int nz, bool *pdata )
 {
-string buffer;
+std::string buffer;
 
 while ( ReadOpenClosePar( stream ) != 0 )
         {
@@ -114,7 +114,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 	if ( g_verbose > 1 )		
 		{
-		cout << "Read token <" << buffer << ">\n";
+		std::cout << "Read token <" << buffer << ">\n";
 		}
 
         switch( token_match( buffer, token_list, token_num ) )
@@ -122,7 +122,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
                 case TOKEN_ZSLICE:
 			if ( g_verbose > 1 )
 				{
-				cout << "Reading Z-slice\n";
+				std::cout << "Reading Z-slice\n";
 				}
 
                         ReadBoolArray2D( stream, nx, ny, pdata );
@@ -130,8 +130,8 @@ while ( ReadOpenClosePar( stream ) != 0 )
                         break;
 
                 default:
-                        cout << "ReadBooleanArray3D::Unknown token <";
-                        cout << buffer.c_str() << ">\n";
+                        std::cout << "ReadBooleanArray3D::Unknown token <";
+                        std::cout << buffer.c_str() << ">\n";
                         break;
                 }
 
@@ -149,7 +149,7 @@ stream.putback( '}' );
 // Write 1D array
 // --------------------------------------------------------------------------
 
-void CFileSystemBooleanArray::WriteBoolArray1D( ostream &stream,
+void CFileSystemBooleanArray::WriteBoolArray1D( std::ofstream &stream,
 				unsigned int nx, bool *pdata )
 {
 stream << " ";
@@ -160,7 +160,7 @@ for ( unsigned int px = 0; px < nx; px++ )
         }
 }
 
-void CFileSystemBooleanArray::WriteNamedBoolArray1D( ostream &stream, 
+void CFileSystemBooleanArray::WriteNamedBoolArray1D( std::ofstream &stream, 
 				unsigned int depth, const char *pstr, 
 				unsigned int nx, bool *pdata )
 {
@@ -180,7 +180,7 @@ stream << "}\n";
 // Write 2D array
 // --------------------------------------------------------------------------
 
-void CFileSystemBooleanArray::WriteBoolArray2D( ostream &stream,
+void CFileSystemBooleanArray::WriteBoolArray2D( std::ofstream &stream,
 			unsigned int nx, unsigned int ny, bool *pdata )
 {
 for ( unsigned int py = 0; py < ny; py++ )
@@ -189,7 +189,7 @@ for ( unsigned int py = 0; py < ny; py++ )
         }
 }
 
-void CFileSystemBooleanArray::WriteNamedBoolArray2D( ostream &stream, 
+void CFileSystemBooleanArray::WriteNamedBoolArray2D( std::ofstream &stream, 
 			unsigned int depth, const char *pstr, 
 			unsigned int nx, unsigned int ny, bool *pdata )
 {
@@ -208,7 +208,7 @@ WriteClosePar( stream, depth );
 // Write 3D array
 // --------------------------------------------------------------------------
 
-void CFileSystemBooleanArray::WriteBoolArray3D( ostream &stream,
+void CFileSystemBooleanArray::WriteBoolArray3D( std::ofstream &stream,
 			unsigned int nx, unsigned int ny, 
 			unsigned int nz, bool *pdata )
 {
@@ -218,7 +218,7 @@ for ( unsigned int py = 0; py < ny; py++ )
         }
 }
 
-void CFileSystemBooleanArray::WriteNamedBoolArray3D( ostream &stream, 
+void CFileSystemBooleanArray::WriteNamedBoolArray3D( std::ofstream &stream, 
 		unsigned int depth, const char *pstr, 
 		unsigned int nx, unsigned int ny, unsigned int nz, bool *pdata )
 {

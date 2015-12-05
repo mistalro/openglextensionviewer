@@ -5,8 +5,6 @@
 #ifndef OUTPUTFILESETTINGSDIALOG_H
 #define OUTPUTFILESETTINGSDIALOG_H
 
-using namespace std;
-
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>

@@ -1,8 +1,6 @@
 // ---------------------------------------------------------------------------
 // Copyright: (C) VFX Research 2002 - 2014. All Rights Reserved.
 // ---------------------------------------------------------------------------
-
-using namespace std;
                                                                                 
 #include <qlabel.h>
 #include <q3listbox.h>
@@ -41,7 +39,7 @@ int g_verbose = 0;
 // ---------------------------------------------------------------------------
                                                                                 
 CMainWindowDialog::CMainWindowDialog(QWidget* parent, 
-					const char*, WFlags fl)
+					const char*, Qt::WFlags fl)
         : QMainWindow( parent, fl )
 {
 setupUi( this );

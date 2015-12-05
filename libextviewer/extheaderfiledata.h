@@ -18,9 +18,9 @@ CExtensionEntryList m_extlist;     // List of extensions
 CExtensionEntryList m_constlist;   // List of constants for all extensions
 CExtensionEntryList m_funclist;    // List of functions for all constants
 
-string    m_prefix;      // Prefix used by extension GL_ WGL_ GLX_
-string    m_funcprefix;  // Prefix used by function  gl  wgl  glX
-string    m_prototype;   // Prefix for prototypes    GLX_GLXEXT_PROTOTYPES
+std::string    m_prefix;      // Prefix used by extension GL_ WGL_ GLX_
+std::string    m_funcprefix;  // Prefix used by function  gl  wgl  glX
+std::string    m_prototype;   // Prefix for prototypes    GLX_GLXEXT_PROTOTYPES
 
 // ----- Constructor and destructor -----------------------------------------
 
@@ -74,22 +74,22 @@ void Sort( void )
         m_extlist.Sort();
         };
         
-int ClearNameFlag(const string &name, int flag )
+int ClearNameFlag(const std::string &name, int flag )
         {
         return( m_extlist.ClearNameFlag( name, flag ) );
         };
                                                                                 
-int SetFullNameFlag( const string &name, int flag, int matchmode )
+int SetFullNameFlag( const std::string &name, int flag, int matchmode )
         {
         return( m_extlist.SetFullNameFlag( name, flag, matchmode ) );
         };
                                                                                 
-void AddExtensionString( const string &pextstring )
+void AddExtensionString( const std::string &pextstring )
 	{
 	m_extlist.AddExtensionString( pextstring );
 	};
 
-void RemoveExtensionString( const string &pextstring )
+void RemoveExtensionString( const std::string &pextstring )
 	{
 	m_extlist.RemoveExtensionString( pextstring );
 	};
@@ -99,17 +99,17 @@ int  GetCount( void )
         return( m_extlist.size() );
         };
                                                                                 
-void RemoveName( const string &name )
+void RemoveName( const std::string &name )
         {
         m_extlist.RemoveName( name );
         };
                                                                                 
-int FindName( const string &name )
+int FindName( const std::string &name )
         {
         return( m_extlist.FindName( name ) );
         };
                                                                                 
-void SelectByName( const string &name )
+void SelectByName( const std::string &name )
         {
         return( m_extlist.SelectByName( name ) );
         };
@@ -119,9 +119,9 @@ int GetIndexFlag( int pos, int flag )
         return( m_extlist.GetIndexFlag( pos, flag ) );
         };
                                                                                 
-int GetNameFlag( const string &name, int flag );
+int GetNameFlag( const std::string &name, int flag );
                                                                                 
-void SetNameFlag( const string &name, int flag )
+void SetNameFlag( const std::string &name, int flag )
         {
         m_extlist.SetNameFlag( name, flag );
         };
@@ -131,9 +131,10 @@ void SetIndexFlag( int pos, int flag )
         m_extlist.SetIndexFlag( pos, flag );
         };
                         
-void SetParameters( const string &prefix, 
-			const string &funcprefix, const string &prototype );                                                        
-void SelectExtensionString( const string &extstring, 
+void SetParameters( const std::string &prefix, 
+			const std::string &funcprefix, 
+			const std::string &prototype );                                                        
+void SelectExtensionString( const std::string &extstring, 
 		CExtensionEntryList &ignorelist, 
 		CExtensionEntryList &newlist, 
 		int mode, int matchmode, int updatemode )
@@ -142,7 +143,7 @@ void SelectExtensionString( const string &extstring,
 		ignorelist, newlist, mode, matchmode, updatemode );
         };
               
-void UnselectExtensionString( const string &pextstring, 
+void UnselectExtensionString( const std::string &pextstring, 
 				int mode, int matchmode )
 	{
 	m_extlist.UnselectExtensionString( pextstring,
@@ -151,7 +152,7 @@ void UnselectExtensionString( const string &pextstring,
  
 void DeleteIndex( int index );
                                                                                 
-int DeleteName( const string &name );
+int DeleteName( const std::string &name );
                                                                                 
 void ClearAllFlags( int mode )
         {
@@ -175,43 +176,43 @@ void ReadFileVersion( char *curline);
 int ReadExtensionBlockHeader( char *curline,
      const char *filename, 
         CHeaderFileProgressCallback &callback,
-	ifstream &stream,
+	std::ifstream &stream,
      int filelen, CExtensionEntryList &vendorlist, int pextlen );
 
 void ReadFileConstants( char *curline, char *lastline, 
 			char *name, int pextlen);
 
-void ReadFileFunctions( char *curline, char *lastline, char *name, ifstream &stream );
-void ReadFileFunctionPrototypes( char *curline, ifstream &stream );
+void ReadFileFunctions( char *curline, char *lastline, char *name, std::ifstream &stream );
+void ReadFileFunctionPrototypes( char *curline, std::ifstream &stream );
 
-int ReadHeaderFile( const string &filename,
+int ReadHeaderFile( const std::string &filename,
         CHeaderFileProgressCallback &callback,
         CExtensionEntryList &versionlist, 
 	CExtensionEntryList &vendorlist );
                                                                                 
-int AddStart( const string &exname )
+int AddStart( const std::string &exname )
         {
         return( m_extlist.AddStart( exname,
                 m_funclist.size(), m_constlist.size() ) );
         };
                                                                                 
-void AddPrefixNameValueProto( 	string &pnewreturnbuf, 
-				string &ptempbuf,
-                        	string &pshortproto, 
-				string &pnewlongproto )
+void AddPrefixNameValueProto( 	std::string &pnewreturnbuf, 
+				std::string &ptempbuf,
+                        	std::string &pshortproto, 
+				std::string &pnewlongproto )
         {
         m_funclist.AddPrefixNameValueProto(
         pnewreturnbuf, ptempbuf, pshortproto, pnewlongproto );
         };
                                                                                 
-void AddConstNameValue( string &tempbuf, 
-			string &curword, int expos )
+void AddConstNameValue( std::string &tempbuf, 
+			std::string &curword, int expos )
         {
         m_constlist.AddNameValue( tempbuf.data(), curword.data() );
         m_extlist.IncrementConstNum( expos);
         };
                                                                                 
-int  FindConstName( const string &name )
+int  FindConstName( const std::string &name )
         {
         return( m_constlist.FindName( name ) );
         };
@@ -241,17 +242,17 @@ void RedoState( void )
         m_extlist.RedoState();
         };
 
-void SetListName( const string &name )
+void SetListName( const std::string &name )
 	{
 	m_extlist.SetListName( name );
 	};
 
-string &GeListName( void )
+std::string &GeListName( void )
 	{	
 	return( m_extlist.m_listname );
 	};
 
-void SearchString( int mode, const string &strsearch, 
+void SearchString( int mode, const std::string &strsearch, 
 		CHeaderFileDataSearchCallback &callback )
 	{
 	if ( mode & SEARCH_CONSTANTS )	// Search constants

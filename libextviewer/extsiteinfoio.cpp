@@ -7,8 +7,6 @@
 #include <iostream>
 #include <fstream>
 
-using namespace std;
-
 #include "extensionlib.h"
 
 // ---------------------------------------------------------------------------
@@ -97,9 +95,9 @@ static int token_num = sizeof(token_list)/sizeof(CTokenEntry);
 // Read CExtensionSiteInfoIOData in from an open stream
 // --------------------------------------------------------------------------
 
-int CExtensionSiteInfoIODataAsciiIO::ReadFileInternal( ifstream &stream )
+int CExtensionSiteInfoIODataAsciiIO::ReadFileInternal( std::ifstream &stream )
 {
-string tokenid;
+std::string tokenid;
 int result;
 
 while ( ReadOpenClosePar( stream ) != 0 )
@@ -123,32 +121,32 @@ return( result );
 // Read CExtensionSiteInfoIOData in from an open stream
 // --------------------------------------------------------------------------
 
-int CExtensionSiteInfoIODataAsciiIO::ReadFile( ifstream &stream )
+int CExtensionSiteInfoIODataAsciiIO::ReadFile( std::ifstream &stream )
 {
 int result;
-string tokenid;
+std::string tokenid;
 
-string entry_description;
-string entry_indexdirlocal;
-string entry_indexpagenet;
-string entry_indexpagelocal;
-string entry_glheadernet;
-string entry_glheaderlocal;
-string entry_glxheadernet;
-string entry_glxheaderlocal;
-string entry_wglheadernet;
-string entry_wglheaderlocal;
-string entry_coreheadernet;
-string entry_coreheaderlocal;
+std::string entry_description;
+std::string entry_indexdirlocal;
+std::string entry_indexpagenet;
+std::string entry_indexpagelocal;
+std::string entry_glheadernet;
+std::string entry_glheaderlocal;
+std::string entry_glxheadernet;
+std::string entry_glxheaderlocal;
+std::string entry_wglheadernet;
+std::string entry_wglheaderlocal;
+std::string entry_coreheadernet;
+std::string entry_coreheaderlocal;
 int entry_downloadflags;
-string entry_filetypefilters;
+std::string entry_filetypefilters;
 
 result = true;
 
 
 if ( g_verbose )
 	{
-	cout << "Reading CExtensionSiteInfoIODataAsciiIO" << endl;
+	std::cout << "Reading CExtensionSiteInfoIODataAsciiIO" << std::endl;
 	}
 
 while ( ReadOpenClosePar( stream ) != 0 )
@@ -157,7 +155,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 	if ( g_verbose > 1 )
 		{
-		cout << "Read Token = <" << tokenid << ">\n";
+		std::cout << "Read Token = <" << tokenid << ">\n";
 		}
 
 	switch( token_match( tokenid, token_list, token_num ) )
@@ -168,7 +166,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <description> = <" << entry_description << ">\n";
+				std::cout << "Read <description> = <" << entry_description << ">\n";
 				}
 			break;
 
@@ -178,7 +176,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <indexdirlocal> = <" << entry_indexdirlocal << ">\n";
+				std::cout << "Read <indexdirlocal> = <" << entry_indexdirlocal << ">\n";
 				}
 			break;
 
@@ -188,7 +186,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <indexpagenet> = <" << entry_indexpagenet << ">\n";
+				std::cout << "Read <indexpagenet> = <" << entry_indexpagenet << ">\n";
 				}
 			break;
 
@@ -198,7 +196,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <indexpagelocal> = <" << entry_indexpagelocal << ">\n";
+				std::cout << "Read <indexpagelocal> = <" << entry_indexpagelocal << ">\n";
 				}
 			break;
 
@@ -208,7 +206,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <glheadernet> = <" << entry_glheadernet << ">\n";
+				std::cout << "Read <glheadernet> = <" << entry_glheadernet << ">\n";
 				}
 			break;
 
@@ -218,7 +216,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <glheaderlocal> = <" << entry_glheaderlocal << ">\n";
+				std::cout << "Read <glheaderlocal> = <" << entry_glheaderlocal << ">\n";
 				}
 			break;
 
@@ -228,7 +226,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <glxheadernet> = <" << entry_glxheadernet << ">\n";
+				std::cout << "Read <glxheadernet> = <" << entry_glxheadernet << ">\n";
 				}
 			break;
 
@@ -238,7 +236,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <glxheaderlocal> = <" << entry_glxheaderlocal << ">\n";
+				std::cout << "Read <glxheaderlocal> = <" << entry_glxheaderlocal << ">\n";
 				}
 			break;
 
@@ -248,7 +246,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <wglheadernet> = <" << entry_wglheadernet << ">\n";
+				std::cout << "Read <wglheadernet> = <" << entry_wglheadernet << ">\n";
 				}
 			break;
 
@@ -258,7 +256,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <wglheaderlocal> = <" << entry_wglheaderlocal << ">\n";
+				std::cout << "Read <wglheaderlocal> = <" << entry_wglheaderlocal << ">\n";
 				}
 			break;
 
@@ -268,7 +266,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <coreheadernet> = <" << entry_coreheadernet << ">\n";
+				std::cout << "Read <coreheadernet> = <" << entry_coreheadernet << ">\n";
 				}
 			break;
 
@@ -278,7 +276,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <coreheaderlocal> = <" << entry_coreheaderlocal << ">\n";
+				std::cout << "Read <coreheaderlocal> = <" << entry_coreheaderlocal << ">\n";
 				}
 			break;
 
@@ -288,7 +286,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <downloadflags> = <" << entry_downloadflags << ">\n";
+				std::cout << "Read <downloadflags> = <" << entry_downloadflags << ">\n";
 				}
 			break;
 
@@ -298,12 +296,12 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <filetypefilters> = <" << entry_filetypefilters << ">\n";
+				std::cout << "Read <filetypefilters> = <" << entry_filetypefilters << ">\n";
 				}
 			break;
 
 		default:
-			cout << "CExtensionSiteInfoIO::Unknown token <" << tokenid << ">\n";
+			std::cout << "CExtensionSiteInfoIO::Unknown token <" << tokenid << ">\n";
 			break;
 		}
 
@@ -314,7 +312,7 @@ stream.putback( '}' );
 
 if ( g_verbose )
 	{
-	cout << "Reading complete." << endl << endl;
+	std::cout << "Reading complete." << std::endl << std::endl;
 	}
 
 return( result );
@@ -324,7 +322,7 @@ return( result );
 // Write data out to an open stream at specified tab depth
 // --------------------------------------------------------------------------
 
-int CExtensionSiteInfoIODataAsciiIO::WriteFile( ofstream &stream, unsigned int depth )
+int CExtensionSiteInfoIODataAsciiIO::WriteFile( std::ofstream &stream, unsigned int depth )
 {
 return( WriteFile( stream, depth, STRING_BLOCKNAME ) );
 }
@@ -333,7 +331,7 @@ return( WriteFile( stream, depth, STRING_BLOCKNAME ) );
 // Write data out to an open stream at specified tab depth
 // --------------------------------------------------------------------------
 
-int CExtensionSiteInfoIODataAsciiIO::WriteFile( ofstream &stream, unsigned int depth, const char *pstr )
+int CExtensionSiteInfoIODataAsciiIO::WriteFile( std::ofstream &stream, unsigned int depth, const char *pstr )
 {
 int result;
 

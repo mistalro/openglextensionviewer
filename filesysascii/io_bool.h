@@ -24,9 +24,9 @@ public:
 
 // ----- Read routines ------------------------------------------------------
 
-inline void ReadBool( ifstream &stream, bool &ivalue )
+inline void ReadBool( std::ifstream &stream, bool &ivalue )
 	{
-	string buffer;
+	std::string buffer;
 	int temp;
 
 	ReadString( stream, buffer );
@@ -48,19 +48,19 @@ inline void ReadBool( ifstream &stream, bool &ivalue )
 
 // ----- Write routines -----------------------------------------------------
 
-void WriteBool( ostream &stream, bool value )
+void WriteBool( std::ofstream &stream, bool value )
 	{
 	stream << value;
 	}
 
-void WriteNamedBool( ostream &stream, int depth, const char *name,
+void WriteNamedBool( std::ofstream &stream, int depth, const char *name,
                                                         bool value )
 	{
 	WriteTabbedDepth( stream, depth );
 	stream << "{" << name << " " << value << " }\n";
 	}
 
-void WriteNamedBool( ostream &stream, int depth, string &strname,
+void WriteNamedBool( std::ofstream &stream, int depth, std::string &strname,
                                                         bool value )
 	{
 	WriteTabbedDepth( stream, depth );

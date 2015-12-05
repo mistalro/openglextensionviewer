@@ -23,9 +23,9 @@ public:
 
 // ----- Read routines ------------------------------------------------------
 
-void ReadLong( ifstream &stream, long &ivalue )
+void ReadLong( std::ifstream &stream, long &ivalue )
 	{
-	string buffer;
+	std::string buffer;
 
 	ReadString( stream, buffer );
 
@@ -48,19 +48,19 @@ void ReadLong( ifstream &stream, long &ivalue )
 
 // ----- Integer matrices ----------------------------------------------------
 
-inline void WriteLong( ostream &stream, long value )
+inline void WriteLong(std::ofstream &stream, long value )
 	{
 	stream << value;
 	}
 
-inline void WriteNamedLong( ostream &stream, int depth, string &strname,
+inline void WriteNamedLong(std::ofstream &stream, int depth, std::string &strname,
                                                 long value )
 	{
 	WriteTabbedDepth( stream, depth );
 	stream << "{" << strname.c_str() << " " << value << " }\n";
 	}
 
-inline void WriteNamedLong( ostream &stream, int depth, const char *name,
+inline void WriteNamedLong(std::ofstream &stream, int depth, const char *name,
                                                 long value )
 	{
 	WriteTabbedDepth( stream, depth );

@@ -14,8 +14,6 @@
 #include <vector>
 #include <algorithm>
 
-using namespace std;
-
 #include "filesysascii.h"
 #include "virtualfsascii.h"
 
@@ -25,16 +23,16 @@ using namespace std;
 
 int CVirtualFileSystem::ReadFile( const char *path )
 {
-ifstream stream;
+std::ifstream stream;
 bool result;
 
-stream.open( path, ifstream::in );
+stream.open( path, std::ifstream::in );
 
 if ( !stream.is_open() )
         {
         if ( g_verbose )
                 {
-                cout << "Failed to open source file <" << path << ">\n";
+                std::cout << "Failed to open source file <" << path << ">\n";
                 }
 
         result = false;
@@ -43,14 +41,14 @@ else
         {
         if ( g_verbose )
                 {
-                cout << "Successfully opened source file <" << path << ">\n";
+                std::cout << "Successfully opened source file <" << path << ">\n";
                 }
 
         result = ReadFileInternal( stream );
 
         if ( g_verbose )
                 {
-                cout << "Read source file with result <" << result << ">\n";
+                std::cout << "Read source file with result <" << result << ">\n";
                 }
 
         stream.close();
@@ -63,18 +61,18 @@ return( result );
 // Read CAutoFlowSystemIO in from the selected string path
 // --------------------------------------------------------------------------
 
-int CVirtualFileSystem::ReadFile( const string &path )
+int CVirtualFileSystem::ReadFile( const std::string &path )
 {
-ifstream stream;
+std::ifstream stream;
 int result;
 
-stream.open( path.data(), ifstream::in );
+stream.open( path.data(), std::ifstream::in );
 
 if ( !stream.is_open() )
         {
         if ( g_verbose )
                 {
-                cout << "Failed to open source file <" << path << ">\n";
+                std::cout << "Failed to open source file <" << path << ">\n";
                 }
 
         result = false;
@@ -83,14 +81,14 @@ else
         {
         if ( g_verbose )
                 {
-                cout << "Successfully opened source file <" << path << ">\n";
+                std::cout << "Successfully opened source file <" << path << ">\n";
                 }
 
         result = ReadFileInternal( stream );
 
         if ( g_verbose )
                 {
-                cout << "Read source file with result <" << result << ">\n";
+                std::cout << "Read source file with result <" << result << ">\n";
                 }
 
         stream.close();
@@ -105,10 +103,10 @@ return( result );
 
 int CVirtualFileSystem::WriteFile( const char *path )
 {
-ofstream stream;
+std::ofstream stream;
 bool result;
 
-stream.open( path, ofstream::out );
+stream.open( path, std::ofstream::out );
 
 if ( stream.is_open() )
         {
@@ -128,12 +126,12 @@ return( result );
 // Write data out to the selected file path defined as a STL string
 // --------------------------------------------------------------------------
 
-int CVirtualFileSystem::WriteFile( const string &path )
+int CVirtualFileSystem::WriteFile( const std::string &path )
 {
-ofstream stream;
+std::ofstream stream;
 bool result;
 
-stream.open( path.data(), ofstream::out );
+stream.open( path.data(), std::ofstream::out );
 
 if ( stream.is_open() )
         {

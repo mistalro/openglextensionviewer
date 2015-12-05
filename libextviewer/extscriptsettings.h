@@ -14,10 +14,10 @@ public:
 // ----- Internal variables -------------------------------------------------
 
 int      m_scriptinternalsize;  // Size of internal script
-string   m_scriptinternal;      // Internal script
+std::string   m_scriptinternal;      // Internal script
 int m_scriptinternalpos;   // Line position of internal script
 int      m_scriptexternalsize;  // Size of external script
-string   m_scriptexternal;      // External script
+std::string   m_scriptexternal;      // External script
 int      m_scriptexternalpos;   // Line position of external script
 int      m_scriptsize;          // Size of script
 CFuncElementList m_prefunclist; // List of functions for script file
@@ -51,7 +51,7 @@ int       m_activeconst;        // Constant loop counter in use
 int       m_activeregistry;     // Registry loop counter in use
 char     *m_filename;           // Filename
 
-ofstream   m_outputstream;      // Output stream
+std::ofstream   m_outputstream;      // Output stream
 
 CExtensionEntry *m_pextentry;    // Pointer to current extension entry
 CExtensionEntryList  *m_pcurfunclist; // Pointer to current function list
@@ -93,11 +93,11 @@ void Init( void );
 void ScriptInitInternal(void);
 void ScriptInitTokens(void);
 
-int  ScriptReadExternal( const string &path );
-void ScriptSetExternal( const string &path);
+int  ScriptReadExternal( const std::string &path );
+void ScriptSetExternal( const std::string &path);
 
-int  ScriptWrite( const string &path, int which );
-void ScriptDump( const string &strfile );
+int  ScriptWrite( const std::string &path, int which );
+void ScriptDump( const std::string &strfile );
 
 const char *ScriptReadToken( const char *pbuffer, const char *pend, 
 			CScriptToken &scrtoken );
@@ -105,7 +105,7 @@ const char *ScriptReadToken( const char *pbuffer, const char *pend,
 void ScriptParse( const char *pstart, int plen );
 void ScriptSet( const char *path );
 
-void ScriptSetFilename( const string &str );
+void ScriptSetFilename( const std::string &str );
 void ScriptParse( void );
 
 void ScriptSetMode ( int mode ) { m_scriptmode = mode; };

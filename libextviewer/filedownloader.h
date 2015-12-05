@@ -41,15 +41,15 @@ const char* what() throw()
 // --------------------------------------------------------------------------
 // Wrapper class around the libcurl library
 //
-// The most important function is Fetch, which returns a string object
+// The most important function is Fetch, which returns a std::string object
 // downloaded from the specified URL
 // --------------------------------------------------------------------------
 
 class CFileDownloader
 {
 CURL *m_handle;		// CURL Handler
-std::string m_url;	// URL string
-std::string m_data;	// Data string
+std::string m_url;	// URL std::string
+std::string m_data;	// Data std::string
 
 public:
 CFileDownloader(void) throw (CurlException)
@@ -60,7 +60,7 @@ CFileDownloader(void) throw (CurlException)
 		throw CurlException("Unable to initialize curl handler");
 	}
 
-std::string Fetch(const string &url) throw (CurlException)
+std::string Fetch(const std::string &url) throw (CurlException)
 	{
 	SetURL( url );
 	SetOptions();
@@ -69,14 +69,14 @@ std::string Fetch(const string &url) throw (CurlException)
 	return m_data;
 	}
 
-bool Download(const string &url, const string &path) throw (CurlException)
+bool Download(const std::string &url, const std::string &path) throw (CurlException)
 	{
 	SetURL( url );
 	SetOptions();
 	SendGetRequest();
 	bool result = false;
 	
-	ofstream stream;
+	std::ofstream stream;
 
 	stream.open( path.data(), std::ios::binary | std::ios::out );
 
@@ -99,7 +99,7 @@ bool Download(const string &url, const string &path) throw (CurlException)
 private:
 
 // Stage #2 - Set URL
-void SetURL(const string &url) 
+void SetURL(const std::string &url) 
 	{
 	if ( url.length() == 0 )
 		throw CurlException("URL can't be of zero length");

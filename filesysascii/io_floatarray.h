@@ -25,32 +25,32 @@ public:
 
 // ----- Float arrays -------------------------------------------------------
 
-void ReadFloatArray1D( ifstream &stream,
+void ReadFloatArray1D( std::ifstream &stream,
                 unsigned int nx, float *pdata );
 
-void ReadFloatArray2D( ifstream &stream,
+void ReadFloatArray2D( std::ifstream &stream,
                 unsigned int nx, unsigned int ny, float *pdata );
 
-void ReadFloatArray3D( ifstream &stream,
+void ReadFloatArray3D( std::ifstream &stream,
                 unsigned int nx, unsigned int ny, unsigned int nz, float *pdata );
 
 // ----- Write routines -----------------------------------------------------
 
-void WriteFloatArray1D( ostream &stream, unsigned int nx, float *pdata );
+void WriteFloatArray1D(std::ofstream &stream, unsigned int nx, float *pdata );
 
-void WriteNamedFloatArray1D( ostream &stream, unsigned int depth,
+void WriteNamedFloatArray1D(std::ofstream &stream, unsigned int depth,
         const char *pstr, unsigned int nx, float *pdata );
 
-void WriteFloatArray2D( ostream &stream, 
+void WriteFloatArray2D(std::ofstream &stream, 
 	unsigned int nx, unsigned int ny, float *pdata );
 
-void WriteNamedFloatArray2D( ostream &stream, unsigned int depth,
+void WriteNamedFloatArray2D(std::ofstream &stream, unsigned int depth,
         const char *pstr, unsigned int nx, unsigned int ny, float *pdata );
 
-void WriteFloatArray3D( ostream &stream, 
+void WriteFloatArray3D(std::ofstream &stream, 
 	unsigned int nx, unsigned int ny, unsigned int nz, float *pdata );
 
-void WriteNamedFloatArray3D( ostream &stream, unsigned int depth,
+void WriteNamedFloatArray3D(std::ofstream &stream, unsigned int depth,
         const char *pstr, unsigned int nx, unsigned int ny, unsigned int nz, float *pdata );
 };
 

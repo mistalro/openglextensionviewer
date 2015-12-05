@@ -60,7 +60,7 @@ public:
 CDerivedListViewFunction	*m_plistview;   // Pointer to list view
 CExtensionViewer   		*m_pextcreator;
 CExtensionEntry     		*m_pextentry;
-vector <CDerivedListViewItem *> m_itemlist;
+std::vector <CDerivedListViewItem *> m_itemlist;
 int 				 m_listempty;
 // ----- Constructor and destructor -----------------------------------------
 

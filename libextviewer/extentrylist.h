@@ -8,7 +8,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-#include <cstring>
+#include <string>
 
 #define LIST_SORTNAME           0x0000
 #define LIST_SORTVALUE          0x0001
@@ -31,7 +31,7 @@
 #define LIST_WGL                0x0101
 */
 
-// ----- Match modes required for adding extension strings ------------------
+// ----- Match modes required for adding extension std::strings ------------------
 /*
 #define MATCH_EXACTLY   0x001
 #define MATCH_BEGINNING 0x002
@@ -52,7 +52,7 @@ class CExtensionEntryList : virtual public CExtensionEntryListIO,
 public:
 
 int              m_sortmode; // List sorting mode
-string           m_listname; // Name of list
+std::string           m_listname; // Name of list
 
 // ----- Constructor and destructor -----------------------------------------
 
@@ -90,23 +90,23 @@ void SetListName( const char *pname )
         m_listname = pname;
         };
 
-void SetListName( const string &name )
+void SetListName( const std::string &name )
         {
         m_listname = name;
         };
 
-string &GetListName( void )
+std::string &GetListName( void )
         {
         return( m_listname );
         };
 
-int  FindName(     const string &pname );
+int  FindName(     const std::string &pname );
 int  FindFullName( const char *pname );
 int  FindValue(  const char *pvalue );
-int  FindProc(   const string &pproc );
+int  FindProc(   const std::string &pproc );
 
-int  Add( const string &name );
-int  AddStart( const string &name, int funcstart, int conststart );
+int  Add( const std::string &name );
+int  AddStart( const std::string &name, int funcstart, int conststart );
 
 int  Add( const char *name );
 int  AddNameValue( const char *name, const char *value );
@@ -115,24 +115,24 @@ void AddProtoVars( const char *pchptra, const char *pchptrc );
 int  AddPrefixNameValue( const char *prefix, const char *name,
 			const char *header );
 
-int  AddPrefixNameValue( const string &prefix, const string &name, 
-                         const string &header );
+int  AddPrefixNameValue( const std::string &prefix, const std::string &name, 
+                         const std::string &header );
 
-int  AddPrefixNameValueProto( const string &prefix, const string &name, 
-                              const string &header, const string &proto );
+int  AddPrefixNameValueProto( const std::string &prefix, const std::string &name, 
+                              const std::string &header, const std::string &proto );
 
 void DeleteIndex(  unsigned int index );
-int  DeleteName(  const string &name );
+int  DeleteName(  const std::string &name );
 void DeleteRange( int start, int num );
 
 void SetAllFlags(     int mode );
 void ClearAllFlags(   int mode );
-int  ClearNameFlag(   const string &name, int mode );
-int  GetNameFlag(     const string &name, int mode );
-int  SetNameFlag(     const string &name, int mode );
-int  SetFullNameFlag( const string &name, int flag, int matchmode );
-int  ClearFullNameFlag(const string &name, int flag, int matchmode );
-int  ToggleNameFlag(  const string &name, int mode );
+int  ClearNameFlag(   const std::string &name, int mode );
+int  GetNameFlag(     const std::string &name, int mode );
+int  SetNameFlag(     const std::string &name, int mode );
+int  SetFullNameFlag( const std::string &name, int flag, int matchmode );
+int  ClearFullNameFlag(const std::string &name, int flag, int matchmode );
+int  ToggleNameFlag(  const std::string &name, int mode );
 void SetIndexFlag(    unsigned int idno, int mode );
 int  GetIndexFlag(    unsigned int idno, int mode );
 void ClearIndexFlag(  unsigned int idno, int mode );
@@ -142,8 +142,8 @@ void SaveState( void );
 void UndoState( void );
 void RedoState( void );
 
-void SelectByName( const string &name );
-void RemoveName( const string &name );
+void SelectByName( const std::string &name );
+void RemoveName( const std::string &name );
 void ToggleSortMode( int mode );
 void SortRange( int start, int num );
 
@@ -191,24 +191,24 @@ void IncrementFuncNum( int pos )
     at(pos).m_funcnum++;
     };
 
-void AddExtensionString( const string &pextstring );
-void RemoveExtensionString( const string &pextstring );
+void AddExtensionString( const std::string &pextstring );
+void RemoveExtensionString( const std::string &pextstring );
 
-void SelectExtensionString( const string &pextstring, 
+void SelectExtensionString( const std::string &pextstring, 
 			CExtensionEntryList &ignorelist, 
 			CExtensionEntryList &newlist, 
 			int mode, int matchmode, int updatemode );
 
-void UnselectExtensionString( const string &pextstring,
+void UnselectExtensionString( const std::string &pextstring,
 			int mode, int matchmode );
 
-void SearchConstants( const string &string,
+void SearchConstants( const std::string &string,
                         CHeaderFileDataSearchCallback &callback );
 
-void SearchFunctions( const string &string,
+void SearchFunctions( const std::string &string,
                         CHeaderFileDataSearchCallback &callback );
 
-void SearchString( int mode, const string &string, 
+void SearchString( int mode, const std::string &string, 
 			CHeaderFileDataSearchCallback &callback );
 
 };

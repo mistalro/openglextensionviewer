@@ -7,8 +7,6 @@
 #include <iostream>
 #include <fstream>
 
-using namespace std;
-
 #include "extensionlib.h"
 
 // ---------------------------------------------------------------------------
@@ -45,9 +43,9 @@ static int token_num = sizeof(token_list)/sizeof(CTokenEntry);
 // Read CExtensionScriptSettingsIOData in from an open stream
 // --------------------------------------------------------------------------
 
-int CExtensionScriptSettingsIODataAsciiIO::ReadFileInternal( ifstream &stream )
+int CExtensionScriptSettingsIODataAsciiIO::ReadFileInternal( std::ifstream &stream )
 {
-string tokenid;
+std::string tokenid;
 int result;
 
 while ( ReadOpenClosePar( stream ) != 0 )
@@ -71,10 +69,10 @@ return( result );
 // Read CExtensionScriptSettingsIOData in from an open stream
 // --------------------------------------------------------------------------
 
-int CExtensionScriptSettingsIODataAsciiIO::ReadFile( ifstream &stream )
+int CExtensionScriptSettingsIODataAsciiIO::ReadFile( std::ifstream &stream )
 {
 int result;
-string tokenid;
+std::string tokenid;
 
 int entry_scriptmode;
 
@@ -83,7 +81,7 @@ result = true;
 
 if ( g_verbose )
 	{
-	cout << "Reading CExtensionScriptSettingsIODataAsciiIO" << endl;
+	std::cout << "Reading CExtensionScriptSettingsIODataAsciiIO" << std::endl;
 	}
 
 while ( ReadOpenClosePar( stream ) != 0 )
@@ -92,7 +90,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 	if ( g_verbose > 1 )
 		{
-		cout << "Read Token = <" << tokenid << ">\n";
+		std::cout << "Read Token = <" << tokenid << ">\n";
 		}
 
 	switch( token_match( tokenid, token_list, token_num ) )
@@ -103,12 +101,12 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <scriptmode> = <" << entry_scriptmode << ">\n";
+				std::cout << "Read <scriptmode> = <" << entry_scriptmode << ">\n";
 				}
 			break;
 
 		default:
-			cout << "CExtensionScriptSettingsIO::Unknown token <" << tokenid << ">\n";
+			std::cout << "CExtensionScriptSettingsIO::Unknown token <" << tokenid << ">\n";
 			break;
 		}
 
@@ -119,7 +117,7 @@ stream.putback( '}' );
 
 if ( g_verbose )
 	{
-	cout << "Reading complete." << endl << endl;
+	std::cout << "Reading complete." << std::endl << std::endl;
 	}
 
 return( result );
@@ -129,7 +127,7 @@ return( result );
 // Write data out to an open stream at specified tab depth
 // --------------------------------------------------------------------------
 
-int CExtensionScriptSettingsIODataAsciiIO::WriteFile( ofstream &stream, unsigned int depth )
+int CExtensionScriptSettingsIODataAsciiIO::WriteFile( std::ofstream &stream, unsigned int depth )
 {
 return( WriteFile( stream, depth, STRING_BLOCKNAME ) );
 }
@@ -138,7 +136,7 @@ return( WriteFile( stream, depth, STRING_BLOCKNAME ) );
 // Write data out to an open stream at specified tab depth
 // --------------------------------------------------------------------------
 
-int CExtensionScriptSettingsIODataAsciiIO::WriteFile( ofstream &stream, unsigned int depth, const char *pstr )
+int CExtensionScriptSettingsIODataAsciiIO::WriteFile( std::ofstream &stream, unsigned int depth, const char *pstr )
 {
 int result;
 

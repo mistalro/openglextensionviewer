@@ -35,7 +35,7 @@ if ( CheckUpdateFlag() )
 // ---------------------------------------------------------------------------
 
 int CFindFuncConstDialog::HeaderFileDataSearchCallback( int list, 
-				const string &name, const string &value )
+			const std::string &name, const std::string &value )
 {
 Q3ListViewItem *pitem;
 
@@ -88,7 +88,7 @@ Q_UNUSED(string);
 
 void CFindFuncConstDialog::pushbuttonfindconstant_clicked()
 {
-string strdata;
+std::string strdata;
 
 m_listviewresults->clear(); // Clear list
 strdata = m_lineeditconstant->text().ascii(); // Get Constant string
@@ -102,7 +102,7 @@ m_pcreator->SearchString( SEARCH_CONSTANTS, strdata, *this );
 
 void CFindFuncConstDialog::pushbuttonfindfunction_clicked()
 {
-string strdata;
+std::string strdata;
 
 m_listviewresults->clear(); // Clear list
 strdata = m_lineeditfunction->text().ascii(); // Get Function string

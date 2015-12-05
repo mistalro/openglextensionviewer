@@ -82,33 +82,33 @@ void SetInfo( int itemid, const char *path );
 
 void DumpData( void );
 
-int  FindExtensionLocalPath(    string &pextpath, 
-				string &pextname );
+int  FindExtensionLocalPath(    std::string &pextpath, 
+				std::string &pextname );
                                                                                 
-int  FindRegistryExtensionPath( string &pregfile,
-                                string &pextname, 
-				string &pextpath );
+int  FindRegistryExtensionPath( std::string &pregfile,
+                                std::string &pextname, 
+				std::string &pextpath );
                                                                                 
 int  FindRegistryExtensionPathIndex(
-				const string &regpath,
-                                string &pextname, 
-				string &pextpath, int index );
+				const std::string &regpath,
+                                std::string &pextname, 
+				std::string &pextpath, int index );
 
 int DownloadRegistryHeaders( CHeaderDownloadProgressCallback &callback );
 
 int CreateLocalRegistryDir( CRegistryDownloadCallback &callback, int mode );
 
-int ReadRegistryWebpage(string &strdata, const string &targetname);
+int ReadRegistryWebpage(std::string &strdata, const std::string &targetname);
 
-void GenerateWebPath( string &srcpath,
-			string &destpath,
-                        const string &extpath);
+void GenerateWebPath( std::string &srcpath,
+			std::string &destpath,
+                        const std::string &extpath);
 
-void GenerateTransferPaths( string &srcpath,
-                            string &destpath,
-                            const string &extpath );
+void GenerateTransferPaths( std::string &srcpath,
+                            std::string &destpath,
+                            const std::string &extpath );
 
-int CheckFileExtensionSave( const string &extpath );
+int CheckFileExtensionSave( const std::string &extpath );
 
 int WebsiteMatch( CExtensionSiteInfo &siteinfo );
 
@@ -127,7 +127,7 @@ int operator > (const CExtensionSiteInfo &siteinfo )
 	return (m_downloadflags>siteinfo.m_downloadflags);
 	}
 
-inline void GenerateDestinationPath( string &path )
+inline void GenerateDestinationPath( std::string &path )
 	{
 	path = GetIndexdirlocal().data();
 	path += "/";

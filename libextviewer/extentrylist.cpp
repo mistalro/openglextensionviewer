@@ -2,8 +2,6 @@
 // Copyright: (C) VFX Research 2002 - 2014. All Rights Reserved.
 // ---------------------------------------------------------------------------
 
-using namespace std;
-
 #include "extensionlib.h"
 
 // --------------------------------------------------------------------------
@@ -24,7 +22,7 @@ m_sortmode = 0;
 };
 
 // --------------------------------------------------------------------------
-// Find name that matches string
+// Find name that matches std::string
 //
 // Inputs: pname - The name to find
 //
@@ -35,7 +33,7 @@ m_sortmode = 0;
 // Effects: None
 // --------------------------------------------------------------------------
 
-int CExtensionEntryList::FindName(const string &pname )
+int CExtensionEntryList::FindName(const std::string &pname )
 {
 int pn = 0, found = -1;
 
@@ -56,9 +54,9 @@ return found;
 }
 
 // --------------------------------------------------------------------------
-// Find full name that matches string
+// Find full name that matches std::string
 //
-// Inputs:  pname - Pointer to character string of name
+// Inputs:  pname - Pointer to character std::string of name
 //
 // Outputs: None
 //
@@ -83,9 +81,9 @@ return found;
 };
 
 // --------------------------------------------------------------------------
-// Find value that matches string
+// Find value that matches std::string
 //
-// Inputs:  pvalue - Pointer to the character string representing the name
+// Inputs:  pvalue - Pointer to the character std::string representing the name
 //
 // Outputs: None
 //
@@ -125,7 +123,7 @@ return found;
 //          the second set of functions are missed, causing gaps in the table
 // --------------------------------------------------------------------------
 
-int CExtensionEntryList::FindProc( const string &pproc )
+int CExtensionEntryList::FindProc( const std::string &pproc )
 {
 int found = -1;
 
@@ -143,7 +141,7 @@ return found;
 // --------------------------------------------------------------------------
 // Add an item to the list
 //
-// Inputs:  name - Pointer to the name string
+// Inputs:  name - Pointer to the name std::string
 //
 // Outputs: None 
 //
@@ -184,7 +182,7 @@ push_back(entry);
 return size()-1;
 };
 
-int CExtensionEntryList::Add( const string &name )
+int CExtensionEntryList::Add( const std::string &name )
 {
 int pn = 0, found = -1;
 CExtensionEntry entry;
@@ -215,7 +213,7 @@ return size()-1;
 // Add the selected item, with the specified function and constant start
 // positions
 //
-// Inputs:  name       - Pointer to the character string
+// Inputs:  name       - Pointer to the character std::string
 //          funcstart  - Starting index for the function list
 //          conststart - Starting index for the constant list
 //
@@ -226,7 +224,7 @@ return size()-1;
 // Effects: The selected item is added to the list
 // --------------------------------------------------------------------------
 
-int CExtensionEntryList::AddStart( const string &name, 
+int CExtensionEntryList::AddStart( const std::string &name, 
 				int funcstart, int conststart )
 {
 int pn = 0, found = -1;
@@ -325,9 +323,9 @@ return found;
 // --------------------------------------------------------------------------
 // Add the prefix, name, header and prototype to the list
 //
-// Inputs:  prefix - Pointer to the prefix string
-//          name   - Pointer to the name string 
-//          header - Pointer to the header string
+// Inputs:  prefix - Pointer to the prefix std::string
+//          name   - Pointer to the name std::string 
+//          header - Pointer to the header std::string
 //          proto  - Pointer to the prototype
 //
 // Outputs: None
@@ -337,9 +335,9 @@ return found;
 // Effects: The selected items are added to the list
 // --------------------------------------------------------------------------
 
-int CExtensionEntryList::AddPrefixNameValue( const string &prefix,
-                                const string &name,
-                                const string &header )
+int CExtensionEntryList::AddPrefixNameValue( const std::string &prefix,
+                                const std::string &name,
+                                const std::string &header )
 {
 int found;
 CExtensionEntry entry;
@@ -357,9 +355,9 @@ if ( found == -1 )
 return found;
 }
 
-int CExtensionEntryList::AddPrefixNameValueProto( const string &prefix, 
-				const string &name, const string &header, 	
-				const string &proto )
+int CExtensionEntryList::AddPrefixNameValueProto( const std::string &prefix, 
+				const std::string &name, const std::string &header, 	
+				const std::string &proto )
 {
 int found;
 CExtensionEntry entry;
@@ -377,16 +375,16 @@ return found;
 }
 
 // --------------------------------------------------------------------------
-// Set the value associated with the prototype string
+// Set the value associated with the prototype std::string
 //
 // Inputs:  proc - Pointer to the procedure name
-//          value - Pointer to the value string
+//          value - Pointer to the value std::string
 //
 // Outputs: None
 //
 // Results: None
 //
-// Effects: The value associated with the prototype string is set
+// Effects: The value associated with the prototype std::string is set
 // --------------------------------------------------------------------------
 
 void CExtensionEntryList::AddProtoVars( const char *name,const char *value )
@@ -443,7 +441,7 @@ erase(begin()+index);
 // Effects:  The selected item is deleted from the list
 // --------------------------------------------------------------------------
 
-int CExtensionEntryList::DeleteName( const string &name )
+int CExtensionEntryList::DeleteName( const std::string &name )
 {
 int find;
 
@@ -514,7 +512,7 @@ for ( iterator it = begin(); it != end(); it++ )
 // --------------------------------------------------------------------------
 // Clear the selected flag for the selected name
 //
-// Inputs:  name - Pointer to the name string
+// Inputs:  name - Pointer to the name std::string
 //          mode - Flag to clear
 //
 // Outputs: None
@@ -524,7 +522,7 @@ for ( iterator it = begin(); it != end(); it++ )
 // Effects: None
 // --------------------------------------------------------------------------
 
-int CExtensionEntryList::ClearNameFlag( const string &name, int mode )
+int CExtensionEntryList::ClearNameFlag( const std::string &name, int mode )
 {
 int find;
 
@@ -539,7 +537,7 @@ return find;
 // --------------------------------------------------------------------------
 // Get the value of the flag associated with the selected name
 //
-// Inputs:  name - Character pointer to the string to match
+// Inputs:  name - Character pointer to the std::string to match
 //          mode - The value of the flag to match
 //
 // Outputs: None
@@ -549,7 +547,7 @@ return find;
 // Effects: None
 // --------------------------------------------------------------------------
 
-int CExtensionEntryList::GetNameFlag(const string &name, int mode )
+int CExtensionEntryList::GetNameFlag(const std::string &name, int mode )
 {
 int find;
 
@@ -569,7 +567,7 @@ return -1;
 // --------------------------------------------------------------------------
 // Set the value of the flag associated with the selected name
 //
-// Inputs:  name - Character pointer to the string to match
+// Inputs:  name - Character pointer to the std::string to match
 //          flag - The value of the flag to match
 //          
 // Outputs: None
@@ -579,7 +577,7 @@ return -1;
 // Effects: If the name can be matched, the value of the flag is set
 // --------------------------------------------------------------------------
 
-int CExtensionEntryList::SetNameFlag(const string &name, int mode )
+int CExtensionEntryList::SetNameFlag(const std::string &name, int mode )
 {
 int find;
 
@@ -594,12 +592,12 @@ return find;
 // --------------------------------------------------------------------------
 // Set the value of the flag associated with the selected name
 //
-// Inputs:  name      - Pointer to the character string
+// Inputs:  name      - Pointer to the character std::string
 //          flag      - Value of the flag to be set
-//          matchmode - Which mode to match strings
+//          matchmode - Which mode to match std::strings
 //
-//                 - MATCH_EXACTLY   - Exact string match 
-// 		   - MATCH_BEGINNING - Match beginning of string
+//                 - MATCH_EXACTLY   - Exact std::string match 
+// 		   - MATCH_BEGINNING - Match beginning of std::string
 // 		   - MATCH_SUBSTRING - Match substring
 //
 // Outputs: None
@@ -610,7 +608,7 @@ return find;
 //
 // --------------------------------------------------------------------------
 
-int CExtensionEntryList::SetFullNameFlag( const string &name, 
+int CExtensionEntryList::SetFullNameFlag( const std::string &name, 
 					int flag, int matchmode )
 {
 int find, pn;
@@ -669,12 +667,12 @@ return find;
 // --------------------------------------------------------------------------
 // Clear the value of the flag associated with the selected name
 //
-// Inputs:  name      - Pointer to the character string
+// Inputs:  name      - Pointer to the character std::string
 //          flag      - Value of the flag to be set
-//          matchmode - Which mode to match strings
+//          matchmode - Which mode to match std::strings
 //
-//                 - MATCH_EXACTLY   - Exact string match 
-// 		   - MATCH_BEGINNING - Match beginning of string
+//                 - MATCH_EXACTLY   - Exact std::string match 
+// 		   - MATCH_BEGINNING - Match beginning of std::string
 // 		   - MATCH_SUBSTRING - Match substring
 //
 // Outputs: None
@@ -685,7 +683,7 @@ return find;
 //
 // --------------------------------------------------------------------------
 
-int CExtensionEntryList::ClearFullNameFlag( const string &name, 
+int CExtensionEntryList::ClearFullNameFlag( const std::string &name, 
 					int flag, int matchmode )
 {
 int find, pn;
@@ -751,7 +749,7 @@ return find;
 // Effects: If the name can be matched, then the value of the flag is set
 // --------------------------------------------------------------------------
 
-int CExtensionEntryList::ToggleNameFlag( const string &name, int mode )
+int CExtensionEntryList::ToggleNameFlag( const std::string &name, int mode )
 {
 int find;
 
@@ -850,9 +848,9 @@ if ( (idno >= 0) && (idno < size()) )
 }
 
 // --------------------------------------------------------------------------
-// Add items to the list from an extension string
+// Add items to the list from an extension std::string
 //
-// Inputs; pextstring - Pointer to the ASCII extension string
+// Inputs; pextstring - Pointer to the ASCII extension std::string
 //
 // Outputs: None
 //
@@ -861,9 +859,9 @@ if ( (idno >= 0) && (idno < size()) )
 // Effects: The individual extensions are added to the list
 // --------------------------------------------------------------------------
 
-void CExtensionEntryList::AddExtensionString( const string &pextstring )
+void CExtensionEntryList::AddExtensionString( const std::string &pextstring )
 {
-string tempbuf;
+std::string tempbuf;
 const char *ptemp;
                                                  
 #ifdef DEBUG
@@ -899,9 +897,9 @@ while ( ptemp && (*ptemp != '\0') )
 }
 
 // --------------------------------------------------------------------------
-// Remove items to the list from an extension string
+// Remove items to the list from an extension std::string
 //
-// Inputs; pextstring - Pointer to the ASCII extension string
+// Inputs; pextstring - Pointer to the ASCII extension std::string
 //
 // Outputs: None
 //
@@ -910,7 +908,7 @@ while ( ptemp && (*ptemp != '\0') )
 // Effects: The individual extensions are removed from the list
 // --------------------------------------------------------------------------
                                                                                 
-void CExtensionEntryList::RemoveExtensionString( const string &extstring )
+void CExtensionEntryList::RemoveExtensionString( const std::string &extstring )
 {
 char tempbuf[1024];
 int  bufpos;
@@ -932,7 +930,7 @@ while ( pextstring && (*pextstring != '\0') )
                                                                                 
                 while (!isspace( *pextstring)  && (*pextstring != '\0') )
                         tempbuf[bufpos++] = *pextstring++;                                                                                 
-                tempbuf[bufpos] = '\0'; // Get extension string
+                tempbuf[bufpos] = '\0'; // Get extension std::string
                                                                                 
                 DeleteName( tempbuf ); // Add to system list
                 }
@@ -940,9 +938,9 @@ while ( pextstring && (*pextstring != '\0') )
 }
 
 // --------------------------------------------------------------------------
-// Select items in the list according to the extension string
+// Select items in the list according to the extension std::string
 //
-// Inputs:  pextstring - Pointer to the extension string
+// Inputs:  pextstring - Pointer to the extension std::string
 //          ignorelist - Reference to the list of ignored extensions
 //          newextlist - Reference to the list of new extensions
 //          flag       - Which flag to set
@@ -953,10 +951,10 @@ while ( pextstring && (*pextstring != '\0') )
 //
 // Results: None
 //
-// Effects: The extensions that match the extension string are selected
+// Effects: The extensions that match the extension std::string are selected
 // --------------------------------------------------------------------------
 
-void CExtensionEntryList::SelectExtensionString( const string &extstring, 
+void CExtensionEntryList::SelectExtensionString( const std::string &extstring, 
 				CExtensionEntryList &ignorelist, 
 				CExtensionEntryList &newextlist,
 				int flag, int matchmode, int update )
@@ -984,7 +982,7 @@ while ( (pextstring != NULL) && (*pextstring != '\0') )
 
 		while (!isspace( *pextstring)  && (*pextstring != '\0') )
 			tempbuf[bufpos++] = *pextstring++;                                                                                 
-		tempbuf[bufpos] = '\0';		// Get extension string
+		tempbuf[bufpos] = '\0';		// Get extension std::string
 
 						// In list?
 		found = SetFullNameFlag( tempbuf, flag, matchmode );
@@ -1004,7 +1002,7 @@ while ( (pextstring != NULL) && (*pextstring != '\0') )
 }
 
 // --------------------------------------------------------------------------
-// Unselect items in the list according to the extension string
+// Unselect items in the list according to the extension std::string
 //
 // Inputs: None
 //
@@ -1012,10 +1010,10 @@ while ( (pextstring != NULL) && (*pextstring != '\0') )
 //
 // Results: None
 //
-// Effects: The extensions that match the extension string are unselected
+// Effects: The extensions that match the extension std::string are unselected
 // --------------------------------------------------------------------------
                                                                                 
-void CExtensionEntryList::UnselectExtensionString( const string &extstring,
+void CExtensionEntryList::UnselectExtensionString( const std::string &extstring,
                                 int flag, int matchmode )
 {
 char tempbuf[1024];
@@ -1040,7 +1038,7 @@ while ( pextstring && (*pextstring != '\0') )
                                                                                 
                 while (!isspace( *pextstring)  && (*pextstring != '\0') )
                         tempbuf[bufpos++] = *pextstring++;                                                                                 
-                tempbuf[bufpos] = '\0';         // Get extension string
+                tempbuf[bufpos] = '\0';         // Get extension std::string
                                                                                 
                                                 // In list?
                 ClearFullNameFlag( tempbuf, flag, matchmode );
@@ -1111,7 +1109,7 @@ for ( unsigned int pn = 0; pn < size(); pn++ )
 // --------------------------------------------------------------------------
 // Select items in the list that match the selected name
 //
-// Inputs:  name - Character pointer to the name string
+// Inputs:  name - Character pointer to the name std::string
 //
 // Outputs: None
 //
@@ -1120,7 +1118,7 @@ for ( unsigned int pn = 0; pn < size(); pn++ )
 // Effects: Those entries which matched the name, have the output flag set
 // --------------------------------------------------------------------------
 
-void CExtensionEntryList::SelectByName(const string &name )
+void CExtensionEntryList::SelectByName(const std::string &name )
 {
 for ( unsigned int pn = 0; pn < size(); pn++ )
 	{
@@ -1134,7 +1132,7 @@ for ( unsigned int pn = 0; pn < size(); pn++ )
 // --------------------------------------------------------------------------
 // Unselect items in the list which match the name
 //
-// Inputs:  name - Character pointer to the name string
+// Inputs:  name - Character pointer to the name std::string
 //
 // Outputs: None
 //
@@ -1143,7 +1141,7 @@ for ( unsigned int pn = 0; pn < size(); pn++ )
 // Effects: Those entries which match the name have the output flag cleared
 // --------------------------------------------------------------------------
 
-void CExtensionEntryList::RemoveName( const string &name )
+void CExtensionEntryList::RemoveName( const std::string &name )
 {
 for ( unsigned int pn = 0; pn < size(); pn++ )
 	{
@@ -1162,7 +1160,7 @@ for ( unsigned int pn = 0; pn < size(); pn++ )
 // 
 // Outputs: None
 //
-// Results: The result from the string comparision function
+// Results: The result from the std::string comparision function
 //
 // Effects: None
 // --------------------------------------------------------------------------
@@ -1180,7 +1178,7 @@ return strcmp( entrya.m_name.data(), entryb.m_name.data() );
 // 
 // Outputs: None
 //
-// Results: The result from the string comparision function
+// Results: The result from the std::string comparision function
 //
 // Effects: None
 // --------------------------------------------------------------------------
@@ -1198,7 +1196,7 @@ return -strcmp( entrya.m_name.data(), entryb.m_name.data() );
 // 
 // Outputs: None
 //
-// Results: The result from the string comparision function
+// Results: The result from the std::string comparision function
 //
 // Effects: None
 // --------------------------------------------------------------------------
@@ -1216,7 +1214,7 @@ return strcmp( entrya.m_value.data(), entryb.m_value.data() );
 // 
 // Outputs: None
 //
-// Results: The result from the string comparision function
+// Results: The result from the std::string comparision function
 //
 // Effects: None
 // --------------------------------------------------------------------------
@@ -1234,7 +1232,7 @@ return -strcmp( entrya.m_value.data(), entryb.m_value.data() );
 // 
 // Outputs: None
 //
-// Results: The result from the string comparision function
+// Results: The result from the std::string comparision function
 //
 // Effects: None
 // --------------------------------------------------------------------------
@@ -1252,7 +1250,7 @@ return strcmp( entrya.m_prefix.data(), entryb.m_prefix.data() );
 // 
 // Outputs: None
 //
-// Results: The result from the string comparision function
+// Results: The result from the std::string comparision function
 //
 // Effects: None
 // --------------------------------------------------------------------------
@@ -1347,10 +1345,10 @@ switch ( m_sortmode )
 }
 
 // --------------------------------------------------------------------------
-// Search for a string
+// Search for a std::string
 //
 // Inputs: mode - search mode
-//         string - search string
+//         std::string - search std::string
 //         callback - callback function
 //
 // Outputs: callback is called
@@ -1358,7 +1356,7 @@ switch ( m_sortmode )
 // Results: None
 // --------------------------------------------------------------------------
 
-long strtolong( const string &str )
+long strtolong( const std::string &str )
 {
 long result;
 const char *pstr;
@@ -1435,7 +1433,7 @@ else
 return result;
 }
 
-void CExtensionEntryList::SearchConstants( const string &strdata,
+void CExtensionEntryList::SearchConstants( const std::string &strdata,
 			CHeaderFileDataSearchCallback &callback )
 {
 vector <CExtensionEntry>::iterator iter;
@@ -1467,15 +1465,15 @@ if ( value > 0 )
 	}
 }
 
-void CExtensionEntryList::SearchFunctions( const string &string,
+void CExtensionEntryList::SearchFunctions( const std::string &strdata,
 			CHeaderFileDataSearchCallback &callback )
 {
-vector <CExtensionEntry>::iterator iter;
+std::vector <CExtensionEntry>::iterator iter;
 
 for (iter = begin(); iter < end(); iter++)
 	{
-	if ( strstr( iter->m_name.data(), string.data() ) ||
-	     strstr( iter->m_value.data(), string.data() ) )
+	if ( strstr( iter->m_name.data(), strdata.data() ) ||
+	     strstr( iter->m_value.data(),strdata.data() ) )
 		{
 		callback.HeaderFileDataSearchCallback(
 			SEARCH_FUNCTIONS, iter->m_name, iter->m_value );
@@ -1483,17 +1481,17 @@ for (iter = begin(); iter < end(); iter++)
 	}
 }
 
-void CExtensionEntryList::SearchString( int mode, const string &string,
+void CExtensionEntryList::SearchString( int mode, const std::string &strdata,
                         CHeaderFileDataSearchCallback &callback )
 {
 switch ( mode )
 	{
 	case SEARCH_CONSTANTS:
-		SearchConstants( string, callback );
+		SearchConstants( strdata, callback );
 		break;
 
 	case SEARCH_FUNCTIONS:
-		SearchFunctions( string, callback );
+		SearchFunctions( strdata, callback );
 		break;
 
 	default:

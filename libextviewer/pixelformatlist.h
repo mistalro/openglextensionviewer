@@ -127,29 +127,42 @@ void Sort( void );
 int  GetReverseMode( void ) { return (( m_sortmode & LIST_SORTREVERSED) == LIST_SORTREVERSED); };
 const CPixelFormatDescriptor &GetListItem( int row ) { return( m_pixelformatlist[row] ); };
 
-void SavePixelFormatListCount( ostream &stream);
-void SavePixelFormatListSortMode( ostream &stream);
-void SavePixelFormatListHorizBorder( ostream &stream );
-void SavePixelFormatListHorizTitle( ostream &stream );
-void SavePixelFormatListIndex( ostream &stream, CPixelFormatDescriptor * pdesc);
-void SavePixelFormatListType( ostream &stream, CPixelFormatDescriptor *pdesc);
+void SavePixelFormatListCount( std::ofstream &stream);
+void SavePixelFormatListSortMode( std::ofstream &stream);
+void SavePixelFormatListHorizBorder( std::ofstream &stream );
+void SavePixelFormatListHorizTitle( std::ofstream &stream );
+void SavePixelFormatListIndex( std::ofstream &stream, CPixelFormatDescriptor * pdesc);
+void SavePixelFormatListType( std::ofstream &stream, CPixelFormatDescriptor *pdesc);
 
-void SavePixelFormatListRGBA( ostream &stream, CPixelFormatDescriptor *pdesc);
-void SavePixelFormatListAccum( ostream &stream, CPixelFormatDescriptor *pdesc);
-void SavePixelFormatListDepth( ostream &stream, CPixelFormatDescriptor *pdesc);
-void SavePixelFormatListStencil( ostream &stream, CPixelFormatDescriptor *pdesc);
+void SavePixelFormatListRGBA( std::ofstream &stream, CPixelFormatDescriptor *pdesc);
+void SavePixelFormatListAccum( std::ofstream &stream, CPixelFormatDescriptor *pdesc);
+void SavePixelFormatListDepth( std::ofstream &stream, CPixelFormatDescriptor *pdesc);
+void SavePixelFormatListStencil( std::ofstream &stream, CPixelFormatDescriptor *pdesc);
 
-void SavePixelFormatListLinux( ostream &stream, CPixelFormatDescriptor *pdesc);
+void SavePixelFormatListLinux( std::ofstream &stream, CPixelFormatDescriptor *pdesc);
 
-void SavePixelFormatListEndLine( ostream &stream, CPixelFormatDescriptor *pdesc);
+void SavePixelFormatListEndLine( std::ofstream &stream, CPixelFormatDescriptor *pdesc);
 
-void SavePixelFormatList( ostream &stream );
+void SavePixelFormatList( std::ofstream &stream );
 void SavePixelFormatList( void ) 
 	{ 
-	SavePixelFormatList( cout ); 
+	char namebuf[32];
+
+	ctermid(namebuf);
+	
+	std::ofstream stream;
+
+	stream.open(namebuf);
+
+	if ( stream.is_open() )
+		{	
+		SavePixelFormatList( stream ); 
+
+		stream.close();
+		}
 	};
 
-int SavePixelFormatList( const string &path );
+int SavePixelFormatList( const std::string &path );
 
 int SelectVisual( int colorbits, int depthbits, int accumbits, 
 		int stencilbits, int flags, int xclass, XVisualInfo &xvinfo );

@@ -23,7 +23,7 @@
 // --------------------------------------------------------------------------
 
 int CRegistryProgressDialog::RegistryDownloadCallback( 
-					const string &str, int /* mode */ )
+					const std::string &str, int /* mode */ )
 {        
 if ( 0 < str.length() )	
 	{
@@ -62,7 +62,9 @@ accept();
 
 void CRegistryProgressDialog::pushbuttoncancel_clicked()
 {
-cout << "Cancel pressed\n";
+#ifdef DEBUG
+std::cout << "Cancel pressed\n";
+#endif
 }
 
 // --------------------------------------------------------------------------
@@ -73,7 +75,7 @@ void CRegistryProgressDialog::pushbuttonsave_clicked()
 {
 QFileDialog filedlg;
 QString     filepath, text;
-ofstream    stream;
+std::ofstream    stream;
 Q3ListBoxItem *pitem;
 int pos, max;
 

@@ -2,11 +2,9 @@
 // Copyright: (C) VFX Research 2002 - 2014. All Rights Reserved.
 // ---------------------------------------------------------------------------
 
-using namespace std;
-
 #include "extensionlib.h"
 
-void strupcase( string &source)
+void strupcase( std::string &source)
 {
 std::transform(
     source.begin(),
@@ -16,7 +14,7 @@ std::transform(
     );
 }
 
-void strlowercase( string &source)
+void strlowercase( std::string &source)
 {
 std::transform(
     source.begin(),
@@ -28,7 +26,7 @@ std::transform(
 
 
 
-bool ReadStream( ifstream &stream, string &strdata, int length )
+bool ReadStream( std::ifstream &stream, std::string &strdata, int length )
 {
 strdata.clear();
 strdata.reserve(length);
@@ -40,13 +38,12 @@ strdata[length] = '\0';
 return true;
 }
 
-bool ReadStream( string &strdata, string &strpath )
+bool ReadStream( std::string &strdata, std::string &strpath )
 {
 struct stat statbuf;
-ifstream stream;
-int res;
+std::ifstream stream;
 
-res = stat( strpath.data(), &statbuf );
+int res = stat( strpath.data(), &statbuf );
 
 if ( res == -1 )
         {
@@ -54,7 +51,7 @@ if ( res == -1 )
         return false;
         }
 
-stream.open( strpath.data(), ios::in );
+stream.open( strpath.data(), std::ios::in );
 
 strdata.reserve(statbuf.st_size+10);
 
@@ -70,16 +67,16 @@ if ( stream.is_open() )
 return(0);
 }
 
-bool WriteStream( ofstream &stream, const string &strdata )
+bool WriteStream( std::ofstream &stream, const std::string &strdata )
 {
 stream.write( strdata.data(), strdata.length() );
 
 return true;
 }
 
-bool WriteStream( const string &strdata, const string &strpath )
+bool WriteStream( const std::string &strdata, const std::string &strpath )
 {
-ofstream stream;
+std::ofstream stream;
 
 stream.open( strpath.data() );
 
@@ -95,11 +92,11 @@ if ( stream.is_open() )
 return false;
 }
 
-bool WriteStream( const char *pdata, const string &strpath, int nbytes )
+bool WriteStream( const char *pdata, const std::string &strpath, int nbytes )
 {
-ofstream stream;
+std::ofstream stream;
 
-stream.open( strpath.data(), ios::binary );
+stream.open( strpath.data(), std::ios::binary );
 
 if ( stream.is_open() )
 	{

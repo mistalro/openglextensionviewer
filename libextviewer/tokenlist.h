@@ -5,8 +5,6 @@
 #ifndef _TOKENLIST_
 #define _TOKENLIST_
 
-using namespace std;
-
 #include <cstdio>
 #include <cstdlib>
 #include <assert.h>
@@ -186,7 +184,7 @@ using namespace std;
 class CToken
 {
 public:
-string	 m_name; 		// Name of token
+std::string	 m_name; 		// Name of token
 int	 m_tokenid;  		// ID number
 int	 m_tokencount; 		// Number of times token was found
 
@@ -228,19 +226,19 @@ void Duplicate( const CToken &token )
 
 CToken( const char *name, int tokenid )
 	{
-	m_name = string(name);
+	m_name = std::string(name);
 	m_tokenid = tokenid;
 	m_tokencount = 0;
 	};
 
-CToken( const string &name, int tokenid )
+CToken( const std::string &name, int tokenid )
 	{
 	m_name = name;
 	m_tokenid = tokenid;
 	m_tokencount = 0;
 	};
 
-int Compare( const string &name )
+int Compare( const std::string &name )
 	{
 	return ( strncmp( name.data(), m_name.data(), m_name.length() ) == 0 );
 	};
@@ -280,7 +278,7 @@ int operator > ( const CToken &token )
 // Definition of the token list class
 // --------------------------------------------------------------------------
 
-class CTokenList : public vector <CToken>,
+class CTokenList : public std::vector <CToken>,
 			virtual public TSortFuncs <CToken>
 {
 public:
@@ -313,13 +311,13 @@ void TokenSetSortmode( int mode )
 void TokenToggleSortmode( int mode );
 void TokenSort( void );
 void TokenAdd( const char *name, int tokenid );
-void TokenAdd( const string &name, int tokenid );
+void TokenAdd( const std::string &name, int tokenid );
 
-CToken *TokenFind( const string &name );
+CToken *TokenFind( const std::string &name );
 CToken *TokenFind( int tokenid );
 
 void ResetCount( void );
-void WriteStats( const string &path );
+void WriteStats( const std::string &path );
 };
 
 #endif // _TOKENLIST_

@@ -15,17 +15,13 @@
 #include <vector>
 #include <string>
 
-using namespace std;
-
 #include "tokenentry.h"
-
-using namespace std;
 
 // --------------------------------------------------------------------------
 // Function to match tokens
 // --------------------------------------------------------------------------
 
-int token_match( string &string, CTokenEntry *plist, int num )
+int token_match( std::string &string, CTokenEntry *plist, int num )
 {
 int tn;
 

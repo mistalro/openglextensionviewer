@@ -5,8 +5,6 @@
 #ifndef FINDEXTENSIONSPECDIALOG_H
 #define FINDEXTENSIONSPECDIALOG_H
 
-using namespace std;
-
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
@@ -50,8 +48,8 @@ int  CheckUpdateFlag( void ) { return m_updateflag; };
 void SetAllItems( void );
 
 int RegistryStringSearchCallback( 
-	int site, int lineno, const string &file,
-	const string &line, int mode );
+	int site, int lineno, const std::string &file,
+	const std::string &line, int mode );
 
 int RegistryStringSearchProgressCallback( int pos, int max );
 

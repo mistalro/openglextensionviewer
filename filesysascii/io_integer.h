@@ -23,9 +23,9 @@ public:
 
 // ----- Read routines ------------------------------------------------------
 
-void ReadInteger( ifstream &stream, int &ivalue )
+void ReadInteger( std::ifstream &stream, int &ivalue )
 	{
-	string buffer;
+	std::string buffer;
 
 	ReadString( stream, buffer );
 
@@ -52,19 +52,19 @@ void ReadInteger( ifstream &stream, int &ivalue )
 
 // ----- Integer data -------------------------------------------------------
 
-void WriteInteger( ostream &stream, int value )
+void WriteInteger( std::ofstream &stream, int value )
 	{
 	stream << value << " ";
 	}
 
-void WriteNamedInteger( ostream &stream, int depth, const char *pname,
+void WriteNamedInteger( std::ofstream &stream, int depth, const char *pname,
                                                         int value )
 	{
 	WriteTabbedDepth( stream, depth );
 	stream << "{" << pname << " " << value << " }\n";
 	}
 
-void WriteNamedInteger( ostream &stream, int depth, string &strname,
+void WriteNamedInteger( std::ofstream &stream, int depth, std::string &strname,
                                                         int value )	
 	{
 	WriteTabbedDepth( stream, depth );

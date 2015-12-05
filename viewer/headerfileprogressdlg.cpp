@@ -2,8 +2,6 @@
 // Copyright: (C) VFX Research 2002 - 2014. All Rights Reserved.
 // ---------------------------------------------------------------------------
 
-using namespace std;
-
 #include <qapplication.h>
 #include <qeventloop.h>
 #include <qpushbutton.h>
@@ -21,7 +19,7 @@ using namespace std;
 // --------------------------------------------------------------------------
 
 int CHeaderFileProgressDialog::HeaderFileProgressCallback( 
-	const string &name, const string &extname, int pos, int max )
+	const std::string &name, const std::string &extname, int pos, int max )
 {
 m_progressheaderfile->setValue( pos );
 m_progressheaderfile->setMaximum( max );         

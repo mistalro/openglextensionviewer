@@ -77,13 +77,13 @@ public:
 
 using CVirtualFileSystemAscii::ReadFile;
 
-int ReadFile( ifstream &stream );
-int ReadFileInternal( ifstream &stream );
+int ReadFile( std::ifstream &stream );
+int ReadFileInternal( std::ifstream &stream );
 
 using CVirtualFileSystemAscii::WriteFile;
 
-int WriteFile( ofstream &stream, unsigned int depth );
-int WriteFile( ofstream &stream, unsigned int depth, const char *pstr );
+int WriteFile( std::ofstream &stream, unsigned int depth );
+int WriteFile( std::ofstream &stream, unsigned int depth, const char *pstr );
 };
 
 // ---------------------------------------------------------------------

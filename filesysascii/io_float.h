@@ -24,26 +24,26 @@ public:
 
 // ----- Floats -----
 
-void ReadFloat( ifstream &stream, float &fvalue )
+void ReadFloat( std::ifstream &stream, float &fvalue )
 	{
 	stream >> fvalue;
 	}
 
 // ----- Write routines -----------------------------------------------------
 
-void WriteFloat( ostream &stream, float fvalue )
+void WriteFloat(std::ofstream &stream, float fvalue )
 	{
 	stream << fvalue;
 	}
 
-void WriteNamedFloat( ostream &stream, unsigned int depth, const char *pname,
+void WriteNamedFloat(std::ofstream &stream, unsigned int depth, const char *pname,
                                                         float fvalue )
 	{
 	WriteTabbedDepth( stream, depth );
 	stream << "{" << pname << " " << fvalue << " }\n";
 	}
 
-void WriteNamedFloat( ostream &stream, unsigned int depth, string &strname,
+void WriteNamedFloat(std::ofstream &stream, unsigned int depth, std::string &strname,
                                                         float fvalue )
 	{
 	WriteTabbedDepth( stream, depth );

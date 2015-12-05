@@ -20,7 +20,7 @@
 // --------------------------------------------------------------------------
 
 int CRegistryFileProgressDialog::RegistryFileProgressCallback( 
-		const string &name, const string &extname, int pos, int max )
+		const std::string &name, const std::string &extname, int pos, int max )
 {
 m_progressbar->setValue( pos );
 m_progressbar->setMaximum( max );
@@ -41,7 +41,10 @@ return( 0 );
 
 void CRegistryFileProgressDialog::pushbuttoncancel_clicked( void )
 {
-cout << "Cancel pressed\n";
+#ifdef DEBUG
+std::cout << "Cancel pressed\n";
+#endif
+
 m_resultcode = CALLBACK_CANCEL;
 }
 

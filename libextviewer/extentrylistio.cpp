@@ -11,8 +11,6 @@
 #include <iostream>
 #include <fstream>
 
-using namespace std;
-
 #include "extensionlib.h"
 
 // ---------------------------------------------------------------------------
@@ -46,9 +44,9 @@ static int token_num = sizeof(token_list)/sizeof(CTokenEntry);
 // Read CEntryListData in from an open stream
 // --------------------------------------------------------------------------
 
-int CEntryListDataAsciiIO::ReadFileInternal( ifstream &stream )
+int CEntryListDataAsciiIO::ReadFileInternal( std::ifstream &stream )
 {
-string tokenid;
+std::string tokenid;
 int result;
 
 while ( ReadOpenClosePar( stream ) != 0 )
@@ -72,10 +70,10 @@ return result;
 // Read CEntryListData in from an open stream
 // --------------------------------------------------------------------------
 
-int CEntryListDataAsciiIO::ReadFile( ifstream &stream )
+int CEntryListDataAsciiIO::ReadFile( std::ifstream &stream )
 {
 int result;
-string tokenid;
+std::string tokenid;
 
 CExtensionEntry entry_listdata;
 
@@ -89,7 +87,7 @@ cout << "CEntryListDataAsciiIO::ReadFile\n";
 
 if ( g_verbose )
 	{
-	cout << "Reading CEntryListDataAsciiIO" << endl;
+	std::cout << "Reading CEntryListDataAsciiIO" << std::endl;
 	}
 
 while ( ReadOpenClosePar( stream ) != 0 )
@@ -102,7 +100,7 @@ cout << "Token = " << tokenid << endl;
 
 	if ( g_verbose > 1 )
 		{
-		cout << "Read Token = <" << tokenid << ">\n";
+		std::cout << "Read Token = <" << tokenid << ">\n";
 		}
 
 	switch( token_match( tokenid, token_list, token_num ) )
@@ -112,17 +110,17 @@ cout << "Token = " << tokenid << endl;
 			push_back( entry_listdata );
 
 #ifdef DEBUG
-			cout << "Reading listdata" << endl;
+			std::cout << "Reading listdata" << std::endl;
 #endif
 
 			if ( g_verbose )
 				{
-				cout << "Read <listdata>\n";
+				std::cout << "Read <listdata>\n";
 				}
 			break;
 
 		default:
-			cout << "CExtensionEntryListIO::Unknown token <" << tokenid << ">\n";
+			std::cout << "CExtensionEntryListIO::Unknown token <" << tokenid << ">\n";
 			break;
 		}
 
@@ -133,7 +131,7 @@ stream.putback( '}' );
 
 if ( g_verbose )
 	{
-	cout << "Reading complete." << endl << endl;
+	std::cout << "Reading complete." << std::endl << std::endl;
 	}
 
 return result;
@@ -143,7 +141,7 @@ return result;
 // Write data out to an open stream at specified tab depth
 // --------------------------------------------------------------------------
 
-int CEntryListDataAsciiIO::WriteFile( ofstream &stream, unsigned int depth )
+int CEntryListDataAsciiIO::WriteFile( std::ofstream &stream, unsigned int depth )
 {
 return WriteFile( stream, depth, str_blockname );
 }
@@ -152,7 +150,7 @@ return WriteFile( stream, depth, str_blockname );
 // Write data out to an open stream at specified tab depth
 // --------------------------------------------------------------------------
 
-int CEntryListDataAsciiIO::WriteFile( ofstream &stream, unsigned int depth, const char *pstr )
+int CEntryListDataAsciiIO::WriteFile( std::ofstream &stream, unsigned int depth, const char *pstr )
 {
 int result;
 

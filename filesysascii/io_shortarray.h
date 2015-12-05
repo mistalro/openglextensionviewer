@@ -23,33 +23,33 @@ public:
 
 // ----- Read routines ------------------------------------------------------
 
-void ReadShortArray1D( ifstream &stream,
+void ReadShortArray1D( std::ifstream &stream,
                 unsigned int nx, short *pdata );
 
-void ReadShortArray2D( ifstream &stream,
+void ReadShortArray2D( std::ifstream &stream,
                 unsigned int nx, unsigned int ny, short *pdata );
 
-void ReadShortArray3D( ifstream &stream,
+void ReadShortArray3D( std::ifstream &stream,
                 unsigned int nx, unsigned int ny, unsigned int nz, short *pdata );
 
 // ----- Write routines -----------------------------------------------------
 
-void WriteShortArray1D( ostream &stream, unsigned int nx, short *pdata );
+void WriteShortArray1D(std::ofstream &stream, unsigned int nx, short *pdata );
 
-void WriteNamedShortArray1D( ostream &stream, unsigned int depth,
+void WriteNamedShortArray1D(std::ofstream &stream, unsigned int depth,
         const char *pstr, unsigned int nx, short *pdata );
 
-void WriteShortArray2D( ostream &stream, 
+void WriteShortArray2D(std::ofstream &stream, 
 	unsigned int nx, unsigned int ny, short *pdata );
 
-void WriteNamedShortArray2D( ostream &stream, unsigned int depth,
+void WriteNamedShortArray2D(std::ofstream &stream, unsigned int depth,
         const char *pstr, 
 	unsigned int nx, unsigned int rows, short *pdata );
 
-void WriteShortArray3D( ostream &stream, 
+void WriteShortArray3D(std::ofstream &stream, 
 	unsigned int nx, unsigned int ny, unsigned int nz, short *pdata );
 
-void WriteNamedShortArray3D( ostream &stream, 
+void WriteNamedShortArray3D(std::ofstream &stream, 
 	unsigned int depth, const char *pstr, 
 	unsigned int nx, unsigned int ny, unsigned int nz, short *pdata );
 };

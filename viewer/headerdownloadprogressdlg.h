@@ -5,8 +5,6 @@
 #ifndef HEADERDOWNLOADPROGRESSDIALOG_H
 #define HEADERDOWNLOADPROGRESSDIALOG_H
                                                                                 
-using namespace std;
-                                                                                
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
@@ -40,7 +38,7 @@ CHeaderDownloadProgressDialog() : Ui_CHeaderDownloadProgressBaseDialog()
 
 // ----- Functions and Procedures -------------------------------------------
 
-int HeaderDownloadProgressCallback( const string &str, int mode );
+int HeaderDownloadProgressCallback( const std::string &str, int mode );
 
 protected:
 

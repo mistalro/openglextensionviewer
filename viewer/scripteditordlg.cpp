@@ -191,7 +191,7 @@ reject();
 void CScriptEditorDialog::pushbuttonapply_clicked()
 {
 QString strtext;
-string strdata;
+std::string strdata;
 
 strtext = m_texteditexternal->text();
 

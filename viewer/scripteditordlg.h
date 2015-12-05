@@ -5,8 +5,6 @@
 #ifndef SCRIPTEDITORDIALOG_H
 #define SCRIPTEDITORDIALOG_H
 
-using namespace std;
-
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>

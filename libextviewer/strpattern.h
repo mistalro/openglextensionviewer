@@ -5,6 +5,6 @@
 #ifndef _STRPATTERN_H_
 #define _STRPATTERN_H_
 
-int StringMatch( const string &strtarget, const string &strmask );
+int StringMatch( const std::string &strtarget, const std::string &strmask );
 
 #endif	// _STRPATTERN_H_

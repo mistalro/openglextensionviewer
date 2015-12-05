@@ -4,6 +4,6 @@
 
 #include <QtCore>
 
-using namespace Qt;
+//using namespace Qt;
 
 #define QT3_SUPPORT

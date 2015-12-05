@@ -14,7 +14,7 @@
 
 int CCheckSystemProgressDialog::CheckSystemProgressCallback( int pos, int max )
 {
-string strpos, strmax, strbuf;
+std::string strpos, strmax, strbuf;
 
 stl_itoa( strpos, pos );
 stl_itoa( strmax, max );

@@ -7,8 +7,6 @@
 #include <iostream>
 #include <fstream>
 
-using namespace std;
-
 #include "extensionlib.h"
 
 // ---------------------------------------------------------------------------
@@ -70,9 +68,9 @@ static int token_num = sizeof(token_list)/sizeof(CTokenEntry);
 // Read COutputFileSettingsIOData in from an open stream
 // --------------------------------------------------------------------------
 
-int COutputFileSettingsIODataAsciiIO::ReadFileInternal( ifstream &stream )
+int COutputFileSettingsIODataAsciiIO::ReadFileInternal( std::ifstream &stream )
 {
-string tokenid;
+std::string tokenid;
 int result;
 
 while ( ReadOpenClosePar( stream ) != 0 )
@@ -96,16 +94,16 @@ return result;
 // Read COutputFileSettingsIOData in from an open stream
 // --------------------------------------------------------------------------
 
-int COutputFileSettingsIODataAsciiIO::ReadFile( ifstream &stream )
+int COutputFileSettingsIODataAsciiIO::ReadFile( std::ifstream &stream )
 {
 int result;
-string tokenid;
+std::string tokenid;
 
-string entry_outputheader;
-string entry_outputsource;
-string entry_scriptfile;
-string entry_classname;
-string entry_classnamedcolon;
+std::string entry_outputheader;
+std::string entry_outputsource;
+std::string entry_scriptfile;
+std::string entry_classname;
+std::string entry_classnamedcolon;
 int entry_cppmode;
 int entry_useglxgetprocaddressARB;
 
@@ -114,7 +112,7 @@ result = true;
 
 if ( g_verbose )
 	{
-	cout << "Reading COutputFileSettingsIODataAsciiIO" << endl;
+	std::cout << "Reading COutputFileSettingsIODataAsciiIO" << std::endl;
 	}
 
 while ( ReadOpenClosePar( stream ) != 0 )
@@ -123,7 +121,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 	if ( g_verbose > 1 )
 		{
-		cout << "Read Token = <" << tokenid << ">\n";
+		std::cout << "Read Token = <" << tokenid << ">\n";
 		}
 
 	switch( token_match( tokenid, token_list, token_num ) )
@@ -134,7 +132,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <outputheader> = <" << entry_outputheader << ">\n";
+				std::cout << "Read <outputheader> = <" << entry_outputheader << ">\n";
 				}
 			break;
 
@@ -144,7 +142,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <outputsource> = <" << entry_outputsource << ">\n";
+				std::cout << "Read <outputsource> = <" << entry_outputsource << ">\n";
 				}
 			break;
 
@@ -154,7 +152,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <scriptfile> = <" << entry_scriptfile << ">\n";
+				std::cout << "Read <scriptfile> = <" << entry_scriptfile << ">\n";
 				}
 			break;
 
@@ -164,7 +162,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <classname> = <" << entry_classname << ">\n";
+				std::cout << "Read <classname> = <" << entry_classname << ">\n";
 				}
 			break;
 
@@ -174,7 +172,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <classnamedcolon> = <" << entry_classnamedcolon << ">\n";
+				std::cout << "Read <classnamedcolon> = <" << entry_classnamedcolon << ">\n";
 				}
 			break;
 
@@ -184,7 +182,7 @@ while ( ReadOpenClosePar( stream ) != 0 )
 
 			if ( g_verbose )
 				{
-				cout << "Read <cppmode> = <" << entry_cppmode << ">\n";
+				std::cout << "Read <cppmode> = <" << entry_cppmode << ">\n";
 				}
 			break;
 
@@ -194,12 +192,12 @@ while ( ReadOpenClosePar( stream ) != 0 )
 			m_useglxgetprocaddressARB = entry_useglxgetprocaddressARB;
 			if ( g_verbose )
 				{
-				cout << "Read <useglxgetprocaddressarb> = <" << entry_cppmode << ">\n";
+				std::cout << "Read <useglxgetprocaddressarb> = <" << entry_cppmode << ">\n";
 				}
 			break;
 
 		default:
-			cout << "COutputFileSettingsIO::Unknown token <" << tokenid << ">\n";
+			std::cout << "COutputFileSettingsIO::Unknown token <" << tokenid << ">\n";
 			break;
 		}
 
@@ -210,7 +208,7 @@ stream.putback( '}' );
 
 if ( g_verbose )
 	{
-	cout << "Reading complete." << endl << endl;
+	std::cout << "Reading complete." << std::endl << std::endl;
 	}
 
 return result;
@@ -220,7 +218,7 @@ return result;
 // Write data out to an open stream at specified tab depth
 // --------------------------------------------------------------------------
 
-int COutputFileSettingsIODataAsciiIO::WriteFile( ofstream &stream, unsigned int depth )
+int COutputFileSettingsIODataAsciiIO::WriteFile( std::ofstream &stream, unsigned int depth )
 {
 return WriteFile( stream, depth, STRING_BLOCKNAME );
 }
@@ -229,7 +227,7 @@ return WriteFile( stream, depth, STRING_BLOCKNAME );
 // Write data out to an open stream at specified tab depth
 // --------------------------------------------------------------------------
 
-int COutputFileSettingsIODataAsciiIO::WriteFile( ofstream &stream, unsigned int depth, const char *pstr )
+int COutputFileSettingsIODataAsciiIO::WriteFile( std::ofstream &stream, unsigned int depth, const char *pstr )
 {
 int result;
 
