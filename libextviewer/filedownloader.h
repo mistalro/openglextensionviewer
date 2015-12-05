@@ -112,42 +112,44 @@ void SetOptions() throw (CurlException)
 	{
 	CURLcode res;
 
-	//set the url
+	// Set the url
 	res = curl_easy_setopt(m_handle, CURLOPT_URL, m_url.c_str());
 
 	if ( res != CURLE_OK)
 		throw CurlException(res);
 
-	//progress bar is not require
+	// Progress bar is not required
 	res = curl_easy_setopt(m_handle, CURLOPT_NOPROGRESS, 1L);
 
 	if ( res != CURLE_OK )
 		throw CurlException(res);
 
-	//set the callback function
+	// Set the callback function for writing
 	res = curl_easy_setopt(m_handle, CURLOPT_WRITEFUNCTION,
                               CFileDownloader::WriteDataCallback);
 
 	if ( res != CURLE_OK )
 		throw CurlException(res);
 
-	//set pointer in call back function
+	// Set pointer in call back function
 	res = curl_easy_setopt(m_handle, CURLOPT_WRITEDATA, this);
 
 	if ( res != CURLE_OK )
 		throw CurlException(res);
 	}
 
-// Stage #4 - Send Request
+// Stage #4 - Send HTTP Request
 void SendGetRequest()
 	{
+	m_data.clear();
+
 	CURLcode res = curl_easy_perform(m_handle);
 
 	if ( res != CURLE_OK )
 		throw CurlException(res);
    	}
 
-// Stage #5 - Receive data and write it to buffer
+// Stage #5 - Receive data from server and write it to buffer
 static size_t WriteDataCallback(void *ptr, size_t size,
                                     size_t nmemb, void* pInstance)
 	{
