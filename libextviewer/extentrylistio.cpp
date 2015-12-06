@@ -79,12 +79,6 @@ CExtensionEntry entry_listdata;
 
 result = true;
 
-
-#ifdef DEBUG
-cout << "CEntryListDataAsciiIO::ReadFile\n";
-#endif
-
-
 if ( g_verbose )
 	{
 	std::cout << "Reading CEntryListDataAsciiIO" << std::endl;
@@ -93,10 +87,6 @@ if ( g_verbose )
 while ( ReadOpenClosePar( stream ) != 0 )
 	{
 	ReadString( stream, tokenid );
-
-#ifdef DEBUG
-cout << "Token = " << tokenid << endl;
-#endif
 
 	if ( g_verbose > 1 )
 		{
@@ -108,10 +98,6 @@ cout << "Token = " << tokenid << endl;
 		case TOKEN_LISTDATA:
 			entry_listdata.ReadFile( stream );
 			push_back( entry_listdata );
-
-#ifdef DEBUG
-			std::cout << "Reading listdata" << std::endl;
-#endif
 
 			if ( g_verbose )
 				{

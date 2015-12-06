@@ -55,10 +55,6 @@ if ( m_psiteinfolist->FindSite( m_localstring ) != -1 )
 	return;
 	}
 
-#ifdef DEBUG
-cout << "Adding new site |" << m_localstring.data() << "|\n";
-#endif
-
 // Begin a new entry
 m_psiteinfolist->Begin( m_localstring.data() );
 

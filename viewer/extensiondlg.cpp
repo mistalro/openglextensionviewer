@@ -75,10 +75,6 @@ void CExtensionDialog::SetIndex( int index, int listid )
 m_index  = index;
 m_listid = listid;
 
-#ifdef DEBUG
-cout << "Setting index << " << index << "|" << listid << endl;
-#endif
-
 if ( m_pextcreator != NULL )
 	{
 	m_noupdateflag = 1;
@@ -103,10 +99,6 @@ void CExtensionDialog::SetDialogData( void )
 {
 std::string srcpath, text, strbuf;
 int index, result;
-
-#ifdef DEBUG
-cout << "SetDialogData" << endl;
-#endif
 
 // Get the extension entry from the current list ID and the current list index
 m_pextentry = m_pextcreator->GetExtensionEntry( m_listid, m_index );
@@ -146,10 +138,6 @@ if ( m_listid > LIST_WGL )
 	index += m_pextcreator->GetExtensionEntryList( LIST_WGL )->GetCount();
 	}
 
-#ifdef DEBUG
-cout << "Setting combo box " << index << "\n";
-#endif
-
 m_combobox->setCurrentItem( index );
 
 SetComboBox();
@@ -184,16 +172,10 @@ result = m_pextcreator->ReadRegistryWebpage( text, m_pextentry->m_name );
 
 if ( result == READ_EXTENSION_SUCCESS )
 	{
-#ifdef DEBUG
-	cout << "Setting text\n";
-#endif
         m_textedit->setText( text.data() );
 	}
 else
 	{
-#ifdef DEBUG
-	cout << "Nothing left\n";
-#endif
        	m_textedit->setText( "No information available\n" );
 	}
 
@@ -257,13 +239,7 @@ m_combobox->setMaxVisibleItems(20);
 
 void CExtensionDialog::IncrementIndex( void )
 {
-int listnum;
-
-#ifdef DEBUG
-cout << "IncrementIndex"<< endl;
-#endif
-
-listnum = m_pextcreator->GetExtensionEntryListNum( m_listid );
+int listnum = m_pextcreator->GetExtensionEntryListNum( m_listid );
 
 m_index++; 	
 
@@ -297,10 +273,6 @@ void CExtensionDialog::DecrementIndex( void )
 {
 m_index--;
 
-#ifdef DEBUG
-cout << "DecrementIndex" << endl;
-#endif
-
 if ( m_index < 0 )
 	{
 	m_listid--;
@@ -329,10 +301,6 @@ if ( m_index < 0 )
 
 void CExtensionDialog::SetSelected( int mode )
 {
-#ifdef DEBUG
-cout << "SetSelected" << endl;
-#endif
-
 if ( !m_pextentry )
 	{
 	return;
@@ -404,10 +372,6 @@ void CExtensionDialog::radiosearchforwards_toggled( bool /* value */ )
 
 void CExtensionDialog::editextensionname_textChanged( const QString &string )
 {
-#ifdef DEBUG
-cout << "Extension name changed" << endl;
-#endif
-
 if ( 0 != m_noupdateflag )
 	{
 	return;
@@ -418,10 +382,6 @@ SetExtensionName( (char *) string.ascii() );
 
 void CExtensionDialog::combobox_activated( const QString &string )
 {
-#ifdef DEBUG
-cout << "Combo box activated" << endl;
-#endif
-
 if ( 0 != m_noupdateflag )
 	{
 	return;
@@ -438,10 +398,6 @@ if ( m_noupdateflag )
 	{
 	return;
 	}
-
-#ifdef DEBUG
-cout << "Find text changed" << endl;
-#endif
 
 if ( m_radiocasesensitive->isOn() )
 	{

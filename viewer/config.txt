@@ -5,8 +5,1540 @@
 	}
 	{headerfileset
 		{systemlist
+			{extentry
+				{name "GL_AMD_multi_draw_indirect"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_AMD_seamless_cubemap_per_texture"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_AMD_vertex_shader_viewport_index"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_AMD_vertex_shader_layer"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_arrays_of_arrays"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_base_instance"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_bindless_texture"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_blend_func_extended"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_buffer_storage"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_clear_buffer_object"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_clear_texture"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_clip_control"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_color_buffer_float"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_compatibility"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_compressed_texture_pixel_storage"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_conservative_depth"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_compute_shader"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_compute_variable_group_size"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_conditional_render_inverted"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_copy_buffer"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_copy_image"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_cull_distance"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_debug_output"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_depth_buffer_float"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_depth_clamp"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_depth_texture"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_derivative_control"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_direct_state_access"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_draw_buffers"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_draw_buffers_blend"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_draw_indirect"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_draw_elements_base_vertex"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_draw_instanced"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_enhanced_layouts"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_ES2_compatibility"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_ES3_compatibility"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_ES3_1_compatibility"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_explicit_attrib_location"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_explicit_uniform_location"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_fragment_coord_conventions"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_fragment_layer_viewport"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_fragment_program"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_fragment_program_shadow"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_fragment_shader"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_framebuffer_no_attachments"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_framebuffer_object"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_framebuffer_sRGB"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_geometry_shader4"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_get_program_binary"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_get_texture_sub_image"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_gpu_shader5"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_gpu_shader_fp64"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_half_float_pixel"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_half_float_vertex"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_imaging"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_indirect_parameters"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_instanced_arrays"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_internalformat_query"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_internalformat_query2"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_internalformat_sample_query"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_invalidate_subdata"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_map_buffer_alignment"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_map_buffer_range"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_multi_bind"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_multi_draw_indirect"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_multisample"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_multitexture"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_occlusion_query"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_occlusion_query2"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_pipeline_statistics_query"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_pixel_buffer_object"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_point_parameters"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_point_sprite"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_program_interface_query"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_provoking_vertex"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_robust_buffer_access_behavior"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_robustness"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_sample_shading"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_sampler_objects"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_seamless_cube_map"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_seamless_cubemap_per_texture"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_separate_shader_objects"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_shader_atomic_counters"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_shader_bit_encoding"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_shader_draw_parameters"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_shader_group_vote"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_shader_image_load_store"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_shader_image_size"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_shader_objects"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_shader_precision"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_query_buffer_object"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_shader_storage_buffer_object"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_shader_subroutine"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_shader_texture_image_samples"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_shader_texture_lod"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_shading_language_100"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_shading_language_420pack"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_shading_language_include"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_shading_language_packing"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_shadow"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_sparse_buffer"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_sparse_texture"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_stencil_texturing"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_sync"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_tessellation_shader"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_barrier"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_border_clamp"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_buffer_object"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_buffer_object_rgb32"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_buffer_range"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_compression"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_compression_bptc"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_compression_rgtc"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_cube_map"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_cube_map_array"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_env_add"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_env_combine"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_env_crossbar"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_env_dot3"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_float"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_gather"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_mirror_clamp_to_edge"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_mirrored_repeat"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_multisample"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_non_power_of_two"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_query_levels"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_query_lod"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_rectangle"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_rg"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_rgb10_a2ui"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_stencil8"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_storage"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_storage_multisample"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_swizzle"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_texture_view"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_timer_query"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_transform_feedback2"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_transform_feedback3"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_transform_feedback_instanced"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_transform_feedback_overflow_query"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_transpose_matrix"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_uniform_buffer_object"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_vertex_array_bgra"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_vertex_array_object"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_vertex_attrib_64bit"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_vertex_attrib_binding"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_vertex_buffer_object"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_vertex_program"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_vertex_shader"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_vertex_type_10f_11f_11f_rev"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_vertex_type_2_10_10_10_rev"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_viewport_array"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ARB_window_pos"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ATI_draw_buffers"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ATI_texture_float"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_ATI_texture_mirror_once"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_S3_s3tc"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_env_add"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_abgr"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_bgra"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_bindable_uniform"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_blend_color"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_blend_equation_separate"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_blend_func_separate"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_blend_minmax"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_blend_subtract"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_compiled_vertex_array"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_Cg_shader"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_depth_bounds_test"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_direct_state_access"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_draw_buffers2"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_draw_instanced"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_draw_range_elements"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_fog_coord"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_framebuffer_blit"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_framebuffer_multisample"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXTX_framebuffer_mixed_formats"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_framebuffer_multisample_blit_scaled"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_framebuffer_object"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_framebuffer_sRGB"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_geometry_shader4"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_gpu_program_parameters"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_gpu_shader4"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_multi_draw_arrays"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_packed_depth_stencil"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_packed_float"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_packed_pixels"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_pixel_buffer_object"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_point_parameters"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_polygon_offset_clamp"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_post_depth_coverage"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_provoking_vertex"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_raster_multisample"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_rescale_normal"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_secondary_color"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_separate_shader_objects"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_separate_specular_color"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_shader_image_load_formatted"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_shader_image_load_store"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_shader_integer_mix"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_shadow_funcs"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_sparse_texture2"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_stencil_two_side"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_stencil_wrap"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture3D"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_array"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_buffer_object"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_compression_dxt1"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_compression_latc"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_compression_rgtc"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_compression_s3tc"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_cube_map"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_edge_clamp"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_env_combine"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_env_dot3"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_filter_anisotropic"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_filter_minmax"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_integer"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_lod"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_lod_bias"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_mirror_clamp"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_object"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_shared_exponent"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_sRGB"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_sRGB_decode"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_storage"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_swizzle"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_timer_query"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_transform_feedback2"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_vertex_array"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_vertex_array_bgra"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_vertex_attrib_64bit"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_x11_sync_object"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_import_sync_object"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_IBM_rasterpos_clip"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_IBM_texture_mirrored_repeat"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_KHR_context_flush_control"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_KHR_debug"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_KHR_robust_buffer_access_behavior"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_KHR_robustness"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_KTX_buffer_region"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_bindless_multi_draw_indirect"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_bindless_multi_draw_indirect_count"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_bindless_texture"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_blend_equation_advanced"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_blend_equation_advanced_coherent"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_blend_square"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_command_list"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_compute_program5"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_conditional_render"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_conservative_raster"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_conservative_raster_dilate"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_copy_depth_to_color"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_copy_image"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_depth_buffer_float"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_depth_clamp"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_draw_texture"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_ES1_1_compatibility"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_ES3_1_compatibility"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_explicit_multisample"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_fence"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_fill_rectangle"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_float_buffer"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_fog_distance"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_fragment_coverage_to_color"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_fragment_program"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_fragment_program_option"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_fragment_program2"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_fragment_shader_interlock"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_framebuffer_mixed_samples"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_framebuffer_multisample_coverage"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_geometry_shader4"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_geometry_shader_passthrough"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_gpu_program4"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_gpu_program4_1"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_gpu_program5"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_gpu_program5_mem_extended"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_gpu_program_fp64"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_gpu_shader5"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_half_float"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_light_max_exponent"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_multisample_coverage"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_multisample_filter_hint"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_occlusion_query"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_packed_depth_stencil"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_parameter_buffer_object"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_parameter_buffer_object2"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_path_rendering"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_path_rendering_shared_edge"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_pixel_data_range"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_point_sprite"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_primitive_restart"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_register_combiners"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_register_combiners2"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_sample_locations"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_sample_mask_override_coverage"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_shader_atomic_counters"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_shader_atomic_float"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_shader_atomic_fp16_vector"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_shader_atomic_int64"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_shader_buffer_load"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_shader_storage_buffer_object"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_texgen_reflection"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_texture_barrier"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_texture_compression_vtc"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_texture_env_combine4"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_texture_multisample"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_texture_rectangle"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_texture_shader"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_texture_shader2"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_texture_shader3"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_transform_feedback"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_transform_feedback2"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_uniform_buffer_unified_memory"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_vdpau_interop"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_vertex_array_range"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_vertex_array_range2"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_vertex_attrib_integer_64bit"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_vertex_buffer_unified_memory"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_vertex_program"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_vertex_program1_1"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_vertex_program2"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_vertex_program2_option"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_vertex_program3"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_viewport_array2"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NVX_conditional_render"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NVX_gpu_memory_info"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NVX_nvenc_interop"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_shader_thread_group"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_shader_thread_shuffle"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_KHR_blend_equation_advanced"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_KHR_blend_equation_advanced_coherent"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_SGIS_generate_mipmap"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_SGIS_texture_lod"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_SGIX_depth_texture"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_SGIX_shadow"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_SUN_slice_accum"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_EXT_visual_info"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_EXT_visual_rating"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_SGIX_fbconfig"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_SGIX_pbuffer"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_SGI_video_sync"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_SGI_swap_control"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_EXT_swap_control"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_EXT_swap_control_tear"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_EXT_texture_from_pixmap"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_EXT_buffer_age"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_ARB_create_context"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_ARB_create_context_profile"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_EXT_create_context_es_profile"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_EXT_create_context_es2_profile"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_ARB_create_context_robustness"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_NV_delay_before_swap"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_EXT_stereo_tree"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_ARB_context_flush_control"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_ARB_multisample"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_NV_float_buffer"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_ARB_fbconfig_float"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_EXT_framebuffer_sRGB"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_NV_copy_image"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_ARB_get_proc_address"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_EXT_import_context"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_NV_swap_group"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_NV_video_out"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_EXT_fbconfig_packed_float"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_NV_present_video"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_NV_copy_buffer"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_NV_multisample_coverage"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GLX_NV_video_capture"  }
+				{flags 0 }
+			}
 		}
 		{newlist
+			{extentry
+				{name "GL_EXT_Cg_shader"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXTX_framebuffer_mixed_formats"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_compression_dxt1"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_edge_clamp"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_lod"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_texture_storage"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_transform_feedback2"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_EXT_import_sync_object"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_KTX_buffer_region"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_ES1_1_compatibility"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_ES3_1_compatibility"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_gpu_program4_1"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NV_gpu_program_fp64"  }
+				{flags 0 }
+			}
+			{extentry
+				{name "GL_NVX_nvenc_interop"  }
+				{flags 0 }
+			}
 		}
 		{ignorelist
 		}

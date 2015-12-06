@@ -115,12 +115,6 @@ int entry_flags;
 
 result = true;
 
-
-#ifdef DEBUG
-std::cout << "CExtensionEntryDataAsciiIO::ReadFile\n";
-#endif
-
-
 if ( g_verbose )
 	{
 	std::cout << "Reading CExtensionEntryDataAsciiIO" << std::endl;
@@ -129,10 +123,6 @@ if ( g_verbose )
 while ( ReadOpenClosePar( stream ) != 0 )
 	{
 	ReadString( stream, tokenid );
-
-#ifdef DEBUG
-std::cout << "Token = " << tokenid << std::endl;
-#endif
 
 	if ( g_verbose > 1 )
 		{
@@ -145,10 +135,6 @@ std::cout << "Token = " << tokenid << std::endl;
 			ReadQuotedString( stream, entry_prefix );
 			m_prefix = entry_prefix;
 
-#ifdef DEBUG
-			std::cout << "Reading prefix" << std::endl;
-#endif
-
 			if ( g_verbose )
 				{
 				std::cout << "Read <prefix> = <" << entry_prefix << ">\n";
@@ -158,10 +144,6 @@ std::cout << "Token = " << tokenid << std::endl;
 		case TOKEN_NAME:
 			ReadQuotedString( stream, entry_name );
 			m_name = entry_name;
-
-#ifdef DEBUG
-			std::cout << "Reading name" << std::endl;
-#endif
 
 			if ( g_verbose )
 				{
@@ -173,10 +155,6 @@ std::cout << "Token = " << tokenid << std::endl;
 			ReadQuotedString( stream, entry_value );
 			m_value = entry_value;
 
-#ifdef DEBUG
-			std::cout << "Reading value" << std::endl;
-#endif
-
 			if ( g_verbose )
 				{
 				std::cout << "Read <value> = <" << entry_value << ">\n";
@@ -186,10 +164,6 @@ std::cout << "Token = " << tokenid << std::endl;
 		case TOKEN_HEADER:
 			ReadQuotedString( stream, entry_header );
 			m_header = entry_header;
-
-#ifdef DEBUG
-			std::cout << "Reading header" << std::endl;
-#endif
 
 			if ( g_verbose )
 				{
@@ -201,10 +175,6 @@ std::cout << "Token = " << tokenid << std::endl;
 			ReadQuotedString( stream, entry_pfnproc );
 			m_pfnproc = entry_pfnproc;
 
-#ifdef DEBUG
-			std::cout << "Reading pfnproc" << std::endl;
-#endif
-
 			if ( g_verbose )
 				{
 				std::cout << "Read <pfnproc> = <" << entry_pfnproc << ">\n";
@@ -214,10 +184,6 @@ std::cout << "Token = " << tokenid << std::endl;
 		case TOKEN_FUNCSTART:
 			ReadInteger( stream, entry_funcstart );
 			m_funcstart = entry_funcstart;
-
-#ifdef DEBUG
-			std::cout << "Reading funcstart" << std::endl;
-#endif
 
 			if ( g_verbose )
 				{
@@ -229,10 +195,6 @@ std::cout << "Token = " << tokenid << std::endl;
 			ReadInteger( stream, entry_funcnum );
 			m_funcnum = entry_funcnum;
 
-#ifdef DEBUG
-			std::cout << "Reading funcnum" << std::endl;
-#endif
-
 			if ( g_verbose )
 				{
 				std::cout << "Read <funcnum> = <" << entry_funcnum << ">\n";
@@ -242,10 +204,6 @@ std::cout << "Token = " << tokenid << std::endl;
 		case TOKEN_CONSTSTART:
 			ReadInteger( stream, entry_conststart );
 			m_conststart = entry_conststart;
-
-#ifdef DEBUG
-			std::cout << "Reading conststart" << std::endl;
-#endif
 
 			if ( g_verbose )
 				{
@@ -257,10 +215,6 @@ std::cout << "Token = " << tokenid << std::endl;
 			ReadInteger( stream, entry_constnum );
 			m_constnum = entry_constnum;
 
-#ifdef DEBUG
-			std::cout << "Reading constnum" << endl;
-#endif
-
 			if ( g_verbose )
 				{
 				std::cout << "Read <constnum> = <" << entry_constnum << ">\n";
@@ -270,10 +224,6 @@ std::cout << "Token = " << tokenid << std::endl;
 		case TOKEN_FLAGS:
 			ReadInteger( stream, entry_flags );
 			m_flags = entry_flags;
-
-#ifdef DEBUG
-			std::cout << "Reading flags" << endl;
-#endif
 
 			if ( g_verbose )
 				{

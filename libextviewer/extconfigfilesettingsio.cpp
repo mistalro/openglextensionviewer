@@ -98,10 +98,9 @@ int entry_autosaveconfigflags;
 
 result = true;
 
-
 if ( g_verbose )
 	{
-	std::cout << "Reading CConfigurationFileSettingsDataAsciiIO" << std::endl;
+	ctrace << "Reading CConfigurationFileSettingsDataAsciiIO" << std::endl;
 	}
 
 while ( ReadOpenClosePar( stream ) != 0 )

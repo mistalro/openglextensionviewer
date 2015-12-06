@@ -108,41 +108,33 @@ result = m_extcreator.ConfigurationFileLoadAndMerge();
 // Abort if the file wasn't loaded
 if ( !result )
 	{
-#ifdef DEBUG
-	cout << "No file loaded\n";
-#endif
+	ctrace << "No file loaded" << std::endl;
+
 	return;
 	}
 
 // Get the auto-load flags
 result = m_extcreator.GetAutoLoadConfigFlags();
 
-#ifdef DEBUG
-cout << "Loaded " << m_extcreator.m_sitelist.size() << "Items\n";
-#endif
+	ctrace << "Loaded " << m_extcreator.m_sitelist.size() << "Items" << std::endl;
 
 // Depending upon the auto-load flags, either ask for a file, use the
 // default configuration file or just leave the configuration as default.
 switch ( result )
 	{
 	case MODE_AUTOLOADPROMPT:	// Prompt the user
-#ifdef DEBUG
-		cout << "Autoload prompt\n";
-#endif
+		ctrace << "Autoload prompt" << std::endl;
+
 		fileOpen();
 		break;
 
 	case MODE_AUTOLOADCONFIG:	// Already done
-#ifdef DEBUG
-		cout << "Autoload config\n";
-#endif
+		ctrace << "Autoload config" << std::endl;
 		break;
 
 	case MODE_AUTOLOADNOACTION:	// Leave configuration as default
 	default:
-#ifdef DEBUG
-		cout << "Autoload no action\n";
-#endif
+		ctrace << "Autoload no action" << std::endl;
 		// Clear existing configuration
 		m_extcreator.ConfigurationFileNew();  
 		break;
@@ -155,18 +147,16 @@ result = m_extcreator.GetAutoReadHeaderFlags();
 // necessary to read this files in order to do any work, so the following
 // line is commented out.
 // if ( result & MODE_AUTOREADHEADERS )
-//	{
-	menubar_headerfilesreadfiles_activated();
-//	}
-	
-#ifdef OPTION_AUTOREADREGISTRY
-if ( result & MODE_AUTOREADREGISTRY )
 	{
-	// Automatically read registry from local files
-	// Presently, disabled as we don't know how long it may take
-	menubar_registryreadall_activated();
+	menubar_headerfilesreadfiles_activated();
 	}
-#endif
+	
+// It was an idea to automatically read registry from local files
+// This is disable as we don't know how long it may take
+// if ( result & MODE_AUTOREADREGISTRY )
+//	{
+//	menubar_registryreadall_activated();
+//	}
 }
 
 // --------------------------------------------------------------------------
@@ -1027,9 +1017,7 @@ aboutdialog.exec();
 
 void CMainWindowDialog::listglavailable_itemsDropped( QString &string )
 {
-#ifdef DEBUG
-cout << "GL Available dropped ("<< string.ascii() <<")\n";
-#endif
+ctrace << "GL Available dropped ("<< string.ascii() <<")" << std::endl;
 
 m_extcreator.m_headerfileset.SaveState();
 m_extcreator.m_headerfileset.ListUnselectExtensionString( 
@@ -1040,9 +1028,7 @@ ListBoxSetAll();
 
 void CMainWindowDialog::listglselected_itemsDropped( QString &string )
 {
-#ifdef DEBUG
-cout << "GL Selected dropped ("<<string.ascii()<< ")\n";
-#endif
+ctrace << "GL Selected dropped ("<<string.ascii()<< ")" << std::endl;
 
 m_extcreator.m_headerfileset.SaveState();
 m_extcreator.m_headerfileset.ListSelectExtensionString( 
@@ -1054,9 +1040,7 @@ ListBoxSetAll();
 
 void CMainWindowDialog::listglxavailable_itemsDropped( QString &string )
 {
-#ifdef DEBUG
-cout << "GLX Available dropped ("<<string.ascii()<<")\n";
-#endif
+ctrace << "GLX Available dropped ("<<string.ascii()<<")" << std::endl;
 
 m_extcreator.m_headerfileset.SaveState();
 m_extcreator.m_headerfileset.ListUnselectExtensionString( 
@@ -1067,9 +1051,7 @@ ListBoxSetAll();
 
 void CMainWindowDialog::listglxselected_itemsDropped( QString &string )
 {
-#ifdef DEBUG
-cout << "GLX Selected dropped (" << string.ascii() << ")\n";
-#endif
+ctrace << "GLX Selected dropped (" << string.ascii() << ")" << std::endl;
 
 m_extcreator.m_headerfileset.SaveState();
 m_extcreator.m_headerfileset.ListSelectExtensionString( 
@@ -1081,9 +1063,7 @@ ListBoxSetAll();
 
 void CMainWindowDialog::listwglavailable_itemsDropped( QString &string )
 {
-#ifdef DEBUG
-cout << "WGL Available dropped (" << string.ascii() << "\n";
-#endif
+ctrace << "WGL Available dropped (" << string.ascii() << std::endl;
 
 m_extcreator.m_headerfileset.SaveState();
 m_extcreator.m_headerfileset.ListUnselectExtensionString( 
@@ -1094,9 +1074,7 @@ ListBoxSetAll();
 
 void CMainWindowDialog::listwglselected_itemsDropped( QString &string )
 {
-#ifdef DEBUG
-cout << "WGL Selected dropped (" << string.ascii() << ")\n";
-#endif
+ctrace << "WGL Selected dropped (" << string.ascii() << ")" << std::endl;
 
 m_extcreator.m_headerfileset.SaveState();
 m_extcreator.m_headerfileset.ListSelectExtensionString( 
@@ -1108,9 +1086,7 @@ ListBoxSetAll();
 
 void CMainWindowDialog::listvendoravailable_itemsDropped( QString &string )
 {
-#ifdef DEBUG
-cout << "Vendor Available dropped ("<< string.ascii() <<")\n";
-#endif
+ctrace << "Vendor Available dropped ("<< string.ascii() <<")" << std::endl;
 
 m_extcreator.m_headerfileset.SaveState();
 
@@ -1131,9 +1107,7 @@ ListBoxSetAll();
 
 void CMainWindowDialog::listvendorselected_itemsDropped( QString &string )
 {
-#ifdef DEBUG
-cout<< "Vendor Selected dropped ("<< string.ascii() <<")\n";
-#endif
+ctrace << "Vendor Selected dropped ("<< string.ascii() <<")" << std::endl;
 
 m_extcreator.m_headerfileset.SaveState();
 
@@ -1158,9 +1132,7 @@ ListBoxSetAll();
 
 void CMainWindowDialog::listnew_itemsDropped( QString &string )
 {
-#ifdef DEBUG
-cout << "New dropped ("<< string.ascii()<<")\n";
-#endif
+ctrace << "New dropped ("<< string.ascii()<<")" << std::endl;
 
 m_extcreator.m_headerfileset.ListRemoveExtensionString( 
 	LIST_IGNORE, (char *) string.ascii() );
@@ -1170,9 +1142,7 @@ ListBoxSetAll();
 
 void CMainWindowDialog::listignore_itemsDropped( QString &string )
 {
-#ifdef DEBUG
-cout << "Ignore dropped (" <<string.ascii() << ")\n";
-#endif
+ctrace << "Ignore dropped (" <<string.ascii() << ")" << std::endl;
 
 m_extcreator.m_headerfileset.ListAddExtensionString( 
 	LIST_IGNORE, (char *) string.ascii() );
@@ -1182,11 +1152,7 @@ ListBoxSetAll();
 
 void CMainWindowDialog::listsystem_itemsDropped( QString &string )
 {
-#ifdef DEBUG
-cout << "Items dropped ("<<string.ascii()<< ")\n";
-#else
-Q_UNUSED( string);
-#endif
+ctrace << "Items dropped ("<<string.ascii()<< ")" << std::endl;
 }
 
 // ---------------------------------------------------------------------------
@@ -1378,9 +1344,7 @@ int CMainWindowDialog::CheckNewExtensions( void )
 CUpdateExtensionsDialog updatedialog;
 int result, mode = 0;
 
-#ifdef DEBUG
-cout << "New extension count = " << m_extcreator.m_headerfileset.ListGetCount( LIST_NEW) << endl;
-#endif
+ctrace << "New extension count = " << m_extcreator.m_headerfileset.ListGetCount( LIST_NEW) << std::endl;
  
 if ( m_extcreator.m_headerfileset.ListGetCount( LIST_NEW) > 0 )	
 	{
@@ -1392,35 +1356,33 @@ if ( m_extcreator.m_headerfileset.ListGetCount( LIST_NEW) > 0 )
 		{
 		mode = m_extcreator.m_sitelist.GetUpdateMode();
 
-#ifdef DEBUG
-		cout << "Result: Update OK\n";
-		cout << "Update must do:\n";
+		ctrace << "Result: Update OK" << std::endl;
+		ctrace << "Update must do:" << std::endl;
 
 		if ( mode & MODE_UPDATEHEADERS )
 			{
-			cout << "Update headers\n";
+			ctrace << "Update headers" << std::endl;
 			}
 
 		if ( mode & MODE_READHEADERS )
 			{
-			cout << "Read headers\n";
+			ctrace << "Read headers" << std::endl;
 			}
 
 		if ( mode & MODE_UPDATEREGISTRY )
 			{
-			cout << "Update registry\n";
+			ctrace << "Update registry" << std::endl;
 			}
 
 		if ( mode & MODE_READREGISTRY )
 			{
-			cout << "Read the registry\n";		
+			ctrace << "Read the registry" << std::endl;		
 			}
 
 		if ( mode & MODE_IGNORETHESE )
 			{
-			cout << "Ignore these extensions\n";
+			ctrace << "Ignore these extensions" << std::endl;
 			}
-#endif
 
 		// ----- Activate the processes automatically ---------------
 
@@ -1453,9 +1415,7 @@ if ( m_extcreator.m_headerfileset.ListGetCount( LIST_NEW) > 0 )
 		{
 		if ( result == UPDATE_CANCEL )
 			{
-#ifdef DEBUG
-			cout << "Result: Update Cancelled" << endl;
-#endif
+			ctrace << "Result: Update Cancelled" << std::endl;
 			}
 
 		mode = 0;

@@ -2,9 +2,7 @@
 // Copyright: (C) VFX Research 2002 - 2014. All Rights Reserved.
 // ---------------------------------------------------------------------------
 
-#include <stdlib.h>
-#include <string>
-#include <iostream>
+#include "extensionlib.h"
 
 // --------------------------------------------------------------------------
 // Extract a single pattern from a std::string
@@ -108,19 +106,15 @@ unsigned int maskmax;
 unsigned int pathmax;
 char chmask;
 
-#ifdef DEBUG
-cout << "----- MatchPattern -----" << endl;
-#endif
+ctrace << "----- MatchPattern -----" << std::endl;
 
 maskmax = strmask.size();
 pathmax = strpath.size();
 
 while ( !done )	 // While not done
 	{
-#ifdef DEBUG
-cout << "pathpos = " << pathpos << endl;
-cout << "maskpos = " << maskpos << endl;
-#endif
+	ctrace << "pathpos = " << pathpos << std::endl;
+	ctrace << "maskpos = " << maskpos << std::endl;
 
 	// In the case that strmask is something like *.txt and 
 	//		    strpath is something like *.txt.old 
@@ -134,23 +128,19 @@ cout << "maskpos = " << maskpos << endl;
 	chmask = strmask.at(maskpos);
 	maskpos++;
 
-#ifdef DEBUG
-cout << "chmask = " << (char) chmask << endl;
-#endif
+	ctrace << "chmask = " << (char) chmask << std::endl;
 
 	if ( chmask == '\\' )
 		{
 		chmask = strmask.at(maskpos);
 		maskpos++;
 
-#ifdef DEBUG
-cout << "literal" << endl;
-#endif
+		ctrace << "literal" << std::endl;
+
 		if ( strpath.at(pathpos) != chmask )
 			{
-#ifdef DEBUG
-cout << "\tno match" << endl;
-#endif
+			ctrace << "\tno match" << std::endl;
+
 			return false;
 			}
 		}
@@ -163,9 +153,8 @@ cout << "\tno match" << endl;
 				// Get next character
 				if ( StringGetToken( strmask, maskpos, chmask ) )
 					{
-#ifdef DEBUG
-cout << "wildcard * ending with " << (char) chmask << endl;
-#endif
+					ctrace << "wildcard * ending with " << (char) chmask << std::endl;
+
 					unsigned int pos = strpath.size()-1;
 
 					while ( strpath.at(pos) != chmask)
@@ -178,10 +167,8 @@ cout << "wildcard * ending with " << (char) chmask << endl;
 						pathpos = pos;	
 						}
 
-#ifdef DEBUG
-cout << "Pathpos now " << pathpos << endl;
-cout << "Maskpos now " << maskpos << endl;
-#endif
+					ctrace << "Pathpos now " << pathpos << std::endl;
+					ctrace << "Maskpos now " << maskpos << std::endl;
 					// Skip over chmask
 					if ( pathpos < pathmax )
 						{
@@ -199,9 +186,8 @@ cout << "Maskpos now " << maskpos << endl;
 				break;
 
 			case '?':	       // Wildcard - one character
-#ifdef DEBUG
-cout << "wildcard ? ending with " << (char) chmask << endl;
-#endif
+
+				ctrace << "wildcard ? ending with " << (char) chmask << std::endl;
 
 				if ( pathpos < pathmax )
 					{
@@ -214,9 +200,7 @@ cout << "wildcard ? ending with " << (char) chmask << endl;
 				break;
 
 			default:		// Normal character
-#ifdef DEBUG
-cout << "normal char " << (char) chmask << endl;
-#endif
+				ctrace << "normal char " << (char) chmask << std::endl;
 				if ( strpath.at(pathpos) != chmask )
 					{
 					return false;
@@ -236,10 +220,8 @@ cout << "normal char " << (char) chmask << endl;
 
 	}
 
-#ifdef DEBUG
-cout << "Matched" << endl;
-cout << "---------------" << endl;
-#endif
+ctrace << "Matched" << std::endl;
+ctrace << "---------------" << std::endl;
 
 return true;
 }
@@ -255,19 +237,15 @@ bool done = false;      // done = false
 unsigned int pos = 0;
 std::string strpat;
 
-#ifdef DEBUG
-cout << "Matching target |" << strtarget;
-cout << "| with |" << strmask << "|" << endl;
-#endif
+ctrace << "Matching target |" << strtarget;
+ctrace << "| with |" << strmask << "|" << std::endl;
 
 while ( !done )	  // While not done
 	{
 	// Extract pattern from mask
 	found = StringExtractPattern( strpat, strmask, pos );
 
-#ifdef DEBUG
-cout << "Pattern = |" << strpat << "|" << endl;
-#endif
+	ctrace << "Pattern = |" << strpat << "|" << std::endl;
 
 	if ( !found )	   // No more patterns
 		{
@@ -280,10 +258,9 @@ cout << "Pattern = |" << strpat << "|" << endl;
 
 		if ( found )
 			{
-#ifdef DEBUG
-cout << "Pattern = |" << strpat << "|" << endl;
-cout << "Match = " << found << endl;
-#endif
+			ctrace << "Pattern = |" << strpat << "|" << std::endl;
+			ctrace << "Match = " << found << std::endl;
+
 			done = true;
 			}
 		}

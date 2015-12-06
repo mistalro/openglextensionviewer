@@ -18,6 +18,7 @@ LIBS += -lfilesysascii
 
 # Input
 HEADERS += \
+	ctrace.h \
 	displaysettings.h \
 	extcallbacks.h \
 	extcode.h \
@@ -65,6 +66,7 @@ HEADERS += \
 	tokenlist.h
 
 SOURCES += \
+	ctrace.cpp \
 	displaysettings.cpp \
 	extconfigfilesettingsio.cpp \
 	extconfigfilesettings.cpp \

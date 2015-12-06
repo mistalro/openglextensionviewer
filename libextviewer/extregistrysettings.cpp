@@ -2094,17 +2094,13 @@ while ( !stream.eof() && !done )
 
 		// Perform match here. We only need strstr here, as we	
 		// at most ever need one match per line
-#ifdef DEBUG
-cout << "Searching for |" << strdata.data() << "| in |" << buffer.data() << "|\n";
-#endif
-#ifdef DEBUG
-cout << "Trying line: " << linecount << "\n";
-#endif
+		ctrace << "Searching for |" << strdata.data() << "| in |" << buffer.data() << "|" << std::endl;
+
+		ctrace << "Trying line: " << linecount << std::endl;
+
 		if ( strstr( buffer.data(), strdata.data() ) != 0 )
 			{
-#ifdef DEBUG
-cout << "Match found at " << path.data() << "|" << linecount << "\n";
-#endif
+			ctrace << "Match found at " << path.data() << "|" << linecount << std::endl;
 
 			matches++;
 
@@ -2120,17 +2116,15 @@ cout << "Match found at " << path.data() << "|" << linecount << "\n";
 				{
 				done++;		
 				}
-#ifdef DEBUG
-cout << "Done #1 = " << done << "\n";
-#endif
+
+			ctrace << "Done #1 = " << done << std::endl;
 			}
 		}
 	else
 		{
 		done++;
-#ifdef DEBUG
-cout << "Done #2 = " << done << "\n";
-#endif
+
+		ctrace << "Done #2 = " << done << std::endl;
 		}
 	}
 

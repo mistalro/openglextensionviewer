@@ -41,10 +41,6 @@ return( 0 );
 
 void CRegistryFileProgressDialog::pushbuttoncancel_clicked( void )
 {
-#ifdef DEBUG
-std::cout << "Cancel pressed\n";
-#endif
-
 m_resultcode = CALLBACK_CANCEL;
 }
 

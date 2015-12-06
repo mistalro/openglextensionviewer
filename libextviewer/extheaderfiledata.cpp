@@ -12,9 +12,7 @@ void CExtensionHeaderFileData::Init( void )
 {
 m_version = -1;
 
-#ifdef DEBUG
-cout << "ExtensionHeaderFileData::Init\n";  
-#endif
+ctrace << "ExtensionHeaderFileData::Init" << std::endl;  
 
 m_extlist.Allocate( MAX_EXTLIST );
 m_funclist.Allocate( MAX_FUNCLIST );
@@ -93,11 +91,10 @@ void CExtensionHeaderFileData::CountFunctions( void )
 m_selectednum = 0;
 m_selectedfuncnum = 0;
 
-#ifdef DEBUG
-cout << "ExtNum = " << m_extlist.GetCount() << endl;
-cout << "FuncNum = " << m_funclist.GetCount() << endl;
-cout << "ConstNum = " << m_constlist.GetCount() << endl;
-#endif                                                                                
+ctrace << "ExtNum = " << m_extlist.GetCount() << std::endl;
+ctrace << "FuncNum = " << m_funclist.GetCount() << std::endl;
+ctrace << "ConstNum = " << m_constlist.GetCount() << std::endl;
+
 for ( unsigned int pn = 0; pn < m_extlist.size(); pn++ )
 	{
 	if ( m_extlist.at(pn).EntryGetFlag( FLAG_OUTPUT ) )
@@ -107,10 +104,8 @@ for ( unsigned int pn = 0; pn < m_extlist.size(); pn++ )
 		}
 	}
      
-#ifdef DEBUG
-cout << "SelectedNum = " << m_selectednum << endl;
-cout << "SelectedFuncNum = " << m_selectedfuncnum << endl;
-#endif
+ctrace << "SelectedNum = " << m_selectednum << std::endl;
+ctrace << "SelectedFuncNum = " << m_selectedfuncnum << std::endl;
 }
 
 // --------------------------------------------------------------------------
@@ -197,9 +192,8 @@ if ( strstr( curline, "GL_VERSION" ) != NULL )
         char name[1024];
         if ( sscanf( curline, "#ifndef GL_VERSION%s", name ) >= 1)
 		{
-#ifdef DEBUG
-		cout << "Adding version |" << name << "|" << endl;
-#endif
+		ctrace << "Adding version |" << name << "|" << std::endl;
+
         	versionlist.Add( name );
 		}
         }
@@ -237,9 +231,8 @@ if ( strstr( curline, "EXT_VERSION" ) != NULL )
 
         if ( strncmp( m_prefix.data(), nptr, m_prefix.length() ) == 0 )
                 {
-#ifdef DEBUG
-cout << "Setting version |" << value << "|" << endl;
-#endif
+		ctrace << "Setting version |" << value << "|" << std::endl;
+
                 SetVersion( value );
                 }
         }
@@ -270,10 +263,6 @@ int CExtensionHeaderFileData::ReadExtensionBlockHeader( char *curline,
 				std::ifstream &stream, 
                                 int filelen, CExtensionEntryList &vendorlist, int pextlen )
 {
-#ifdef DEBUG
-	cout << "vvvvv ReadExtensionBlockHeader" << endl;
-#endif
-
     if ( (strncmp( curline, "#ifndef", 7 ) == 0 ) &&       // Must be #ifndef
          (strncmp( m_prefix.data(), curline+8, pextlen ) == 0 ) )
         {
@@ -290,18 +279,13 @@ int CExtensionHeaderFileData::ReadExtensionBlockHeader( char *curline,
 
         if ( CheckValidExtension( curline+8 ) )
                 {
-#ifdef DEBUG
-cout << "Adding block |" << curline+8 << "|" << endl;
-#endif
+		ctrace << "Adding block |" << curline+8 << "|" << std::endl;
+
                 m_extlist.Add( curline+8 );     // Add to list of extensions
                 VendorListAdd(curline+8, vendorlist);// and list of vendors
 		return true;
                 }
         }
-
-#ifdef DEBUG
-	cout << "^^^^^ ReadExtensionBlockHeader" << endl;
-#endif
 
 return false;
 }
@@ -351,16 +335,13 @@ if ( strstr( lastline, "#ifndef" ) != NULL )
 
 if ( (strncmp( name, m_prefix.data(), pextlen ) == 0) && (m_extpos != -1) )
 	{
-#ifdef DEBUG
-cout << "Adding constant + name: " << name << " " << constant << endl;
-cout << "ConstList count = " << m_constlist.GetCount() << endl;
-#endif
+	ctrace << "Adding constant + name: " << name << " " << constant << std::endl;
+	ctrace << "ConstList count = " << m_constlist.GetCount() << std::endl;
+
 	m_constlist.AddNameValue( name, constant );
 	m_extlist.IncrementConstNum( m_extpos );
 
-#ifdef DEBUG
-cout << "ExtListList count = " << m_extlist.GetCount() << endl;
-#endif
+	ctrace << "ExtListList count = " << m_extlist.GetCount() << std::endl;
 	}
 }
 
@@ -374,9 +355,7 @@ int done = 0, curext;
 char *pfuncname, *pchptr;
 std::string funcreturn, funcname, funcparams;
 
-#ifdef DEBUG
-cout << "vvvvv ReadFileFunctions" << endl;
-#endif
+ctrace << "vvvvv ReadFileFunctions" << std::endl;
 
 curext = m_extlist.FindName( name );
 
@@ -403,9 +382,7 @@ while ( !done )
 
                 if ( !pfuncname )
                         {
-#ifdef DEBUG
-                        cout << "|" << m_funcprefix.data() << "| not found\n";
-#endif
+                        ctrace << "|" << m_funcprefix.data() << "| not found" << std::endl;
                         }
                 else
                         {
@@ -441,28 +418,22 @@ while ( !done )
                                 funcparams += *pchptr++;
                                 }
 
-#ifdef DEBUG
-cout << "AddingPrefixNameValue |" << funcreturn.data() << "| |" <<
+			ctrace << "AddingPrefixNameValue |" << funcreturn.data() << "| |" <<
                         funcname.data() << "| |" <<
-                        funcparams.data() << "| |\n";
-#endif
+                        funcparams.data() << "| |" << std::endl;
 
                         m_funclist.AddPrefixNameValue(
                                 funcreturn,
                                 funcname,
                                 funcparams );
 
-#ifdef DEBUG
-cout << "FuncListCount = " << m_funclist.GetCount() << "\n";
-#endif
+				ctrace << "FuncListCount = " << m_funclist.GetCount() << std::endl;
 
                         if ( curext >= 0 )
                                 {
                                 m_extlist.IncrementFuncNum( curext );
 
-#ifdef DEBUG
-cout << "ExtListFuncCount = " << m_extlist.GetCount() << "\n";
-#endif
+				ctrace << "ExtListFuncCount = " << m_extlist.GetCount() << std::endl;
                                 }
                         else
                                 {
@@ -472,9 +443,7 @@ cout << "ExtListFuncCount = " << m_extlist.GetCount() << "\n";
                 }
         }
 
-#ifdef DEBUG
-cout << "^^^^^ ReadFileFunctions" << endl;
-#endif
+ctrace << "^^^^^ ReadFileFunctions" << std::endl;
 }
 
 void CExtensionHeaderFileData::ReadFileFunctionPrototypes( 
@@ -487,11 +456,6 @@ while ( !done )          // Read list of function pointer macros
 	{
 	stream.getline( curline, 1024 );
 
-//            int len = strlen( curline );
-/*      
-                if (len>0)
-            curline[len] = 0;
-*/
 	pchptr = strstr( curline, "PFN" );
 
 	if ( pchptr != NULL )           // Found a prototype
@@ -510,15 +474,11 @@ while ( !done )          // Read list of function pointer macros
 				{
 				*pchptrd = '\0';     // Now have a function definition
 
-#ifdef DEBUG
-cout << "Adding Function prototype |" << pchptr << "| |" << pchptrc << "|\n";
-#endif
+				ctrace << "Adding Function prototype |" << pchptr << "| |" << pchptrc << "|" << std::endl;
 
 				m_funclist.AddProtoVars( pchptr, pchptrc );
 
-#ifdef DEBUG
-cout << "FuncList count = " << m_funclist.GetCount() << "\n";
-#endif
+				ctrace << "FuncList count = " << m_funclist.GetCount() << std::endl;
 				}
 			}
 		}
@@ -559,9 +519,7 @@ int  pextlen, filelen;
 std::ifstream stream;
 
 std::string funcreturn, funcname, funcparams;                                                                                
-#ifdef DEBUG
-cout << "CExtensionHeaderFileData:: Reading header file <"<< filename << ">\n" << endl;
-#endif
+ctrace << "CExtensionHeaderFileData:: Reading header file <"<< filename << ">" << std::endl;
 
 curline[0] = '\0';
 
@@ -578,9 +536,8 @@ stream.open( filename.data() );
 
 if ( !stream.is_open() )
 	{
-#ifdef DEBUG
-	cout << "CExtensionHeaderFileData:: Could not open stream for |" << filename << "|" << endl;
-#endif
+	ctrace << "CExtensionHeaderFileData:: Could not open stream for |" << filename << "|" << std::endl;
+
 	return false;
 	}
 
@@ -589,15 +546,11 @@ pextlen = m_prefix.length();
 if ( callback.HeaderFileProgressCallback( filename, " ",
                   stream.tellg(), filelen ) )
 	{
-#ifdef DEBUG
-	cout << "Cancelled\n";
-#endif
+	ctrace << "Cancelled" << std::endl;
         return false;
 	}
 
-#ifdef DEBUG
-cout << "------< Header file start >-----------" << endl;
-#endif
+ctrace << "------< Header file start >-----------" << std::endl;
 
 // --------------------------------------------------------------------------
 // Main header reading loop
@@ -609,9 +562,8 @@ while ( !stream.eof() )
 
 	stream.getline( curline, 1024 );
 
-#ifdef DEBUG
-	cout << "|" << curline << "|\n";
-#endif
+	ctrace << "|" << curline << "|" << std::endl;
+
 	// Search for GL versions
 	ReadVersion( curline, versionlist );
 
@@ -628,39 +580,33 @@ while ( !stream.eof() )
         	if (callback.HeaderFileProgressCallback(
                 	filename.data(), curline+8, stream.tellg(), filelen ) )
                 	{
-#ifdef DEBUG
-		cout << "Cancelled\n";
-#endif
+			ctrace << "Cancelled" << std::endl;
+
                 	return false;
                 	}
 		}
 
 	// Read GL constants
-#ifdef DEBUG
-	cout << "Reading constants\n";
-#endif
+	ctrace << "Reading constants" << std::endl;
 
 	ReadFileConstants( curline, lastline, name, pextlen );
 
 	// Search for list of OpenGL functions
     	if ( strstr( curline, m_prototype.data() ) != NULL )
 		{
-#ifdef DEBUG
-		cout << "Reading functions\n";
-#endif
+		ctrace << "Reading functions" << std::endl;
+
 		// Read File Functions
 		ReadFileFunctions( curline, lastline, name, stream );
-#ifdef DEBUG
-		cout << "Reading prototypes\n";
-#endif
+
+		ctrace << "Reading prototypes" << std::endl;
+
 		// Read File Function Prototypes
 		ReadFileFunctionPrototypes( curline, stream );
 		}
     	}
 
-#ifdef DEBUG
-cout << "------< Header file finish >-----------\n";
-#endif
+ctrace << "------< Header file finish >-----------" << std::endl;
 
 // --------------------------------------------------------------------------
 // Inform user of progress

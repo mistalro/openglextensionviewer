@@ -138,10 +138,6 @@ filepath = filedlg.getOpenFileName(
 
 if ( filepath.ascii() != NULL )
 	{
-#ifdef DEBUG
-	std::cout <<"Selected header file = " << (char *) filepath.ascii() << std::endl;
-#endif
-
 	m_localconfig.SetScriptfile( (char *) filepath.ascii() );
 	m_editexternalscript->setText( filepath );
 	}

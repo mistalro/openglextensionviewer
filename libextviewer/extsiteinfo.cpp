@@ -93,18 +93,14 @@ switch ( itemid )
 int CExtensionSiteInfo::FindExtensionLocalPath(
                          std::string &pextpath, std::string &pextname )
 {
-struct stat statbuf;
-int result;
-std::string filepath, hostname, localfile, pbuffer;
-
-// ----- Read the index html file first -------------------------------------
-
 // Get the path to the index file
-filepath = m_indexdirlocal + "/" + m_indexpagelocal;
+std::string filepath = m_indexdirlocal + "/" + m_indexpagelocal;
 
+struct stat statbuf;
 // Check to see if the file exists
-result = stat( filepath.data(), &statbuf );
+int result = stat( filepath.data(), &statbuf );
 
+std::string pbuffer;
 // If the file exists, then try and load it into a buffer
 if ( result == 0 )
 	{
@@ -262,12 +258,11 @@ int CExtensionSiteInfo::FindRegistryExtensionPathIndex(
                 const std::string &pregfile, 
                 std::string &pextname, std::string &pextpath, int index )
 {
-char const *pchcur;
 char chcur = 0, chprev = -1;
 int   indpos = 0;
-std::string extpath, refmode;
+//std::string extpath;
 
-pchcur = pregfile.data();
+char const *pchcur = pregfile.data();
 
 if  ( !pchcur )
 	{
@@ -281,9 +276,11 @@ while ( *pchcur != '\0' )     // While not at the end of the file
     if ( (chprev == '<') && (chcur == 'a') )    // Get start of reference
         {
         pchcur++;
-#ifdef DEBUG
-std::cout << "Found tag\n";
-#endif
+
+	ctrace << "Found tag\n";
+
+	std::string refmode;
+
 	refmode.clear();
 
         while ( *pchcur && (*pchcur != '=' ) )
@@ -291,13 +288,9 @@ std::cout << "Found tag\n";
 		refmode += *pchcur++;
 		}
                                                                                 
-#ifdef DEBUG
-std::cout << "Tag = " << refmode.data() << "\n";
-#endif
-                                                                                
-#ifdef DEBUG
-std::cout << "Start of tag\n";
-#endif
+	ctrace << "Tag = " << refmode.data() << std::endl; 
+	ctrace << "Start of tag" << std::endl;
+
         while ( (*pchcur != '\"' ) )      // Get the reference link
 		{
             	pchcur++;
@@ -305,9 +298,8 @@ std::cout << "Start of tag\n";
                                                                                 
         pchcur++;
                                                                                 
-#ifdef DEBUG
-std::cout << "End of tag\n";
-#endif
+	ctrace << "End of tag" << std::endl;
+
 	pextpath.clear();
 
         while ( *pchcur && (*pchcur != '\"') )
@@ -315,9 +307,7 @@ std::cout << "End of tag\n";
             	pextpath += *pchcur++;
 		}
                                                                                 
-#ifdef DEBUG
-std::cout << "Looking for end of open tag\n";
-#endif
+	ctrace << "Looking for end of open tag" << std::endl;
                                                                                 
         while ( *pchcur && (*pchcur != '>' ) )  // Skip over '>'
 		{
@@ -326,9 +316,8 @@ std::cout << "Looking for end of open tag\n";
                                                                                 
         pchcur++;
                                                                                 
-#ifdef DEBUG
-std::cout << "Looking for start of close tag\n";
-#endif
+	ctrace << "Looking for start of close tag" << std::endl;
+
 	pextname.clear();
 
         while ( *pchcur && (*pchcur != '<') )   // Skip over '</a>'
@@ -339,9 +328,7 @@ std::cout << "Looking for start of close tag\n";
                                                                                 
         pchcur++;
                                                                                 
-#ifdef DEBUG
-std::cout << "Looking for end of close tag\n";
-#endif
+	ctrace << "Looking for end of close tag" << std::endl;
                                                                                 
         while ( *pchcur && (*pchcur != '>' ) )
 		{
@@ -349,10 +336,8 @@ std::cout << "Looking for end of close tag\n";
 		}                                                                                
         chcur = -1;
                                                                                 
-#ifdef DEBUG
-std::cout << "Index matched - returning\n";
-std::cout << "Extension path found = <" << pextpath.data() << ">\n";
-#endif
+	ctrace << "Index matched - returning" << std::endl;
+	ctrace << "Extension path found = <" << pextpath.data() << ">" << std::endl;
                                                                                 
         if ( indpos == index )
 		{
@@ -366,14 +351,10 @@ std::cout << "Extension path found = <" << pextpath.data() << ">\n";
     pchcur++;
     }
             
-#ifdef DEBUG
-std::cout <<"No match found\n";
-#endif
+ctrace <<"No match found" << std::endl;
                                                                     
 return( -1 );           // No match found
 }
-
-#undef DEBUG
 
 // --------------------------------------------------------------------------
 // Check if two sites are identical
@@ -423,9 +404,7 @@ if ( 0 == GetFlags(FLAG_DOWNLOADHEADERFILES) )
 	callback.HeaderDownloadProgressCallback(
 		(char *) "Download skipped (download flag not set)", 0 );
 	
-#ifdef DEBUG
-	std::cout << "Download of registry headers abandoned" << std::endl;
-#endif
+	ctrace << "Download of registry headers abandoned" << std::endl;
 
 	return 0;
 	}
@@ -440,9 +419,7 @@ callback.HeaderDownloadProgressCallback( GetGlheadernet(), 0 );
 
 resultgl = downloader.Download( GetGlheadernet(), GetGlheaderlocal() );
 
-#ifdef DEBUG
-std::cout << "ResultGL = " << resultgl << std::endl;
-#endif
+ctrace << "ResultGL = " << resultgl << std::endl;
 
 // ----- Download the WGL header --------------------------------------------
 
@@ -450,9 +427,7 @@ callback.HeaderDownloadProgressCallback( GetWglheadernet(), 0 );
 
 resultwgl = downloader.Download( GetWglheadernet(), GetWglheaderlocal() );
 
-#ifdef DEBUG
-std::cout << "ResultWGL = " << resultgl << std::endl;
-#endif
+ctrace << "ResultWGL = " << resultgl << std::endl;
 
 // ----- Download the GLX header --------------------------------------------
 
@@ -460,9 +435,7 @@ callback.HeaderDownloadProgressCallback( GetGlxheadernet(), 0 );
 
 resultglx = downloader.Download( GetGlxheadernet(), GetGlxheaderlocal() );
 
-#ifdef DEBUG
-std::cout << "ResultGLX = " << resultgl << std::endl;
-#endif
+ctrace << "ResultGLX = " << resultgl << std::endl;
 
 // ----- Download the Core ARB header ---------------------------------------
 
@@ -473,9 +446,7 @@ resultcorearb = downloader.Download( GetCoreheadernet(), GetCoreheaderlocal() );
 // ----- All finished -------------------------------------------------------
 
 callback.HeaderDownloadProgressCallback( (char *) "Download complete", 0 );      
-#ifdef DEBUG
-std::cout << "Download of registry headers complete" << std::endl;
-#endif
+ctrace << "Download of registry headers complete" << std::endl;
 
 return( (resultwgl * FLAG_WGL)          // Calculate and return result code
       + (resultgl  * FLAG_GL)
@@ -542,55 +513,49 @@ return result;
 int CExtensionSiteInfo::ReadRegistryWebpage(std::string &strdata, 
 						const std::string &extwanted)
 {
-std::string strbuf, extname, extpath, destpath, srcpath;
-struct stat statbuf;
-int result, found, done, index, success;
+std::string destpath, srcpath;
 
 // Calculate source and destination paths - only need destination path
 GenerateTransferPaths( srcpath, destpath, extwanted );
 
 destpath = GetIndexdirlocal() + "/" + GetIndexpagelocal();
 
-#ifdef DEBUG
-std::cout << "Trying to read |" << destpath << "|\n";
-#endif
+ctrace << "Trying to read |" << destpath << "|\n";
 
 // Try and read file
-result = ReadStream( strbuf, destpath );
-found = 0;
+std::string strbuf;
+
+int result = ReadStream( strbuf, destpath );
 
 if (result <= 0)
 	{
-#ifdef DEBUG
-	std::cout << "Couldn't read file\n";
-#endif
-	success = READ_EXTENSION_NOENTRY;
-	return success;
+	ctrace << "Couldn't read file\n";
+
+	return READ_EXTENSION_NOENTRY;
 	}
 
-// Find the index of the extension
-index = 0;
-done = 0;
+ctrace << "Read registry file - looking for matching extension\n";
+ctrace << "Extension wanted = " << extwanted << std::endl;
 
-#ifdef DEBUG
-std::cout << "Read registry file - looking for matching extension\n";
-std::cout << "Extension wanted = " << extwanted << std::endl;
-#endif
+int success = READ_EXTENSION_NOENTRY;
+int index = 0;
+int done = 0;
+bool found = false;
+std::string extname, extpath;
 
 while ( !done )
 	{
+	// Find the index of the extension
 	found = FindRegistryExtensionPathIndex(
 			strbuf, extname, extpath, index );
 
-	// Found an extension?
-	if (0 < found )	
+	if (0 < found )		// Found an extension?
 		{
 		// Is it the one we are looking for?
 		if (extname == extwanted )	
 			{
-#ifdef DEBUG
-			std::cout << "Extension found " << extname << std::endl;
-#endif
+			ctrace << "Extension found " << extname << std::endl;
+
 			done++;
 			found = 1;
 			}
@@ -605,14 +570,11 @@ while ( !done )
 		}
 	}
 
-if (!found)
-	{
-	success = READ_EXTENSION_NOENTRY;
-	}
-else
+if (true == found)
 	{
 	// If we have found the extension path, read the file
 	std::string srcpath;
+	struct stat statbuf;
 
 	srcpath = GetIndexdirlocal() + "/" + extpath;
 
@@ -665,13 +627,11 @@ void CExtensionSiteInfo::GenerateTransferPaths( std::string &srcpath,
 					  std::string &destpath,
                         		  const std::string &extpath )
 {
-const char *psrc, *pmid;
-std::string registrydir;
-
 // Extract the host directory
+const char *psrc = GetIndexpagenet().data();
+const char *pmid = strrchr( psrc, '/' );
 
-psrc = GetIndexpagenet().data();
-pmid = strrchr( psrc, '/' );
+std::string registrydir;
 
 registrydir.clear();
 
@@ -685,26 +645,25 @@ srcpath.clear();
 // If the link already has a http reference, use that
 if  ( strncmp( extpath.data(), "ftp", 3 ) == 0 )
         {
-		// Full path is ftp
-		srcpath = extpath;
+	// Full path is ftp
+	srcpath = extpath;
         }
 else
         {
         if (  strncmp( extpath.data(), "http", 5 ) == 0 )
                 {
-			// Full path is http
-                        srcpath = extpath;
+		// Full path is http
+		srcpath = extpath;
                 }
-
         else  // The link is local, so recombine with the host name
                 {
                 if ( extpath.data()[0] == '/' )
                         {
-                                srcpath = registrydir + extpath;
+			srcpath = registrydir + extpath;
                         }
                 else
                         {
-                                srcpath = registrydir + "/" + extpath;
+			srcpath = registrydir + "/" + extpath;
                         }
                 }
         }

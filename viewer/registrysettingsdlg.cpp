@@ -14,27 +14,12 @@
 #include "qstring.h"
 #include "qcheckbox.h"
 
-//#define DEBUG
-
-#ifdef DEBUG
-#define TRACE() \
-	{ cout << __FILE__ << ":" << __func__ << ":" << __LINE__ << endl; }
-
-#define TRACE_STR(str) \
-	{ cout << str << __FILE__ << ":" << __func__ << ":" << __LINE__ << endl; }
-#else
-#define TRACE() 
-#define TRACE_STR(str) 
-#endif
-
 // --------------------------------------------------------------------------
 // Load the current configuration settings
 // --------------------------------------------------------------------------
 
 void CRegistrySettingsDialog::LoadSettings( void )
 {
-TRACE();
-
 m_localconfig.Duplicate( m_pextcreator->m_sitelist );
 }
 
@@ -44,7 +29,6 @@ m_localconfig.Duplicate( m_pextcreator->m_sitelist );
 
 void CRegistrySettingsDialog::SaveSettings( void )
 {
-TRACE();
 m_pextcreator->m_sitelist.Duplicate( m_localconfig );
 }
 
@@ -56,7 +40,6 @@ void CRegistrySettingsDialog::SetPointer( CExtensionViewer *pextcreator )
 {
 m_pextcreator = pextcreator;
 
-TRACE();
 LoadSettings();
 
 m_webpagelistview->SetPointer( &m_localconfig );
@@ -73,7 +56,6 @@ void CRegistrySettingsDialog::SetCheckBoxes( void )
 CExtensionSiteInfo *psiteinfo;
 int flags;
 
-TRACE();
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
 
 if ( psiteinfo )
@@ -110,8 +92,6 @@ else
 
 void CRegistrySettingsDialog::SetSiteList( void )
 {
-TRACE();
-
 m_webpagelistview->SetPointer( &m_localconfig );
 m_webpagelistview->SetAllItems();
 }
@@ -124,7 +104,6 @@ void CRegistrySettingsDialog::SetInputFilesRegistry( void )
 {
 CExtensionSiteInfo *psiteinfo;
                                                                                 
-TRACE();
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
         
 if ( psiteinfo ) 
@@ -160,7 +139,6 @@ int  version;
 
 CExtensionSiteInfo *psiteinfo;
                                                                                 
-TRACE();
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
         
 if ( psiteinfo )
@@ -212,7 +190,6 @@ int  version;
 CExtensionSiteInfo *psiteinfo;
 std::string strbuf;
                                                                 
-TRACE();
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
         
 if ( psiteinfo )
@@ -264,7 +241,6 @@ std::string strbuf;
 int  version;
 CExtensionSiteInfo *psiteinfo;
                                                                                 
-TRACE();
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
         
 if ( psiteinfo )
@@ -315,7 +291,6 @@ std::string strbuf;
 int  version;
 CExtensionSiteInfo *psiteinfo;
 
-TRACE();
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
 
 if ( psiteinfo )
@@ -362,7 +337,6 @@ else
 
 void CRegistrySettingsDialog::SetDialogData( void)
 {
-TRACE();
 
 SetSiteList();
 
@@ -384,7 +358,6 @@ SetInputFilesCoreARB();
  
 void CRegistrySettingsDialog::pushbuttonok_clicked()
 {
-TRACE();
 
 SaveSettings();
 done( REGISTRYSETTINGS_OK );
@@ -396,7 +369,6 @@ done( REGISTRYSETTINGS_OK );
 
 void CRegistrySettingsDialog::pushbuttonapply_clicked()
 {
-TRACE();
 
 SaveSettings();
 }
@@ -407,7 +379,6 @@ SaveSettings();
 
 void CRegistrySettingsDialog::pushbuttoncancel_clicked()
 {
-TRACE();
 
 done( REGISTRYSETTINGS_CANCEL ); // No change
 }
@@ -418,7 +389,6 @@ done( REGISTRYSETTINGS_CANCEL ); // No change
 
 void CRegistrySettingsDialog::pushbuttonreset_clicked()
 {
-TRACE();
 
 LoadSettings();
 SetDialogData();
@@ -432,7 +402,6 @@ void CRegistrySettingsDialog::pushbuttonadd_clicked()
 {
 CRegistryAddSiteDialog addsitedlg;
 
-TRACE();
 
 addsitedlg.SetPointer( &m_localconfig );
 addsitedlg.SetUpdateList( this );
@@ -447,7 +416,6 @@ SetDialogData();
 
 void CRegistrySettingsDialog::pushbuttonremove_clicked()
 {
-TRACE();
 
 m_localconfig.Delete( m_listpos );
 
@@ -470,7 +438,6 @@ SetDialogData();
 
 void CRegistrySettingsDialog::pushbuttoncorearb_clicked()
 {
-TRACE();
 
 SetDialogData();
 }
@@ -489,7 +456,6 @@ QFileDialog filedlg;
 QString     filepath;
 CExtensionSiteInfo *psiteinfo;
 
-TRACE();
                                                                                 
 filepath = filedlg.getSaveFileName(
         ".",
@@ -517,8 +483,6 @@ void CRegistrySettingsDialog::pushbuttonregistrylocaldirbrowse_clicked()
 QFileDialog filedlg;
 QString     filepath;
 CExtensionSiteInfo *psiteinfo;
-
-TRACE();
 
 filedlg.setMode( QFileDialog::DirectoryOnly );
 filedlg.setFilter( "Directories (*.*)" );
@@ -550,8 +514,6 @@ QFileDialog filedlg;
 QString     filepath;
 CExtensionSiteInfo *psiteinfo;
 
-TRACE();
-
 if ( filepath.ascii() != NULL )
 	{
         psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
@@ -571,8 +533,6 @@ void CRegistrySettingsDialog::pushbuttonglxbrowse_clicked( void )
 QFileDialog filedlg;
 QString     filepath;
 CExtensionSiteInfo *psiteinfo;
-
-TRACE();
 
 filepath = filedlg.getSaveFileName(
 	".",
@@ -601,8 +561,6 @@ QFileDialog filedlg;
 QString     filepath;
 CExtensionSiteInfo *psiteinfo;
 
-TRACE();
-
 filepath = filedlg.getSaveFileName(
 	".",
 	"Header files (*.h)",
@@ -630,8 +588,6 @@ QFileDialog filedlg;
 QString     filepath;
 CExtensionSiteInfo *psiteinfo;
 
-TRACE();
-
 filepath = filedlg.getSaveFileName(
         ".",
         "Header files (*.h)",
@@ -657,8 +613,6 @@ void CRegistrySettingsDialog::editregistrylocaldir_textChanged( const QString &s
 {
 CExtensionSiteInfo *psiteinfo;
 
-TRACE();
-
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
 
 if ( psiteinfo && string.ascii() )
@@ -676,8 +630,6 @@ void CRegistrySettingsDialog::editregistry_textChanged( const QString &string )
 {
 CExtensionSiteInfo *psiteinfo;
                                                                                 
-TRACE();
-
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
 
 if ( psiteinfo && string.ascii() )
@@ -696,8 +648,6 @@ void CRegistrySettingsDialog::editregistrylocalcopy_textChanged(
 {
 CExtensionSiteInfo *psiteinfo;
                                                                                 
-TRACE();
-
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
         
 if ( psiteinfo && string.ascii() )
@@ -715,8 +665,6 @@ void CRegistrySettingsDialog::editgl_textChanged( const QString &string )
 {
 CExtensionSiteInfo *psiteinfo;
                                                                                 
-TRACE();
-
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
 
 if ( psiteinfo && string.ascii() )
@@ -734,8 +682,6 @@ void CRegistrySettingsDialog::editgllocalcopy_textChanged( const QString &string
 {
 CExtensionSiteInfo *psiteinfo;
                                                                                 
-TRACE();
-
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
         
 if ( psiteinfo && string.ascii() )
@@ -753,8 +699,6 @@ void CRegistrySettingsDialog::editwgl_textChanged( const QString &string )
 {
 CExtensionSiteInfo *psiteinfo;
 
-TRACE();
-                                                                                
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
         
 if ( psiteinfo && string.ascii() )
@@ -772,8 +716,6 @@ void CRegistrySettingsDialog::editwgllocalcopy_textChanged( const QString &strin
 {
 CExtensionSiteInfo *psiteinfo;
                                                                                 
-TRACE();
-
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
         
 if ( psiteinfo && string.ascii() )
@@ -791,8 +733,6 @@ void CRegistrySettingsDialog::editglx_textChanged( const QString &string )
 {
 CExtensionSiteInfo *psiteinfo;
                                                                                 
-TRACE();
-
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
         
 if ( psiteinfo && string.ascii() )
@@ -811,8 +751,6 @@ void CRegistrySettingsDialog::editglxlocalcopy_textChanged(
 {
 CExtensionSiteInfo *psiteinfo;
 
-TRACE();
-
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
         
 if ( psiteinfo && string.ascii() )
@@ -830,8 +768,6 @@ void CRegistrySettingsDialog::editcorearb_textChanged( const QString &string)
 {
 CExtensionSiteInfo *psiteinfo;
                                                                                 
-TRACE();
-
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
         
 if ( psiteinfo && string.ascii() )
@@ -849,8 +785,6 @@ void CRegistrySettingsDialog::editcorearblocalcopy_textChanged( const QString &s
 {
 CExtensionSiteInfo *psiteinfo;
  
-TRACE();
-
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
 
 if ( psiteinfo && string.ascii() )
@@ -868,8 +802,6 @@ void CRegistrySettingsDialog::editfileextensionfilter_textChanged( const QString
 {
 CExtensionSiteInfo *psiteinfo;
 
-TRACE();
-
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
 
 if ( psiteinfo && string.ascii() )
@@ -886,8 +818,6 @@ if ( psiteinfo && string.ascii() )
 void CRegistrySettingsDialog::checkboxdownloadregistry_toggled( bool value )
 {
 CExtensionSiteInfo *psiteinfo;
-
-TRACE();
 
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
 
@@ -911,8 +841,6 @@ if ( psiteinfo )
 void CRegistrySettingsDialog::checkboxdownloadheaderfiles_toggled( bool value)
 {
 CExtensionSiteInfo *psiteinfo;
-
-TRACE();
 
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
 
@@ -939,8 +867,6 @@ CExtensionSiteInfo *psiteinfo;
 
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
 
-TRACE();
-
 if ( psiteinfo )
 	{
 	if ( value )	
@@ -964,8 +890,6 @@ CExtensionSiteInfo *psiteinfo;
 
 psiteinfo = m_localconfig.GetSiteInfo( m_listpos );
 
-TRACE();
-
 if ( psiteinfo )
 	{
 	if ( value )	
@@ -985,8 +909,6 @@ if ( psiteinfo )
                                                                                 
 void CRegistrySettingsDialog::webpagelistview_selectionChanged()
 {
-TRACE();
-
 }
 
 // ---------------------------------------------------------------------------
@@ -997,8 +919,6 @@ void CRegistrySettingsDialog::webpagelistview_mousePressed( int item )
 {
 m_listpos = item;
 
-TRACE();
-
 SetDialogData();
 }
 
@@ -1008,8 +928,6 @@ SetDialogData();
 
 void CRegistrySettingsDialog::webpagelistview_mouseReleased( int /* item */ )
 {
-TRACE();
-
 }
 
 // ---------------------------------------------------------------------------
@@ -1018,8 +936,6 @@ TRACE();
 
 void CRegistrySettingsDialog::webpagelistview_mouseDoubleClicked( int item )
 {
-TRACE();
-
 m_listpos = item;
 
 SetDialogData();
@@ -1031,7 +947,5 @@ SetDialogData();
 
 void CRegistrySettingsDialog::webpagelistview_mouseMoved( int /* item */)
 {
-TRACE();
-
 // m_listpos = item;
 }

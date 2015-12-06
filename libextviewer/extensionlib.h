@@ -12,8 +12,10 @@
 #include <fstream>
 #include <iostream>
 #include <iomanip>
-#include <fstream>
 #include <sstream>
+#include <string>
+#include <vector>
+#include <stack>
 #include <cstdio>
 #include <cstdlib>
 #include <assert.h>
@@ -22,10 +24,8 @@
 #include <string.h>
 #include <unistd.h>
 #include <dirent.h>
-#include <string>
-#include <vector>
-#include <stack>
 
+#include "ctrace.h"
 #include "strstream.h"
 #include "strpattern.h"
 
@@ -54,6 +54,8 @@ struct XVisualInfo;
 
 #ifndef _EXTENSIONLIB_
 #define _EXTENSIONLIB_
+#include "ctrace.h"
+
 #include "virtualfsascii.h"
 
 #include "sorters.h"

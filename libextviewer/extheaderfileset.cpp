@@ -518,10 +518,8 @@ std::string strdata;
 pstring = new char[10240];
 m_newlist.Deallocate();
 
-#ifdef DEBUG
-cout << "Number of items = " << pixelformatlist.GetCount2() << "\n";
-cout << "Examining extension lists\n";
-#endif
+ctrace << "Number of items = " << pixelformatlist.GetCount2() << std::endl;
+ctrace << "Examining extension lists" << std::endl;
 
 // For each extension GLX, GL, WGL
 for ( unsigned int table = 0; table < MAX_TABLE; table++ )
@@ -529,9 +527,7 @@ for ( unsigned int table = 0; table < MAX_TABLE; table++ )
 	// Get the GL extension std::string based upon the specified field
 	pixelformatlist.GetExtensionString( 0, extension_table[table], pstring );
 
-#ifdef DEBUG
-cout << "Examining item " << ", table " << table << "|" << pstring << "|\n";
-#endif
+ctrace << "Examining item " << ", table " << table << "|" << pstring << "|" << std::endl;
 
 	// Add the entries to the selected list
 	strdata = std::string(pstring);
@@ -543,9 +539,7 @@ cout << "Examining item " << ", table " << table << "|" << pstring << "|\n";
 	m_systemlist.AddExtensionString( strdata );
 	}
 
-#ifdef DEBUG
-cout << "Examining extension lists completed.\n";
-#endif
+ctrace << "Examining extension lists completed." << std::endl;
 
 delete [] pstring;
 }

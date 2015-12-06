@@ -62,9 +62,7 @@ accept();
 
 void CRegistryProgressDialog::pushbuttoncancel_clicked()
 {
-#ifdef DEBUG
-std::cout << "Cancel pressed\n";
-#endif
+hide();
 }
 
 // --------------------------------------------------------------------------

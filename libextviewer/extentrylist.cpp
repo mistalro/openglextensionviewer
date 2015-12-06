@@ -165,17 +165,13 @@ for (iterator it = begin(); it != end() && (found == -1); it++)
 		}
    	}
  
-#ifdef DEBUG
-cout << "ExtensionEntryList adding |" << name << "|\n";
-#endif
+ctrace << "ExtensionEntryList adding |" << name << "|" << std::endl;
 
 entry.m_name = name;
 entry.m_constnum = 0;
 entry.m_funcnum = 0;
 
-#ifdef DEBUG
-cout << "Entry name = |" << entry.m_name << "|\n";
-#endif
+ctrace << "Entry name = |" << entry.m_name << "|" << std::endl;
 
 push_back(entry);
 
@@ -864,9 +860,7 @@ void CExtensionEntryList::AddExtensionString( const std::string &pextstring )
 std::string tempbuf;
 const char *ptemp;
                                                  
-#ifdef DEBUG
-cout << "||" << pextstring.data() << "||" << endl;
-#endif
+ctrace << "||" << pextstring.data() << "||" << std::endl;
 
 ptemp = pextstring.data();
 

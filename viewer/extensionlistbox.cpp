@@ -31,8 +31,6 @@
 #include "updateextensionsdlg.h"
 #include "exitapplicationdlg.h"
 #include "aboutdlg.h"                                                                                
-#undef DEBUG
-
 // ---------------------------------------------------------------------------
 // Set a single list box from an extension list
 //
@@ -71,14 +69,8 @@ if ( selmode )
         }
 else
         {
-#ifdef DEBUG
-cout << "No selection mode" << endl;
-#endif
         for ( pn = 0; pn < extlist.GetCount(); pn++ )
                 {
-#ifdef DEBUG
-cout << "Inserting item " << pn << " | " << extlist.at(pn).m_name.data() << "|" << endl;
-#endif
 		listbox.insertItem(
 			extlist.at(pn).m_name.data(), -1 );
 

@@ -80,9 +80,7 @@ m_configfilesettings.SetNewConfigFlag();
 
 int CExtensionViewer::ConfigurationFileLoad( void )
 {
-#ifdef DEBUG
-cout << "Loading |" << m_configfilesettings.m_configfile << "|" << endl;
-#endif
+ctrace << "Loading |" << m_configfilesettings.m_configfile << "|" << std::endl;
 
 return ConfigurationFileLoad( m_configfilesettings.m_configfile );
 }
@@ -101,9 +99,7 @@ return ConfigurationFileLoad( m_configfilesettings.m_configfile );
 
 int CExtensionViewer::ConfigurationFileLoadAndMerge( void )
 {
-#ifdef DEBUG
-cout << "Saving |" << m_configfilesettings.m_configfile << "|" << endl;
-#endif
+ctrace << "Saving |" << m_configfilesettings.m_configfile << "|" << std::endl;
 
 return ConfigurationFileLoadAndMerge( m_configfilesettings.m_configfile );
 }
@@ -147,9 +143,7 @@ return ConfigurationFileSaveAs( m_configfilesettings.m_configfile );
 
 void ExtractHostName( const std::string &psrc, std::string &hostname, std::string &hostfile )
 {
-const char *pchcur;
-
-pchcur = psrc.data();
+const char *pchcur = psrc.data();
 
 // ----- Extract the hostname -----
 
@@ -333,17 +327,14 @@ return FLAG_ALL;
 int CExtensionViewer::CreateLocalRegistryDir(int site,
 		CRegistryDownloadCallback &callback, int mode )
 {
-CExtensionSiteInfo *psiteinfo;
-int result;
-
 // Get pointer to site information using index
-psiteinfo = GetSiteInfo( site );
+CExtensionSiteInfo *psiteinfo = GetSiteInfo( site );
 
 // Set active flag
 m_registrysettings.SetDownloadStatus( DOWNLOAD_ACTIVE );
 
 // Attempt to create the local directory
-result = psiteinfo->CreateLocalRegistryDir( callback, mode );
+int result = psiteinfo->CreateLocalRegistryDir( callback, mode );
 
 if ( result == -1 )
 	{
@@ -367,9 +358,6 @@ int CExtensionViewer::DownloadRegistryIndexPage( int site,
 		std::string &regbuf,
 		CRegistryDownloadCallback &callback, int mode )
 {
-std::string extname, extpath;
-std::string hostpath, hostfile, logbuf, extbuf, strmsg, destpath;
-
 m_registrysettings.SetDownloadStatus( DOWNLOAD_ACTIVE );
 
 // Get pointer to site information using index
@@ -379,6 +367,8 @@ if ( !psiteinfo )
 	{
 	return false;
 	}
+
+std::string hostpath, hostfile;
 
 // Convert index page network into host path and file
 ExtractHostName( psiteinfo->GetIndexpagenet(), hostpath, hostfile );
@@ -397,6 +387,8 @@ if (res<0 )
 // At this point the directory now exists, so read the registry file
 // and save it to permanent storage. Keep the user up to date as the
 // process is performed.
+
+std::string logbuf;
 
 logbuf = "Downloading registry web page |";
 logbuf += psiteinfo->GetIndexpagenet().data();
@@ -417,6 +409,7 @@ if ( regbuf.length() == 0 )
 	}
 else
 	{
+	std::string destpath;
 	// Generate the page address
 	psiteinfo->GenerateDestinationPath( destpath );
 
@@ -439,18 +432,15 @@ return true;
 void CExtensionViewer::DownloadRegistryWebpage( int site,
                 CRegistryDownloadCallback &callback, int mode)
 {
-CExtensionSiteInfo *psiteinfo;
-std::string regbuf;
-
-psiteinfo = GetSiteInfo( site );
+CExtensionSiteInfo *psiteinfo = GetSiteInfo( site );
 
 if ( NULL == psiteinfo )
 	{
-#ifdef DEBUG
-	cout << "No site information available\n";
-#endif
+	ctrace << "No site information available" << std::endl;
 	return;
 	}
+
+std::string regbuf;
 
 // Download the index page
 DownloadRegistryIndexPage( site, regbuf, callback, mode );
@@ -458,16 +448,13 @@ DownloadRegistryIndexPage( site, regbuf, callback, mode );
 // If the toplevel flag is set, nothing else needs to be done
 if (mode != DOWNLOAD_TOPLEVEL)
 	{
-#ifdef DEBUG
-	cout << "Downloading registry extension\n";
-#endif
+	ctrace << "Downloading registry extension" << std::endl;
+
 	DownloadRegistryExtensions(site, regbuf, callback, mode );
 	}
 else
 	{
-#ifdef DEBUG
-	cout << "Top-level mode only\n";
-#endif
+	ctrace << "Top-level mode only" << std::endl;
 	}
 
 callback.RegistryDownloadCallback( (char *)
@@ -482,40 +469,38 @@ void CExtensionViewer::DownloadRegistryExtensions( int site,
 		const std::string &regbuf,
                 CRegistryDownloadCallback &callback, int mode)
 {
-std::string extbuf, pregtemp, srcpath, extname, extpath, logbuf, destpath;
-int   done, index, found, dryrun;
-CExtensionSiteInfo *psiteinfo;
+CExtensionSiteInfo *psiteinfo = GetSiteInfo( site );
 
-psiteinfo = GetSiteInfo( site );
 // Now download each file specified in the registry
 // If the 'selmode' flag is set, then only download those selected extensions
 
-index = 0;
-done  = false;
-dryrun = m_registrysettings.GetDryrunmode();
+int index = 0;
+int done  = false;
+int dryrun = m_registrysettings.GetDryrunmode();
 
 m_registrysettings.SetDownloadStatus( DOWNLOAD_ACTIVE );
+
+std::string extbuf, extname, extpath;
+std::string pregtemp, srcpath, logbuf, destpath;
 
 while ( !done )
 	{
 	// Extract the n'th <a href="xx"> link from the registry
 	// It will extract the extension name if any into "extname"
 	// and the path into "extpath"
-	found = psiteinfo->FindRegistryExtensionPathIndex( 
+	int found = psiteinfo->FindRegistryExtensionPathIndex( 
 				regbuf, extname, extpath, index );
 
 	if ( found ==-1)        // No extension was found
 		{
-#ifdef DEBUG
-		cout << "Nothing found\n";
-#endif
+		ctrace << "Nothing found" << std::endl;
+
 		done++;         // So, end search
 		}
 	else
 		{
-#ifdef DEBUG
-		cout << "Found |" << extname.data() << "| = |" << extpath.data() << "|\n";
-#endif
+		ctrace << "Found |" << extname.data() << "| = |" << extpath.data() << std::endl;
+
 		index++;
 		}
 
@@ -531,11 +516,9 @@ while ( !done )
 		// Check the save path
 		int save = psiteinfo->CheckFileExtensionSave( srcpath );
 
-#ifdef DEBUG
-		cout << "Extpath = |" << extpath.data() << "|\n";
-		cout << "Srcpath = |" << srcpath.data() << "|\n";
-		cout << "Destpath = |" << destpath.data() << "|\n";
-#endif
+		ctrace << "Extpath = |" << extpath.data() << "|" << std::endl;
+		ctrace << "Srcpath = |" << srcpath.data() << "|" << std::endl;
+		ctrace << "Destpath = |" << destpath.data() << "|" << std::endl;
 
 		if (true == dryrun)
 			{
@@ -546,10 +529,7 @@ while ( !done )
 			logbuf = "";
 			}
 
-#ifdef DEBUG
-		cout << "Save |" << srcpath.data() << "| = " << save << "\n"; 
-#endif
-
+		ctrace << "Save |" << srcpath.data() << "| = " << save << std::endl; 
 		if (!save)
 			{
 			// Don't save file
@@ -605,11 +585,9 @@ m_registrysettings.SetDownloadStatus( DOWNLOAD_ACTIVE );
 std::string strhost, strpath;
 ExtractHostName( fullpath, strhost, strpath );
 
-#ifdef DEBUG
-cout << "GetBuffer -------\n";
-cout << "Fullpath = " << fullpath << endl;
-cout << "Destpath = " << destpath << endl;
-#endif
+ctrace << "GetBuffer -------" << std::endl;
+ctrace << "Fullpath = " << fullpath << std::endl;
+ctrace << "Destpath = " << destpath << std::endl;
 
 m_registrysettings.CheckLocalPath( destpath);
 

@@ -730,18 +730,18 @@ void CExtensionViewer::DebugLevel0( CScriptToken *pstoken,
 {
 CToken *ptoken = m_scriptsettings.m_tokenlist.TokenFind( pstoken->m_tokenid );
 
-std::cout << "Position = " << curaddr << ", Last = " << lastaddr << "\n";
+ctrace << "Position = " << curaddr << ", Last = " << lastaddr << std::endl;
 
 if ( ptoken != NULL )
 	{
-	std::cout << "Token = " << ptoken->m_name  << "\n";
+	ctrace << "Token = " << ptoken->m_name  << std::endl;
 	}
 else
 	{
-	std::cout << "Token = <STRING> |"<<pstoken->m_pstrbuf <<"|\n";
+	ctrace << "Token = <STRING> |"<<pstoken->m_pstrbuf <<"|" << std::endl;
 	}
 
-std::cout << std::endl;
+ctrace << std::endl;
 }
 
 int CExtensionViewer::ProcessScript( int curaddr, int finishaddr )
@@ -766,9 +766,7 @@ while ( !done )
 
 	(*ppstoken) = m_scriptsettings.m_script.m_tokenlist+curaddr;
 
-#ifdef DEBUG
 	DebugLevel0( *ppstoken, curaddr, lastaddr );
-#endif
 
 	if ( curaddr == lastaddr )
 		{
@@ -813,9 +811,9 @@ switch ( (*pstoken)->m_tokenid )
 	// ===== FILE ACCESS ================================================
 
 	case TOKEN_COMMAND_FILEOPEN:
-#ifdef DEBUG
-std::cout << "Token: Command - fileopen";
-#endif
+
+	ctrace << "Token: Command - fileopen" << std::endl;
+
 		curaddr++;
 		(*pstoken)++;
 	
@@ -826,10 +824,7 @@ std::cout << "Token: Command - fileopen";
  
 		if ( (*pstoken)->m_tokenid == TOKEN_STRING_OUTPUTHEADER )
 			{
-#ifdef DEBUG
-std::cout << "(header file" << 
-			m_outputfilesettings.m_outputheaderfile.data() << ")\n";
-#endif
+			ctrace << "(header file" << m_outputfilesettings.m_outputheaderfile.data() << ")" << std::endl;
 
 			m_scriptsettings.m_outputstream.open( 
 				m_outputfilesettings.m_outputheaderfile.data() );
@@ -841,10 +836,7 @@ std::cout << "(header file" <<
        		else
 		if ( (*pstoken)->m_tokenid == TOKEN_STRING_OUTPUTSOURCE )
 			{
-#ifdef DEBUG
-std::cout << "(source file" << 
-			m_outputfilesettings.m_outputsourcefile.data() << ")\n";
-#endif
+			ctrace << "(source file" << m_outputfilesettings.m_outputsourcefile.data() << ")" << std::endl;
 			m_scriptsettings.m_outputstream.open( 
 				m_outputfilesettings.m_outputsourcefile.data() );
 
@@ -857,9 +849,8 @@ std::cout << "(source file" <<
 	case TOKEN_COMMAND_FILECLOSE:
 		if ( m_scriptsettings.m_outputstream.is_open() )
 			{
-#ifdef DEBUG
-std::cout << "Token: Command - fileclose" << std::endl;
-#endif
+			ctrace << "Token: Command - fileclose" << std::endl;
+
 			m_scriptsettings.m_outputstream.close();
 			}
 
@@ -876,9 +867,8 @@ std::cout << "Token: Command - fileclose" << std::endl;
 		m_scriptsettings.ExtractVariable( 
 			(*pstoken)->m_pstrbuf, tempbuf, len );
 
-#ifdef DEBUG
-std::cout << "Token: Command - call" << tempbuf << std::endl;
-#endif
+		ctrace << "Token: Command - call" << tempbuf << std::endl;
+
 		m_scriptsettings.m_funccuraddr[m_scriptsettings.m_funcdepth] = curaddr;
 		m_scriptsettings.m_funclastaddr[m_scriptsettings.m_funcdepth] = lastaddr;
 		m_scriptsettings.m_funcdepth++;
@@ -905,9 +895,8 @@ std::cout << "Token: Command - call" << tempbuf << std::endl;
 		curaddr  = m_scriptsettings.m_funccuraddr[m_scriptsettings.m_funcdepth];
 		lastaddr = m_scriptsettings.m_funclastaddr[m_scriptsettings.m_funcdepth];
 
-#ifdef DEBUG
-std::cout << "Token: Command - call done\n";
-#endif
+		ctrace << "Token: Command - call done" << std::endl;
+
 		outstr.clear();
 		break;
 
@@ -1636,12 +1625,10 @@ std::cout << "Token: Command - call done\n";
 // END OF SWITCH STATEMENT
 // --------------------------------------------------------------------------
 
-#ifdef DEBUG   
 if ( (*pstoken)->m_tokenid == TOKEN_COMMAND_ENDIF )
 	{
-	std::cout << "ENDIF here #1\n";
+	ctrace << "ENDIF here #1" << std::endl;
 	}
-#endif
  
 if ( (*pstoken)->m_tokenid & TOKEN_STRING )
 	{
@@ -1665,19 +1652,16 @@ if ( (*pstoken)->m_tokenid & TOKEN_STRING )
 
 if ( (*pstoken)->m_tokenid != TOKEN_COMMAND_END )
 	{
-#ifdef DEBUG
-	std::cout << "Incrementing\n";
-#endif
+	ctrace << "Incrementing" << std::endl;
+
 	(*pstoken)++;
 	curaddr++;
 	} // if
 
-#ifdef DEBUG   
 if ( (*pstoken)->m_tokenid == TOKEN_COMMAND_ENDIF )
 	{
-	std::cout << "ENDIF here #2\n";
+	ctrace << "ENDIF here #2\n";
 	}
-#endif
 
 return( done );
 }
@@ -1727,7 +1711,7 @@ m_scriptsettings.m_activeregistry   = false;
 m_scriptsettings.m_nomacros      = false;
 m_scriptsettings.m_funcdepth     = 0;
 
-#ifdef DEBUG
+#ifdef DEBUG_SCRIPTDUMP
 m_scriptsettings.ScriptDump( "debug.txt" );
 #endif
 

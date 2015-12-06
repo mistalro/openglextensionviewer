@@ -94,11 +94,9 @@ return m_cancelsearch;
 // The line edit text changed
 // ---------------------------------------------------------------------------
 
-void CFindExtensionSpecDialog::lineeditsearchstring_textChanged( const QString &/* strdata */ )
+void CFindExtensionSpecDialog::lineeditsearchstring_textChanged( const QString & strdata  )
 {
-#ifdef DEBUG
-cout << "String changed |" << strdata.data() << "|\n";
-#endif
+ctrace << "String changed |" << strdata.data() << "|" << std::endl;
 }
 
 // ---------------------------------------------------------------------------
@@ -120,9 +118,7 @@ if ( CheckUpdateFlag() )
 
 void CFindExtensionSpecDialog::listview_clicked(Q3ListViewItem * /*pitem*/)
 {
-#ifdef DEBUG
-cout << "List view clicked\n";
-#endif
+ctrace << "List view clicked" << std::endl;
 }
 
 // ---------------------------------------------------------------------------
@@ -139,9 +135,7 @@ m_listviewresults->clear();
 // Get the search string
 strdata =(char *)  m_lineeditstring->text().ascii(); // Get Function string
 
-#ifdef DEBUG
-cout << "Searching for |" << strdata.data() << "|\n";
-#endif
+ctrace << "Searching for |" << strdata.data() << "|" << std::endl;
 
 // Sanity check on length
 if ( strdata.size() == 0 )
@@ -153,9 +147,6 @@ if ( strdata.size() == 0 )
 m_cancelsearch = false;
 
 // Perform the search 
-#ifdef DEBUG
-cout << "Doing search\n";
-#endif
 
 m_lineeditsearchstatus->setEchoMode( QLineEdit::Normal );
 m_lineeditsearchstatus->setText( QString("Searching") );
@@ -185,9 +176,7 @@ void CFindExtensionSpecDialog::pushbuttoncancelsearch_clicked()
 {
 m_cancelsearch = true;
 
-#ifdef DEBUG
-cout << "Cancel clicked\n";
-#endif
+ctrace << "Cancel clicked" << std::endl;
 
 Q3ListViewItem( m_listviewresults, 
 			m_listviewresults->lastItem(),
@@ -205,9 +194,7 @@ m_progressbarsearch->setMaximum(100 );
 
 void CFindExtensionSpecDialog::pushbuttonclear_clicked()
 {
-#ifdef DEBUG
-cout << "Clear clicked\n";
-#endif
+ctrace << "Clear clicked" << std::endl;
 
 m_listviewresults->clear();
 }
@@ -218,9 +205,7 @@ m_listviewresults->clear();
 
 void CFindExtensionSpecDialog::pushbuttonok_clicked()
 {
-#ifdef DEBUG
-cout << "OK clicked\n";
-#endif
+ctrace << "OK clicked" << std::endl;
 
 hide();
 }
@@ -231,9 +216,7 @@ hide();
 
 void CFindExtensionSpecDialog::radiobuttonmatchcase_toggled( bool state )
 {
-#ifdef DEBUG
-cout << "Radio button match case toggled: " << state << "\n";
-#endif
+ctrace << "Radio button match case toggled: " << state << std::endl;
 
 BITMASK_STATE( m_searchmode, MODE_MATCHCASE, state );
 }
@@ -244,9 +227,7 @@ BITMASK_STATE( m_searchmode, MODE_MATCHCASE, state );
 
 void CFindExtensionSpecDialog::radiobuttonfindfirst_toggled( bool state )
 {
-#ifdef DEBUG
-cout << "Radio button find first toggled: " << state << "\n";
-#endif
+ctrace << "Radio button find first toggled: " << state << std::endl;
 
 BITMASK_STATE( m_searchmode, MODE_FIRSTMATCH, state );
 }
@@ -257,9 +238,7 @@ BITMASK_STATE( m_searchmode, MODE_FIRSTMATCH, state );
 
 void CFindExtensionSpecDialog::radiobuttononematchperfile_toggled( bool state )
 {
-#ifdef DEBUG
-cout << "Radio button one match per file toggled: " << state << "\n";
-#endif
+ctrace << "Radio button one match per file toggled: " << state << std::endl;
 
 BITMASK_STATE( m_searchmode, MODE_ONEMATCHPERFILE, state );
 }
@@ -270,9 +249,7 @@ BITMASK_STATE( m_searchmode, MODE_ONEMATCHPERFILE, state );
 
 void CFindExtensionSpecDialog::radiobuttondisplayfullpaths_toggled( bool state )
 {
-#ifdef DEBUG
-cout << "Radio button display full paths: " << state << "\n";
-#endif
+ctrace << "Radio button display full paths: " << state << std::endl;
 
 BITMASK_STATE( m_searchmode, MODE_DISPLAYFULLPATHS, state );
 }
