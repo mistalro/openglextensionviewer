@@ -4,6 +4,8 @@
 
 #define SCRIPT_INTERNAL 0x01
 #define SCRIPT_EXTERNAL 0x02                                                                                
+#define ADDR_NOTFOUND -1
+
 // --------------------------------------------------------------------------
 // Permanent data variables
 // --------------------------------------------------------------------------

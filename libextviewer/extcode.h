@@ -15,8 +15,8 @@ const char *internalscript =
 
 "<begin><fileheader></begin>"
 "// --------------------------------------------------------------------------\n"
-"<if><cppmode>// <filetype> file for the <classname> <moduletype>\n<endif>"
-"<if><cmode>// <filetype> file for the extension manager\n<endif>"
+"// <filetype> file for the"
+"<if><cppmode>// <classname> <moduletype>\n<else> extension manager\n<endif>"
 "//\n"
 "// Stored in file <outputsource>\n"
 "//\n"

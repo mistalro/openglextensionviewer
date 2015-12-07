@@ -560,55 +560,72 @@ static STRNAME moduletype[2] =
 //          found
 // 
 // Effects: None
+//
+// Notes: Find the the desired <else> statement isn't as simple as just
+//        scanning through the list of tokens and returning the first <else>
+//        token. There is the added complication of nested statements.
+//	  Therefore a count must be kept of the relative depth of each
+//	  encountered <if>, <else> and <endif> statement.
+// 
+//	  An <if> increases the depth, while an <endif> decreases the depth
+//
+//	  When an <else> is encountered, the depth must be zero
+//
+//	  If <endif> is encountered
 // --------------------------------------------------------------------------
 
 int CExtensionScriptSettings::ScriptFindElse( int curaddr )
 {
-CScriptToken *pstoken;
-int ifcount, done;
-                                                                                
-done = 0;
-ifcount = 0;
-                                                                                
+bool done = false;
+int ifcount = 0;
+int newaddr = ADDR_NOTFOUND;
+
+CScriptToken *pstoken = m_script.m_tokenlist+curaddr;
+
 while ( !done )
         {
-        pstoken = m_script.m_tokenlist+curaddr;
-                                                                                
-        if ( pstoken->m_tokenid == TOKEN_COMMAND_IF )
+	switch (pstoken->m_tokenid)
 		{
-                ifcount++;
+        	case TOKEN_COMMAND_IF:	// Nested IF
+                	ifcount++;
+			break;
+
+        	case TOKEN_COMMAND_ELSE: // ELSE
+			if (0 == ifcount)
+				{
+				newaddr = curaddr;
+				}
+
+			done++;
+			break;
+
+		case TOKEN_COMMAND_ENDIF: // ENDIF
+			ifcount--;
+
+			if (ifcount <= 0)
+				{
+				done = true;
+				}
+                        break;
+
+		default:
+			break;
 		}
-                                                                                
-        if ( pstoken->m_tokenid == TOKEN_COMMAND_ELSE )
+
+	if (false == done)
 		{
-                ifcount--;
-		}
-                             
-	if ( pstoken->m_tokenid == TOKEN_COMMAND_ENDIF )
-		{
-		ifcount--;
-		}
-                                                   
-        if ( ifcount == 0 )
-		{
-                done++;
-		}
-        else
-		{
-                curaddr++;
+		pstoken++;
 		}
         }
                                                                                 
-return( curaddr );
+return newaddr ;
 }
 
 int CExtensionScriptSettings::ScriptFindEndif( int curaddr )
 {
 CScriptToken *pstoken;
-int ifcount, done;
-
-done = 0;
-ifcount = 0;
+int done = false;
+int ifcount = 0;
 
 while ( !done )
 	{
@@ -799,13 +816,10 @@ int CExtensionViewer::ProcessScriptToken( int &curaddr, int &lastaddr,
 int len, version, finishaddr;
 char tempbuf[1024];
 CExtensionSiteInfo *psiteinfo;
-std::string outstr;
 int done = 0;
 
-/*
-printf( "Processing token |%04X| %s\n", (*pstoken)->m_tokenid,
-					(*pstoken)->m_pstrbuf );
-*/
+std::string outstr;
+
 switch ( (*pstoken)->m_tokenid )
 	{
 	// ===== FILE ACCESS ================================================
@@ -1127,7 +1141,6 @@ switch ( (*pstoken)->m_tokenid )
 
 	case TOKEN_STRING_STRING:
 		outstr = (*pstoken)->m_pstrbuf;
-//		strncpy( outbuf, (*pstoken)->m_pstrbuf, 1023 );
 		break;
 
 	// For C++, m_classnamedcolon is "ExtensionManager::"
@@ -1491,24 +1504,34 @@ switch ( (*pstoken)->m_tokenid )
 	// ===== CONDITIONALS ===============================================
 
 	case TOKEN_COMMAND_IF:
+		{
 		ProcessScript( curaddr+1, curaddr+3 ); // Get result code
 
-		finishaddr = m_scriptsettings.ScriptFindEndif( curaddr);
-//		elseaddr =   m_scriptsettings.ScriptFindElse( curaddr); 
+		finishaddr = m_scriptsettings.ScriptFindEndif( curaddr );
 
-		if ( m_scriptsettings.m_result )
+		int elseaddr = m_scriptsettings.ScriptFindElse( curaddr ); 
+
+		if (ADDR_NOTFOUND == elseaddr)	// Basic IF
 			{
-			ProcessScript( curaddr+2, finishaddr );
+			if ( m_scriptsettings.m_result )	// True
+				{
+				ProcessScript( curaddr+2, finishaddr );
+				}
 			}
-/*
-		else
+		else				// Complex IF-ELSE-ENDIF
 			{
-			if ( m_tokenlist[curaddr].m_tokenid == 	
-				TOKEN_COMMAND_ELSE )
+			if ( m_scriptsettings.m_result )	// True
+				{
+				ProcessScript( curaddr+2, elseaddr-1 );
+				}
+			else					// False
+				{
 				ProcessScript( elseaddr+1, finishaddr );
+				}
 			}
-*/
-		curaddr = finishaddr; // Incremented later
+
+		curaddr = finishaddr;
+		}
 		break;
 	
 	case TOKEN_COMMAND_ENDIF:	
