@@ -42,7 +42,7 @@ CTraceLog& operator<<(const T& x)
 	{
 	if (true == m_debug)
 		{
-	       	*m_ostream << "ctrace: " << x;
+	       	*m_ostream << x;
 		}
 
         return *this;

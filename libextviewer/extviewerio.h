@@ -30,12 +30,12 @@ class CExtensionViewerIOData
 // ----- Class members ------------------------------------------------------- 
 public:
 
-CExtensionRegistrySettings	m_registrysettings;	// Registry settings
-CExtensionHeaderFileSet	m_headerfileset;	// Extension configuration settings
-CExtensionSiteInfoList	m_sitelist;		// Extension site info list
-CExtensionScriptSettings	m_scriptsettings;	// Script settings
-COutputFileSettings	m_outputfilesettings;	// Output settings
-CConfigurationFileSettings	m_configfilesettings;	// Configuration file settings
+CExtensionRegistrySettings m_registrysettings;	 // Registry settings
+CExtensionHeaderFileSet	   m_headerfileset;	 // Extension configuration settings
+CExtensionSiteInfoList	   m_sitelist;		 // Extension site info list
+CExtensionScriptSettings   m_scriptsettings;	 // Script settings
+COutputFileSettings	   m_outputfilesettings; // Output settings
+CConfigurationFileSettings m_configfilesettings; // Configuration file settings
 
 // ----- Constructor and destructor ------------------------------------------ 
 

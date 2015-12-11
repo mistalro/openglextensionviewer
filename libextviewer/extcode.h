@@ -65,9 +65,9 @@ const char *internalscript =
 "<foreach><glxext><if><selected>// <glxcounter> <extname>\n<endif><endfor>"
 "<endif>"
 
-//"<uppercase><foreach><glext><extfunclist> <funcprefix> <funcname><funcproto><endfor>\n"
-//"<normalcase>\n"
-//"<foreach><glext><foreach><extfunclist><funcprefix> <funcname><funcheader>;\n<endfor><endfor>"
+//"// Debug routines for dumping out entire lists\n"
+//"<foreach><glext><foreach><extfuncblacklist>extern <funcprefix><funcname><funcheader>;\n<endfor><endfor>"
+
 //"<foreach><glext><foreach><extconstlist>//  <constcounter>/<constmax>#define <constname> <constvalue>\n<endfor><endfor>"
 //"<foreach><wglext><foreach><extconstlist>// <constcounter>/<constmax>#define <constname> <constvalue>\n<endfor><endfor>"
 //"<foreach><glxext><foreach><extconstlist>// <constcounter>/<constmax>#define <constname> <constvalue><endfor><endfor>\n"
@@ -80,8 +80,8 @@ const char *internalscript =
 "\n"
 "<begin><headerprototype></begin>"
 "#ifdef <extname>\n"
-"<if><cmode><foreach><extfunclist>extern <pfnproc> <funcname>;\n<endfor><endif>"
-"<if><cppmode><foreach><extfunclist><pfnproc> <funcname>;\n<endfor><endif>"
+"<if><cmode><foreach><extfuncblacklist>extern <pfnproc> <funcname>;\n<endfor><endif>"
+"<if><cppmode><foreach><extfuncblacklist><pfnproc> <funcname>;\n<endfor><endif>"
 "#endif\t\t// <extname>\n"
 "<end>\n"
 
@@ -178,10 +178,11 @@ const char *internalscript =
 "// ----- GL extensions --------\n"
 "//\n"
 "\n"
-"#ifdef NONO\n"	// Needed to disable errors with GL AMD_multi_draw_indirect etc
-"<foreach><glext><if><selected><if><funcnum><call><headerprototype>\n<endif><endif><endfor>"
+
+// Commented out since these definitions are performed by the header files
+//"<foreach><glext><if><selected><if><funcnum><call><headerprototype>\n<endif><endif><endfor>"
+
 "<endif>"
-"#endif\n"	// Needed to disable errors as above
 
 "<if><wglfuncnum>"
 "//\n"
@@ -195,24 +196,24 @@ const char *internalscript =
 "// ----- GLX extensions --------\n"
 "//\n"
 "\n"
-"#ifdef NONO\n"	// Needed to disable errors with GLXgetprocaddressARB
 "<foreach><glxext><if><selected><if><funcnum><call><headerprototype>\n<endif><endif><endfor>"
+
 "<endif>"
-"#endif\n\n"
+
 "<if><wglfuncnum>int padding2[1024]; // Bodge to handle Visual Studio C++ bug\n\n<endif>"
 "<if><cppmode><call><headercondes><endif>"
-"void *GetGLProcAddress( char *buf );\n"
+"void *GetGLProcAddress( char const *buf );\n"
 //"void *GetWGLProcAddress( char *pchname );\n"
 "int  StringSearch( char *pext, char *pstring );\n"
-"int  CheckGLExtension(  char *pchname );\n"
+"int  CheckGLExtension(  char const *pchname );\n"
 "void CheckOpenGLVersion( void );\n"
 "<if><glnum>void CheckOpenGLExtensions( void );\n<endif>"
 
 "<if><wglnum>void CheckWGLExtensions( void );\n"
-"int  CheckWGLExtension( char *pchname );\n<endif>"
+"int  CheckWGLExtension( char const *pchname );\n<endif>"
 
 "<if><glxnum>void CheckGLXExtensions( void );\n"
-"int  CheckGLXExtension( char *pchname );\n"
+"int  CheckGLXExtension( char const *pchname );\n"
 "<endif>"
 "void ExtensionInit( void );\n"
 "<if><glfuncnum>"
@@ -253,8 +254,8 @@ const char *internalscript =
 
 "<begin><headerinit></begin>"
 "#ifdef <extname>\n"
-"<if><cppmode><foreach><extfunclist>\t<funcname> = NULL;\n<endfor><endif>"
-"<if><cmode><foreach><extfunclist><pfnproc>\t<funcname> = NULL;\n<endfor><endif>"
+"<if><cppmode><foreach><extfuncblacklist>\t<funcname> = NULL;\n<endfor><endif>"
+"<if><cmode><foreach><extfuncblacklist><pfnproc>\t<funcname> = NULL;\n<endfor><endif>"
 "#endif\t\t// <extname>\n"
 "\n"
 "<end>\n"
@@ -282,7 +283,7 @@ const char *internalscript =
 "if (!m_<extname>)\n" 
 "\treturn;\n"
 "<if><funcnum>\n<endif>"
-"<foreach><extfunclist><funcname> = (<pfnproc>) GetGLProcAddress( \"<funcname>\");\n<endfor>"
+"<foreach><extfuncblacklist><funcname> = (<pfnproc>) GetGLProcAddress( \"<funcname>\");\n<endfor>"
 "#endif\n"
 "}\n"
 "\n"
@@ -479,6 +480,16 @@ const char *internalscript =
 "#include <stdio.h>\n"
 "#include <string.h>\n"
 "#include <GL/gl.h>\n"
+"\n"
+"// We need the PFN prototypes - these are inaccessible if the flag is simply\n"
+"// set and the prototypes not defined\n"
+"\n"
+"#undef GL_VERSION_1_1\n"
+"#undef GL_VERSION_1_2\n"
+"#undef GL_VERSION_1_3\n"
+"#undef GL_ARB_imaging\n"
+"#undef GL_ARB_multitexture\n"
+"\n"
 "#include <GL/glext.h>\n"
 "#ifdef _WIN32\n"
 "#include <GL/wglext.h>\n"
@@ -496,14 +507,6 @@ const char *internalscript =
 "#endif\n"
 "\n"
 "#include \"<outputheader>\"\n"
-/*
-"\n"
-"// Include this so we can read the libGL.so.1 file directly\n"
-"\n"
-"#ifdef LOAD_LIBRARY\n"
-"#include <dlfcn.h>\n"
-"#endif\n"
-*/
 "\n"
 "<if><cppmode>"
 "// --------------------------------------------------------------------------\n"
@@ -641,7 +644,6 @@ const char *internalscript =
 "\n"
 "void <classname::>CheckOpenGLVersion( void )\n"
 "{\n"
-//"<foreach><version>m_OpenGL<versionvar> = CheckGLExtension( \"<versionname>\" );\n<endfor>"
 "<foreach><version>m_OpenGL<versionvar> = CheckGLVersion( <versionnumber> );\n<endfor>"
 "}\n"
 "\n"
@@ -663,13 +665,6 @@ const char *internalscript =
 "\n"
 "void <classname::>ExtensionInit( void )\n" 
 "{\n"
-/*
-"#ifdef LOAD_LIBRARY\n"
-"m_libhandler = dlopen( \"/usr/lib/libGL.so.1\", RTLD_NOW | RTLD_GLOBAL );\n"
-"// printf( \"Opened handler = %08X\\n\", (unsigned int) m_libhandler );\n"
-"#endif\n"
-"\n"
-*/
 "CheckOpenGLVersion();\n"
 "<if><glnum>CheckOpenGLExtensions();\n<endif>"
 
@@ -694,12 +689,6 @@ const char *internalscript =
 "#endif\n"
 "<endif>"
 
-/*
-"#ifdef LOAD_LIBRARY\n"
-"//printf( \"Closing libhandler %08X\\n\", (unsigned int) m_libhandler );\n"
-"dlclose( m_libhandler );\n"
-"#endif // LOAD_LIBRARY\n"
-*/
 "}\n"
 "\n"
 "<foreach><glext><if><selected><if><funcnum><call><sourceinit><endif><endif><endfor>"

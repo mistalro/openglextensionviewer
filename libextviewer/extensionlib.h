@@ -87,6 +87,7 @@ struct XVisualInfo;
 #include "extscriptsettingsio.h"
 #include "extscriptsettings.h"
 
+#include "extfuncblacklist.h"
 #include "extheaderfiledata.h"
 
 #include "extheaderfilefunc.h"

@@ -383,15 +383,14 @@ return found;
 // Effects: The value associated with the prototype std::string is set
 // --------------------------------------------------------------------------
 
-void CExtensionEntryList::AddProtoVars( const char *name,const char *value )
+void CExtensionEntryList::AddProtoVars( const char *name, const char *value )
 {
-int found;
-CExtensionEntry entry;
-
-found = FindProc( name );
+int found = FindProc( name );
 
 if ( found == -1 )
 	{
+	CExtensionEntry entry;
+
 	entry.m_name = name;
 
 	if ( value != NULL )

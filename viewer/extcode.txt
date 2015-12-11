@@ -1,6 +1,6 @@
 <begin><main></begin><fileopen><outputheader><call><headerfile><fileclose><fileopen><outputsource><call><sourcefile><fileclose><end><begin><fileheader></begin>// --------------------------------------------------------------------------
-<if><cppmode>// <filetype> file for the <classname> <moduletype>
-<endif><if><cmode>// <filetype> file for the extension manager
+// <filetype> file for the<if><cppmode>// <classname> <moduletype>
+<else> extension manager
 <endif>//
 // Stored in file <outputsource>
 //
@@ -42,8 +42,8 @@
 <end>
 
 <begin><headerprototype></begin>#ifdef <extname>
-<if><cmode><foreach><extfunclist>extern <pfnproc> <funcname>;
-<endfor><endif><if><cppmode><foreach><extfunclist><pfnproc> <funcname>;
+<if><cmode><foreach><extfuncblacklist>extern <pfnproc> <funcname>;
+<endfor><endif><if><cppmode><foreach><extfuncblacklist><pfnproc> <funcname>;
 <endfor><endif>#endif		// <extname>
 <end>
 <begin><headercondes></begin>// ----- Constructors -------------------------------------------------------
@@ -104,10 +104,7 @@ public:
 // ----- GL extensions --------
 //
 
-#ifdef NONO
-<foreach><glext><if><selected><if><funcnum><call><headerprototype>
-<endif><endif><endfor><endif>#endif
-<if><wglfuncnum>//
+<endif><if><wglfuncnum>//
 // ----- WGL extensions --------
 //
 
@@ -117,21 +114,17 @@ public:
 // ----- GLX extensions --------
 //
 
-#ifdef NONO
-<foreach><glxext><if><selected><if><funcnum><call><headerprototype>
-<endif><endif><endfor><endif>#endif
+<endif><if><wglfuncnum>int padding2[1024]; // Bodge to handle Visual Studio C++ bug
 
-<if><wglfuncnum>int padding2[1024]; // Bodge to handle Visual Studio C++ bug
-
-<endif><if><cppmode><call><headercondes><endif>void *GetGLProcAddress( char *buf );
+<endif><if><cppmode><call><headercondes><endif>void *GetGLProcAddress( char const *buf );
 int  StringSearch( char *pext, char *pstring );
-int  CheckGLExtension(  char *pchname );
+int  CheckGLExtension(  char const *pchname );
 void CheckOpenGLVersion( void );
 <if><glnum>void CheckOpenGLExtensions( void );
 <endif><if><wglnum>void CheckWGLExtensions( void );
-int  CheckWGLExtension( char *pchname );
+int  CheckWGLExtension( char const *pchname );
 <endif><if><glxnum>void CheckGLXExtensions( void );
-int  CheckGLXExtension( char *pchname );
+int  CheckGLXExtension( char const *pchname );
 <endif>void ExtensionInit( void );
 <if><glfuncnum>
 // ----- GL extensions -----------
@@ -159,8 +152,8 @@ int  CheckGLXExtension( char *pchname );
 <endif>#endif		// __EXTMANAGER__
 <end>
 <begin><headerinit></begin>#ifdef <extname>
-<if><cppmode><foreach><extfunclist>	<funcname> = NULL;
-<endfor><endif><if><cmode><foreach><extfunclist><pfnproc>	<funcname> = NULL;
+<if><cppmode><foreach><extfuncblacklist>	<funcname> = NULL;
+<endfor><endif><if><cmode><foreach><extfuncblacklist><pfnproc>	<funcname> = NULL;
 <endfor><endif>#endif		// <extname>
 
 <end>
@@ -182,7 +175,7 @@ void <classname::>Init_<extname>( void )
 if (!m_<extname>)
 	return;
 <if><funcnum>
-<endif><foreach><extfunclist><funcname> = (<pfnproc>) GetGLProcAddress( "<funcname>");
+<endif><foreach><extfuncblacklist><funcname> = (<pfnproc>) GetGLProcAddress( "<funcname>");
 <endfor>#endif
 }
 
@@ -359,6 +352,16 @@ void <classname::>CheckGLXExtensions( void )
 #include <stdio.h>
 #include <string.h>
 #include <GL/gl.h>
+
+// We need the PFN prototypes - these are inaccessible if the flag is simply
+// set and the prototypes not defined
+
+#undef GL_VERSION_1_1
+#undef GL_VERSION_1_2
+#undef GL_VERSION_1_3
+#undef GL_ARB_imaging
+#undef GL_ARB_multitexture
+
 #include <GL/glext.h>
 #ifdef _WIN32
 #include <GL/wglext.h>

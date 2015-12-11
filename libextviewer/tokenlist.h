@@ -88,6 +88,8 @@
 #define TOKEN_ITERATOR_VERSION	    (0x001D|TOKEN_ITERATOR)
 #define TOKEN_ITERATOR_EXTREGISTRY  (0x001E|TOKEN_ITERATOR)
 
+#define TOKEN_ITERATOR_EXTFUNCBLACKLIST (0x001F|TOKEN_ITERATOR)
+
 // ----- Strings ------------------------------------------------------------
 
 #define TOKEN_STRING_CLASSX	    (0x0020|TOKEN_STRING)

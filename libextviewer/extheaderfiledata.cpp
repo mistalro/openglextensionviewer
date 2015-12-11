@@ -261,11 +261,12 @@ int CExtensionHeaderFileData::ReadExtensionBlockHeader( char *curline,
 				const char *filename, 
   				CHeaderFileProgressCallback &callback,
 				std::ifstream &stream, 
-                                int filelen, CExtensionEntryList &vendorlist, int pextlen )
+                                int filelen, 
+				CExtensionEntryList &vendorlist, int pextlen )
 {
-    if ( (strncmp( curline, "#ifndef", 7 ) == 0 ) &&       // Must be #ifndef
-         (strncmp( m_prefix.data(), curline+8, pextlen ) == 0 ) )
-        {
+if ( (strncmp( curline, "#ifndef", 7 ) == 0 ) &&       // Must be #ifndef
+     (strncmp( m_prefix.data(), curline+8, pextlen ) == 0 ) )
+	{
         // Problem with Nvidia GLX extension header file ...
         // NVidia do #ifndef's with the GLX_SGIX_pbuffer constants
         //
@@ -283,6 +284,11 @@ int CExtensionHeaderFileData::ReadExtensionBlockHeader( char *curline,
 
                 m_extlist.Add( curline+8 );     // Add to list of extensions
                 VendorListAdd(curline+8, vendorlist);// and list of vendors
+
+		m_extpos = m_extlist.size() - 1;	// Save extension ID
+
+		m_extlist.ResetConstEntry( m_extpos, m_constlist.GetCount(), 0 );
+		m_extlist.ResetFuncEntry( m_extpos, m_funclist.GetCount(), 0);
 		return true;
                 }
         }
@@ -311,26 +317,6 @@ if ( strncmp( curline, "#define", 7 ) != 0 )
 
 sscanf( curline, "#define %s %s", name, constant);
 
-// ----- Find the name of the extension to add ----------------------
-
-if ( strstr( lastline, "#ifndef" ) != NULL )
-	{
-	char tempbuf[1024];
-
-	sscanf( lastline, "#ifndef %s", tempbuf );
-
-	m_extpos = m_extlist.FindName( tempbuf );
-
-	if ( (m_extpos != -1) && (strstr(lastline,name)==NULL) )
-		{
-		m_extlist.ResetConstEntry( m_extpos, m_constlist.GetCount(), 0 );
-		}
-	else
-                {
-                m_extpos = -1;
-                }
-	}
-
 // ----- Add constant name and value --------------------------------
 
 if ( (strncmp( name, m_prefix.data(), pextlen ) == 0) && (m_extpos != -1) )
@@ -347,148 +333,131 @@ if ( (strncmp( name, m_prefix.data(), pextlen ) == 0) && (m_extpos != -1) )
 
 // --------------------------------------------------------------------------
 // Search for list of OpenGL functions
+//
+// These are in the form:
+// GLAPI <return> APIENTRY gl/wgl/glx <funcname>( <parameters> );
 // --------------------------------------------------------------------------
 
 void CExtensionHeaderFileData::ReadFileFunctions( char *curline, char *lastline,char *name, std::ifstream &stream )
 {
-int done = 0, curext;
-char *pfuncname, *pchptr;
 std::string funcreturn, funcname, funcparams;
 
-ctrace << "vvvvv ReadFileFunctions" << std::endl;
+funcreturn.clear();
+funcname.clear();
+funcparams.clear();
 
-curext = m_extlist.FindName( name );
+// Sanity check
+char *pfuncname = strstr( curline, m_funcprefix.data() );
 
-if ( curext >= 0 )
+if ( !pfuncname )
 	{
-	m_extlist.ResetFuncEntry( curext, m_funclist.GetCount(), 0 );
-	}
-
-while ( !done )
-	{
-	stream.getline( curline, 1024 );
-
-	if ( strncmp( curline, "#endif", 6 ) == 0 )  // End of block
-                {
-                done++;
-                }
-	else
-                {
-                funcreturn.clear();
-                funcname.clear();
-                funcparams.clear();
-
-                pfuncname = strstr( curline, m_funcprefix.data() );
-
-                if ( !pfuncname )
-                        {
-                        ctrace << "|" << m_funcprefix.data() << "| not found" << std::endl;
-                        }
-                else
-                        {
-                        pchptr = curline;
-
-                        while ( pchptr < pfuncname )
-                                {
-                                funcreturn += *pchptr++;
-                                }
-
-                        while ( isspace( *pchptr ) )
-                                {
-                                pchptr++;
-                                }
-
-                        pchptr = pfuncname;
-
-                        while ( *pchptr && (*pchptr != '(') )
-                                {
-                                if ( !isspace( *pchptr ) )
-                                        funcname += *pchptr;
-
-                                pchptr++;
-                                }
-
-                        while ( isspace( *pchptr ) )
-                                {
-                                pchptr++;
-                                }
-
-                        while ( *pchptr && (*pchptr != ';') )
-                                {
-                                funcparams += *pchptr++;
-                                }
-
-			ctrace << "AddingPrefixNameValue |" << funcreturn.data() << "| |" <<
-                        funcname.data() << "| |" <<
-                        funcparams.data() << "| |" << std::endl;
-
-                        m_funclist.AddPrefixNameValue(
-                                funcreturn,
-                                funcname,
-                                funcparams );
-
-				ctrace << "FuncListCount = " << m_funclist.GetCount() << std::endl;
-
-                        if ( curext >= 0 )
-                                {
-                                m_extlist.IncrementFuncNum( curext );
-
-				ctrace << "ExtListFuncCount = " << m_extlist.GetCount() << std::endl;
-                                }
-                        else
-                                {
-                          //      cout << "Error: No current extension\n";
-                                }
-                        }
-                }
+        ctrace << "|" << m_funcprefix.data() << "| not found" << std::endl;
+	return;
         }
 
-ctrace << "^^^^^ ReadFileFunctions" << std::endl;
+// Now pick apart the function name and parameters
+
+char *pchptr = curline;
+
+while ( pchptr < pfuncname )
+	{
+	funcreturn += *pchptr++;
+	}
+
+while ( isspace( *pchptr ) )
+	{
+	pchptr++;
+	}
+
+pchptr = pfuncname;
+
+while ( *pchptr && (*pchptr != '(') )
+	{
+	if ( !isspace( *pchptr ) )
+		funcname += *pchptr;
+
+	pchptr++;
+	}
+
+while ( isspace( *pchptr ) )
+	{
+	pchptr++;
+	}
+
+while ( *pchptr && (*pchptr != ';') )
+	{
+	funcparams += *pchptr++;
+	}
+
+ctrace << "AddingPrefixNameValue |" << 
+	funcreturn.data() << "| |" <<
+	funcname.data() << "| |" <<
+	funcparams.data() << "| |" << std::endl;
+
+m_funclist.AddPrefixNameValue( funcreturn, funcname, funcparams );
+
+m_extlist.IncrementFuncNum( m_extpos );
+
+ctrace << "FuncListCount = " << m_funclist.GetCount() << std::endl;
 }
+
+// --------------------------------------------------------------------------
+// Read a function prototype
+//
+// This is in the form:
+//
+// typedef <return> (APIENTRYP PFN<FUNCPROCNAME> ( <parameters); 
+//                             |                 |            |
+//                             |                 |            |
+//                             pchptr            pchptrc      pchptrb
+//
+// --------------------------------------------------------------------------
 
 void CExtensionHeaderFileData::ReadFileFunctionPrototypes( 
 					char *curline, std::ifstream &stream )
 {
-int done = 0;
-char *pchptr, *pchptrb, *pchptrc, *pchptrd;
+char *pchptr = strstr( curline, "PFN" );
 
-while ( !done )          // Read list of function pointer macros
+if ( pchptr == NULL)		// No prototype found
 	{
-	stream.getline( curline, 1024 );
+	return;
+	}
 
-	pchptr = strstr( curline, "PFN" );
+char *pchptrb = strchr( pchptr, ')' );	// Find the end
+*pchptrb = '\0';
+pchptrb++;
 
-	if ( pchptr != NULL )           // Found a prototype
+char *pchptrc = strchr( pchptrb+1, '(' ); // Find the body
+
+if ( pchptrc )
+	{
+	char *pchptrd = strchr( pchptrc, ';' );
+
+	if ( pchptrd )
 		{
-		pchptrb = strchr( pchptr, ')' );
-		*pchptrb = '\0';
-                pchptrb++;
+		*pchptrd = '\0';     // Now have a function definition
 
-                pchptrc = strchr( pchptrb+1, '(' ); // Find the body
+		ctrace << "Adding Function PFN |" << pchptr << "| |" << pchptrc << "|" << std::endl;
 
-		if ( pchptrc )
-			{
-			pchptrd = strchr( pchptrc, ';' );
+		// Pushes data onto entry list
+		m_funclist.AddProtoVars( pchptr, pchptrc );
 
-			if ( pchptrd )
-				{
-				*pchptrd = '\0';     // Now have a function definition
+		ctrace << "FuncList count = " << m_funclist.GetCount() << std::endl;
+		int curext = m_extlist.size() - 1;
 
-				ctrace << "Adding Function prototype |" << pchptr << "| |" << pchptrc << "|" << std::endl;
+		if ( curext >= 0 )
+        		{
+        		m_extlist.IncrementFuncNum( curext );
 
-				m_funclist.AddProtoVars( pchptr, pchptrc );
-
-				ctrace << "FuncList count = " << m_funclist.GetCount() << std::endl;
-				}
-			}
+        		ctrace << "ExtListFuncCount = " << m_extlist.GetCount() << std::endl;
+        		}
+		else
+        		{
+        		// This is serious. Need a known extension
+        		// to add the function to.
+        		ctrace << "Error: No current extension\n";
+        		}
 		}
-	else
-		{
-		if ( strncmp( curline, "#endif", 6 ) == 0 )
-			{
-			done++;
-			}
-                }
 	}
 }
 
@@ -584,25 +553,61 @@ while ( !stream.eof() )
 
                 	return false;
                 	}
-		}
 
-	// Read GL constants
-	ctrace << "Reading constants" << std::endl;
+		bool done = false;
 
-	ReadFileConstants( curline, lastline, name, pextlen );
+		while (!done )
+			{
+			// Match GL constants
+			// These are of the form
+			// #define <const> <value>
+			ctrace << "|" << curline << "|" << std::endl;
 
-	// Search for list of OpenGL functions
-    	if ( strstr( curline, m_prototype.data() ) != NULL )
-		{
-		ctrace << "Reading functions" << std::endl;
+			if (strstr(curline, "#define" ) != NULL)
+				{
+				ctrace << "Constant" << std::endl;
+				ReadFileConstants( curline, lastline, name, pextlen );
+				}
+#ifdef NEW_VERSION
+			// Match function prototypes 
+			if (strstr(curline, "PFN") != NULL)
+				{
+				ctrace << "Function Prototype" << std::endl;
+				ReadFileFunctionPrototypes( curline, stream );
+				}
+#endif
 
-		// Read File Functions
-		ReadFileFunctions( curline, lastline, name, stream );
+			// Match OpenGL functions
+			// These are of the form 
+			// GLAPI void APIENTRYP <prefix><funcname>(<parameters>)j
+			// Add a space here to match start of function name
+			// and not some lucky word like angle or rectangle
+			std::string strprefix = " " + m_funcprefix;
 
-		ctrace << "Reading prototypes" << std::endl;
+			if (( strstr(curline, strprefix.data() ) != NULL) &&
+				(strstr( curline, "#define" ) == NULL) &&
+				(strstr( curline, "#ifdef" ) == NULL) &&
+				(strstr( curline, "#endif" ) == NULL) &&
+				(strstr( curline, "/*" ) == NULL))
+				{
+				ctrace << "Function Definition" << std::endl;
+				ReadFileFunctions( curline, lastline, name, stream );
+				}
 
-		// Read File Function Prototypes
-		ReadFileFunctionPrototypes( curline, stream );
+			// Finish this extension when end of #ifdef block
+			// is reached
+			if ((strstr(curline, "endif" ) != NULL) &&
+			    (strstr(curline, m_extlist[m_extpos].m_name.data() ) != NULL))
+				{
+				done = true;
+				}
+			else
+				{
+				// Get another line
+				memcpy(lastline, curline, 2048 );
+				stream.getline( curline, 1024 );
+				}
+			}
 		}
     	}
 

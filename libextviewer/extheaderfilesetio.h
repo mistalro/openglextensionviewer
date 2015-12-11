@@ -45,6 +45,8 @@ CExtensionHeaderFileFuncVendor	m_vendorlist;		// List for vendors
 CExtensionHeaderFileFuncVersion	m_versionlist;		// List for versions
 int	m_savedstates;		// Number of saved states
 
+CExtensionFuncBlacklist		m_funcblacklist;	// Blacklisted functions
+
 // ----- Constructor and destructor ------------------------------------------ 
 
 CExtensionHeaderFileSettingsIOData( void )

@@ -122,6 +122,8 @@ m_tokenlist.TokenAdd( "<endfor>",      TOKEN_COMMAND_ENDFOR );
 // Iterators
 
 m_tokenlist.TokenAdd( "<extfunclist>", TOKEN_ITERATOR_EXTFUNCLIST  ); 
+m_tokenlist.TokenAdd( "<extfuncblacklist>", TOKEN_ITERATOR_EXTFUNCBLACKLIST );
+
 m_tokenlist.TokenAdd( "<extconstlist>", TOKEN_ITERATOR_EXTCONSTLIST );
 m_tokenlist.TokenAdd( "<glext>",       TOKEN_ITERATOR_GLEXT        );
 m_tokenlist.TokenAdd( "<wglext>",      TOKEN_ITERATOR_WGLEXT       );
@@ -1091,12 +1093,37 @@ switch ( (*pstoken)->m_tokenid )
 					m_scriptsettings.m_funcpos++ )
 				{
 				ProcessScript( curaddr+1, finishaddr );
-               	} 
+               			} 
 
 			m_scriptsettings.m_activefunc = false;
 			curaddr = finishaddr;
 			}           
 		break;
+
+        case TOKEN_ITERATOR_EXTFUNCBLACKLIST:
+                if ( !m_scriptsettings.m_activefunc )
+                        {
+                        m_scriptsettings.m_activefunc = true;
+
+                        finishaddr = m_scriptsettings.ScriptFindEndfor( curaddr-1 );
+
+                        for ( m_scriptsettings.m_funcpos = 0;
+                                        m_scriptsettings.m_funcpos <
+                                        m_scriptsettings.m_pextentry->m_funcnum; 
+                                        m_scriptsettings.m_funcpos++ )
+                                {
+				std::string *funcname = &m_scriptsettings.m_pcurfunclist->at( m_scriptsettings.m_pextentry->m_funcstart + m_scriptsettings.m_funcpos).m_name;
+
+				if ( m_headerfileset.m_funcblacklist.FindFunctionName( *funcname ) == -1 )
+					{
+                                	ProcessScript( curaddr+1, finishaddr );
+					}
+                		}
+
+                        m_scriptsettings.m_activefunc = false;
+                        curaddr = finishaddr;
+                        }
+                break;
 
 	case TOKEN_ITERATOR_EXTCONSTLIST:
 		if ( !m_scriptsettings.m_activeconst )

@@ -29,7 +29,7 @@ const CExtensionHeaderFileFuncCoreARB & operator = ( const CExtensionHeaderFileF
 void FuncInit( void )
 	{
         const std::string str_prefix     = "GL_";
-        const std::string str_funcprefix = "gl_";
+        const std::string str_funcprefix = "gl";
         const std::string str_proto      = "GL_GLEXT_PROTOTYPES";
 	const std::string str_listname   = "corearb";
 	Init();
