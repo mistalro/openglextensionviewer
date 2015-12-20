@@ -59,7 +59,7 @@
 // Find the call address of a WGL or GLX extension function
 // ----------------------------------------------------------------------------
 
-void *<classname::>GetGLProcAddress( char *buf )
+void *<classname::>GetGLProcAddress( char const *buf )
 {
 #ifdef _WIN32
 	return( wglGetProcAddress( buf ) );
@@ -114,7 +114,8 @@ public:
 // ----- GLX extensions --------
 //
 
-<endif><if><wglfuncnum>int padding2[1024]; // Bodge to handle Visual Studio C++ bug
+<foreach><glxext><if><selected><if><funcnum><call><headerprototype>
+<endif><endif><endfor><endif><if><wglfuncnum>int padding2[1024]; // Bodge to handle Visual Studio C++ bug
 
 <endif><if><cppmode><call><headercondes><endif>void *GetGLProcAddress( char const *buf );
 int  StringSearch( char *pext, char *pstring );
@@ -456,7 +457,7 @@ return( 1 );
 // Effects: None
 // --------------------------------------------------------------------------
 
-int <classname::>CheckGLExtension( char *pchname )
+int <classname::>CheckGLExtension( char const *pchname )
 {
 GLubyte *pextstring = (GLubyte *) glGetString(GL_EXTENSIONS);
 
