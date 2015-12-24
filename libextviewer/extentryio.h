@@ -44,6 +44,7 @@ int	m_funcnum;		// Number of functions in this extension
 int	m_conststart;		// Offset to first constant in list
 int	m_constnum;		// Offset to first constant in list
 int	m_flags;		// Flags used for selection
+int     m_funcnumparams;	// Number of function parameters
 
 // ----- Constructor and destructor ------------------------------------------ 
 
@@ -206,6 +207,15 @@ inline void SetFlags( const int value )
 	m_flags = value;
 	}
 
+inline void SetFuncParamnum( const int value )
+	{
+	m_funcnumparams = value;	
+	}
+
+inline int GetFuncParamnum( void )
+	{
+	return m_funcnumparams;
+	}
 };
 
 // ---------------------------------------------------------------------

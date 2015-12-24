@@ -289,6 +289,7 @@ return found;
 // Inputs:  prefix - Pointer to prefix
 //          name   - Pointer to name
 //          header - Pointer to header
+//	    funcnumparam - Number of parameters in function
 //
 // Outputs: None
 //
@@ -298,7 +299,7 @@ return found;
 // --------------------------------------------------------------------------
 
 int CExtensionEntryList::AddPrefixNameValue( const char *prefix, 
-				const char *name, const char *header )
+				const char *name, const char *header, unsigned int funcnumparams )
 {
 int found;
 CExtensionEntry entry;
@@ -307,7 +308,7 @@ found = FindProc( name );
 
 if ( found == -1 )
 	{
-	entry.SetPrefixNameValue( prefix, name, header );	
+	entry.SetPrefixNameValue( prefix, name, header, funcnumparams );	
 	push_back(entry);
 
 	found = size()-1;
@@ -323,6 +324,7 @@ return found;
 //          name   - Pointer to the name std::string 
 //          header - Pointer to the header std::string
 //          proto  - Pointer to the prototype
+//	    funcnumparam - Number of parameters in function
 //
 // Outputs: None
 //
@@ -333,7 +335,8 @@ return found;
 
 int CExtensionEntryList::AddPrefixNameValue( const std::string &prefix,
                                 const std::string &name,
-                                const std::string &header )
+                                const std::string &header,
+				unsigned int funcnumparams )
 {
 int found;
 CExtensionEntry entry;
@@ -342,7 +345,7 @@ found = FindProc( name.data() );
 
 if ( found == -1 )
 	{
-	entry.SetPrefixNameHeader( prefix, name, header );
+	entry.SetPrefixNameHeader( prefix, name, header, funcnumparams );
 	push_back(entry);
 
 	found = size()-1;

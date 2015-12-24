@@ -5,6 +5,21 @@
 #include "extensionlib.h"
 #include "extcode.h"
 
+void string_makemacrolist( std::string &result, unsigned int num )
+{
+result.clear();
+
+for (unsigned int pos = 0; pos < num; pos++)
+	{
+	result += ('A' + pos);
+
+	if ( pos < num-1)
+		{
+		result += ", ";
+		}
+	}
+}
+
 // --------------------------------------------------------------------------
 // String used to avoid generating the PROC for the static GLX function
 // --------------------------------------------------------------------------
@@ -171,6 +186,9 @@ m_tokenlist.TokenAdd( "<funcproto>",    TOKEN_STRING_FUNCPROTO    );
 m_tokenlist.TokenAdd( "<funcprefix>",   TOKEN_STRING_FUNCPREFIX   );
 m_tokenlist.TokenAdd( "<funcheader>",   TOKEN_STRING_FUNCHEADER   );
 m_tokenlist.TokenAdd( "<extregistrycounter>", TOKEN_STRING_EXTREGISTRYCOUNTER );
+
+m_tokenlist.TokenAdd( "<funcnumparams>",  TOKEN_STRING_FUNCNUMPARAMS );
+m_tokenlist.TokenAdd( "<funcmacro>",      TOKEN_STRING_FUNCMACRO );
 
 m_tokenlist.TokenAdd( "<constmax>",     TOKEN_STRING_CONSTMAX );
 m_tokenlist.TokenAdd( "<constname>",    TOKEN_STRING_CONSTNAME );
@@ -1352,6 +1370,20 @@ switch ( (*pstoken)->m_tokenid )
 			outstr = m_scriptsettings.m_pcurfunclist->at(
 				m_scriptsettings.m_pextentry->m_funcstart
 			+ m_scriptsettings.m_funcpos ).m_prefix.data();
+			}
+		break;
+
+	case TOKEN_STRING_FUNCNUMPARAMS:
+		if ( m_scriptsettings.m_activefunc )
+			{
+     			stl_itoa( outstr, m_scriptsettings.m_pcurfunclist->at( m_scriptsettings.m_pextentry->m_funcstart + m_scriptsettings.m_funcpos).m_funcnumparams );
+			}
+		break;
+
+	case TOKEN_STRING_FUNCMACRO:
+		if ( m_scriptsettings.m_activefunc )
+			{
+			string_makemacrolist( outstr, m_scriptsettings.m_pcurfunclist->at( m_scriptsettings.m_pextentry->m_funcstart + m_scriptsettings.m_funcpos).m_funcnumparams);
 			}
 		break;
 

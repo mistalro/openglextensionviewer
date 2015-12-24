@@ -386,7 +386,7 @@
 				{flags 0 }
 			}
 		}
-		{savedstates 0 }
+		{savedstates 1 }
 	}
 	{sitelist
 		{website

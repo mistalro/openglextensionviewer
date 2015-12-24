@@ -359,6 +359,7 @@ if ( !pfuncname )
 
 char *pchptr = curline;
 
+// The return type
 while ( pchptr < pfuncname )
 	{
 	funcreturn += *pchptr++;
@@ -369,32 +370,68 @@ while ( isspace( *pchptr ) )
 	pchptr++;
 	}
 
+// The function name
 pchptr = pfuncname;
 
 while ( *pchptr && (*pchptr != '(') )
 	{
 	if ( !isspace( *pchptr ) )
+		{
 		funcname += *pchptr;
+		}
 
 	pchptr++;
 	}
 
-while ( isspace( *pchptr ) )
+unsigned int funcnumparams = 0;
+
+while ( *pchptr != '(' )	// Skip over white space
 	{
 	pchptr++;
 	}
 
-while ( *pchptr && (*pchptr != ';') )
+funcparams += *pchptr++;		// Get the (
+
+// The function parameters from ( to )
+// Function parameters can be many possibilities:
+//
+// No arguments ( )
+// One arguments( GLvoid xxx )
+// Many aruments( GLvoid xxx, GLint yyy )
+
+while ( *pchptr && (*pchptr != ')') )
 	{
-	funcparams += *pchptr++;
+	int nletters = 0;
+
+	while ((*pchptr != '\0') && (*pchptr != ')' ) && (*pchptr != ','))
+		{
+		if (isalnum(*pchptr))
+			{
+			nletters++;
+			}
+
+		funcparams += *pchptr++;
+		}
+
+	if (nletters > 0)
+		{
+		funcnumparams++;
+		}
+
+	if ((*pchptr != '\0') && *pchptr != ')')
+		{
+		funcparams += *pchptr++;
+		}
 	}
 
+funcparams += *pchptr++;		// Get the )
+	
 ctrace << "AddingPrefixNameValue |" << 
 	funcreturn.data() << "| |" <<
 	funcname.data() << "| |" <<
-	funcparams.data() << "| |" << std::endl;
+	funcparams.data() << "| |" << funcnumparams << std::endl;
 
-m_funclist.AddPrefixNameValue( funcreturn, funcname, funcparams );
+m_funclist.AddPrefixNameValue( funcreturn, funcname, funcparams, funcnumparams );
 
 m_extlist.IncrementFuncNum( m_extpos );
 

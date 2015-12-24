@@ -112,11 +112,13 @@ int  Add( const char *name );
 int  AddNameValue( const char *name, const char *value );
 
 void AddProtoVars( const char *pchptra, const char *pchptrc );
+
+// This one is used for the function parmeters
 int  AddPrefixNameValue( const char *prefix, const char *name,
-			const char *header );
+			const char *header, unsigned int funcnumparams );
 
 int  AddPrefixNameValue( const std::string &prefix, const std::string &name, 
-                         const std::string &header );
+                         const std::string &header, unsigned int funcnumparams );
 
 int  AddPrefixNameValueProto( const std::string &prefix, const std::string &name, 
                               const std::string &header, const std::string &proto );

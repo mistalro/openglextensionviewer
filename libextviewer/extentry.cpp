@@ -23,14 +23,15 @@ strupcase( m_pfnproc );
 }
 
 // --------------------------------------------------------------------------
-// Set the prefix, name and value of the entry
+// Set the prefix, name and value of the entry (used for functions)
 // --------------------------------------------------------------------------
 
-void CExtensionEntry::SetPrefixNameValue( const char *prefix, const char *name, const char *value)
+void CExtensionEntry::SetPrefixNameValue( const char *prefix, const char *name, const char *value, unsigned int funcnumparams )
 {
 m_prefix  = prefix;
 m_name    = name;
 m_pfnproc = std::string("PFN") + m_name + std::string( "PROC" );
+m_funcnumparams = funcnumparams;
 
 strupcase( m_pfnproc );
 }
@@ -39,13 +40,14 @@ strupcase( m_pfnproc );
 // Set the prefix, name and header of the entry
 // --------------------------------------------------------------------------
 
-void CExtensionEntry::SetPrefixNameHeader( const std::string &prefix, const std::string &name, const std::string &header )
+void CExtensionEntry::SetPrefixNameHeader( const std::string &prefix, const std::string &name, const std::string &header, unsigned int funcnumparams )
 {
 
 m_prefix  = prefix;
 m_name    = name;
 m_header  = header;
 m_pfnproc = std::string("PFN") + m_name + std::string("PROC");
+m_funcnumparams = funcnumparams;
 
 strupcase( m_pfnproc );
 }

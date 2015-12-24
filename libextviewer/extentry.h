@@ -42,8 +42,10 @@ void Display( void )
 	};
 
 void SetNameValue( const char *pname, const char *pvalue );
-void SetPrefixNameValue( const char *prefix, const char *name, const char *value);
-void SetPrefixNameHeader( const std::string &prefix, const std::string &name, const std::string &header );
+void SetPrefixNameValue( const char *prefix, const char *name, const char *value, unsigned int funcnumparams);
+
+void SetPrefixNameHeader( const std::string &prefix, const std::string &name, const std::string &header, unsigned int funcnumparams);
+
 void SetPrefixNameValueProto( const std::string &prefix,
                                 const std::string &name,
                                 const std::string &header,
