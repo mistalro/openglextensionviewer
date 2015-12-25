@@ -42,8 +42,8 @@
 <end>
 
 <begin><headerprototype></begin>#ifdef <extname>
-<if><cmode><foreach><extfuncblacklist>extern <pfnproc> <funcname>;
-<endfor><endif><if><cppmode><foreach><extfuncblacklist><pfnproc> <funcname>;
+<if><cmode><foreach><extfuncblacklist>extern <pfnproc> _glem_<funcname>;
+<endfor><endif><if><cppmode><foreach><extfuncblacklist><pfnproc> _glem_<funcname>;
 <endfor><endif>#endif		// <extname>
 <end>
 <begin><headercondes></begin>// ----- Constructors -------------------------------------------------------
@@ -72,8 +72,17 @@ void *<classname::>GetGLProcAddress( char const *buf )
 return( NULL );
 }
 <end><begin><headerfile></begin><call><fileheader>
-#ifndef __EXTMANAGER__
-#define __EXTMANAGER__
+#ifndef __EXTMANAGER_H
+#define __EXTMANAGER_H
+
+#undef GL_VERSION_1_1
+#undef GL_VERSION_1_2
+#undef GL_VERSION_1_3
+#undef GL_VERSION_4_4
+#undef GL_VERSION_4_5
+#undef GL_ARB_imaging
+
+#include <GL/glext.h>
 
 <if><cppmode>class <classname>
 {
@@ -104,7 +113,8 @@ public:
 // ----- GL extensions --------
 //
 
-<endif><if><wglfuncnum>//
+<foreach><glext><if><selected><if><funcnum><call><headerprototype>
+<endif><endif><endfor><endif><if><wglfuncnum>//
 // ----- WGL extensions --------
 //
 
@@ -131,7 +141,10 @@ int  CheckGLXExtension( char const *pchname );
 // ----- GL extensions -----------
 
 <foreach><glext><if><selected><if><funcnum>void Init_<extname>( void );
-<endif><endif><endfor><endif><if><wglnum>
+<endif><endif><endfor><endif>
+// Experimental function definitions
+<foreach><glext><if><selected><if><funcnum><foreach><extfuncblacklist>#define <funcname>(<funcmacro>) (*_glem_<funcname>)(<funcmacro>) // <funcnumparams> parameters
+<endfor><endif><endif><endfor><if><wglnum>
 // ----- WGL extensions --------
 
 #ifdef _WIN32
@@ -150,11 +163,11 @@ int  CheckGLXExtension( char const *pchname );
 
 <endif><if><cppmode>};
 
-<endif>#endif		// __EXTMANAGER__
+<endif>#endif		// __EXTMANAGER_H
 <end>
 <begin><headerinit></begin>#ifdef <extname>
-<if><cppmode><foreach><extfuncblacklist>	<funcname> = NULL;
-<endfor><endif><if><cmode><foreach><extfuncblacklist><pfnproc>	<funcname> = NULL;
+<if><cppmode><foreach><extfuncblacklist>	_glem_<funcname> = NULL;
+<endfor><endif><if><cmode><foreach><extfuncblacklist><pfnproc>	_glem_<funcname> = NULL;
 <endfor><endif>#endif		// <extname>
 
 <end>
@@ -176,7 +189,7 @@ void <classname::>Init_<extname>( void )
 if (!m_<extname>)
 	return;
 <if><funcnum>
-<endif><foreach><extfuncblacklist><funcname> = (<pfnproc>) GetGLProcAddress( "<funcname>");
+<endif><foreach><extfuncblacklist>_glem_<funcname> = (<pfnproc>) GetGLProcAddress( "<funcname>");
 <endfor>#endif
 }
 
@@ -357,13 +370,8 @@ void <classname::>CheckGLXExtensions( void )
 // We need the PFN prototypes - these are inaccessible if the flag is simply
 // set and the prototypes not defined
 
-#undef GL_VERSION_1_1
-#undef GL_VERSION_1_2
-#undef GL_VERSION_1_3
-#undef GL_ARB_imaging
-#undef GL_ARB_multitexture
+#include "<outputheader>"
 
-#include <GL/glext.h>
 #ifdef _WIN32
 #include <GL/wglext.h>
 #endif
@@ -378,8 +386,6 @@ void <classname::>CheckGLXExtensions( void )
 #include <GL/glx.h>
 #include <GL/glxext.h>
 #endif
-
-#include "<outputheader>"
 
 <if><cppmode>// --------------------------------------------------------------------------
 // Default constructor
@@ -446,25 +452,6 @@ return( 1 );
 }
 
 // --------------------------------------------------------------------------
-// Routine to check the presence of an OpenGL extension
-//
-// Inputs: None
-//
-// Outputs: None
-//
-// Results: 1 is returned if the extension exists, 0 otherwise
-//
-// Effects: None
-// --------------------------------------------------------------------------
-
-int <classname::>CheckGLExtension( char const *pchname )
-{
-GLubyte *pextstring = (GLubyte *) glGetString(GL_EXTENSIONS);
-
-return( StringSearch( (char *) pextstring, (char *) pchname ) );
-}
-
-// --------------------------------------------------------------------------
 // Routine to check whether an OpenGL version is supported
 // The OpenGL version is specified using integer format <hi>.<lo>
 //
@@ -486,6 +473,34 @@ GLubyte *pextstring = (GLubyte *) glGetString(GL_VERSION);
 sscanf( (char *) pextstring, "%d.%d.%d", &dhi, &dlo, &dvlo);
 
 return (dhi > shi) || ((dhi == shi) && (dlo >= slo));
+}
+
+// --------------------------------------------------------------------------
+// Routine to check the presence of an OpenGL extension
+//
+// Inputs: None
+//
+// Outputs: None
+//
+// Results: 1 is returned if the extension exists, 0 otherwise
+//
+// Effects: None
+// --------------------------------------------------------------------------
+
+int <classname::>CheckGLExtension( char const *pchname )
+{
+if (strncmp( pchname, "GL_VERSION", 10 ) == 0)
+	{
+	unsigned int slo, shi;
+
+	sscanf( pchname, "GL_VERSION_%d_%d", &shi, &slo );
+
+	return CheckGLVersion( shi, slo );
+	}
+
+GLubyte *pextstring = (GLubyte *) glGetString(GL_EXTENSIONS);
+
+return( StringSearch( (char *) pextstring, (char *) pchname ) );
 }
 
 // --------------------------------------------------------------------------
