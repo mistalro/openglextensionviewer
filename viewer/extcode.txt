@@ -42,8 +42,8 @@
 <end>
 
 <begin><headerprototype></begin>#ifdef <extname>
-<if><cmode><foreach><extfuncblacklist>extern <pfnproc> _glem_<funcname>;
-<endfor><endif><if><cppmode><foreach><extfuncblacklist><pfnproc> _glem_<funcname>;
+<if><cmode><foreach><extfuncblacklist>extern <pfnproc> _glem_<funcname>_;
+<endfor><endif><if><cppmode><foreach><extfuncblacklist><pfnproc> _glem_<funcname>_;
 <endfor><endif>#endif		// <extname>
 <end>
 <begin><headercondes></begin>// ----- Constructors -------------------------------------------------------
@@ -81,6 +81,8 @@ return( NULL );
 #undef GL_VERSION_4_4
 #undef GL_VERSION_4_5
 #undef GL_ARB_imaging
+
+#undef __glext_h_
 
 #include <GL/glext.h>
 
@@ -143,7 +145,7 @@ int  CheckGLXExtension( char const *pchname );
 <foreach><glext><if><selected><if><funcnum>void Init_<extname>( void );
 <endif><endif><endfor><endif>
 // Experimental function definitions
-<foreach><glext><if><selected><if><funcnum><foreach><extfuncblacklist>#define <funcname>(<funcmacro>) (*_glem_<funcname>)(<funcmacro>) // <funcnumparams> parameters
+<foreach><glext><if><selected><if><funcnum><foreach><extfuncblacklist>#define <funcname>(<funcmacro>) (*_glem_<funcname>_)(<funcmacro>) // <funcnumparams> parameters
 <endfor><endif><endif><endfor><if><wglnum>
 // ----- WGL extensions --------
 
@@ -166,8 +168,8 @@ int  CheckGLXExtension( char const *pchname );
 <endif>#endif		// __EXTMANAGER_H
 <end>
 <begin><headerinit></begin>#ifdef <extname>
-<if><cppmode><foreach><extfuncblacklist>	_glem_<funcname> = NULL;
-<endfor><endif><if><cmode><foreach><extfuncblacklist><pfnproc>	_glem_<funcname> = NULL;
+<if><cppmode><foreach><extfuncblacklist>	_glem_<funcname>_ = NULL;
+<endfor><endif><if><cmode><foreach><extfuncblacklist><pfnproc>	_glem_<funcname>_ = NULL;
 <endfor><endif>#endif		// <extname>
 
 <end>
@@ -189,7 +191,7 @@ void <classname::>Init_<extname>( void )
 if (!m_<extname>)
 	return;
 <if><funcnum>
-<endif><foreach><extfuncblacklist>_glem_<funcname> = (<pfnproc>) GetGLProcAddress( "<funcname>");
+<endif><foreach><extfuncblacklist>_glem_<funcname>_ = (<pfnproc>) GetGLProcAddress( "<funcname>");
 <endfor>#endif
 }
 
